@@ -70,6 +70,7 @@ export default {
         { name: "Palindromes", link: "/palindromes" },
         { name: "Chocolate Chip Cookies", link: "/chocolate-chip-cookies" },
         { name: "Beetle Game", link: "/beetle-game" },
+        { name: "Charts Strategies", link: "/charts-strategies" },
       ]
     };
   },

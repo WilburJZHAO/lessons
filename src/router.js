@@ -342,6 +342,12 @@ const BeetleGame = resolve => {
   });
 };
 
+const ChartsStrategies = resolve => {
+  require.ensure("./components/lessons/charts-strategies/App.vue", () => {
+    resolve(require("./components/lessons/charts-strategies/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -490,6 +496,11 @@ const routes = [
     name: "Chocolate Chip Cookies"
   },
   { path: "/beetle-game", component: BeetleGame, name: "Beetle Game" },
+  {
+    path: "/charts-strategies",
+    component: ChartsStrategies,
+    name: "Charts Strategies"
+  },
 ];
 
 const router = new VueRouter({
