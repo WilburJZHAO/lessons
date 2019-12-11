@@ -348,6 +348,12 @@ const ChartsStrategies = resolve => {
   });
 };
 
+const GoodsBads = resolve => {
+  require.ensure("./components/lessons/goods-bads/App.vue", () => {
+    resolve(require("./components/lessons/goods-bads/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -501,6 +507,7 @@ const routes = [
     component: ChartsStrategies,
     name: "Charts Strategies"
   },
+  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" }
 ];
 
 const router = new VueRouter({

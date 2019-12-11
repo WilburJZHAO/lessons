@@ -71,6 +71,7 @@ export default {
         { name: "Chocolate Chip Cookies", link: "/chocolate-chip-cookies" },
         { name: "Beetle Game", link: "/beetle-game" },
         { name: "Charts Strategies", link: "/charts-strategies" },
+        { name: "Goods And Bads", link: "/goods-and-bads" }
       ]
     };
   },
