@@ -354,6 +354,12 @@ const GoodsBads = resolve => {
   });
 };
 
+const SimpleElegantElusive = resolve => {
+  require.ensure("./components/lessons/simple-elegant-elusive/App.vue", () => {
+    resolve(require("./components/lessons/simple-elegant-elusive/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -507,7 +513,8 @@ const routes = [
     component: ChartsStrategies,
     name: "Charts Strategies"
   },
-  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" }
+  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" },
+  { path: "/simple-elegant-elusive", component: SimpleElegantElusive, name: "Simple Elegant Elusive" },
 ];
 
 const router = new VueRouter({
