@@ -91,7 +91,7 @@
             </div>
 
             <div class="col-md-6" :style="{visibility: pressOK? 'visible' : 'hidden'}">
-                <div class="table-wrapper-scroll-y" id="scroller" style="width: 50%">
+                <div class="table-wrapper-scroll-y" id="scroller" style="width: 80%">
                     <table id='tblResult' class="table table-bordered table-striped">
                         <thead>
                         <tr>
@@ -203,7 +203,7 @@
                     this.match++;
                     this.birthMonths.push('match');
                 }
-                document.getElementById('tblResult').rows[this.trial].cells[0].innerHTML = this.birthMonths.join(',');
+                document.getElementById('tblResult').rows[this.trial].cells[0].innerHTML = this.birthMonths.join(', ');
                 this.percentageMatch = (this.match * 100 / this.trial).toFixed(2);
 
                 if (this.trial >= this.displayTrial) {
