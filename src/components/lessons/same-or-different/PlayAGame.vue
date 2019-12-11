@@ -42,7 +42,7 @@
 			<div v-else class="row">
 				<div class="col-6">
 					<div class="row">
-						<h4>Bag contains <strong style="color:red">{{numRedBlocks}}</strong> and <strong style="color:blue">{{numBlueBlocks}}</strong></h4>
+						<h4>Bag contains <strong style="color:red">{{numRedBlocks}} red</strong> and <strong style="color:blue">{{numBlueBlocks}} blue</strong>.</h4>
 						<h5>Player A wins if the colours are the same.</h5>
 						<h5>Player B wins if the colours are different.</h5>
 					</div>
