@@ -8,19 +8,21 @@
           <tr>
             <td>
               <h4 class="text-success">
-                <b id="error" style="">Please click on a prize box to begin</b>
+                <b id="error" v-if="isWin===0" style="">Please click on a prize box to begin: </b>
+                <b v-if="isWin===1" style="color: greenyellow">You Win!</b>
+                <b v-if="isWin===2" style="color: red">Bad luck!</b>
               </h4>
             </td>
             <td>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <button
-                name="Reset"
-                @click="resetAll()"
-                class="btn btn-outline-success"
-                id="resetBt"
-              >
-                Reset
-              </button>
+<!--              <button-->
+<!--                name="Reset"-->
+<!--                @click="resetAll()"-->
+<!--                class="btn btn-outline-success"-->
+<!--                id="resetBt"-->
+<!--              >-->
+<!--                Reset-->
+<!--              </button>-->
             </td>
           </tr>
         </table>
@@ -154,6 +156,7 @@ export default {
       unchangedWins: 0,
       unchangedLosses: 0,
       finalNum: -1,
+      isWin: 0,
       isSet: false,
       isNext: false
     };
@@ -244,14 +247,14 @@ export default {
       this.isSet = false;
       this.gameNum += 1;
       if (this.finalNum == this.playNum) {
-        document.getElementById("error").innerHTML = "You Win!!";
+        this.isWin = 1;
         if (this.ifChange) {
           this.changedWins += 1;
         } else {
           this.unchangedWins += 1;
         }
       } else {
-        document.getElementById("error").innerHTML = "Bad luck!";
+        this.isWin = 2;
         if (this.ifChange) {
           this.changedLosses += 1;
         } else {
@@ -261,8 +264,7 @@ export default {
       this.isNext = true;
     },
     reset() {
-      document.getElementById("error").innerHTML =
-        "Please click on a prize box to begin";
+      this.isWin = 0;
       this.gameStart = false;
       this.emptyNum = -1;
       this.ifChange = true;
@@ -287,14 +289,14 @@ export default {
         this.arr.pop();
       }
     },
-    resetAll() {
-      this.reset();
-      this.gameNum = 0;
-      this.changedWins = 0;
-      this.changedLosses = 0;
-      this.unchangedWins = 0;
-      this.unchangedLosses = 0;
-    }
+    // resetAll() {
+    //   this.reset();
+    //   this.gameNum = 0;
+    //   this.changedWins = 0;
+    //   this.changedLosses = 0;
+    //   this.unchangedWins = 0;
+    //   this.unchangedLosses = 0;
+    // }
   },
 
   name: "Demonstration"

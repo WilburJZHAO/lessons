@@ -99,10 +99,13 @@
             </div>
         </div>
         <div class="text-center" v-if="isSet">
-            <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="startManually">
+            <button id="startManuallyBtn" class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="startManually">
                 {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
             </button>
-            <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
+            <button id="startManually2Btn" class="btn btn-outline-success" v-if="!finished && demoAutoOption === '2'" @click="getWinner">
+                Tap here to tally
+            </button>
+            <button id="startAutoBtn"  class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                 {{
                 !isAutoStart
                 ? "Tap here to begin"
@@ -114,7 +117,7 @@
             <button class="btn btn-outline-dark" v-if="finished" @click="reset()">
                 Click here to reset
             </button>
-            <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
+            <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :isDemoStart="isDemoStart" :option="demoAutoOption"></app-demo-auto-option>
         </div>
     </div>
 </template>
@@ -145,9 +148,11 @@
                 blackWinPercentage: "",
                 count: 0,
                 timer: null,
+                outTime: 0,
                 isSet: false,
                 finished: false,
                 isStart: false,
+                isDemoStart: false,
                 isAutoStart: false,
                 isRed: false,
                 isBlue: false,
@@ -176,6 +181,30 @@
         },
         mounted: function() {},
         updated: function() {},
+        computed: {
+            timerInterval() {
+                let i = 0;
+                if(this.isRed){
+                    i++;
+                }
+                if(this.isBlue){
+                    i++;
+                }
+                if(this.isGreen){
+                    i++;
+                }
+                if(this.isBlack){
+                    i++;
+                }
+                if(i===2){
+                    return 1800;
+                } else if(i===3){
+                    return 2400;
+                } else{
+                    return 3000;
+                }
+            },
+        },
         methods: {
             diceChoose(dice) {
                 if (dice === "red") {
@@ -217,37 +246,33 @@
                     clearInterval(this.timer);
                     this.timer = null;
                 } else {
-                    this.timer = setInterval(this.startManually, 500);
+                    this.startManually();
+                    this.timer = setInterval(this.startManually, this.timerInterval);
                 }
             },
-            startManually() {
-                this.isStart = true;
-                this.count++;
+            setRedNumber(){
+                this.redNumber = this.gameRule.redDiceFace[this.generateRandom(this.gameRule.diceFaces)];
+                this.diceNumandCol.push([this.redNumber, "red"]);
+            },
+            setBlueNumber(){
+                this.blueNumber = this.gameRule.blueDiceFace[this.generateRandom(this.gameRule.diceFaces)];
+                this.diceNumandCol.push([this.blueNumber, "blue"]);
+            },
+            setGreenNumber(){
+                this.greenNumber = this.gameRule.greenDiceFace[this.generateRandom(this.gameRule.diceFaces)];
+                this.diceNumandCol.push([this.greenNumber, "green"]);
+            },
+            setBlackNumber(){
+                this.blackNumber = this.gameRule.blackDiceFace[this.generateRandom(this.gameRule.diceFaces)];
+                this.diceNumandCol.push([this.blackNumber, "black"]);
+            },
+            setDiceNumberFinish(){
+                document.getElementById("startManuallyBtn").removeAttribute("disabled");
+                this.demoAutoOption="2";
+            },
+            getWinner(){
                 let winDices = [];
-                this.isRedWin = false;
-                this.isGreenWin = false;
-                this.isBlueWin = false;
-                this.isBlackWin = false;
-                this.diceNumandCol = [];
-
-                if (this.isRed) {
-                    this.redNumber = this.gameRule.redDiceFace[this.generateRandom(this.gameRule.diceFaces)];
-                    this.diceNumandCol.push([this.redNumber, "red"]);
-                }
-                if (this.isBlue) {
-                    this.blueNumber = this.gameRule.blueDiceFace[this.generateRandom(this.gameRule.diceFaces)];
-                    this.diceNumandCol.push([this.blueNumber, "blue"]);
-                }
-                if (this.isGreen) {
-                    this.greenNumber = this.gameRule.greenDiceFace[this.generateRandom(this.gameRule.diceFaces)];
-                    this.diceNumandCol.push([this.greenNumber, "green"]);
-                }
-                if (this.isBlack) {
-                    this.blackNumber = this.gameRule.blackDiceFace[this.generateRandom(this.gameRule.diceFaces)];
-                    this.diceNumandCol.push([this.blackNumber, "black"]);
-                }
                 let winner = this.biggestNum(this.diceNumandCol);
-
                 for (let i = 0; i < this.diceNumandCol.length; i++) {
                     if (parseInt(this.diceNumandCol[i][0]) === parseInt(winner[0])) {
                         winDices.push(this.diceNumandCol[i]);
@@ -271,11 +296,78 @@
                         this.isBlackWin = true;
                     }
                 }
-                this.redWinPercentage = (this.redWinNumber * 100 / this.count).toFixed(1);
-                this.blackWinPercentage = (this.blackWinNumber * 100 / this.count).toFixed(1);
-                this.greenWinPercentage = (this.greenWinNumber * 100 / this.count).toFixed(1);
-                this.blueWinPercentage = (this.blueWinNumber * 100 / this.count).toFixed(1);
+                this.redWinPercentage = (this.redWinNumber * 100 / this.count).toFixed(1) + "%";
+                this.blackWinPercentage = (this.blackWinNumber * 100 / this.count).toFixed(1) + "%";
+                this.greenWinPercentage = (this.greenWinNumber * 100 / this.count).toFixed(1) + "%";
+                this.blueWinPercentage = (this.blueWinNumber * 100 / this.count).toFixed(1) + "%";
+                if(this.demoAutoOption === "2") {
+                    this.demoAutoOption="0";
 
+                }
+                this.isDemoStart = false;
+            },
+            startManually() {
+                this.isStart = true;
+                this.isDemoStart = true;
+                this.count++;
+                this.isRedWin = false;
+                this.isGreenWin = false;
+                this.isBlueWin = false;
+                this.isBlackWin = false;
+                this.diceNumandCol = [];
+                this.redNumber = "";
+                this.blueNumber = "";
+                this.greenNumber = "";
+                this.blackNumber = "";
+                if(this.demoAutoOption === "0"){
+                    document.getElementById("startManuallyBtn").setAttribute("disabled", "true");
+                }
+                let outTime = 0;
+                let redOutTime = 0;
+                let blueOutTime = 0;
+                let greenOutTime = 0;
+                let blackOutTime = 0;
+                let getWinnerTime = 0;
+                if(this.isRed){
+                    redOutTime = outTime;
+                    if(this.isBlue||this.isGreen||this.isBlack){
+                        outTime= outTime + 600;
+                    }
+                }
+                if(this.isBlue){
+                    blueOutTime = outTime;
+                    if(this.isGreen||this.isBlack){
+                        outTime= outTime + 600;
+                    }
+                }
+                if(this.isGreen){
+                    greenOutTime = outTime;
+                    if(this.isBlack){
+                        outTime= outTime + 600;
+                    }
+                }
+                if(this.isBlack){
+                    blackOutTime = outTime;
+                }
+                    getWinnerTime = outTime + 600;
+                if (this.isRed) {
+                    setTimeout(this.setRedNumber, redOutTime);
+                }
+                if (this.isBlue) {
+                    setTimeout(this.setBlueNumber, blueOutTime);
+                }
+                if (this.isGreen) {
+                    setTimeout(this.setGreenNumber, greenOutTime);
+                }
+                if (this.isBlack) {
+                    setTimeout(this.setBlackNumber, blackOutTime);
+                }
+                if(this.demoAutoOption === "0") {
+                    setTimeout(this.setDiceNumberFinish, outTime);
+                }else{
+                    setTimeout(this.getWinner, getWinnerTime);
+                }
+                return true;
             },
             biggestNum(array) {
                 let tempN = 0;
