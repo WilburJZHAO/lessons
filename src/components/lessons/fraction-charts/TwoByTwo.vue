@@ -12,7 +12,7 @@
                                 {{ alertMessage }}
                             </div>
 
-                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="color: #0067d2;text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
@@ -24,8 +24,8 @@
                                             {{arrSimpleThree[j-2]}}
                                         </b>
                                         <b v-else-if="(j===1&&i===r[0]+1) && randomIndex ==='c'">
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; background-color: #81ecec'>{{arrSimpleTwo[i - 2]}}</div>
-                                            <div style='margin: 0 auto;width: 3.5vw; height: 3.5vw; background-color: #81ecec'>{{root[i - 2]}}</div>
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{arrSimpleTwo[i - 2]}}</div>
+                                            <div style='margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{root[i - 2]}}</div>
                                         </b>
                                         <b v-else-if="i===r[0]+1&&j===c[0]+1 && h">
                                             {{arrSimpleThree[j-2]/root[i-2]*arrSimpleTwo[i-2]}}
@@ -43,11 +43,11 @@
                                             <input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum((i*10+j), inputNum[i*10+j])" type="text" style='width: 3.5vw; height: 3.5vw;border: 0px' />
                                         </b>
                                         <b v-else-if="j===1&&i!==1">
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;background-color: #81ecec'>
-                                            <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text" style='width: 3.5vw; height: 3.5vw;background: #81ecec;border: 0px' />
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;border-top: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
+                                            <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text" style='width: 3.5vw; height: 3.5vw;border: 0px' />
                                             </div>
-                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;background-color: #81ecec'>
-                                                <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" style='width: 3.5vw; height: 3.5vw;background: #81ecec;border: 0px' />
+                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;border-bottom: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
+                                                <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" style='width: 3.5vw; height: 3.5vw;border: 0px' />
                                             </div>
                                         </b>
                                         <b v-else>
@@ -59,10 +59,10 @@
                         </div>
                     </div>
                     <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="overflow: visible; max-width: 50%">
+                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px;overflow: visible; max-width: 50%">
                         <div class="tt-right-box"></div>
                         <div><br><br>
-                            <div style="max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative">
+                            <div style="font-size: 1vw;color: #0f0f0f;position: relative">
                                 <br />
                                 <button v-if="resetNow === false && h" v-on:click="check()" id="ok" class="btn btn-outline-success" style="margin: auto">
                                     Check
@@ -106,6 +106,7 @@
                 tbl_columns: 2,
                 selected: "",
                 alertMessage: "",
+                startTime: "",
                 resetNow: false,
                 allCorrect: false,
                 cur: [],
@@ -167,6 +168,8 @@
                     this.$refs[indexNume][0].classList.remove("red");
                     this.$refs[indexNume][0].classList.remove("g");
                 }
+
+                this.startTime = "";
                 let a=Math.random()*10;
                 this.randomIndex = "";
                 if(a>5){
@@ -332,7 +335,8 @@
                         var c=Math.floor(indexDemo/10)-r*10;
                         if (c === 1) {
                             let result=this.purify(this.root[r - 2], this.arrSimpleTwo[r - 2]);
-                            if (this.checkValDemo[i] === result[0][1]&&this.checkValNume[i] === result[0][0]) {
+                            let result1 = this.purify(this.checkValDemo[i], this.checkValNume[i]);
+                            if (result1[0][1] === result[0][1] && result1[0][0] === result[0][0]) {
                                 if (this.$refs[indexDemo][0].classList.value === "red" && this.$refs[indexNume][0].classList.value === "red") {
                                     this.$refs[indexDemo][0].classList.replace("red", "g");
                                     this.$refs[indexNume][0].classList.replace("red", "g");
@@ -369,16 +373,45 @@
                         }
                         if (count === l) {
                             this.allCorrect =true;
-                            this.alertMessage = "All numbers are correct";
+                            var end = new Date().getTime();
+                            var secDuration = Math.round((end - this.startTime) / 1000);
+                            this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
                             this.resetNow = true;
                         } else {
-                            this.alertMessage = "Only " + count + " correct numbers, please input rest numbers correctly";
+                            let nnn = l - count;
+                            if(nnn === 1){
+                                this.alertMessage =
+                                    "All entries are checked. There is 1 error.";
+                            }else{
+                                this.alertMessage =
+                                    "All entries are checked. There are " +
+                                    nnn +
+                                    " errors.";
+                            }
                         }
                     } else {
-                        this.alertMessage = "Please input all numbers correctly";
+                        for (let a = 0; a < this.correctNum.length; a++) {
+                            if (this.correctNum[a] === "red") {
+                                count++;
+                            }
+                        }
+                        if(count === 1){
+                            this.alertMessage =
+                                "All entries are checked. There is 1 error.";
+                        }else if(count > 1){
+                            this.alertMessage =
+                                "All entries are checked. There are " +
+                                count +
+                                " errors.";
+                        }else{
+                            this.alertMessage = "All entries correct";
+                        }
                     }
             },
             checkNum: function(r, num) {
+                if (this.startTime === "") {
+                    this.startTime = new Date().getTime();
+                }
                 if (num === "") {
                     return;
                 } else {
