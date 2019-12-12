@@ -22,33 +22,44 @@
               @keypress="handleCheckInput"
             />
             <div class="text-center mt-3">
-              <button class="btn btn-outline-success" @click="handleOK">OK</button>
-              <div class="alert alert-danger mt-3" v-if="message">{{ message }}</div>
+              <button class="btn btn-outline-success" @click="handleOK">
+                OK
+              </button>
+              <div class="alert alert-danger mt-3" v-if="message">
+                {{ message }}
+              </div>
             </div>
           </div>
           <div class="col-md-3 col-sm-2"></div>
         </div>
         <div :style="{ visibility: gameStatus >= 1 ? 'visible' : 'hidden' }">
           <div style="position: relative">
-            <canvas id="boardCanvas" class="app--canvas" width="600px" height="550px"></canvas>
+            <canvas
+              id="boardCanvas"
+              class="app--canvas"
+              width="600px"
+              height="550px"
+            ></canvas>
           </div>
           <div class="text-center" v-if="gameStatus === 1">
             <button
               class="btn btn-outline-success"
               @click="handleBounce"
               v-if="demoAutoOption === '0'"
-            >Tap here for {{ bounces > 0 ? "next" : "first" }} pool shot</button>
+            >
+              Tap here for {{ bounces > 0 ? "next" : "first" }} pool shot
+            </button>
             <button
               class="btn btn-outline-success"
               @click="handleToggleTimer"
               v-if="demoAutoOption === '1'"
             >
               {{
-              bounces === 0
-              ? "Tap here to begin"
-              : timer
-              ? "Tap here to pause"
-              : "Tap here to resume"
+                bounces === 0
+                  ? "Tap here to begin"
+                  : timer
+                  ? "Tap here to pause"
+                  : "Tap here to resume"
               }}
             </button>
             <app-demo-auto-option
@@ -58,7 +69,12 @@
             ></app-demo-auto-option>
           </div>
           <div class="text-center" v-if="gameStatus === 2">
-            <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
+            <div class="alert alert-danger mt-3" v-if="message">
+              {{ message }}
+            </div>
+            <button class="btn btn-outline-dark" @click="handleReset">
+              Reset
+            </button>
           </div>
         </div>
       </div>
@@ -71,12 +87,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(data, index) in resultData" :key="index" class="text-primary">
+            <tr
+              v-for="(data, index) in resultData"
+              :key="index"
+              class="text-primary"
+            >
               <td class="text-center">{{ data.size }}</td>
               <td
                 class="text-center"
-                :class="{'text-danger': index===resultData.length-1}"
-              >{{ data.bounces > 0 ? data.bounces : "" }}</td>
+                :class="{ 'text-danger': index === resultData.length - 1 }"
+              >
+                {{ data.bounces }}
+              </td>
             </tr>
           </tbody>
         </table>
@@ -418,10 +440,7 @@ export default {
           break;
         }
       }
-
-      this.drawBounceLine(x0, y0, x1, y1);
-      this.bounces++;
-      this.resultData[this.resultData.length - 1].bounces = this.bounces;
+ 
       if (this.rwidth === 0) {
         if (this.timer) {
           clearInterval(this.timer);
@@ -429,7 +448,13 @@ export default {
         }
         this.message = "Finished";
         this.gameStatus = 2;
+      } else {
+        this.bounces += 1;
+        this.resultData[this.resultData.length - 1].bounces = this.bounces;
       }
+
+      this.drawBounceLine(x0, y0, x1, y1);
+
       // if (this.rwidth != 0) {
       //
       //   this.bounces++;
