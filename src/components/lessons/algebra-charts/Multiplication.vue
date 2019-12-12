@@ -4,14 +4,16 @@
             <div class="container mt-4 mb5">
                 <div class="row" style="max-width: 100%">
                     <!-- Left part -->
-                    <div class="col-12 col-md-6 app--lesson-left" style="max-width: 70%">
+                    <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
                         <div style="text-align: left;max-width: 70%">
-                            <h3>Choose the grid size</h3><br>
+                            <h5>Choose the grid size</h5>
                             <select id="gridSize" style="width:10vw;font-size: 1.5vw" v-model="selected" v-on:change="generateTable()">
                                 <option v-for="option in options" v-bind:value="option.value">
                                     {{ option.text }}
                                 </option>
-                            </select> &nbsp;&nbsp;
+                            </select> &nbsp;
+                            <br><br>
+                            <h5>Choose the difficulty level</h5>
                             <select id="select1" style="width:10vw; font-size: 1.5vw" v-model="selected1" v-on:change="generateTable()">
                                 <option v-for="s1 in options1" v-bind:value="s1.value">
                                     {{ s1.text }}
@@ -31,12 +33,12 @@
                             <div v-if="alertMessage" :class="resetNow?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
-                            <table id="tableAdd" style="text-align: center; vertical-align: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd" style="color: #0067d2; text-align: center; vertical-align: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
-                                        ? 'width: 12vw; height: 5vw; background: #e6ffe7'
-                                        : 'width: 12vw; height: 5vw;'">
+                                        ? 'width: 7vw; height: 5vw; background: #e6ffe7'
+                                        : 'width: 7vw; height: 5vw;'">
                                         <b v-if="i===1&&j===1">X</b>
                                         <b v-else-if="(i===1&&j===c[0]+1) && randomIndex ==='r'">{{generate(i,j)}}</b>
                                         <b v-else-if="(j===1&&i===r[0]+1) && randomIndex ==='c'">{{generate(i,j)}}</b>
@@ -51,21 +53,19 @@
                                         <b v-else-if="i===r[4]+1&&j===c[4]+1">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[4]+1&&j===c[5]+1">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[5]+1&&j===c[5]+1">{{generate(i,j)}}</b>
-                                        <b v-else-if="i===1&&j!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 10vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j===1&&i!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 10vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 10vw; height: 5vw; border: 0px' /></b>
+                                        <b v-else-if="i===1&&j!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 7vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="j===1&&i!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 7vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 7vw; height: 5vw; border: 0px' /></b>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="overflow: visible; max-width: 50%">
+                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px;overflow: visible; max-width: 50%">
                         <div>
                             <div style="max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative">
-                                <br />
-                                <br />
-                                <br />
+                                <br /><br /><br /><br /><br /><br /><br /><br /><br />
                                 <div id="container" :style="{visibility: isChecked? 'visible': 'hidden'}" style="min-width: 500px; height: 400px; margin: 0 auto;">
                                     <div>
                                         <h5>Graph</h5>
@@ -156,6 +156,9 @@
                         type: 'column'
                     },
                     xAxis: {
+                        title: {
+                            text: "Series"
+                        },
                         categories: [],
                     },
                     yAxis: {
@@ -197,7 +200,7 @@
             start() {
                 document
                     .getElementById("tableAdd")
-                    .rows[0].cells[0].setAttribute("style", "width: 12vw; height: 5vw; background: #ffeaa5");
+                    .rows[0].cells[0].setAttribute("style", "width: 7vw; height: 5vw; background: #ffeaa5");
                 this.generateTable();
             },
             randomsort() {
@@ -356,7 +359,7 @@
                         }
                     }
                     if (count === l) {
-                        this.alertMessage = "All answers are correct";
+                        this.alertMessage = "All entries are correct";
                         this.resetNow = true;
                         this.n = this.n + 1;
                         let nn = this.n.toString();
@@ -368,10 +371,34 @@
                         this.ops.series[0].data.push(secDuration);
 
                     } else {
-                        this.alertMessage = "Only " + count + " correct answers, please input rest answers correctly";
+                        let nnn = l - count;
+                        if(nnn === 1){
+                            this.alertMessage =
+                                "All entries are checked. There is 1 error.";
+                        }else{
+                            this.alertMessage =
+                                "All entries are checked. There are " +
+                                nnn +
+                                " errors.";
+                        }
                     }
                 } else {
-                    this.alertMessage = "Please input all answers correctly";
+                    for (let a = 0; a < this.correctNum.length; a++) {
+                        if (this.correctNum[a] === "red") {
+                            count++;
+                        }
+                    }
+                    if(count === 1){
+                        this.alertMessage =
+                            "All entries are checked. There is 1 error.";
+                    }else if(count > 1){
+                        this.alertMessage =
+                            "All entries are checked. There are " +
+                            count +
+                            " errors.";
+                    }else{
+                        this.alertMessage = "All entries correct";
+                    }
                 }
             },
             re: function(r, c, num) {
@@ -406,6 +433,8 @@
             },
             reset: function() {
                 this.alertMessage = "";
+                this.isChecked = false;
+                document.getElementById("ccc").checked = false;
                 for (var i = 0; i < this.checkRow.length; i++) {
                     let index = this.checkRow[i] * 10 + this.checkCol[i];
                     this.$refs[index][0].classList.remove("red");
@@ -588,11 +617,11 @@
 
     td {
         border: #7f8c8d solid;
-        width: 12vw;
+        width: 7vw;
         height: 5vw;
-        font-size: 24px;
-        padding-left: 5px;
-        padding-right: 5px;
+        font-size: 20px;
+        padding-left: 0px;
+        padding-right: 0px;
     }
 
     .hide {

@@ -8,10 +8,9 @@
       <div class="container mt-4 mb5">
         <div class="row" style="max-width: 100%">
           <!-- Left part -->
-          <div class="col-12 col-md-6 app--lesson-left" style="max-width: 70%">
+          <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
             <div style="text-align: left;max-width: 70%">
-              <h3>Choose the grid size</h3>
-              <br />
+              <h5>Choose the grid size</h5>
               <select
                 id="gridSize"
                 style="width:10vw;font-size: 1.5vw"
@@ -22,7 +21,9 @@
                   {{ option.text }}
                 </option>
               </select>
-              &nbsp;&nbsp;
+              <br><br>
+              <h5>Choose the difficulty level</h5>
+
               <select
                 id="select1"
                 style="width:10vw; font-size: 1.5vw"
@@ -70,7 +71,7 @@
               </div>
               <table
                 id="tableAdd"
-                style="text-align: center;vertical-align: center;visibility: visible; border: #7f8c8d solid;background: white;"
+                style="color: #0067d2; text-align: center;vertical-align: center;visibility: visible; border: #7f8c8d solid;background: white;"
               >
                 <tr v-for="i in selected + 1">
                   <td
@@ -812,15 +813,14 @@
           <div
             class="col-12 col-md-6 app--lesson-right"
             ref="qqq"
-            style="overflow: visible; max-width: 50%"
+            style="padding-left: 200px; overflow: visible; max-width: 50%"
           >
+
             <div>
               <div
-                style="max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative"
+                style=" max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative"
               >
-                <br />
-                <br />
-                <br />
+                <br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <div
                   id="container"
                   :style="{ visibility: isChecked ? 'visible' : 'hidden' }"
@@ -913,6 +913,9 @@ export default {
           type: "column"
         },
         xAxis: {
+          title: {
+            text: "Series"
+          },
           categories: []
         },
         yAxis: {
@@ -1118,7 +1121,7 @@ export default {
           }
         }
         if (count === l) {
-          this.alertMessage = "All answers are correct";
+          this.alertMessage = "All entries are correct";
           this.resetNow = true;
           this.n = this.n + 1;
           let nn = this.n.toString();
@@ -1129,13 +1132,34 @@ export default {
           var secDuration = Math.round((end - this.startTime) / 1000);
           this.ops.series[0].data.push(secDuration);
         } else {
-          this.alertMessage =
-            "Only " +
-            count +
-            " correct answers, please input rest answers correctly";
+          let nnn = l - count;
+          if(nnn === 1){
+            this.alertMessage =
+                    "All entries are checked. There is 1 error.";
+          }else{
+            this.alertMessage =
+                    "All entries are checked. There are " +
+                    nnn +
+                    " errors.";
+          }
         }
       } else {
-        this.alertMessage = "Please input all answers correctly";
+        for (let a = 0; a < this.correctNum.length; a++) {
+          if (this.correctNum[a] === "red") {
+            count++;
+          }
+        }
+        if(count === 1){
+          this.alertMessage =
+                  "All entries are checked. There is 1 error.";
+        }else if(count > 1){
+          this.alertMessage =
+                  "All entries are checked. There are " +
+                  count +
+                  " errors.";
+        }else{
+          this.alertMessage = "All entries correct";
+        }
       }
     },
     checkNum: function(r, c, num) {
@@ -1164,6 +1188,8 @@ export default {
     },
     reset: function() {
       this.alertMessage = "";
+      this.isChecked = false;
+      document.getElementById("ccc").checked = false;
       for (var i = 0; i < this.checkRow.length; i++) {
         let index = this.checkRow[i] * 10 + this.checkCol[i];
         this.$refs[index][0].classList.remove("red");
