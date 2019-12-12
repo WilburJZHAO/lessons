@@ -5,11 +5,11 @@
                 <div class="row justify-content-end">
                     <label class="col-sm-5 label1" >Enter the number of trials:</label>
                     <div class="col-sm-4">
-                        <input type="number" min="1" max="100000" class="roll1" oninput="value=value.replace('.','');if(value>100000)value=100000;if(value<1)value=null"  v-model="trails">
+                        <input type="number" min="1" max="10000" class="roll1" oninput="value=value.replace('.','');if(value>10000)value=10000;if(value<1)value=null"  v-model="trails">
                     </div>
                 </div>
                 <div class="row justify-content-end">
-                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 100000</label>
+                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 10000</label>
                 </div>
             </div>
             <div class="top" style="margin-top: 10px;">
@@ -219,8 +219,8 @@
                         }else if (this.trails <= 1000) {
                             var temple = await this.sleep(20);
                             this.loop();
-                        }else if (this.trails <= 10000) {
-                            var temple = await this.sleep(10);
+                        }else if (this.trails <= 3000) {
+                            var temple = await this.sleep(2);
                             this.loop();
                         }else{
                             this.loop()
@@ -347,10 +347,6 @@
         font-size: 25px;
     }
     .zone1{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 35px;
         height:60px;
         padding: 0;
@@ -370,10 +366,6 @@
         border: 2px solid gainsboro;
     }
     .zone2{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 25px;
         height:50px;
         width: 50px;

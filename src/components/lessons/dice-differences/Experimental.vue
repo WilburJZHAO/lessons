@@ -5,11 +5,11 @@
                 <div class="row justify-content-end">
                     <label class="col-sm-5 label1" >Enter the number of trials:</label>
                     <div class="col-sm-4">
-                        <input type="number" min="1" max="100000" class="roll1" oninput="value=value.replace('.','');if(value>100000)value=100000;if(value<1)value=null"  v-model="trails">
+                        <input type="number" min="1" max="10000" class="roll1" oninput="value=value.replace('.','');if(value>10000)value=10000;if(value<1)value=null"  v-model="trails">
                     </div>
                 </div>
                 <div class="row justify-content-end">
-                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 100000</label>
+                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 10000</label>
                 </div>
             </div>
             <div class="top" style="margin-top: 10px; border: none">
@@ -84,9 +84,11 @@
         },
         watch:{
             numberoftrials(value) {
-                if(value == this.trails) {
+                if(value >= this.trails) {
                     this.stop = true;
                     this.reset = true;
+                    this.PlayAutoWord = "Play Auto";
+
                 }
             },
             next(value){
@@ -140,13 +142,13 @@
                     this.stop = false;
                     while (!this.stop && this.numberoftrials < this.trails) {
                         if (this.trails <= 50){
-                            var temple = await this.sleep(500);
+                            var temple = await this.sleep(100);
                         }else if (this.trails <= 100){
-                            var temple = await this.sleep(250);
-                        }else if (this.trails <= 1000) {
                             var temple = await this.sleep(50);
+                        }else if (this.trails <= 1000) {
+                            var temple = await this.sleep(20);
                         }else if (this.trails <= 10000) {
-                            var temple = await this.sleep(10);
+                            var temple = await this.sleep(2);
                         }
                         var random1 = Math.floor(Math.random() * 6) + 1;
                         var random2 = Math.floor(Math.random() * 6) + 1;
