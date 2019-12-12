@@ -393,38 +393,29 @@
 
 <style scoped>
     .zone{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 25px;
         height:60px;
         width: 70px;
         padding: 0;
         text-align: center;
+        border-color: black;
     }
     .zone2{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 25px;
         height:50px;
         width: 50px;
         padding: 0;
         text-align: center;
         margin-right: 15px;
+        border-color: black;
     }
     .zone1{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 25px;
         height:60px;
         padding: 0;
         width: 100%;
         text-align: right;
+        border-color: black;
     }
     .noborder{
         border: none;

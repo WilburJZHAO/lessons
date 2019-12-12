@@ -5,11 +5,11 @@
                 <div class="row justify-content-end">
                     <label class="col-sm-5 label1" >Enter the number of trials:</label>
                     <div class="col-sm-4">
-                        <input type="number" min="1" max="100000" class="roll1" oninput="value=value.replace('.','');if(value>100000)value=100000;if(value<1)value=null"  v-model="trails">
+                        <input type="number" min="1" max="10000" class="roll1" oninput="value=value.replace('.','');if(value>10000)value=10000;if(value<1)value=null"  v-model="trails">
                     </div>
                 </div>
                 <div class="row justify-content-end">
-                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 100000</label>
+                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 10000</label>
                 </div>
             </div>
             <div class="top" style="margin-top: 10px;">
@@ -124,7 +124,7 @@
                     <div class="col-3"><label disabled class="zone1 noborder" style="line-height: 50px; height:50px; font-size: 25px" >Cell:</label></div>
                     <input disabled class="zone2 noborder" value="0">
                     <input disabled class="zone2 noborder" value="1">
-                    <input disabled class="zone2 noborder" value="2">
+                    <input disabled class="zone2 nobo   rder" value="2">
                     <input disabled class="zone2 noborder" value="3">
                     <input disabled class="zone2 noborder" value="4">
                     <input disabled class="zone2 noborder" value="5">
@@ -233,8 +233,10 @@
                 }
             },
             numberoftrials(value){
-                if (value == this.trails){
+                if (value >= this.trails){
+                    this.stop = true;
                     this.reset1 = true;
+                    this.PlayAutoWord = "Play Auto";
                 }
             }
         },
@@ -350,26 +352,35 @@
                     this.stop = false;
                     while (!this.stop && this.numberoftrials < this.trails) {
                         if (this.trails <= 100){
-                            var temple = await this.sleep(100);
+                            var temple1 = await this.sleep(100);
                             this.loop1();
                             this.loop2();
                             this.numberoftrials += 1;
-                        }else if (this.trails <= 1000) {
-                            var temple = await this.sleep(20);
+                        }else if (this.trails <= 3000) {
+                            var temple1 = await this.sleep(2);
                             this.loop1();
                             this.loop2();
                             this.numberoftrials += 1;
 
                         }else if (this.trails <= 10000) {
-                            var temple = await this.sleep(10);
-                            this.loop1();
-                            this.loop2();
-                            this.numberoftrials += 1;
+                            // var temple = await this.sleep(2);
+                            // this.loop1();
+                            // this.loop2();
+                            // this.numberoftrials += 1;
+                            var j = 1;
+                            for (let i = 1; i <= 10; i++) {
+                                    var temple1 = await this.sleep(1000);
+                                    while(j <= 1000 && this.PlayAutoWord == "Pause"){
+                                        this.loop1();
+                                        this.loop2();
+                                        if(this.numberoftrials< this.trails){
+                                            this.numberoftrials += 1;
+                                        }
+                                        j += 1;
+                                    }
+                                    j = 1
 
-                        }else{
-                            this.loop1();
-                            this.loop2();
-                            this.numberoftrials += 1;
+                                }
 
                         }
                     }
@@ -569,10 +580,6 @@
         font-size: 25px;
     }
     .zone1{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 35px;
         height:60px;
         padding: 0;
@@ -597,10 +604,6 @@
         border: 2px solid gainsboro;
     }
     .zone2{
-        -webkit-user-select:none;
-        -moz-user-select:none;
-        -ms-user-select:none;
-        user-select:none;
         font-size: 25px;
         height:50px;
         width: 50px;
