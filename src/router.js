@@ -341,7 +341,6 @@ const BeetleGame = resolve => {
     resolve(require("./components/lessons/beetle-game/App.vue"));
   });
 };
-
 const ChartsStrategies = resolve => {
   require.ensure("./components/lessons/charts-strategies/App.vue", () => {
     resolve(require("./components/lessons/charts-strategies/App.vue"));
@@ -351,6 +350,11 @@ const ChartsStrategies = resolve => {
 const GoodsBads = resolve => {
   require.ensure("./components/lessons/goods-bads/App.vue", () => {
     resolve(require("./components/lessons/goods-bads/App.vue"));
+  });
+};
+const OddsAndEvens = resolve => {
+  require.ensure("./components/lessons/odds-and-evens/App.vue", () => {
+    resolve(require("./components/lessons/odds-and-evens/App.vue"));
   });
 };
 
@@ -513,8 +517,9 @@ const routes = [
     component: ChartsStrategies,
     name: "Charts Strategies"
   },
-  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" },
-  { path: "/simple-elegant-elusive", component: SimpleElegantElusive, name: "Simple Elegant Elusive" },
+  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" }, 
+  { path: "/simple-elegant-elusive", component: SimpleElegantElusive, name: "Simple Elegant Elusive" }, 
+  { path: "/odds-and-evens", component: OddsAndEvens, name: "Odds and Evens" }, 
 ];
 
 const router = new VueRouter({

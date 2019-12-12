@@ -10,7 +10,7 @@
 				v-model="demoAutoOption"
 				@change="handleChangeOption">
 			<label for="radio-demo" class="form-check-label">Demo</label>
-			<input
+			<input 
 				type="radio" 
 				name="demoAutoOption" 
 				value="1" 
@@ -25,22 +25,11 @@
 
 <script>
 export default {
-	props: ['option', 'isDemoStart'],
+	props: ['option'],
 	data: function() {
 		return {
 			demoAutoOption: this.option ? this.option : '0'
 		}
-	},
-	watch: {
-		isDemoStart(value) {
-			if (value) {
-				document.getElementById("radio-auto").setAttribute("disabled", "true");
-				document.getElementById("radio-demo").setAttribute("disabled", "true");
-			}else{
-				document.getElementById("radio-auto").removeAttribute("disabled");
-				document.getElementById("radio-demo").removeAttribute("disabled");
-			}
-		},
 	},
 	methods: {
 		handleChangeOption() {

@@ -88,15 +88,19 @@ export default {
 			showPause: false,
 			//this id is used to kill the timer interval
 			intervalId: 0,
-			timeDelay: 100,
+			timeDelay: 1350,
 			//used for the graph drawing
-			graphIntervalId: 0,
-			graphDelay: 10
+			graphIntervalId: 0
 		}
 	},
 	computed: {
+		graphDelay: function(){
+			if (this.atomLeft != 0)
+				return (this.timeDelay-100)/this.atoms.length;
+			return 10;
+		},
 		isFinished: function(){
-			if (this.atoms.length === 0 || this.currentYear > 20){
+			if (this.atomLeft === 0 || this.currentYear > 20){
 				return true;
 			}
 			else{
@@ -143,8 +147,9 @@ export default {
 		showPause: function(){
 			if (!this.showPause)
 				clearInterval(this.intervalId);
-			else
+			else{
 				this.autoMode();
+			}
 		}
 	},
 	methods: {
@@ -214,12 +219,13 @@ export default {
 			this.stage += 1;
 
 			if (this.isAuto)
-				this.autoMode();
+				this.showPause = true;
 			//else demo mode
 		},
 		reset(){
 			this.showStart = true;
 			this.currentYear = 0;
+			this.showPause = false;
 			
 			//reset the variables
 			this.atoms.splice(0,this.atoms.length);

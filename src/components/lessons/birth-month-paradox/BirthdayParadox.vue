@@ -5,7 +5,7 @@
         <div class="container mt-4 mb-5" v-if="!isSet" style="width: 60%">
             <div class="form-group row">
                 <label class="col-sm-6">
-                    Enter the number of trials (1 to 100000)
+                    Enter the number of trials (1 to 10000)
                 </label>
                 <div class="col-sm-6">
                     <input type="number"
@@ -172,11 +172,11 @@
             okBtn() {
                 this.isChecked1 = true;
                 this.isChecked2 = true;
-                if(this.groupSize < 2 || this.groupSize > 100 || this.displayTrial < 1 || this.displayTrial > 100000){
+                if(this.groupSize < 2 || this.groupSize > 100 || this.displayTrial < 1 || this.displayTrial > 10000){
                     if (this.groupSize < 2 || this.groupSize > 100 ) {
                         this.isChecked1 = false;
                     }
-                    if(this.displayTrial < 1 || this.displayTrial > 100000){
+                    if(this.displayTrial < 1 || this.displayTrial > 10000){
                         this.isChecked2 = false;
                     }
                 }else{

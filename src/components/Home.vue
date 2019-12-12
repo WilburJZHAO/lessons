@@ -73,6 +73,7 @@ export default {
         { name: "Charts Strategies", link: "/charts-strategies" },
         { name: "Goods And Bads", link: "/goods-and-bads" },
         { name: "Simple Elegant Elusive", link: "/simple-elegant-elusive" },
+        { name: "Odds and Evens", link: "/odds-and-evens" }
       ]
     };
   },
