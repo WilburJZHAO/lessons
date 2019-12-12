@@ -8,7 +8,7 @@
       <div class="container mt-4 mb5">
         <div class="row" style="max-width: 100%">
           <!-- Left part -->
-          <div class="col-12 col-md-6 app--lesson-left" style="max-width: 60%">
+          <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
             <div style="text-align: left;max-width: 70%">
               <h3>Choose the grid size</h3>
               <br />
@@ -33,7 +33,7 @@
               <table
                 id="tableAdd"
                 class="col-lg-12 col-md-10 col-sm-6"
-                style="text-align: center;visibility: visible; border: #7f8c8d solid;background: white;"
+                style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;"
               >
                 <tr v-for="i in selected + 1">
                   <td
@@ -114,13 +114,13 @@
           <div
             class="col-12 col-md-6 app--lesson-right"
             ref="qqq"
-            style="overflow: visible; max-width: 30%"
+            style="padding-left: 200px;overflow: visible; max-width: 50%"
           >
             <div class="tt-right-box"></div>
             <div>
               <br /><br /><br /><br />
               <div
-                style="max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative"
+                style="font-size: 1vw;color: #0f0f0f;position: relative"
               >
                 <button
                   v-if="resetNow === false"
@@ -157,6 +157,7 @@ export default {
       tbl_columns: 2,
       selected: "",
       alertMessage: "",
+      startTime: "",
       resetNow: false,
       cur: [],
       inputNum: [],
@@ -221,6 +222,7 @@ export default {
       this.checkCol = [];
       this.correctNum = [];
       this.alertMessage = "";
+      this.startTime = "";
       this.resetNow = false;
       this.inputNum = [];
       var i = this.selected;
@@ -311,19 +313,45 @@ export default {
           }
         }
         if (count === l) {
-          this.alertMessage = "All numbers are correct";
+          var end = new Date().getTime();
+          var secDuration = Math.round((end - this.startTime) / 1000);
+          this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
           this.resetNow = true;
         } else {
-          this.alertMessage =
-            "Only " +
-            count +
-            " correct numbers, please input rest numbers correctly";
+          let nnn = l - count;
+          if(nnn === 1){
+            this.alertMessage =
+                    "All entries are checked. There is 1 error.";
+          }else{
+            this.alertMessage =
+                    "All entries are checked. There are " +
+                    nnn +
+                    " errors.";
+          }
         }
       } else {
-        this.alertMessage = "Please input all numbers correctly";
+        for (let a = 0; a < this.correctNum.length; a++) {
+          if (this.correctNum[a] === "red") {
+            count++;
+          }
+        }
+        if(count === 1){
+          this.alertMessage =
+                  "All entries are checked. There is 1 error.";
+        }else if(count > 1){
+          this.alertMessage =
+                  "All entries are checked. There are " +
+                  count +
+                  " errors.";
+        }else{
+          this.alertMessage = "All entries correct";
+        }
       }
     },
     checkNum: function(r, c, num) {
+      if (this.startTime === "") {
+        this.startTime = new Date().getTime();
+      }
       if (num == "") {
         return;
       } else {

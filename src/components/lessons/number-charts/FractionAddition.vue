@@ -4,7 +4,7 @@
             <div class="container mt-4 mb5">
                 <div class="row" style="max-width: 100%">
                     <!-- Left part -->
-                    <div class="col-12 col-md-6 app--lesson-left" style="max-width: 60%">
+                    <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
                         <div style="text-align: left;max-width: 70%">
                             <h3>Choose the grid size</h3><br>
                             <select id="gridSize" style="width:10vw;font-size: 1.5vw" v-model="selected" v-on:change="generateTable()">
@@ -17,7 +17,7 @@
                                 {{ alertMessage }}
                             </div>
 
-                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" align="center" style="text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" align="center" style="color: #0067d2;text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
@@ -26,8 +26,8 @@
                                         <b v-if="i==1&&j==1">+</b>
 
                                         <b v-else-if="i==1&&j==c[0]+1">
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; background-color: #81ecec'>{{arrSimpleThree[j-2]}}</div>
-                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; background-color: #81ecec'>{{arrSimpleOne[j-2]}}</div>
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{arrSimpleThree[j-2]}}</div>
+                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{arrSimpleOne[j-2]}}</div>
                                         </b>
                                         <b v-else-if="i==r[0]+1&&j==c[0]+1">
                                             <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw;'> {{purify(arrSimpleOne[j-2]*arrSimpleTwo[i-2], arrSimpleOne[j-2]*arrSimpleFour[i-2]+arrSimpleTwo[i-2]*arrSimpleThree[j-2])[0][0]}}</div>
@@ -66,26 +66,26 @@
                                             <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw;'>{{purify(arrSimpleOne[j-2]*arrSimpleTwo[i-2], arrSimpleOne[j-2]*arrSimpleFour[i-2]+arrSimpleTwo[i-2]*arrSimpleThree[j-2])[0][1]}}</div>
                                         </b>
                                         <b v-else-if="i==1&&j!=1">
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height:3.5vw; background-color: #81ecec; '>
-                                            <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text" style='width: 3.5vw; height: 3.5vw;background: #81ecec;border: 1px' />
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height:3.5vw; border-top: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid; '>
+                                            <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text" style='width: 3.5vw; height: 3.5vw;border: 1px' />
                                             </div>
-                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;background-color: #81ecec'>
-                                                <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" style='width: 3.5vw; height: 3.5vw;background: #81ecec;border: 1px' />
+                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw; border-bottom: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
+                                                <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" style='width: 3.5vw; height: 3.5vw;border: 1px' />
                                             </div>
                                         </b>
                                         <b v-else-if="j==1&&i!=1">
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;background-color: #81ecec'>
-                                            <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text" style='width: 3.5vw; height: 3.5vw;background: #81ecec;border: 1px' />
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;border-top: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
+                                            <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text" style='width: 3.5vw; height: 3.5vw;border: 1px' />
                                             </div>
-                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;background-color: #81ecec'>
-                                                <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" style='width: 3.5vw; height: 3.5vw;background: #81ecec;border: 1px' />
+                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;border-bottom: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
+                                                <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" style='width: 3.5vw; height: 3.5vw;border: 1px' />
                                             </div>
                                         </b>
                                         <b v-else>
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw; border-top: 1px solid; border-left: 1px solid; border-right: 1px solid;'>
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw; border-top: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
                                             <input :ref="(i*100+j*10+1)" v-model="inputNum[i*100+j*10+1]" v-on:input="checkNum((i*100+j*10+1), inputNum[i*100+j*10+1])" type="text"  />
                                             </div>
-                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw; border-bottom: 1px solid; border-left: 1px solid; border-right: 1px solid;'>
+                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw; border-bottom: #0f0f0f 1px solid; border-left: #0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
                                                 <input :ref="(i*100+j*10+2)" v-model="inputNum[i*100+j*10+2]" v-on:input="checkNum((i*100+j*10+2), inputNum[i*100+j*10+2])" type="text" />
                                             </div>
                                         </b>
@@ -95,10 +95,11 @@
                         </div>
                     </div>
                     <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="overflow: visible; max-width: 30%">
+                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px; overflow: visible; max-width: 50%">
                         <div class="tt-right-box"></div>
-                        <div><br><br><br><br>
-                            <div style="max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative">
+                        <div>
+                            <div style="font-size: 1vw;color: #0f0f0f;position: relative">
+                                <h5>Choose the difficulty level</h5>
                                 <select id="select1" style="width:10vw; font-size: 1.5vw" v-model="selected1" v-on:change="generateTable()">
                                     <option v-for="s1 in options1" v-bind:value="s1.value">
                                         {{ s1.text }}
@@ -132,7 +133,7 @@
                 tbl_columns: 2,
                 selected: "",
                 selected1: "",
-
+                startTime: "",
                 alertMessage: "",
                 resetNow: false,
                 allCorrect: false,
@@ -200,6 +201,12 @@
                 return Math.random() > .5 ? -1 : 1;
             },
             generateTable: function() {
+                for (let i = 0; i < this.checkRow.length; i++) {
+                    let index = this.checkRow[i] * 10 + this.checkCol[i];
+                    this.$refs[index][0].classList.remove("red");
+                    this.$refs[index][0].classList.remove("g");
+                }
+                this.startTime = "";
                 var easy= [2,3,4,5,5,2,3,4];
                 var dif= [2,3,4,5,6,7,8,7,6,5];
                 var expert= [3,4,5,6,7,8,9,8,7,6,5,2,7,8];
@@ -377,19 +384,48 @@
                             }
                         }
                         if (count === l) {
+                            var end = new Date().getTime();
+                            var secDuration = Math.round((end - this.startTime) / 1000);
+                            this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
                             this.allCorrect =true;
-                            this.alertMessage = "All numbers are correct";
                             this.resetNow = true;
                         } else {
-                            this.alertMessage = "Only " + count + " correct numbers, please input rest numbers correctly";
+                            let nnn = l - count;
+                            if(nnn === 1){
+                                this.alertMessage =
+                                    "All entries are checked. There is 1 error.";
+                            }else{
+                                this.alertMessage =
+                                    "All entries are checked. There are " +
+                                    nnn +
+                                    " errors.";
+                            }
                         }
                     } else {
 
-                        this.alertMessage = "Please input all numbers correctly";
+                        for (let a = 0; a < this.correctNum.length; a++) {
+                            if (this.correctNum[a] === "red") {
+                                count++;
+                            }
+                        }
+                        if(count === 1){
+                            this.alertMessage =
+                                "All entries are checked. There is 1 error.";
+                        }else if(count > 1){
+                            this.alertMessage =
+                                "All entries are checked. There are " +
+                                count +
+                                " errors.";
+                        }else{
+                            this.alertMessage = "All entries correct";
+                        }
 
                     }
             },
             checkNum: function(r, num) {
+                if (this.startTime === "") {
+                    this.startTime = new Date().getTime();
+                }
                 if (num === "") {
                     return;
                 } else {
