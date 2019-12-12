@@ -9,7 +9,9 @@ export const calculateTimerInterval = trialNumber => {
     return 10;
   } else if (trialNumber <= 5000) {
     return 5;
+  } else if (trialNumber <= 10000) {
+    return 0.5;
   } else {
-    return 1;
+    return 0.1;
   }
 };
