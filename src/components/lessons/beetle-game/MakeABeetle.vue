@@ -129,7 +129,7 @@
       </div>
 
       <div class="col-md-6">
-        <div class="col-sm-12" style="position:relative; margin-left: 20%;">
+        <div class="col-sm-12" style="position:relative;">
           <img
             src="../../../assets/beetle-game/beetle_body.png"
             alt=""
@@ -400,7 +400,8 @@ export default {
         clearInterval(this.timer);
         this.timer = null;
       } else {
-        this.timer = setInterval(this.rollDice, 200);
+        this.rollDice();
+        this.timer = setInterval(this.rollDice, 800);
       }
     },
     rollDice() {

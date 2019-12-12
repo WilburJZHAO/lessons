@@ -5,7 +5,7 @@
             <div class="text-center">
                 <div class="row">
                     <label class="col-form-label col-sm-6">
-                        Enter the number of trials(100 - 100000):
+                        Enter the number of trials(100 - 10000):
                     </label>
                     <div class="col-sm-6">
                         <input type="number" class="form-control" v-model="trialNum" required> <label id="input" style="color: red; margin-left: 10px"></label>
@@ -39,45 +39,33 @@
         </div>
         <div class="row" v-if="isSet">
             <div class="col-md-6 pb-4">
-                <table class="resultTable" style="width: 90%; text-align: center">
+                <table class="resultTable" style="margin-left: 15%; width: 70%; text-align: center">
                     <tr>
-                        <td></td>
-                        <td></td>
                         <td></td>
                         <td>Wins</td>
                         <td>% Wins</td>
                     </tr>
                     <tr v-if="isRed" style="color: red">
-                        <td>{{isRedWin?"Wins":""}}</td>
-                        <td><input class="theRed" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="redNumber" readonly id="redPlayNum"></td>
                         <td style="text-align: left">Red</td>
                         <td><input class="theRed" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="redWinNumber" readonly id="redWinNum"></td>
                         <td><input class="theRed" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="redWinPercentage" readonly id="redWinPercentage"></td>
                     </tr>
                     <tr v-if="isBlue" style="color: blue">
-                        <td>{{isBlueWin?"Wins":""}}</td>
-                        <td><input class="theBlue" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="blueNumber" readonly id="bluePlayNum"></td>
                         <td style="text-align: left">Blue</td>
                         <td><input class="theBlue" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blueWinNumber" readonly id="blueWinNum"></td>
                         <td><input class="theBlue" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blueWinPercentage" readonly id="blueWinPercentage"></td>
                     </tr>
                     <tr v-if="isGreen" style="color: green">
-                        <td>{{isGreenWin?"Wins":""}}</td>
-                        <td><input class="theGreen" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="greenNumber" readonly id="greenPlayNum"></td>
                         <td style="text-align: left">Green</td>
                         <td><input class="theGreen" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="greenWinNumber" readonly id="greenWinNum"></td>
                         <td><input class="theGreen" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="greenWinPercentage" readonly id="greenWinPercentage"></td>
                     </tr>
                     <tr v-if="isBlack" style="color: black">
-                        <td>{{isBlackWin?"Wins":""}}</td>
-                        <td><input class="theBlack" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="blackNumber" readonly id="blackPlayNum"></td>
                         <td style="text-align: left">Black</td>
                         <td><input class="theBlack" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blackWinNumber" readonly id="blackWinNum"></td>
                         <td><input class="theBlack" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blackWinPercentage" readonly id="blackWinPercentage"></td>
                     </tr>
                     <tr>
-                        <td></td>
-                        <td></td>
                         <td colspan="3">Draws are ignored</td>
                     </tr>
                 </table>
@@ -176,7 +164,7 @@
                 if (!this.trialNum ||
                     isNaN(Number(this.trialNum)) ||
                     this.trialNum < 100 ||
-                    this.trialNum > 100000) {
+                    this.trialNum > 10000) {
                     return false;
                 }
                 return true;
