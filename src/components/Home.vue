@@ -1,8 +1,18 @@
 <template>
-  <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
+  <transition
+    appear
+    appear-class="options-appear"
+    appear-active-class="options-appear-active"
+  >
     <div class="container app--link-list">
-      <div class="app--link-item" v-for="lesson in sortedLessons" :key="lesson.name">
-        <router-link :to="lesson.link" class="btn btn-outline-success">{{ lesson.name }}</router-link>
+      <div
+        class="app--link-item"
+        v-for="lesson in sortedLessons"
+        :key="lesson.name"
+      >
+        <router-link :to="lesson.link" class="btn btn-outline-success">{{
+          lesson.name
+        }}</router-link>
       </div>
     </div>
   </transition>
@@ -73,7 +83,8 @@ export default {
         { name: "Charts Strategies", link: "/charts-strategies" },
         { name: "Goods And Bads", link: "/goods-and-bads" },
         { name: "Simple Elegant Elusive", link: "/simple-elegant-elusive" },
-        { name: "Odds and Evens", link: "/odds-and-evens" }
+        { name: "Odds and Evens", link: "/odds-and-evens" },
+        { name: "Number Partitions", link: "/number-partitions" }
       ]
     };
   },

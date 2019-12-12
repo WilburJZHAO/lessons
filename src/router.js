@@ -364,6 +364,12 @@ const SimpleElegantElusive = resolve => {
   });
 };
 
+const NumberPartitions = resolve => {
+  require.ensure("./components/lessons/number-partitions/App.vue", () => {
+    resolve(require("./components/lessons/number-partitions/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -517,9 +523,18 @@ const routes = [
     component: ChartsStrategies,
     name: "Charts Strategies"
   },
-  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" }, 
-  { path: "/simple-elegant-elusive", component: SimpleElegantElusive, name: "Simple Elegant Elusive" }, 
-  { path: "/odds-and-evens", component: OddsAndEvens, name: "Odds and Evens" }, 
+  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" },
+  {
+    path: "/simple-elegant-elusive",
+    component: SimpleElegantElusive,
+    name: "Simple Elegant Elusive"
+  },
+  { path: "/odds-and-evens", component: OddsAndEvens, name: "Odds and Evens" },
+  {
+    path: "/number-partitions",
+    component: NumberPartitions,
+    name: "Number Partitions"
+  }
 ];
 
 const router = new VueRouter({
