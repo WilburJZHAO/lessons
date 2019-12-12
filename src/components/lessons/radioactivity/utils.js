@@ -83,18 +83,21 @@ export const drawGraph = (canvas, vueObjPtr) => {
 
 	const context = canvas.getContext("2d");
 	const width = vueObjPtr.width;
-	const axisArea = canvas.height-50;
+	const axisArea = canvas.height-75;
 
 	//draw the y axis
 	context.strokeStyle = 'blue';
-	context.moveTo(vueObjPtr.startXOffset-20,1);
-	context.lineTo(vueObjPtr.startXOffset-20,axisArea);
+	context.moveTo(vueObjPtr.startXOffset-4,1);
+	context.lineTo(vueObjPtr.startXOffset-4,axisArea);
 	context.stroke();
 
 	//draw x axis
-	context.moveTo(vueObjPtr.startXOffset-20,axisArea);
+	context.moveTo(vueObjPtr.startXOffset-4,axisArea);
 	context.lineTo(canvas.width-vueObjPtr.startXOffset+width , axisArea);
 	context.stroke();
+
+	//draw the labels
+	drawAxisLabels(canvas, vueObjPtr, true);
 
 	//draw the initial atoms
 	const xPos = vueObjPtr.startXOffset;
@@ -107,11 +110,41 @@ export const drawGraph = (canvas, vueObjPtr) => {
 	xLabel(canvas, vueObjPtr, "0");
 }
 
+const drawAxisLabels = (canvas, vueObjPtr, isDemo) => {
+	const context = canvas.getContext("2d");
+	const width = vueObjPtr.width;
+
+	const fontSize = 25;
+	context.font = fontSize + "px arial";
+	context.fillStyle = "black";
+
+	//draw the y axis label
+	xPosText = width/2;
+
+	//adjust the label position based on the startXOffset
+	if (isDemo)
+		xPosText = vueObjPtr.startXOffset - width/2
+	yPosText = canvas.height/2 - 20;
+
+	//rotation is required for the text, save context for restore and perform axis translation.
+	context.save();
+	context.translate(xPosText, yPosText);
+	context.rotate(-Math.PI/2);
+	context.textAlign = "center";
+	context.fillText("Number of Atoms", 0, fontSize/2+4);
+	context.restore();
+
+	//draw the x axis label
+	var xPosText = canvas.width/2;
+	var yPosText = canvas.height;
+	context.fillText("Year", xPosText, yPosText);
+}
+
 //this helper function draws the x-axis label values
 const xLabel = (canvas, vueObjPtr, numAtom) => {
 	const context = canvas.getContext("2d");
 
-	const axisArea = canvas.height-50;
+	const axisArea = canvas.height-75;
 	const width = vueObjPtr.width;
 
 	//draw the text for number of atoms
@@ -120,7 +153,7 @@ const xLabel = (canvas, vueObjPtr, numAtom) => {
 	const yPosText = axisArea + fontSize;
 
 	//clear area before writing text
-	context.clearRect(xPosText-width/2, yPosText-fontSize+2, width, width);
+	context.clearRect(xPosText-width/2, yPosText-fontSize+2, width, fontSize*2);
 
 	context.font = fontSize + "px arial";
 	context.fillStyle = "blue";
@@ -139,7 +172,7 @@ export const generateRandomValues = (canvasAtoms, canvasGraph, vueObjPtr) => {
 	const xPos = vueObjPtr.startXOffset + vueObjPtr.width*vueObjPtr.currentYear;
 
 	//the yPos and height changes at each iteration to incrementally get larger
-	const axisArea = canvasGraph.height-50;
+	const axisArea = canvasGraph.height-75;
 	var yPos = axisArea;
 	var height = 2;
 
@@ -207,7 +240,7 @@ export const decayedAtoms = (canvasAtoms, canvasGraph, vueObjPtr, highlight) => 
 	const xPos = vueObjPtr.startXOffset + vueObjPtr.width*vueObjPtr.currentYear;
 
 	//the yPos and height changes at each iteration to incrementally get larger
-	const axisArea = canvasGraph.height-50;
+	const axisArea = canvasGraph.height-75;
 	var yPos = axisArea + 2*vueObjPtr.atomLeft;
 	var height = 2*vueObjPtr.atomLeft;
 
@@ -226,7 +259,12 @@ export const decayedAtoms = (canvasAtoms, canvasGraph, vueObjPtr, highlight) => 
 			}
 		}
 		vueObjPtr.numDecayed = decayed.length;
+
 		//set a delay to show incremental build up
+		var timeDelay = 10;
+		if (decayed.length != 0)
+			timeDelay = vueObjPtr.timeDelay/decayed.length;
+
 		var i = 0;
 		if (decayed.length > 0){
 			vueObjPtr.graphIntervalId = setInterval(() => {
@@ -249,7 +287,7 @@ export const decayedAtoms = (canvasAtoms, canvasGraph, vueObjPtr, highlight) => 
 					//Clear the interval addition timer.
 					clearInterval(vueObjPtr.graphIntervalId);
 				}
-			}, vueObjPtr.graphDelay);
+			}, timeDelay);
 		}
 		else {
 			vueObjPtr.disableButton = false;
@@ -288,13 +326,16 @@ export const drawInitialGraph = (canvas, vueObjPtr) => {
 
 	//draw the 4 y-axis labels
 	drawYLabels(canvas, vueObjPtr);
+
+	//draw the axis labels
+	drawAxisLabels(canvas, vueObjPtr, false);
 }
 
 //this function draws the input number of atoms scaled to the cavas heigh (i.e. percentage of the canvas height is the percentage of atom left undecayed)
 const drawAtomLeft = (canvas, vueObjPtr) => {
 	const context = canvas.getContext("2d");
 	const width = vueObjPtr.width;
-	const graphHeight = canvas.height - 30;
+	const graphHeight = canvas.height - 50;
 
 	//determine x and y coordinates to start the rectangle
 	const xPos = vueObjPtr.startXOffset + vueObjPtr.currentYear*width;
@@ -325,12 +366,12 @@ const drawYLabels = (canvas, vueObjPtr) => {
 
 	//get the width and y increment values based on the canvas height.
 	const width = vueObjPtr.startXOffset;
-	const ySpacer = canvas.height/4;
+	const ySpacer = (canvas.height-30)/4;
 	const yIncrements = vueObjPtr.trialInputs.numAtoms/4;
 
 	//draw the text for 5 different levels/numbers of atoms
-	const xPosText = width/2;
-	var yPosText = fontSize;
+	const xPosText = width/2+10;
+	var yPosText = fontSize/2+5;
 	context.fillText(vueObjPtr.trialInputs.numAtoms, xPosText, yPosText, width);
 
 	yPosText = ySpacer;
@@ -342,7 +383,7 @@ const drawYLabels = (canvas, vueObjPtr) => {
 	yPosText = 3*ySpacer;
 	context.fillText(vueObjPtr.trialInputs.numAtoms - 3*yIncrements, xPosText, yPosText, width);
 
-	yPosText = canvas.height - fontSize;
+	yPosText = canvas.height - fontSize -20;
 	context.fillText(0, xPosText, yPosText, width);
 }
 
@@ -376,10 +417,10 @@ export const removeDecayedAtoms = (canvas, vueObjPtr) => {
 export const drawHalfLifeYear = (canvas, vueObjPtr) => {
 	const context = canvas.getContext("2d");
 
-	const fontSize = 40;
+	const fontSize = 25;
 	context.font = fontSize + "px arial";
 	context.fillStyle = "darkgreen";
 	const xPosText = vueObjPtr.startXOffset + (vueObjPtr.currentYear+1)*vueObjPtr.width;
-	const yPosText = canvas.height;
+	const yPosText = canvas.height - fontSize;
 	context.fillText("Year " + vueObjPtr.halfLifeYear, xPosText, yPosText);
 }
