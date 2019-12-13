@@ -20,12 +20,10 @@
           "
         >
           <!-- index from 0 - 7 -->
-          <td>
-            {{ tableData && tableData[k - 1] && tableData[k - 1].number }}
-          </td>
+          <td>{{ tableData && tableData[k - 1] && tableData[k - 1].number }}</td>
           <td>
             {{
-              tableData && tableData[k - 1] && tableData[k - 1].additionNumber
+            tableData && tableData[k - 1] && tableData[k - 1].additionNumber
             }}
           </td>
         </tr>
@@ -40,9 +38,7 @@
           "
         >
           <td>{{ data.number }}</td>
-          <td>
-            {{ data.additionNumber > 175 ? "> 175" : data.additionNumber }}
-          </td>
+          <td>{{ data.additionNumber > 175 ? "> 175" : data.additionNumber }}</td>
         </tr>
       </tbody>
     </table>
@@ -75,10 +71,15 @@ export default {
 
 <style scoped>
 .app--table-container {
-  max-height: 467px;
+  max-height: 333px;
   overflow-y: auto;
 }
+.app--table th {
+  padding: 5px !important;
+}
+
 .app--table td {
-  height: 50px;
+  height: 35px;
+  padding: 5px !important;
 }
 </style>

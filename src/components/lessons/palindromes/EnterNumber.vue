@@ -42,7 +42,7 @@
         <app-number-table :tableData="numberTableData"></app-number-table>
       </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-2">
       <div class="col-12">
         <app-addition-table :tableData="additionTableData"></app-addition-table>
       </div>

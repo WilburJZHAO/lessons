@@ -166,7 +166,7 @@ export default {
       CANVAS_HEIGHT: 890,
       CANVAS_WIDTH: 890,
       GRID_LINE_WIDTH: 0.5,
-      MAX_NUMBER: 24
+      MAX_NUMBER: 50
     };
   },
   watch: {

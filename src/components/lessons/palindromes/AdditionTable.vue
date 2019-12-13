@@ -54,10 +54,11 @@ export default {
   overflow-x: auto;
 }
 .app--table td {
-  height: 50px;
+  height: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 5px !important;
   padding-right: 1.5rem;
 }
 </style>
