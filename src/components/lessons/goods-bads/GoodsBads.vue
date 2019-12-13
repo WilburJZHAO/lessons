@@ -4,8 +4,8 @@
     <div class="row mb-4" v-for="(dayData, row) in data" :key="row">
       <div class="col-lg-7 d-flex">
         <div class="row mb-3">
-          <h5 class="text-primary col-sm-1 col-2">{{ dayData.date }}</h5>
-          <div class="d-flex col-sm-11 col-10">
+          <h5 class="text-primary col-sm-1 col-12">{{ dayData.date }}</h5>
+          <div class="d-flex col-sm-11 col-12">
             <div
               v-for="(gbData, col) in dayData.data"
               :key="`gb-${col}`"
@@ -70,7 +70,7 @@
           <!-- Day Bad input-->
         </div>
         <div class="font-weight-bold d-flex align-items-center mx-1">=</div>
-        <div>
+        <div style="transform: translateY(-20%);">
           <div class="mb-1">
             <input
               type="text"
