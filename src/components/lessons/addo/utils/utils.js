@@ -153,6 +153,7 @@ export const checkCanAddo = gridData => {
 
   for (let j = 0; j < dataToCheck.length; j++) {
     if (
+      dataToCheck[j][0] !== null &&
       dataToCheck[j][0] >= 0 &&
       dataToCheck[j][0] <= 20 &&
       dataToCheck[j][1] >= 0 &&
