@@ -8,7 +8,7 @@
                         <div style="text-align: left;max-width: 70%">
                             <h3>Complete the fraction chart</h3><br>
                             <br>
-                            <div v-if="alertMessage" :class="allCorrect?'alert alert-success':'alert alert-danger'">
+                            <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
                             <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="color: #0067d2;text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
@@ -117,7 +117,7 @@
                 alertMessage: "",
                 startTime: "",
                 resetNow: false,
-                allCorrect: false,
+                isAlert: false,
                 cur: [],
                 inputNum: [],
                 options: [{
@@ -191,7 +191,7 @@
                 this.checkR = [];
                 this.checkDemo = [];
                 this.root = [];
-                this.allCorrect = false;
+                this.isAlert = false;
                 this.checkNume = [];
                 this.correctNum = [];
                 this.correctNum1 = [];
@@ -297,6 +297,7 @@
             check: function() {
                 this.correctNum = [];
                 this.alertMessage = "";
+                this.isAlert = false;
                 for (let i = 0; i < this.checkV.length; i++) {
                     let index = this.checkR[i];
                     let a = index - Math.floor(index/10)*10;
@@ -380,7 +381,7 @@
 
                     }
                     if (count === l) {
-                        this.allCorrect =true;
+                        this.isAlert =true;
                         var end = new Date().getTime();
                         var secDuration = Math.round((end - this.startTime) / 1000);
                         this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
@@ -412,6 +413,7 @@
                             count +
                             " errors.";
                     }else{
+                        this.isAlert = true;
                         this.alertMessage = "All entries correct";
                     }
                 }

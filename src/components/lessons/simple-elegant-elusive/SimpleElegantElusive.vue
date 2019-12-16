@@ -52,22 +52,24 @@
                   OK
                 </button>
               </div>
-              <button
-                class="btn btn-outline-success"
-                id="inputData4"
-                style="padding-left:0px;padding-right: 0px;visibility: hidden; width: 100px;"
-                v-on:click="clickDrawLine()"
-              >
-                Draw the line</button
-              ><br />
-              <button
-                class="btn btn-outline-success"
-                id="inputData5"
-                style="padding-left:0px;padding-right: 0px;visibility: hidden; width: 100px;"
-                v-on:click="clickReSet()"
-              >
-                Reset
-              </button>
+              <div id="inputData4" style="visibility: hidden;">
+                <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="clickDrawLine">
+                  {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                </button>
+                <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
+                  {{
+                  !isAutoStart
+                  ? "Tap here to begin"
+                  : timer
+                  ? "Tap here to pause"
+                  : "Tap here to resume"
+                  }}
+                </button>
+                <button class="btn btn-outline-dark" v-if="finished" @click="clickReSet()">
+                  Click here to reset
+                </button>&nbsp;&nbsp;&nbsp;
+                <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
+              </div>
             </div>
           </div>
           <!-- Right part -->
@@ -147,13 +149,17 @@
 </template>
 
 <script>
+  import DemoAutoOption from "./DemoAutoOption.vue";
 export default {
+  components: {
+    appDemoAutoOption: DemoAutoOption
+  },
   data: function() {
     return {
       c: "",
       q: "",
       p: "",
-
+      demoAutoOption: "1",
       c1: "",
       q1: "",
       c2: "",
@@ -170,6 +176,9 @@ export default {
       multiplierCheck: false,
       isActive1: false,
       isActive2: false,
+      finished: false,
+      isStart: false,
+    isAutoStart: false,
       pointsArray: [],
       smallCycleArray1: [],
       centerX: 300,
@@ -180,12 +189,27 @@ export default {
       smallCycleRadius: 60,
       smallCycleNum: 0,
       cycleNumber: 1,
-      counter: 0
+      counter: 0,
+      timer: null,
     };
   },
   created() {},
   mounted: function() {
     this.start();
+  },
+  watch: {
+    demoAutoOption(value) {
+      if (value === "0" && this.timer) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+    },
+    finished(value) {
+      if (value === true && this.timer) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
+    },
   },
   methods: {
     start() {
@@ -404,7 +428,17 @@ export default {
       let tempCoordinate = new this.coordinate(endX, endY);
       this.smallCycleArray1.push(tempCoordinate);
     },
+    startGameAuto() {
+      if (this.isAutoStart === false) this.isAutoStart = true;
+      if (this.timer) {
+        clearInterval(this.timer);
+        this.timer = null;
+      } else {
+        this.timer = setInterval(this.clickDrawLine, 500);
+      }
+    },
     clickDrawLine: function() {
+      if (this.isStart === false) this.isStart = true;
       this.q.beginPath();
       this.q.moveTo(
         this.pointsArray[this.counter].x,
@@ -425,8 +459,7 @@ export default {
       this.message = tempShow;
       this.counter++;
       if (this.counter === this.pointsArray.length) {
-        document.getElementById("inputData4").style.visibility = "hidden";
-        document.getElementById("inputData5").style.visibility = "visible";
+        this.finished = true;
         this.smallCycleNum++;
       }
     },
@@ -496,8 +529,8 @@ export default {
     clickReSet: function() {
       this.q.clearRect(0, 0, this.q.canvas.width, this.q.canvas.height);
       this.p.clearRect(0, 0, this.p.canvas.width, this.p.canvas.height);
-      document.getElementById("inputData5").style.visibility = "hidden";
       document.getElementById("input").style.visibility = "visible";
+      document.getElementById("inputData4").style.visibility = "hidden";
       this.pointsCheck = false;
       this.multiplierCheck = false;
       this.isActive1 = false;
@@ -506,13 +539,23 @@ export default {
       this.points = 0;
       this.multiplier = 0;
       this.degree = 0;
+      this.finished = false;
+      this.timer = null;
+      this.isStart = false;
+      this.isAutoStart = false;
       this.pointsArray.splice(0, this.pointsArray.length);
       this.smallCycleArray1.splice(0, this.smallCycleArray1.length);
       document.getElementById("pointsInput").value = "";
       document.getElementById("multiplierInput").value = "";
       this.message = "Enter the number of points and multiplier";
     }
-  }
+  },
+  destroyed() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
+  },
 };
 </script>
 
