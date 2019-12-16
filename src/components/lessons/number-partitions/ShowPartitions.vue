@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { partition, integerPartition } from "./utils";
+import { partition, integerPartition, separateNumber } from "./utils";
 export default {
   data: function() {
     return {
@@ -64,7 +64,7 @@ export default {
     },
     handleOk() {
       this.gameStatus = 1;
-      this.partitionsNumber = integerPartition(this.numberToPartion);
+      this.partitionsNumber = separateNumber(integerPartition(this.numberToPartion));
       // let tableContainer = document.getElementById("app--table-container");
       partition(this.numberToPartion, p => {
         // eslint-disable-next-line no-console

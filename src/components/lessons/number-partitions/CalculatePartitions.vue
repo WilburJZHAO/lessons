@@ -15,9 +15,7 @@
             class="btn btn-outline-success"
             @click="handleOk"
             :disabled="numberToPartion > 500 || numberToPartion < 1"
-          >
-            OK
-          </button>
+          >OK</button>
         </div>
         <div class="alert alert-danger">Enter a number between 1 and 500</div>
       </div>
@@ -27,9 +25,9 @@
           <h5 class="text-primary">{{ partitionsNumber }} partitions</h5>
         </div>
         <div>
-          <p style="margin-top:150px;text-align:center;font-size:20px; ">
-            How to calculate the number of partitions recursively.
-          </p>
+          <p
+            style="margin-top:150px;text-align:center;font-size:20px; "
+          >How to calculate the number of partitions recursively.</p>
           <p style="text-align:center;font-size:20px; ">
             p(n) = &#8721; (-1)
             <sup>k-1</sup>p(n - k(3k - 1)/2) (k &ne; 0)
@@ -45,7 +43,10 @@
 </template>
 
 <script>
-import { integerPartition /*, bigIntegerPartition*/ } from "./utils";
+import {
+  integerPartition,
+  separateNumber /*, bigIntegerPartition*/
+} from "./utils";
 export default {
   data: function() {
     return {
@@ -65,16 +66,18 @@ export default {
       }
     },
     handleOk() {
-      if (this.numberToPartion <= 300) {
-        this.partitionsNumber = integerPartition(this.numberToPartion);
-      } else {
-        // this.partitionsNumber = String(
-        //   bigIntegerPartition[this.numberToPartion - 300 - 1]
-        // );
-        this.partitionsNumber = integerPartition(this.numberToPartion);
-        // let temp = bigIntegerPartition[this.numberToPartion - 300 - 1];
-        // return temp;
-      }
+      // if (this.numberToPartion <= 300) {
+      // } else {
+      //   // this.partitionsNumber = String(
+      //   //   bigIntegerPartition[this.numberToPartion - 300 - 1]
+      //   // );
+      //   this.partitionsNumber = integerPartition(this.numberToPartion);
+      //   // let temp = bigIntegerPartition[this.numberToPartion - 300 - 1];
+      //   // return temp;
+      // }
+      this.partitionsNumber = separateNumber(
+        integerPartition(this.numberToPartion)
+      );
       this.numberToPartionResult = this.numberToPartion;
     }
   }

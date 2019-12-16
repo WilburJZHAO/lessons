@@ -22,12 +22,7 @@
         <div class="text-center">
           <p>
             <label for="showRatio">
-              <input
-                type="checkbox"
-                name="showRatio"
-                id="showRatio"
-                v-model="showRatio"
-              />
+              <input type="checkbox" name="showRatio" id="showRatio" v-model="showRatio" />
               Show ratio P(n+1)/P(n)
             </label>
           </p>
@@ -38,9 +33,9 @@
             @click="handleNextNumber"
           >
             {{
-              gameStatus === 0
-                ? "Tap here for first number"
-                : "Tap here for next number"
+            gameStatus === 0
+            ? "Tap here for first number"
+            : "Tap here for next number"
             }}
           </button>
           <button
@@ -49,20 +44,14 @@
             @click="handleToggleTimer"
           >
             {{
-              timer
-                ? "Tap here to pause"
-                : gameStatus === 0
-                ? "Tap here to begin"
-                : "Tap here to resume"
+            timer
+            ? "Tap here to pause"
+            : gameStatus === 0
+            ? "Tap here to begin"
+            : "Tap here to resume"
             }}
           </button>
-          <button
-            class="btn btn-outline-dark"
-            v-if="gameStatus === 2"
-            @click="handleReset"
-          >
-            Reset
-          </button>
+          <button class="btn btn-outline-dark" v-if="gameStatus === 2" @click="handleReset">Reset</button>
           <app-demo-auto-option
             :option="demoAutoOption"
             v-if="gameStatus !== 2"
@@ -85,7 +74,7 @@
 
 <script>
 import Chart from "chart.js";
-import { integerPartition } from "./utils";
+import { integerPartition, separateNumber } from "./utils";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 
 export default {
@@ -235,7 +224,7 @@ export default {
       }
       this.dataSet.push({
         n: i,
-        pn: partitionsNumber,
+        pn: separateNumber(partitionsNumber),
         ratio:
           i > 1
             ? Number((partitionsNumber / partitionsNumberPrev).toFixed(2))
