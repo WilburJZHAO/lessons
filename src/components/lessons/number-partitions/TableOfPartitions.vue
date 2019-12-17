@@ -13,7 +13,7 @@
             <tbody>
               <tr v-for="(item, index) in dataSetDisplay" :key="index">
                 <td>{{ item.n }}</td>
-                <td class="text-center">{{ item.pn }}</td>
+                <td class="text-center">{{ separateNumber(item.pn) }}</td>
                 <td v-if="showRatio" class="text-center">{{ item.ratio }}</td>
               </tr>
             </tbody>
@@ -63,9 +63,9 @@
       <div class="col-md-7">
         <h6 class="text-primary text-center">Graph of P(n)</h6>
         <canvas id="dataChart" width="400" height="400"></canvas>
-        <h6 class="text-center" v-if="dataSetDisplay.length > 0">
+        <h6 class="text-center mt-3" v-if="dataSetDisplay.length > 0">
           P({{ dataSetDisplay[dataSetDisplay.length - 1].n }}) =
-          {{ dataSetDisplay[dataSetDisplay.length - 1].pn }}
+          {{ separateNumber(dataSetDisplay[dataSetDisplay.length - 1].pn) }}
         </h6>
       </div>
     </div>
@@ -95,7 +95,8 @@ export default {
       nIndex: 1,
       chart: null,
       chartLabel: [],
-      chartData: []
+      chartData: [],
+      separateNumber
     };
   },
   computed: {
@@ -157,14 +158,12 @@ export default {
           scales: {
             yAxes: [
               {
-                // ticks: {
-                //   beginAtZero: true,
-                //   min: 0,
-                //   max: 192000000,
-                //   display: false
-                // }
                 ticks: {
                   beginAtZero: true
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: "Partitions"
                 }
               }
             ],
@@ -173,6 +172,11 @@ export default {
                 ticks: {
                   min: 1,
                   max: 103
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: "Number",
+                  padding: 0
                 }
               }
             ]
@@ -224,7 +228,7 @@ export default {
       }
       this.dataSet.push({
         n: i,
-        pn: separateNumber(partitionsNumber),
+        pn: partitionsNumber,
         ratio:
           i > 1
             ? Number((partitionsNumber / partitionsNumberPrev).toFixed(2))
