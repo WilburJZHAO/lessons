@@ -65,7 +65,7 @@
               <br />
               <div
                 v-if="alertMessage"
-                :class="resetNow ? 'alert alert-success' : 'alert alert-danger'"
+                :class="isAlert ? 'alert alert-success' : 'alert alert-danger'"
               >
                 {{ alertMessage }}
               </div>
@@ -815,7 +815,6 @@
             ref="qqq"
             style="padding-left: 200px; overflow: visible; max-width: 50%"
           >
-
             <div>
               <div
                 style=" max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative"
@@ -859,6 +858,7 @@ export default {
       selected1: "",
       alertMessage: "",
       resetNow: false,
+      isAlert: false,
       cur: [],
       inputNum: [],
       startTime: "",
@@ -971,6 +971,11 @@ export default {
       return Math.random() > 0.5 ? -1 : 1;
     },
     generateTable: function() {
+      for (let i = 0; i < this.checkRow.length; i++) {
+        let index = this.checkRow[i] * 10 + this.checkCol[i];
+        this.$refs[index][0].classList.remove("red");
+        this.$refs[index][0].classList.remove("g");
+      }
       let a = Math.random() * 10;
       this.randomIndex = "";
       if (a > 5) {
@@ -985,6 +990,7 @@ export default {
       this.correctNum = [];
       this.alertMessage = "";
       this.resetNow = false;
+      this.isAlert = false;
       this.inputNum = [];
       var i = this.selected;
       this.arrSimpleOne = [];
@@ -1039,7 +1045,7 @@ export default {
     check: function() {
       this.correctNum = [];
       this.alertMessage = "";
-
+      this.isAlert = false;
       for (var i = 0; i < this.checkVal.length; i++) {
         var index = this.checkRow[i] * 10 + this.checkCol[i];
         if (this.checkRow[i] === 1) {
@@ -1122,6 +1128,7 @@ export default {
         }
         if (count === l) {
           this.alertMessage = "All entries are correct";
+          this.isAlert = true;
           this.resetNow = true;
           this.n = this.n + 1;
           let nn = this.n.toString();
@@ -1158,6 +1165,7 @@ export default {
                   count +
                   " errors.";
         }else{
+          this.isAlert = true;
           this.alertMessage = "All entries correct";
         }
       }

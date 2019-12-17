@@ -8,7 +8,7 @@
                         <div style="text-align: left;max-width: 70%">
                             <h3>Complete the fraction chart</h3><br>
                             <br>
-                            <div v-if="alertMessage" :class="allCorrect?'alert alert-success':'alert alert-danger'">
+                            <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
 
@@ -108,7 +108,7 @@
                 alertMessage: "",
                 startTime: "",
                 resetNow: false,
-                allCorrect: false,
+                isAlert: false,
                 cur: [],
                 inputNum: [],
                 options: [{
@@ -187,12 +187,13 @@
                 this.correctNum1 = [];
                 this.alertMessage = "";
                 this.resetNow = false;
+                this.isAlert = false;
                 this.inputNum = [];
                 this.arrSimpleOne = [];
                 this.arrSimpleTwo = [];
                 this.arrSimpleThree = [];
                 this.root = [];
-                this.allCorrect = false;
+
                 this.r = [];
                 this.c = [];
                 for (let s = 0; s < 2; s++) {
@@ -289,6 +290,7 @@
             check: function() {
                 this.correctNum = [];
                 this.alertMessage = "";
+                this.isAlert = false;
                 for (let i = 0; i < this.checkV.length; i++) {
                     let index = this.checkR[i];
                     let a = index - Math.floor(index/10)*10;
@@ -372,9 +374,10 @@
 
                         }
                         if (count === l) {
-                            this.allCorrect =true;
+
                             var end = new Date().getTime();
                             var secDuration = Math.round((end - this.startTime) / 1000);
+                            this.isAlert = true;
                             this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
                             this.resetNow = true;
                         } else {
@@ -404,6 +407,7 @@
                                 count +
                                 " errors.";
                         }else{
+                            this.isAlert = true;
                             this.alertMessage = "All entries correct";
                         }
                     }
