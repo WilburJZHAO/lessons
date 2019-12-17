@@ -13,10 +13,10 @@
                                 </option>
                             </select><br><br>
                             <h5>Complete the addition grid (0 to 999)</h5><br>
-                            <div v-if="alertMessage" :class="resetNow?'alert alert-success':'alert alert-danger'">
+                            <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
-                            <table v-if="selected2=='add'" id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" align="center" style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table v-if="selected2==='add'" id="tableAdd" class="col-lg-12 col-md-10 col-sm-6"  style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
@@ -50,7 +50,7 @@
                                     </td>
                                 </tr>
                             </table>
-                            <table v-if="selected2=='multiply'" id="tableMul" class="col-lg-12 col-md-10 col-sm-6" align="center" style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table v-if="selected2==='multiply'" id="tableMul" class="col-lg-12 col-md-10 col-sm-6" style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
@@ -134,6 +134,7 @@
                 alertMessage: "",
                 startTime: "",
                 resetNow: false,
+                isAlert: false,
                 cur: [],
                 inputNum: [],
                 options: [{
@@ -239,6 +240,7 @@
                 this.correctNum = [];
                 this.alertMessage = "";
                 this.resetNow = false;
+                this.isAlert = false;
                 this.inputNum = [];
                 var i = this.selected;
                 this.arrSimpleOne = [];
@@ -309,6 +311,7 @@
             check: function() {
                 this.correctNum = [];
                 this.alertMessage = "";
+                this.isAlert = false;
                 if (this.selected2 === "add") {
                     for (var i = 0; i < this.checkVal.length; i++) {
                         var index = this.checkRow[i] * 10 + this.checkCol[i];
@@ -379,6 +382,7 @@
                         if (count === l) {
                             var end = new Date().getTime();
                             var secDuration = Math.round((end - this.startTime) / 1000);
+                            this.isAlert = true;
                             this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
                             this.resetNow = true;
                         } else {
@@ -408,6 +412,7 @@
                                 count +
                                 " errors.";
                         }else{
+                            this.isAlert = true;
                             this.alertMessage = "All entries correct";
                         }
                     }
@@ -569,7 +574,7 @@
         padding: 0px;
         width: 4vw;
         height: 4vw;
-        font-size: 30px;
+        font-size: 24px;
     }
 
     input {

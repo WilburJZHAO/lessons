@@ -26,7 +26,7 @@
               <br />
               <div
                 v-if="alertMessage"
-                :class="resetNow ? 'alert alert-success' : 'alert alert-danger'"
+                :class="isAlert ? 'alert alert-success' : 'alert alert-danger'"
               >
                 {{ alertMessage }}
               </div>
@@ -158,6 +158,7 @@ export default {
       alertMessage: "",
       startTime: "",
       resetNow: false,
+      isAlert: false,
       cur: [],
       inputNum: [],
       options: [
@@ -207,6 +208,11 @@ export default {
       return Math.random() > 0.5 ? -1 : 1;
     },
     generateTable: function() {
+      for (let i = 0; i < this.checkRow.length; i++) {
+        let index = this.checkRow[i] * 10 + this.checkCol[i];
+        this.$refs[index][0].classList.remove("red");
+        this.$refs[index][0].classList.remove("g");
+      }
       let a = Math.random() * 10;
       this.randomIndex = "";
       if (a > 5) {
@@ -221,6 +227,7 @@ export default {
       this.alertMessage = "";
       this.startTime = "";
       this.resetNow = false;
+      this.isAlert = false;
       this.inputNum = [];
       var i = this.selected;
       this.arrSimpleOne = [];
@@ -243,6 +250,7 @@ export default {
     check: function() {
       this.correctNum = [];
       this.alertMessage = "";
+      this.isAlert = false;
       let l;
       for (let i = 0; i < this.checkVal.length; i++) {
         let index = this.checkRow[i] * 10 + this.checkCol[i];
@@ -311,6 +319,7 @@ export default {
         if (countA === l) {
           var end = new Date().getTime();
           var secDuration = Math.round((end - this.startTime) / 1000);
+          this.isAlert = true;
           this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
           this.resetNow = true;
         } else {
@@ -340,6 +349,7 @@ export default {
                   countA +
                   " errors.";
         }else{
+          this.isAlert = true;
           this.alertMessage = "All entries correct";
         }
       }

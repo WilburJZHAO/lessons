@@ -13,11 +13,11 @@
                                 </option>
                             </select><br><br>
                             <h5>Complete the fraction addition grid(0 to 99)</h5><br>
-                            <div v-if="alertMessage" :class="allCorrect?'alert alert-success':'alert alert-danger'">
+                            <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
 
-                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" align="center" style="color: #0067d2;text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd"  style="color: #0067d2; text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
@@ -136,7 +136,7 @@
                 startTime: "",
                 alertMessage: "",
                 resetNow: false,
-                allCorrect: false,
+                isAlert: false,
                 cur: [],
                 inputNum: [],
                 options: [{
@@ -201,10 +201,13 @@
                 return Math.random() > .5 ? -1 : 1;
             },
             generateTable: function() {
-                for (let i = 0; i < this.checkRow.length; i++) {
-                    let index = this.checkRow[i] * 10 + this.checkCol[i];
-                    this.$refs[index][0].classList.remove("red");
-                    this.$refs[index][0].classList.remove("g");
+                for (let i = 0; i < this.checkDemo.length; i++) {
+                    let indexDemo = this.checkDemo[i];
+                    let indexNume = indexDemo-1;
+                    this.$refs[indexDemo][0].classList.remove("red");
+                    this.$refs[indexDemo][0].classList.remove("g");
+                    this.$refs[indexNume][0].classList.remove("red");
+                    this.$refs[indexNume][0].classList.remove("g");
                 }
                 this.startTime = "";
                 var easy= [2,3,4,5,5,2,3,4];
@@ -220,6 +223,7 @@
                 this.correctNum = [];
                 this.alertMessage = "";
                 this.resetNow = false;
+                this.isAlert = false;
                 this.inputNum = [];
                 var i = this.selected;
                 this.arrSimpleOne = [];
@@ -228,7 +232,6 @@
                 this.arrSimpleFour = [];
                 this.r = [];
                 this.c = [];
-
                 for (let s = 0; s < i; s++) {
                     this.r.push(s + 1);
                     this.c.push(s + 1);
@@ -236,7 +239,6 @@
                 }
                 this.r.sort(this.randomsort);
                 this.c.sort(this.randomsort);
-
                 if (this.selected1 === "l1") {
                     for(var m=0;m<i;m++){
                         var random = easy.pop();
@@ -248,7 +250,6 @@
                         this.arrSimpleThree.push(random3);
                         this.arrSimpleFour.push(random4);
                     }
-                    // alert(this.arrSimpleOne)
                 } else if (this.selected1 === "l2") {
                     for(m=0;m<i;m++){
                         random = dif.pop();
@@ -285,20 +286,19 @@
                     x = son / j;
                     y = mother / j;
                     ++j;
-                    if ((x + '').indexOf('.') == -1 && (y + '').indexOf('.') == -1) {
+                    if ((x + '').indexOf('.') === -1 && (y + '').indexOf('.') === -1) {
                         son = x;
                         mother = y;
                         j = 2;
                     }
-                    // this.console.log(x, y);
                 }
                 temp.push([son, mother]);
-                // alert(temp);
                 return temp;
             },
             check: function() {
                 this.correctNum = [];
                 this.alertMessage = "";
+                this.isAlert = false;
                     for (var i = 0; i < this.checkValDemo.length; i++) {
                         var indexDemo = this.checkDemo[i];
                         var indexNume = this.checkNume[i];
@@ -386,8 +386,9 @@
                         if (count === l) {
                             var end = new Date().getTime();
                             var secDuration = Math.round((end - this.startTime) / 1000);
+                            this.isAlert = true;
                             this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
-                            this.allCorrect =true;
+
                             this.resetNow = true;
                         } else {
                             let nnn = l - count;
@@ -417,6 +418,7 @@
                                 count +
                                 " errors.";
                         }else{
+                            this.isAlert = true;
                             this.alertMessage = "All entries correct";
                         }
 
@@ -499,7 +501,11 @@
         overflow:hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
-        font-size: 30px;
+        font-size: 24px;
+    }
+    td b div {
+        text-align: center;
+        vertical-align: middle;
     }
 
     input {

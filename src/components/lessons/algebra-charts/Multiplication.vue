@@ -30,15 +30,15 @@
                             </button>
                             <br><br>
                             <h5>Complete this addition grid</h5><br>
-                            <div v-if="alertMessage" :class="resetNow?'alert alert-success':'alert alert-danger'">
+                            <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
                             <table id="tableAdd" style="color: #0067d2; text-align: center; vertical-align: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
-                                        ? 'width: 7vw; height: 5vw; background: #e6ffe7'
-                                        : 'width: 7vw; height: 5vw;'">
+                                        ? 'width: 6vw; height: 5vw; background: #e6ffe7'
+                                        : 'width: 6vw; height: 5vw;'">
                                         <b v-if="i===1&&j===1">X</b>
                                         <b v-else-if="(i===1&&j===c[0]+1) && randomIndex ==='r'">{{generate(i,j)}}</b>
                                         <b v-else-if="(j===1&&i===r[0]+1) && randomIndex ==='c'">{{generate(i,j)}}</b>
@@ -53,9 +53,9 @@
                                         <b v-else-if="i===r[4]+1&&j===c[4]+1">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[4]+1&&j===c[5]+1">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[5]+1&&j===c[5]+1">{{generate(i,j)}}</b>
-                                        <b v-else-if="i===1&&j!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 7vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j===1&&i!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 7vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 7vw; height: 5vw; border: 0px' /></b>
+                                        <b v-else-if="i===1&&j!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="j===1&&i!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw; border: 0px' /></b>
                                     </td>
                                 </tr>
                             </table>
@@ -95,6 +95,7 @@
                 selected1: "",
                 alertMessage: "",
                 resetNow: false,
+                isAlert: false,
                 cur: [],
                 inputNum: [],
                 startTime: "",
@@ -200,13 +201,18 @@
             start() {
                 document
                     .getElementById("tableAdd")
-                    .rows[0].cells[0].setAttribute("style", "width: 7vw; height: 5vw; background: #ffeaa5");
+                    .rows[0].cells[0].setAttribute("style", "width: 6vw; height: 5vw; background: #ffeaa5");
                 this.generateTable();
             },
             randomsort() {
                 return Math.random() > .5 ? -1 : 1;
             },
             generateTable: function() {
+                for (let i = 0; i < this.checkRow.length; i++) {
+                    let index = this.checkRow[i] * 10 + this.checkCol[i];
+                    this.$refs[index][0].classList.remove("red");
+                    this.$refs[index][0].classList.remove("g");
+                }
                 let a = Math.random() * 10;
                 this.randomIndex = "";
                 if (a > 5) {
@@ -221,6 +227,7 @@
                 this.correctNum = [];
                 this.alertMessage = "";
                 this.resetNow = false;
+                this.isAlert = false;
                 this.inputNum = [];
                 var i = this.selected;
                 this.arrSimpleOne = [];
@@ -296,6 +303,7 @@
             check: function() {
                 this.correctNum = [];
                 this.alertMessage = "";
+                this.isAlert = false;
                 for (var i = 0; i < this.checkVal.length; i++) {
                     var index = this.checkRow[i] * 10 + this.checkCol[i];
                     if (this.checkRow[i] === 1) {
@@ -360,6 +368,7 @@
                     }
                     if (count === l) {
                         this.alertMessage = "All entries are correct";
+                        this.isAlert = true;
                         this.resetNow = true;
                         this.n = this.n + 1;
                         let nn = this.n.toString();
@@ -397,6 +406,7 @@
                             count +
                             " errors.";
                     }else{
+                        this.isAlert = true;
                         this.alertMessage = "All entries correct";
                     }
                 }
@@ -617,9 +627,12 @@
 
     td {
         border: #7f8c8d solid;
-        width: 7vw;
+        width: 6vw;
         height: 5vw;
-        font-size: 20px;
+        overflow:hidden;
+        white-space:nowrap;
+        text-overflow:ellipsis;
+        font-size: 19px;
         padding-left: 0px;
         padding-right: 0px;
     }
