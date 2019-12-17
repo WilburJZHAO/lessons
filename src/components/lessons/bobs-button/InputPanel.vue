@@ -8,8 +8,9 @@
           type="number"
           class="form-control"
           v-model.number="groupSizeA"
+          @focus="message='Enter the group size(2-10,000)'"
           min="1"
-          max="9999"
+          max="10000"
           step="1"
         />
       </div>
@@ -19,8 +20,9 @@
           type="number"
           class="form-control"
           v-model.number="leftOverA"
+          @focus="message='Enter the group size(0-1,000)'"
           min="0"
-          :max="groupSizeA-1"
+          max="1000"
           step="1"
         />
       </div>
@@ -33,8 +35,9 @@
           type="number"
           class="form-control"
           v-model.number="groupSizeB"
+          @focus="message='Enter the group size(2-10,000)'"
           min="1"
-          max="9999"
+          max="10000"
           step="1"
         />
       </div>
@@ -44,8 +47,9 @@
           type="number"
           class="form-control"
           v-model.number="leftOverB"
+          @focus="message='Enter the group size(0-1,000)'"
           min="0"
-          :max="groupSizeB-1"
+          max="1000"
           step="1"
         />
       </div>
@@ -62,8 +66,9 @@
             type="number"
             class="form-control"
             v-model.number="groupSizeC"
+            @focus="message='Enter the group size(2-10,000)'"
             min="1"
-            max="9999"
+            max="10000"
             step="1"
           />
         </div>
@@ -73,15 +78,16 @@
             type="number"
             class="form-control"
             v-model.number="leftOverC"
+            @focus="message='Enter the group size(0-1,000)'"
             min="0"
-            :max="groupSizeC-1"
+            max="1000"
             step="1"
           />
         </div>
       </div>
     </div>
     <div class="text-center col-12 mt-3">
-      <p class="text-center text-danger">Input a number: left over should be smaller than group size</p>
+      <p class="text-center text-danger">{{ message }}</p>
       <button class="btn btn-outline-success" @click="handleOK" :disabled="!isValidInput">OK</button>
     </div>
   </div>
@@ -96,7 +102,8 @@ export default {
       groupSizeC: null,
       leftOverA: null,
       leftOverB: null,
-      leftOverC: null
+      leftOverC: null,
+      message: "Input a number: left over should be smaller than group size"
     };
   },
   computed: {
@@ -105,10 +112,10 @@ export default {
         !(
           typeof this.groupSizeA === "number" &&
           typeof this.leftOverA === "number" &&
-          this.groupSizeA >= 0 &&
-          this.groupSizeA <= 99 &&
+          this.groupSizeA >= 2 &&
+          this.groupSizeA <= 10000 &&
           this.leftOverA >= 0 &&
-          this.leftOverA < this.groupSizeA
+          this.leftOverA <= 1000
         )
       ) {
         return false;
@@ -118,10 +125,10 @@ export default {
         !(
           typeof this.groupSizeB === "number" &&
           typeof this.leftOverB === "number" &&
-          this.groupSizeB >= 0 &&
-          this.groupSizeB <= 99 &&
+          this.groupSizeB >= 2 &&
+          this.groupSizeB <= 10000 &&
           this.leftOverB >= 0 &&
-          this.leftOverB < this.groupSizeB
+          this.leftOverB <= 1000
         )
       ) {
         return false;
@@ -132,10 +139,10 @@ export default {
         !(
           typeof this.groupSizeC === "number" &&
           typeof this.leftOverC === "number" &&
-          this.groupSizeC >= 0 &&
-          this.groupSizeC <= 99 &&
+          this.groupSizeC >= 2 &&
+          this.groupSizeC <= 10000 &&
           this.leftOverC >= 0 &&
-          this.leftOverC < this.groupSizeC
+          this.leftOverC < 1000
         )
       ) {
         return false;

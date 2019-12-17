@@ -222,7 +222,7 @@ export default {
     /** Operations when user clicks OK button */
     handleOK() {
       if (!this.row || this.row > 1000 || this.row < 1) {
-        this.message = "Enter the number of rows(1-100";
+        this.message = "Enter the number of rows(1-1000)";
         this.$refs.rowInput.select();
         return;
       }
