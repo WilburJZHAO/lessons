@@ -526,6 +526,10 @@
         width: 3.5vw;
         height: 3.5vw;
     }
+    #tableAdd div{
+        text-align: center;
+        line-height: 3.5vw;
+    }
     .ckboxTable td{
         border-color: transparent;
     }
