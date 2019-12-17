@@ -26,7 +26,7 @@
                                         <b v-if="i==1&&j==1">+</b>
 
                                         <b v-else-if="i==1&&j==c[0]+1">
-                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{arrSimpleThree[j-2]}}</div>
+                                            <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw;'>{{arrSimpleThree[j-2]}}</div>
                                             <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{arrSimpleOne[j-2]}}</div>
                                         </b>
                                         <b v-else-if="i==r[0]+1&&j==c[0]+1">
@@ -496,16 +496,16 @@
 
     td {
         width: 8vw;
-        height: 6vw;
+        height: 8vw;
         padding: 1vw;
         overflow:hidden;
         white-space:nowrap;
         text-overflow:ellipsis;
         font-size: 24px;
     }
-    td b div {
+    b div{
         text-align: center;
-        vertical-align: middle;
+        line-height: 3.5vw;
     }
 
     input {
@@ -513,7 +513,7 @@
         border: white;
         background: transparent;
         text-align: center;
-        font-size: 30px;
+        font-size: 24px;
         width: 3.5vw;
         height: 3.5vw;
     }

@@ -25,7 +25,7 @@
                                         </b>
                                         <b v-else-if="(j===1&&i===r[0]+1) && randomIndex ==='c'">
                                             <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{arrSimpleTwo[i - 2]}}</div>
-                                            <div style='margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{root[i - 2]}}</div>
+                                            <div style='border-top: #0f0f0f solid;margin: 0 auto;width: 3.5vw; height: 3.5vw; '>{{root[i - 2]}}</div>
                                         </b>
                                         <b v-else-if="i===r[0]+1&&j===c[0]+1 && h">
                                             {{arrSimpleThree[j-2]/root[i-2]*arrSimpleTwo[i-2]}}
@@ -519,6 +519,10 @@
         font-size: 30px;
         width: 3.5vw;
         height: 3.5vw;
+    }
+    #tableAdd div{
+        text-align: center;
+        line-height: 3.5vw;
     }
     .ckboxTable td{
         border-color: transparent;

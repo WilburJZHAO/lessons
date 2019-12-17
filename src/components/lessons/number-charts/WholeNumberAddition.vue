@@ -4,7 +4,7 @@
             <div class="container mt-4 mb5">
                 <div class="row" style="max-width: 100%">
                     <!-- Left part -->
-                    <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
+                    <div class="col-12 col-md-6 app--lesson-left" style="width: 70%">
                         <div style="text-align: left;max-width: 70%">
                             <h3>Choose the grid size</h3><br>
                             <select id="gridSize" style="width:10vw;font-size: 1.5vw" v-model="selected" v-on:change="generateTable()">
@@ -16,12 +16,12 @@
                             <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
-                            <table v-if="selected2==='add'" id="tableAdd" class="col-lg-12 col-md-10 col-sm-6"  style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table v-if="selected2==='add'" id="tableAdd"  style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
-                                        ? 'width: 4vw; height: 4vw; background: #e6ffe7'
-                                        : 'width: 4vw; height: 4vw;'">
+                                        ? 'width: 3vw; height: 3vw; background: #e6ffe7'
+                                        : 'width: 3vw; height: 3vw;'">
                                         <b v-if="i==1&&j==1">+</b>
                                         <b v-else-if="i==1&&j==c[0]+1">{{arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[0]+1&&j==c[0]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
@@ -44,18 +44,18 @@
                                         <b v-else-if="i==r[8]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[10]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
-                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3.5vw; height: 3.5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3.5vw; height: 3.5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3.5vw; height: 3.5vw; border: 0px' /></b>
+                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3vw; height: 3vw; border: 0px' /></b>
                                     </td>
                                 </tr>
                             </table>
-                            <table v-if="selected2==='multiply'" id="tableMul" class="col-lg-12 col-md-10 col-sm-6" style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table v-if="selected2==='multiply'" id="tableMul" style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
-                                        ? 'width: 4vw; height: 4vw; background: #e6ffe7'
-                                        : 'width: 4vw; height: 4vw;'">
+                                        ? 'width: 3vw; height: 3vw; background: #e6ffe7'
+                                        : 'width: 3vw; height: 3vw;'">
                                         <b v-if="i==1&&j==1">x</b>
                                         <b v-else-if="i==1&&j==c[0]+1">{{arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[0]+1&&j==c[0]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
@@ -78,16 +78,16 @@
                                         <b v-else-if="i==r[8]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[10]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
-                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3.5vw; height: 3.5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3.5vw; height: 3.5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3.5vw; height: 3.5vw; border: 0px' /></b>
+                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3vw; height: 3vw; border: 0px' /></b>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px; overflow: visible; max-width: 50%">
+                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px; overflow: visible; max-width: 30%">
                         <div>
                             <div style="font-size: 1vw;color: #0f0f0f;position: relative">
                                 <h5>Choose the difficulty level</h5>
@@ -220,7 +220,7 @@
             start() {
                 document
                     .getElementById("tableAdd")
-                    .rows[0].cells[0].setAttribute("style", "width: 4vw; height: 4vw; background: #ffeaa5");
+                    .rows[0].cells[0].setAttribute("style", "width: 3vw; height: 3vw; background: #ffeaa5");
 
                 this.generateTable();
             },
@@ -572,8 +572,8 @@
     td {
         border: #7f8c8d solid;
         padding: 0px;
-        width: 4vw;
-        height: 4vw;
+        width: 3vw;
+        height: 3vw;
         font-size: 24px;
     }
 
