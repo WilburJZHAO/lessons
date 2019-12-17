@@ -105,9 +105,9 @@ export default {
         !(
           typeof this.groupSizeA === "number" &&
           typeof this.leftOverA === "number" &&
-          this.groupSizeA > 0 &&
+          this.groupSizeA >= 0 &&
           this.groupSizeA <= 99 &&
-          this.leftOverA > 0 &&
+          this.leftOverA >= 0 &&
           this.leftOverA < this.groupSizeA
         )
       ) {
@@ -118,9 +118,9 @@ export default {
         !(
           typeof this.groupSizeB === "number" &&
           typeof this.leftOverB === "number" &&
-          this.groupSizeB > 0 &&
+          this.groupSizeB >= 0 &&
           this.groupSizeB <= 99 &&
-          this.leftOverB > 0 &&
+          this.leftOverB >= 0 &&
           this.leftOverB < this.groupSizeB
         )
       ) {
@@ -132,9 +132,9 @@ export default {
         !(
           typeof this.groupSizeC === "number" &&
           typeof this.leftOverC === "number" &&
-          this.groupSizeC > 0 &&
+          this.groupSizeC >= 0 &&
           this.groupSizeC <= 99 &&
-          this.leftOverC > 0 &&
+          this.leftOverC >= 0 &&
           this.leftOverC < this.groupSizeC
         )
       ) {

@@ -45,6 +45,7 @@
             {{ groups }} group{{ groups > 1 ? "s" : "" }} of {{ groupSize }} +
             {{ countersNumber }}
           </h5>
+          <h5 v-if="gameStatus===3">{{ countersNumber }} counter{{countersNumber > 1 ? 's' : ''}} left</h5>
         </div>
 
         <app-buttons-container :countersNumber="countersNumber"></app-buttons-container>
