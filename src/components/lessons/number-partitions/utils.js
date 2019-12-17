@@ -121,8 +121,6 @@ export const partition = (n, fn) => {
 
   // eslint-disable-next-line no-constant-condition
   while (true) {
-    fn(p);
-
     let rem_val = 0;
     while (k >= 0 && p[k] == 1) {
       rem_val += p[k];
@@ -143,6 +141,7 @@ export const partition = (n, fn) => {
 
     p[k + 1] = rem_val;
     k++;
+    fn(p);
   }
 };
 
@@ -168,4 +167,16 @@ export const separateNumber = number => {
     arr.unshift(part);
   }
   return arr.join(",");
+};
+
+/**
+ * Sum up all the numbers in an array
+ * @param {Array} arr
+ */
+export const sumArray = arr => {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum;
 };

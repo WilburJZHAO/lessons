@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { partition, integerPartition, separateNumber } from "./utils";
+import { partition, integerPartition, separateNumber, sumArray } from "./utils";
 export default {
   data: function() {
     return {
@@ -64,11 +64,17 @@ export default {
     },
     handleOk() {
       this.gameStatus = 1;
-      this.partitionsNumber = separateNumber(integerPartition(this.numberToPartion));
+      this.partitionsNumber = separateNumber(
+        integerPartition(this.numberToPartion)
+      );
       // let tableContainer = document.getElementById("app--table-container");
       partition(this.numberToPartion, p => {
         // eslint-disable-next-line no-console
-        console.log(p);
+        let sum = sumArray(p);
+        console.log(p, "---", sum);
+        let diff = sum - this.numberToPartion;
+        p.splice(p.length - diff, diff);
+
         let arr = [...p];
         this.partitions.push(arr);
       });
