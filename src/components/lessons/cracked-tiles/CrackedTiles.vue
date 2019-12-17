@@ -107,7 +107,7 @@
           </table>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-8" style="height: 750px;">
         <div
           style="positioin: relative"
           :style="{visibility: gameStatus === 0 || gameStatus === 1 || gameStatus === 3 ? 'visible' :'hidden' }"
@@ -445,6 +445,5 @@ export default {
   position: absolute;
   width: 100%;
   height: auto;
-  margin-bottom: 5rem;
 }
 </style>
