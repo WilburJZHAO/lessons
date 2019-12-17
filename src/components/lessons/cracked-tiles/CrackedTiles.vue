@@ -9,7 +9,7 @@
             <input
               type="text"
               class="form-control"
-              @focus="message = 'Enter the number of rows(1-1000)'"
+              @focus="message = '1-24 for both rows and columns'"
               @keypress="handleCheckInput"
               v-model.number="row"
               ref="rowInput"
@@ -23,7 +23,7 @@
             <input
               type="text"
               class="form-control"
-              @focus="message = 'Enter the number of columns(1-1000)'"
+              @focus="message = '1-24 for both rows and columns'"
               @keypress="handleCheckInput"
               v-model.number="col"
               ref="colInput"
@@ -222,7 +222,7 @@ export default {
     /** Operations when user clicks OK button */
     handleOK() {
       if (!this.row || this.row > 1000 || this.row < 1) {
-        this.message = "Enter the number of rows(1-1000)";
+        this.message = "Enter the number of rows(1-100";
         this.$refs.rowInput.select();
         return;
       }
