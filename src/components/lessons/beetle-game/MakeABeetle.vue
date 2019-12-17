@@ -129,7 +129,8 @@
       </div>
 
       <div class="col-md-6">
-        <div class="col-sm-12" style="position:relative;">
+        <label v-if="finished" style="color: #35b247; font-weight: bold; margin-left: 40%">Beetle Made</label>
+        <div class="col-sm-12" style="position:relative; margin-top: 5%">
           <img
             src="../../../assets/beetle-game/beetle_body.png"
             alt=""
