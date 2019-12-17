@@ -44,9 +44,9 @@
                                         <b v-else-if="i==r[8]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[10]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
-                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" type="text" style='width: 3vw; height: 3vw; border: 0px' /></b>
+                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw; border: 0px' /></b>
                                     </td>
                                 </tr>
                             </table>
@@ -78,16 +78,16 @@
                                         <b v-else-if="i==r[8]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[10]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
-                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, inputNum[i*10+j])" style='width: 3vw; height: 3vw; border: 0px' /></b>
+                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw; border: 0px' /></b>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                     <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px; overflow: visible; max-width: 30%">
+                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="margin-left: 200px; overflow: visible; max-width: 30%">
                         <div>
                             <div style="font-size: 1vw;color: #0f0f0f;position: relative">
                                 <h5>Choose the difficulty level</h5>
@@ -229,7 +229,7 @@
             },
             generateTable: function() {
                 for (let i = 0; i < this.checkRow.length; i++) {
-                    let index = this.checkRow[i] * 10 + this.checkCol[i];
+                    let index = this.checkRow[i] * 100 + this.checkCol[i];
                     this.$refs[index][0].classList.remove("red");
                     this.$refs[index][0].classList.remove("g");
                 }
@@ -314,7 +314,7 @@
                 this.isAlert = false;
                 if (this.selected2 === "add") {
                     for (var i = 0; i < this.checkVal.length; i++) {
-                        var index = this.checkRow[i] * 10 + this.checkCol[i];
+                        var index = this.checkRow[i] * 100 + this.checkCol[i];
                         if (this.checkRow[i] === 1) {
                             if (this.checkVal[i] === (this.arrSimpleOne[this.checkCol[i] - 2])) {
                                 if (this.$refs[index][0].classList.value === "red") {
@@ -423,7 +423,7 @@
                 if (this.selected2 === "multiply") {
                     l = this.selected * this.selected;
                     for (i = 0; i < this.checkVal.length; i++) {
-                        index = this.checkRow[i] * 10 + this.checkCol[i];
+                        index = this.checkRow[i] * 100 + this.checkCol[i];
                         if (this.checkRow[i] === 1) {
                             if (this.checkVal[i] === (this.arrSimpleOne[this.checkCol[i] - 2])) {
                                 if (this.$refs[index][0].classList.value === "red") {
@@ -474,6 +474,7 @@
                             }
                         }
                     }
+
                     l = this.selected * this.selected;
                     var countA = 0;
                     if (this.correctNum.length === l) {
@@ -486,10 +487,11 @@
                         if (countA === l) {
                             let end = new Date().getTime();
                             let secDuration = Math.round((end - this.startTime) / 1000);
+                            this.isAlert = true;
                             this.alertMessage = "All entries are correct. Completion time: "+ secDuration +" seconds";
                             this.resetNow = true;
                         } else {
-                            let nnn = l - count;
+                            let nnn = l - countA;
                             if(nnn === 1){
                                 this.alertMessage =
                                     "All entries are checked. There is 1 error.";
@@ -504,18 +506,19 @@
                     } else {
                         for (let a = 0; a < this.correctNum.length; a++) {
                             if (this.correctNum[a] === "red") {
-                                count++;
+                                countA++;
                             }
                         }
-                        if(count === 1){
+                        if(countA === 1){
                             this.alertMessage =
                                 "All entries are checked. There is 1 error.";
-                        }else if(count > 1){
+                        }else if(countA > 1){
                             this.alertMessage =
                                 "All entries are checked. There are " +
-                                count +
+                                countA +
                                 " errors.";
                         }else{
+                            this.isAlert = true;
                             this.alertMessage = "All entries correct";
                         }
                     }
@@ -533,7 +536,7 @@
                     for (var i = 0; i < this.checkRow.length; i++) {
 
                         if (this.checkRow[i] == r && this.checkCol[i] == c) {
-                            let index = r * 10 + c;
+                            let index = r * 100 + c;
                             this.$refs[index][0].classList.remove("red");
                             this.$refs[index][0].classList.remove("g");
                             this.checkVal[i] = parseInt(num);
@@ -543,14 +546,13 @@
                     this.checkRow.push(r);
                     this.checkCol.push(c);
                     this.checkVal.push(parseInt(num));
+
                 }
-
-
             },
             reset: function() {
                 this.alertMessage = "";
                 for (var i = 0; i < this.checkRow.length; i++) {
-                    let index = this.checkRow[i] * 10 + this.checkCol[i];
+                    let index = this.checkRow[i] * 100 + this.checkCol[i];
                     this.$refs[index][0].classList.remove("red");
                     this.$refs[index][0].classList.remove("g");
                 }
