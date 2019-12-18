@@ -33,10 +33,10 @@
     <div class="row">
       <div class="col-md-6 pb-4">
       <div
-        align="center"
-        style="width: 60%; position: center; margin-left: 20%"
+        class="text-center"
+        style="width: 70%; position: center; margin-left: 15%"
       >
-        <div style="width: 80%;">
+        <div style="width: 100%;">
           <div>
             <p>Click on rows, columns or cells to show</p>
           </div>
@@ -73,6 +73,7 @@
             @click="checkResult()"
             class="btn btn-outline-success"
             id="okBt"
+            style="width: 50px"
           >
             OK
           </button>
@@ -103,7 +104,7 @@
             class="div-b text-center"
             v-if="finished"
             :style="{ width: widthT, height: heightT }"
-            style="margin-right: 0; margin-bottom: 15%; margin-left: 5%"
+            style="margin-right: 0; margin-bottom: 15%;"
           >
             <img
               src="../../../assets/right.png"

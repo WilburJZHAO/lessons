@@ -8,7 +8,7 @@
           <tr>
             <td>
               <h6 class="text-success">
-                <b id="error" style="">Please enter the number of rows.</b>
+                <b id="error" :style="{color: error? 'red' : ''}" style="">Please enter the number of rows.</b>
               </h6>
             </td>
             <td>
@@ -262,7 +262,8 @@ export default {
       Q6Color: "",
       Q6Color1: "",
       finished: false,
-      objects: []
+      objects: [],
+      error: false,
     };
   },
 
@@ -270,6 +271,7 @@ export default {
     checkResult() {
       if (this.count === 1) {
         if ((this.inputRows == this.length) & (this.Q2 == false)) {
+          this.error = false;
           document.getElementById("1").classList.replace("hide", "appear");
           document.getElementById("test").setAttribute("readonly", "true");
           this.Q2 = true;
@@ -278,6 +280,7 @@ export default {
             "Please enter the row fraction: ";
         } else {
           this.Q1Color = false;
+          this.error = true;
           document.getElementById("error").innerHTML =
             "The answer is incorrect!";
           return;
@@ -290,6 +293,7 @@ export default {
           (this.inputRowDown == this.length) &
           (this.Q3 == false)
         ) {
+          this.error = false;
           document.getElementById("2").classList.replace("hide", "appear");
           document.getElementById("test1").setAttribute("readonly", "true");
           document.getElementById("test2").setAttribute("readonly", "true");
@@ -299,12 +303,12 @@ export default {
           document.getElementById("error").innerHTML =
             "Please enter the number of columns: ";
         } else {
+          this.error = true;
           if(this.inputRowUp == 1){
             this.Q2Color1 = true;
           }else{
             this.Q2Color1 = false;
           }
-
           this.Q2Color = false;
           document.getElementById("error").innerHTML =
             "The answer is incorrect!";
@@ -314,6 +318,7 @@ export default {
 
       if (this.count === 3) {
         if ((this.inputColumns == this.width) & (this.Q4 == false)) {
+          this.error = false;
           document.getElementById("3").classList.replace("hide", "appear");
           document.getElementById("test3").setAttribute("readonly", "true");
           this.Q4 = true;
@@ -321,6 +326,7 @@ export default {
           document.getElementById("error").innerHTML =
             "Please enter the columns fraction: ";
         } else {
+          this.error = true;
           this.Q3Color = false;
           document.getElementById("error").innerHTML =
             "The answer is incorrect!";
@@ -334,6 +340,7 @@ export default {
           (this.inputColumnDown == this.width) &
           (this.Q5 == false)
         ) {
+          this.error = false;
           document.getElementById("4").classList.replace("hide", "appear");
           document.getElementById("test4").setAttribute("readonly", "true");
           document.getElementById("test5").setAttribute("readonly", "true");
@@ -343,6 +350,7 @@ export default {
           document.getElementById("error").innerHTML =
             "Please enter the number of cells: ";
         } else {
+          this.error = true;
           if(this.inputColumnUp == 1){
             this.Q4Color1 = true;
           }else {
@@ -360,6 +368,7 @@ export default {
           (this.inputCells == this.width * this.length) &
           (this.Q6 == false)
         ) {
+          this.error = false;
           document.getElementById("5").classList.replace("hide", "appear");
           document.getElementById("test6").setAttribute("readonly", "true");
           this.Q6 = true;
@@ -367,6 +376,7 @@ export default {
           document.getElementById("error").innerHTML =
             "Please enter the cells fraction: ";
         } else {
+          this.error = true;
           this.Q5Color = false;
           document.getElementById("error").innerHTML =
             "The answer is incorrect!";
@@ -379,6 +389,7 @@ export default {
           (this.inputCellDown == this.width * this.length) &
           (document.getElementById("error").innerHTML != "All correct!")
         ) {
+          this.error = false;
           this.finished = true;
           this.Q6Color = true;
           this.Q6Color1 = true;
@@ -387,6 +398,7 @@ export default {
           document.getElementById("test8").setAttribute("readonly", "true");
           document.getElementById("error").innerHTML = "All correct!";
         } else {
+          this.error = true;
           if(this.inputCellUp == 1){
             this.Q6Color1 = true;
           }else {
