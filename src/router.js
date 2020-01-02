@@ -370,6 +370,12 @@ const NumberPartitions = resolve => {
   });
 };
 
+const CylinderVolumes = resolve => {
+  require.ensure("./components/lessons/cylinder-volumes/App.vue", () => {
+    resolve(require("./components/lessons/cylinder-volumes/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -534,6 +540,11 @@ const routes = [
     path: "/number-partitions",
     component: NumberPartitions,
     name: "Number Partitions"
+  },
+  {
+    path: "/cylinder-volumes",
+    component: CylinderVolumes,
+    name: "Cylinder Volumes"
   }
 ];
 

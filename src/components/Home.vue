@@ -78,7 +78,8 @@ export default {
         { name: "Goods And Bads", link: "/goods-and-bads" },
         { name: "Simple Elegant Elusive", link: "/simple-elegant-elusive" },
         { name: "Odds and Evens", link: "/odds-and-evens" },
-        { name: "Number Partitions", link: "/number-partitions" }
+        { name: "Number Partitions", link: "/number-partitions" },
+        { name: "Cylinder Volumes", link: "/cylinder-volumes" }
       ]
     };
   },
