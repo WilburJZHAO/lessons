@@ -15,3 +15,12 @@ export const calculateTimerInterval = trialNumber => {
     return 0.1;
   }
 };
+
+/**
+ * Throw a dice once  i.e. Generate a number randomly from 1, 2, 3, 4, 5, 6
+ * @return Number
+ */
+export const throwDiceOnce = () => {
+  return Math.floor(Math.random() * 6) + 1;
+};
+
