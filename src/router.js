@@ -376,6 +376,12 @@ const CylinderVolumes = resolve => {
   });
 };
 
+const FirstDownToMountain = resolve => {
+  require.ensure("./components/lessons/first-down-to-mountain/App.vue", () => {
+    resolve(require("./components/lessons/first-down-to-mountain/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -545,6 +551,11 @@ const routes = [
     path: "/cylinder-volumes",
     component: CylinderVolumes,
     name: "Cylinder Volumes"
+  },
+  {
+    path: "/first-down-to-mountain",
+    component: FirstDownToMountain,
+    name: "First Down To Mountain"
   }
 ];
 

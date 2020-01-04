@@ -79,7 +79,8 @@ export default {
         { name: "Simple Elegant Elusive", link: "/simple-elegant-elusive" },
         { name: "Odds and Evens", link: "/odds-and-evens" },
         { name: "Number Partitions", link: "/number-partitions" },
-        { name: "Cylinder Volumes", link: "/cylinder-volumes" }
+        { name: "Cylinder Volumes", link: "/cylinder-volumes" },
+        { name: "First Down the Mountain", link: "/first-down-to-mountain" }
       ]
     };
   },
