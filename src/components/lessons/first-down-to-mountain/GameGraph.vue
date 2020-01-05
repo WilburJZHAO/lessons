@@ -8,7 +8,7 @@
             v-for="(item, index) in game"
             :key="index"
             class="app--graph-col app--graph-demo-col"
-            :style="{height: item.wins*unit+'px'}"
+            :style="{height: gameType===1 ? item.wins*unit+'%' : item.wins*unit+'px'}"
           >
             <div></div>
           </div>
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  props: ["game", "tried", "trialNumber"],
+  props: ["game", "tried", "trialNumber", "gameType"],
   data: function() {
     return {};
   },
@@ -49,18 +49,30 @@ export default {
       if (!this.trialNumber) {
         return 0;
       }
-      if (this.trialNumber <= 50) {
-        return 10;
-      } else if (this.trialNumber <= 100) {
-        return 5;
-      } else if (this.trialNumber <= 500) {
-        return 1.5;
-      } else if (this.trialNumber <= 1000) {
-        return 1;
-      } else if (this.trialNumber <= 5000) {
-        return 0.5;
+      if (this.gameType === 2) {
+        if (this.trialNumber <= 50) {
+          return 10;
+        } else if (this.trialNumber <= 100) {
+          return 5;
+        } else if (this.trialNumber <= 500) {
+          return 1.5;
+        } else if (this.trialNumber <= 1000) {
+          return 1;
+        } else if (this.trialNumber <= 5000) {
+          return 0.5;
+        } else {
+          return 0.2;
+        }
+      } else if (this.gameType === 1) {
+        if (this.trialNumber <= 100) {
+          return (1 / (this.trialNumber * 0.12)) * 10;
+        } else if (this.trialNumber <= 1000) {
+          return (1 / (this.trialNumber * 0.12)) * 50;
+        } else {
+          return (1 / (this.trialNumber * 0.12)) * 100;
+        }
       } else {
-        return 0.2;
+        return 0;
       }
     }
   }

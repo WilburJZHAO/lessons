@@ -5,6 +5,7 @@
       v-if="isTheorySet"
       :trialNumber="Number(trialNumber)"
       :game="setCustGame"
+      :gameType="2"
       @initGame="resetGame"
     ></app-many-games-app>
     <div class="row" v-else>

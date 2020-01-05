@@ -5,6 +5,7 @@
       v-if="trialNumber"
       :trialNumber="Number(trialNumber)"
       :game="demoGame"
+      :gameType="2"
       @initGame="initGame"
     ></app-many-games-app>
     <app-enter-trials-number v-else @acceptTrialNumber="trialNumber=$event"></app-enter-trials-number>

@@ -6,7 +6,7 @@
     </div>
 
     <div class="app--game-graph-container">
-      <app-game-graph :game="game" :tried="tried" :trialNumber="trialNumber"></app-game-graph>
+      <app-game-graph :game="game" :tried="tried" :trialNumber="trialNumber" :gameType="gameType"></app-game-graph>
     </div>
 
     <div class="text-center my-2">
@@ -44,7 +44,7 @@ export default {
     appDemoAutoOption: DemoAutoOption,
     appGameGraph: GameGraph
   },
-  props: ["trialNumber", "game"],
+  props: ["trialNumber", "game", "gameType"],
   data: function() {
     return {
       tried: 0,
