@@ -1,11 +1,17 @@
 <template>
-  <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
+  <transition
+    appear
+    appear-class="options-appear"
+    appear-active-class="options-appear-active"
+  >
     <div class="container app--link-list">
-      <div class="app--link-item" v-for="lesson in sortedLessons" :key="lesson.name">
+      <div
+        class="app--link-item"
+        v-for="lesson in sortedLessons"
+        :key="lesson.name"
+      >
         <router-link :to="lesson.link" class="btn btn-outline-success">
-          {{
-          lesson.name
-          }}
+          {{ lesson.name }}
         </router-link>
       </div>
     </div>
