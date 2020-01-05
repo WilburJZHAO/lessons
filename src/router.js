@@ -1,22 +1,19 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import Trigonometry from './components/lessons/trigonometry/App.vue';
-// import TimesTables from './components/lessons/times-tables/App.vue';
-// import Truth1 from "./components/lessons/truth-tiles-1/App.vue";
-// import Truth2 from "./components/lessons/truth-tiles-2/App.vue";
 import Home from "./components/Home.vue";
-// import TakeAwayTiles from "./components/lessons/take-away-tiles/App.vue";
-// import Steps from "./components/lessons/steps/App.vue";
-// import NumberTiles from "./components/lessons/number-tiles/App.vue";
-// import ChessQueens from "./components/lessons/chess-queens/App.vue";
-// import EightQueens from "./components/lessons/eight-queens/App.vue";
-// import Crosses from "./components/lessons/crosses/App.vue";
-// import AngleEstimation from './components/lessons/angle-estimation/App.vue';
-// import AreaOfTriangle from './components/lessons/area-of-triangle/App.vue';
-// import BiggestVolume from './components/lessons/biggest-volume/App.vue';
-// import IceCreamFlavours from './components/lessons/ice-cream-flavours/App.vue';
-// import ChancesWithCrosses from "./components/lessons/chances-with-crosses/App.vue"
-// import FaysNines from "./components/lessons/fays-nines/App.vue"
+import store from "./store";
+
+const Login = resolve => {
+  require.ensure("./components/auth/Login.vue", () => {
+    resolve(require("./components/auth/Login.vue"));
+  });
+};
+
+const ValidateAccessCode = resolve => {
+  require.ensure("./components/auth/ValidateAccessCode.vue", () => {
+    resolve(require("./components/auth/ValidateAccessCode.vue"));
+  });
+};
 
 const Radioactivity = resolve => {
   require.ensure("./components/lessons/radioactivity/App.vue", () => {
@@ -385,15 +382,36 @@ const FirstDownToMountain = resolve => {
 Vue.use(VueRouter);
 
 const routes = [
-  { path: "/", component: Home, name: "home" },
-  { path: "/radioactivity", component: Radioactivity, name: "Radioactivity" },
+  {
+    path: "/",
+    component: Home,
+    name: "Home"
+  },
+  {
+    path: "/login",
+    component: Login,
+    name: "Login"
+  },
+  {
+    path: "/validateAccessCode",
+    component: ValidateAccessCode,
+    name: "ValidateAccessCode"
+  },
+  {
+    path: "/radioactivity",
+    component: Radioactivity,
+    name: "Radioactivity"
+  },
   {
     path: "/same-or-different",
     component: SameOrDifferent,
     name: "Same or Different"
   },
-  { path: "/garden-beds", component: GardenBeds, name: "Garden Beds" },
-
+  {
+    path: "/garden-beds",
+    component: GardenBeds,
+    name: "Garden Beds"
+  },
   {
     path: "/trigonometry",
     component: Trigonometry,
@@ -404,17 +422,41 @@ const routes = [
     component: TimesTables,
     name: "Tackling Times Tables"
   },
-  { path: "/truth-tiles-1", component: Truth1, name: "Truth tiles 1" },
-  { path: "/truth-tiles-2", component: Truth2, name: "Truth tiles 2" },
+  {
+    path: "/truth-tiles-1",
+    component: Truth1,
+    name: "Truth tiles 1"
+  },
+  {
+    path: "/truth-tiles-2",
+    component: Truth2,
+    name: "Truth tiles 2"
+  },
   {
     path: "/take-away-tiles",
     component: TakeAwayTiles,
     name: "Take Away Tiles"
   },
-  { path: "/steps", component: Steps, name: "Steps" },
-  { path: "/number-tiles", component: NumberTiles, name: "Number Tiles" },
-  { path: "/chess-queens", component: ChessQueens, name: "Chess Queens" },
-  { path: "/crosses", component: Crosses, name: "Crosses" },
+  {
+    path: "/steps",
+    component: Steps,
+    name: "Steps"
+  },
+  {
+    path: "/number-tiles",
+    component: NumberTiles,
+    name: "Number Tiles"
+  },
+  {
+    path: "/chess-queens",
+    component: ChessQueens,
+    name: "Chess Queens"
+  },
+  {
+    path: "/crosses",
+    component: Crosses,
+    name: "Crosses"
+  },
   {
     path: "/angle-estimation",
     component: AngleEstimation,
@@ -425,7 +467,11 @@ const routes = [
     component: AreaOfTriangle,
     name: "Area Of Triangle"
   },
-  { path: "/biggest-volume", component: BiggestVolume, name: "Biggest Volume" },
+  {
+    path: "/biggest-volume",
+    component: BiggestVolume,
+    name: "Biggest Volume"
+  },
   {
     path: "/ice-cream-flavours",
     component: IceCreamFlavours,
@@ -436,10 +482,26 @@ const routes = [
     component: ChancesWithCrosses,
     name: "Chances With Crosses"
   },
-  { path: "/fays-nines", component: FaysNines, name: "Fay's Nines" },
-  { path: "/eight-queens", component: EightQueens, name: "Eight Queens" },
-  { path: "/magic-squares", component: MagicSquares, name: "Magic Squares" },
-  { path: "/make-a-million", component: MakeAMillion, name: "Make A Million" },
+  {
+    path: "/fays-nines",
+    component: FaysNines,
+    name: "Fay's Nines"
+  },
+  {
+    path: "/eight-queens",
+    component: EightQueens,
+    name: "Eight Queens"
+  },
+  {
+    path: "/magic-squares",
+    component: MagicSquares,
+    name: "Magic Squares"
+  },
+  {
+    path: "/make-a-million",
+    component: MakeAMillion,
+    name: "Make A Million"
+  },
   {
     path: "/sporting-finals-NRL",
     component: SportingFinalsNRL,
@@ -455,65 +517,147 @@ const routes = [
     component: DiceBasketball,
     name: "Dice Basketball"
   },
-  { path: "/dice-footy", component: DiceFooty, name: "Dice Footy" },
-  { path: "/counter-escape", component: CounterEscape, name: "Counter Escape" },
-  { path: "/building-views", component: BuildingViews, name: "Building Views" },
-  { path: "/problem-dice", component: ProblemDice, name: "Problem Dice" },
-  { path: "/crazy-animals", component: CrazyAnimals, name: "Crazy Animals" },
-  { path: "/cat-and-mouse", component: CatAndMouse, name: "Cat and Mouse" },
-  { path: "/dice-cricket", component: DiceCricket, name: "Dice Cricket" },
-  { path: "/have-a-hexagon", component: HaveAHexagon, name: "Have A Hexagon" },
-  { path: "/walk-the-plank", component: WalkThePlank, name: "Walk The Plank" },
-  { path: "/nine-and-over", component: NineAndOver, name: "Nine And Over" },
-  { path: "/whats-it-worth", component: WhatsItWorth, name: "What's It Worth" },
-  { path: "/doctor-dart", component: DoctorDart, name: "Doctor Dart" },
+  {
+    path: "/dice-footy",
+    component: DiceFooty,
+    name: "Dice Footy"
+  },
+  {
+    path: "/counter-escape",
+    component: CounterEscape,
+    name: "Counter Escape"
+  },
+  {
+    path: "/building-views",
+    component: BuildingViews,
+    name: "Building Views"
+  },
+  {
+    path: "/problem-dice",
+    component: ProblemDice,
+    name: "Problem Dice"
+  },
+  {
+    path: "/crazy-animals",
+    component: CrazyAnimals,
+    name: "Crazy Animals"
+  },
+  {
+    path: "/cat-and-mouse",
+    component: CatAndMouse,
+    name: "Cat and Mouse"
+  },
+  {
+    path: "/dice-cricket",
+    component: DiceCricket,
+    name: "Dice Cricket"
+  },
+  {
+    path: "/have-a-hexagon",
+    component: HaveAHexagon,
+    name: "Have A Hexagon"
+  },
+  {
+    path: "/walk-the-plank",
+    component: WalkThePlank,
+    name: "Walk The Plank"
+  },
+  {
+    path: "/nine-and-over",
+    component: NineAndOver,
+    name: "Nine And Over"
+  },
+  {
+    path: "/whats-it-worth",
+    component: WhatsItWorth,
+    name: "What's It Worth"
+  },
+  {
+    path: "/doctor-dart",
+    component: DoctorDart,
+    name: "Doctor Dart"
+  },
   {
     path: "/dice-differences",
     component: DiceDifferences,
     name: "Dice Differences"
   },
-  { path: "/ballon", component: Ballon, name: "2 Litre Ballon" },
-  { path: "/number-charts", component: NumberCharts, name: "Number Charts" },
+  {
+    path: "/ballon",
+    component: Ballon,
+    name: "2 Litre Ballon"
+  },
+  {
+    path: "/number-charts",
+    component: NumberCharts,
+    name: "Number Charts"
+  },
   {
     path: "/rectangle-fraction",
     component: RectangleFraction,
     name: "Rectangle Fraction"
   },
-  { path: "/game-show", component: GameShow, name: "Game Show" },
+  {
+    path: "/game-show",
+    component: GameShow,
+    name: "Game Show"
+  },
   {
     path: "/goldbachs-conjecture",
     component: GoldbachsConjecture,
     name: "Goldbach's Conjecture"
   },
-  { path: "/addo", component: Addo, name: "Addo" },
+  {
+    path: "/addo",
+    component: Addo,
+    name: "Addo"
+  },
   {
     path: "/birth-month-paradox",
     component: BirthMonthParadox,
     name: "Birth Month Paradox"
   },
 
-  { path: "/algebra-charts", component: AlgebraCharts, name: "Algebra Charts" },
-  // {
-  //   path: "/goldbachs-conjecture",
-  //   component: GoldbachsConjecture,
-  //   name: "Goldbach's Conjecture"
-  // },
-  // { path: "/addo", component: Addo, name: "Addo" },
-  { path: "/multo", component: Multo, name: "Multo" },
-  { path: "/bobs-button", component: BobsButton, name: "Bobs Button" },
-  { path: "/duelling-dice", component: DuellingDice, name: "Duelling Dice" },
+  {
+    path: "/algebra-charts",
+    component: AlgebraCharts,
+    name: "Algebra Charts"
+  },
+  {
+    path: "/multo",
+    component: Multo,
+    name: "Multo"
+  },
+  {
+    path: "/bobs-button",
+    component: BobsButton,
+    name: "Bobs Button"
+  },
+  {
+    path: "/duelling-dice",
+    component: DuellingDice,
+    name: "Duelling Dice"
+  },
   {
     path: "/fraction-charts",
     component: FractionCharts,
     name: "Fraction Charts"
   },
-  { path: "/lcm", component: Lcm, name: "LCM" },
+  {
+    path: "/lcm",
+    component: Lcm,
+    name: "LCM"
+  },
   {
     path: "/hunting-stars",
     component: HuntingStars,
     name: "Hunting For Stars"
   },
-  { path: "/cracked-tiles", component: CrackedTiles, name: "Cracked Tiles" },
+  {
+    path: "/cracked-tiles",
+    component: CrackedTiles,
+    name: "Cracked Tiles"
+  },
   {
     path: "/billard-ball",
     component: BillardBall,
@@ -529,19 +673,31 @@ const routes = [
     component: ChocolateChipCookies,
     name: "Chocolate Chip Cookies"
   },
-  { path: "/beetle-game", component: BeetleGame, name: "Beetle Game" },
+  {
+    path: "/beetle-game",
+    component: BeetleGame,
+    name: "Beetle Game"
+  },
   {
     path: "/charts-strategies",
     component: ChartsStrategies,
     name: "Charts Strategies"
   },
-  { path: "/goods-and-bads", component: GoodsBads, name: "Goods And Bads" },
+  {
+    path: "/goods-and-bads",
+    component: GoodsBads,
+    name: "Goods And Bads"
+  },
   {
     path: "/simple-elegant-elusive",
     component: SimpleElegantElusive,
     name: "Simple Elegant Elusive"
   },
-  { path: "/odds-and-evens", component: OddsAndEvens, name: "Odds and Evens" },
+  {
+    path: "/odds-and-evens",
+    component: OddsAndEvens,
+    name: "Odds and Evens"
+  },
   {
     path: "/number-partitions",
     component: NumberPartitions,
@@ -562,6 +718,25 @@ const routes = [
 const router = new VueRouter({
   mode: "history",
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ["/login", "/validateAccessCode", "/"];
+  const authRequired = !publicPages.includes(to.path);
+  const validateAccessCodeEntity = store.state.auth.validateAccessCodeEntity;
+  const authenticated =
+    store.state.auth.status.loggedIn ||
+    (validateAccessCodeEntity != undefined &&
+      validateAccessCodeEntity.access_url == window.location.origin + to.path);
+  // try to access a restricted page + not logged in
+  if (authRequired && !authenticated) {
+    return next({
+      path: "/login",
+      query: { redirect: to.fullPath }
+    });
+  }
+
+  next();
 });
 
 export default router;
