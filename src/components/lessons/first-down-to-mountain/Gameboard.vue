@@ -4,24 +4,15 @@
       <div
         class="app--block app--wins-hidden-block app--wins-block"
         style="visibility: hidden;"
-      >
-        Wins
-      </div>
+      >Wins</div>
       <div
         v-for="(item, i) in game"
         :key="'i' + i"
         class="app--col d-flex flex-column justify-content-end"
       >
-        <div
-          v-for="(space, j) in item.spaces"
-          :key="'j' + j"
-          class="app--block-container"
-        >
+        <div v-for="(space, j) in item.spaces" :key="'j' + j" class="app--block-container">
           <div class="app--block">
-            <app-button
-              :number="item.diceSums"
-              v-if="j === item.currentSpace"
-            ></app-button>
+            <app-button :number="item.diceSums" v-if="j === item.currentSpace"></app-button>
           </div>
         </div>
         <div class="app--landing-row">
@@ -32,34 +23,24 @@
               'app--landing-block-end': i === 10
             }"
           >
-            <app-button
-              :number="item.diceSums"
-              v-if="item.currentSpace >= item.spaces"
-            ></app-button>
+            <app-button :number="item.diceSums" v-if="item.currentSpace >= item.spaces"></app-button>
           </div>
         </div>
       </div>
     </div>
     <div class="d-flex">
+      <div style="visibility: hidden;" class="app--wins-block app--wins-hidden-block">Wins</div>
       <div
-        style="visibility: hidden;"
-        class="app--wins-block app--wins-hidden-block"
-      >
-        Wins
-      </div>
-      <div class=" text-center app--landing-text flex-grow-1 text-danger pb-2">
-        Landing in this row to win
-      </div>
+        class="text-center app--landing-text flex-grow-1 text-success pb-2"
+      >Landing in this row to win</div>
     </div>
-    <div class="d-flex " style="position: relative;">
-      <div class="app--block app--wins-block ">Wins</div>
+    <div class="d-flex" style="position: relative;">
+      <div class="app--block app--wins-block">Wins</div>
       <div
         v-for="(item, i) in game"
         :key="'i' + i"
         class="app--mark app--col app--block"
-      >
-        {{ item.wins }}
-      </div>
+      >{{ item.wins }}</div>
     </div>
   </div>
 </template>
