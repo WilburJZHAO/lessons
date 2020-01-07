@@ -1,0 +1,26 @@
+.app--image-draggable {
+  z-index: 10;
+  touch-action: none;
+  position: absolute;
+}
+.app--image {
+  width: 80px;
+}
+.app--image-draggable-positioned {
+  touch-action: none;
+}
+.app--data-box {
+  border: 1px solid #ccc;
+  height: 40px;
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.app--dragging-area {
+  width: 100%;
+  min-height: 65vh;
+  background-color: #f8e883;
+  z-index: -1;
+}

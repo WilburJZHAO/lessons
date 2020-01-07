@@ -379,6 +379,12 @@ const FirstDownToMountain = resolve => {
   });
 };
 
+const HeadsAndLegs = resolve => {
+  require.ensure("./components/lessons/heads-and-legs/App.vue", () => {
+    resolve(require("./components/lessons/heads-and-legs/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -712,6 +718,11 @@ const routes = [
     path: "/first-down-to-mountain",
     component: FirstDownToMountain,
     name: "First Down To Mountain"
+  },
+  {
+    path: "/heads-and-legs",
+    component: HeadsAndLegs,
+    name: "Heads and Legs"
   }
 ];
 
