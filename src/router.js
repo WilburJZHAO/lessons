@@ -391,6 +391,12 @@ const CarsInAGarage = resolve => {
   });
 };
 
+const WhatsMyRule = resolve => {
+  require.ensure("./components/lessons/whats-my-rule/App.vue", () => {
+    resolve(require("./components/lessons/whats-my-rule/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -730,7 +736,12 @@ const routes = [
     component: HeadsAndLegs,
     name: "Heads and Legs"
   },
-  { path: "/cars-in-a-garage", component: CarsInAGarage, name: "Cars In A Garage" },
+  {
+    path: "/cars-in-a-garage",
+    component: CarsInAGarage,
+    name: "Cars In A Garage"
+  },
+  { path: "/whats-my-rule", component: WhatsMyRule, name: "What's My Rule" }
 ];
 
 const router = new VueRouter({
