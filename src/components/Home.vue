@@ -87,7 +87,8 @@ export default {
         { name: "Number Partitions", link: "/number-partitions" },
         { name: "Cylinder Volumes", link: "/cylinder-volumes" },
         { name: "First Down the Mountain", link: "/first-down-to-mountain" },
-        { name: "Heads and Legs", link: "/heads-and-legs" }
+        { name: "Heads and Legs", link: "/heads-and-legs" },
+        { name: "Cars In A Garage", link: "/cars-in-a-garage" }
       ]
     };
   },

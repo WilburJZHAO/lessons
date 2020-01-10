@@ -385,6 +385,12 @@ const HeadsAndLegs = resolve => {
   });
 };
 
+const CarsInAGarage = resolve => {
+  require.ensure("./components/lessons/cars-in-a-garage/App.vue", () => {
+    resolve(require("./components/lessons/cars-in-a-garage/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -723,7 +729,8 @@ const routes = [
     path: "/heads-and-legs",
     component: HeadsAndLegs,
     name: "Heads and Legs"
-  }
+  },
+  { path: "/cars-in-a-garage", component: CarsInAGarage, name: "Cars In A Garage" },
 ];
 
 const router = new VueRouter({
@@ -731,23 +738,23 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  const publicPages = ["/login", "/validateAccessCode", "/"];
-  const authRequired = !publicPages.includes(to.path);
-  const validateAccessCodeEntity = store.state.auth.validateAccessCodeEntity;
-  const authenticated =
-    store.state.auth.status.loggedIn ||
-    (validateAccessCodeEntity != undefined &&
-      validateAccessCodeEntity.access_url == window.location.origin + to.path);
-  // try to access a restricted page + not logged in
-  if (authRequired && !authenticated) {
-    return next({
-      path: "/login",
-      query: { redirect: to.fullPath }
-    });
-  }
-
-  next();
-});
+// router.beforeEach((to, from, next) => {
+//   const publicPages = ["/login", "/validateAccessCode", "/"];
+//   const authRequired = !publicPages.includes(to.path);
+//   const validateAccessCodeEntity = store.state.auth.validateAccessCodeEntity;
+//   const authenticated =
+//     store.state.auth.status.loggedIn ||
+//     (validateAccessCodeEntity != undefined &&
+//       validateAccessCodeEntity.access_url == window.location.origin + to.path);
+//   // try to access a restricted page + not logged in
+//   if (authRequired && !authenticated) {
+//     return next({
+//       path: "/login",
+//       query: { redirect: to.fullPath }
+//     });
+//   }
+//
+//   next();
+// });
 
 export default router;
