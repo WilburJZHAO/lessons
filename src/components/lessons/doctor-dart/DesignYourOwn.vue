@@ -2,12 +2,9 @@
     <div>
         <div class="container mt-4 mb-5">
             <div class="row justify-content-md-center">
-                <input class="zone" type="number" min="1" max="16" v-model="num1" oninput="value=value.replace('.','');if(value>16)value=16;if(value<1)value=null">
+                <input class="zone" type="number" min="1" max="16" v-model="num1" oninput="value=value.replace('.','');if(value>16)value=16;if(value<1)value=null" >
                 <input class="zone" type="number" min="1" max="16" v-model="num2" oninput="value=value.replace('.','');if(value>16)value=16;if(value<1)value=null">
                 <input class="zone" type="number"  min="1" max="16" v-model="num3" oninput="value=value.replace('.','');if(value>16)value=16;if(value<1)value=null">
-
-                <!--<input class="zone" type="number" min="1" max="16" v-model="num2" >-->
-                <!--<input class="zone" type="number"  min="1" max="16" v-model="num3">-->
             </div>
             <div class="row justify-content-md-center">
                 <input class="zone" type="number" min="1" max="16" v-model="num4" oninput="value=value.replace('.','');if(value>16)value=16;if(value<1)value=null" >
@@ -27,9 +24,13 @@
             <div class="row justify-content-md-center">
                 <button style="margin-top: 8px;" @click="reset" class="btn btn-outline-success">Reset</button>
             </div>
-            <div class="row">
+            <div class="row justify-content-md-center">
+                <!--<div style="min-width: 976px;">-->
+                    <!--<img src="@/assets/tree.png">-->
+                    <!--<div style="float: left; position: absolute">fddfdf</div>-->
+                <!--</div>-->
                 <div style="position: relative; min-width: 976px; min-height: 500px">
-                    <img  src="@/assets/tree.png" >
+                    <img src="@/assets/tree.png" >
                     <span style="font-size: 20px; position: absolute; top: 125px; left: 142px;">{{num1}}</span>
                     <span style="font-size: 20px; position: absolute; top: 125px; left: 475px;">{{num2}}</span>
                     <span style="font-size: 20px; position: absolute; top: 125px; left: 808px;">{{num3}}</span>
@@ -95,14 +96,6 @@
                 num9: null,
             }
         },
-        // watch:{
-        //     num1(value){
-        //         if (value > 16 ){
-        //             alert("Enter a number (1-16)");
-        //         }
-        //     },
-        //
-        // },
         methods:{
             displayWidthInputPrompt() {
                 this.widthInputPrompt = true;
@@ -193,13 +186,16 @@
 
 <style scoped>
     .zone{
+        -webkit-user-select:none;
+        -moz-user-select:none;
+        -ms-user-select:none;
+        user-select:none;
         font-size: 35px;
         height:60px;
         width: 70px;
         padding: 0;
         margin: 5px;
         text-align: center;
-        border-color: black;
     }
     .smallblock{
         font-size: 18px; position: absolute; top: 400px;
