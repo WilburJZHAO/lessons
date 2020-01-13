@@ -31,7 +31,7 @@
     <div class="d-flex">
       <div style="visibility: hidden;" class="app--wins-block app--wins-hidden-block">Wins</div>
       <div
-        class="text-center app--landing-text flex-grow-1 text-success pb-2"
+        class="text-center app--landing-text flex-grow-1 alert-success alert text-danger pb-2"
       >Landing in this row to win</div>
     </div>
     <div class="d-flex" style="position: relative;">
