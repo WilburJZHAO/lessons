@@ -834,7 +834,7 @@ export default {
 }
 
 .drop-target {
-  background: #f4ffec;
+  background: #7fff99;
 }
 
 .dropzone-drop {

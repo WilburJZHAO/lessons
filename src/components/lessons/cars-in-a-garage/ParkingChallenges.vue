@@ -252,7 +252,7 @@
               </div>
               <div>
                 <table id="displayResult">
-                  <tr v-for="i in 8">
+                  <tr v-for="i in 16">
                     <td v-for="j in 3" :ref="(i - 1) * 3 + j"></td>
                   </tr>
                 </table>
@@ -442,7 +442,7 @@ export default {
       }
     },
     createGarageChange() {
-      for (let i = 1; i <= 24; i++) {
+      for (let i = 1; i <=48; i++) {
         this.$refs[i][0].innerHTML = "";
       }
       this.count = 1;
@@ -450,6 +450,68 @@ export default {
       this.isAlert = false;
       this.alertMessage = "";
       this.isFinish = false;
+
+
+      this.disabledDraggable(this.$refs.dropzonePlace.children[0])
+      this.disabledDraggable(this.$refs.dropzonePlace2.children[0])
+      this.disabledDraggable(this.$refs.dropzonePlace3.children[0])
+      this.disabledDraggable(this.$refs.dropzonePlace4.children[0])
+      if (this.carNumber == 3) {
+        document.getElementById("dropzone-drop1").innerHTML = "";
+        document.getElementById("dropzone-drop2").innerHTML = "";
+        document.getElementById("dropzone-drop3").innerHTML = "";
+      }
+      if (this.carNumber == 4) {
+        document.getElementById("dropzone-drop1").innerHTML = "";
+        document.getElementById("dropzone-drop2").innerHTML = "";
+        document.getElementById("dropzone-drop3").innerHTML = "";
+        document.getElementById("dropzone-drop4").innerHTML = "";
+      }
+      if (this.carNumber == 5) {
+        document.getElementById("dropzone-drop1").innerHTML = "";
+        document.getElementById("dropzone-drop2").innerHTML = "";
+        document.getElementById("dropzone-drop3").innerHTML = "";
+        document.getElementById("dropzone-drop4").innerHTML = "";
+        document.getElementById("dropzone-drop5").innerHTML = "";
+      }
+
+      this.isYellowCar = true;
+      this.isBlueCar = true;
+      this.isPinkCar = true;
+      this.isGreenCar = true;
+      this.isRedCar = true;
+
+      this.dropzone1 = null;
+      this.dropzone2 = null;
+      this.dropzone3 = null;
+      this.dropzone4 = null;
+      this.dropzone5 = null;
+
+      if (this.$refs.myDraggable.classList == "dropped") {
+        this.initInteract3(this.$refs.myDraggable)
+        this.$refs.myDraggable.classList.remove("dropped");
+        this.$refs.myDraggable.classList.add("drag-drop");
+      }
+      if (this.$refs.myDraggable2.classList == "dropped") {
+        this.initInteract3(this.$refs.myDraggable2)
+        this.$refs.myDraggable2.classList.remove("dropped");
+        this.$refs.myDraggable2.classList.add("drag-drop");
+      }
+      if (this.$refs.myDraggable3.classList == "dropped") {
+        this.initInteract3(this.$refs.myDraggable3)
+        this.$refs.myDraggable3.classList.remove("dropped");
+        this.$refs.myDraggable3.classList.add("drag-drop");
+      }
+      if (this.$refs.myDraggable4.classList == "dropped") {
+        this.initInteract3(this.$refs.myDraggable4)
+        this.$refs.myDraggable4.classList.remove("dropped");
+        this.$refs.myDraggable4.classList.add("drag-drop");
+      }
+      if (this.$refs.myDraggable5.classList == "dropped") {
+        this.initInteract3(this.$refs.myDraggable5)
+        this.$refs.myDraggable5.classList.remove("dropped");
+        this.$refs.myDraggable5.classList.add("drag-drop");
+      }
     },
     generatorRandom() {
       let i = this.carNumber;
@@ -662,48 +724,97 @@ export default {
         res += id1;
         res += id2;
         res += id3;
-        if (
-          arr[location] ===
-          document.getElementById("selectSentence").value.slice(0, 1) * 1
-        ) {
-          if (this.count != 1) {
-            for (let i = 0; i < this.result.length; i++) {
-              if (
-                this.result[i] ===
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>"
-              ) {
-                this.isEqual = true;
+        if(document.getElementById("selectSentence").value.slice(1, 2)!=7) {
+          if (
+                  arr[location] ===
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          ) {
+            if (this.count != 1) {
+              for (let i = 0; i < this.result.length; i++) {
+                if (
+                        this.result[i] ===
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>"
+                ) {
+                  this.isEqual = true;
+                }
               }
-            }
-            if (!this.isEqual) {
+              if (!this.isEqual) {
+                this.result.push(
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>"
+                );
+                this.$refs[this.count][0].innerHTML =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.count++;
+              }
+            } else {
               this.result.push(
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>"
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>"
               );
               this.$refs[this.count][0].innerHTML =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>";
               this.count++;
             }
-          } else {
-            this.result.push(
-              "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>"
-            );
-            this.$refs[this.count][0].innerHTML =
-              "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-              result +
-              "</div>";
-            this.count++;
+            if (this.result.length == 2) {
+              this.isFinish = true;
+              return;
+            }
           }
-          if (this.result.length == 2) {
-            this.isFinish = true;
-            return;
+        }else{
+          if (
+                  arr[0] ===
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1 ||
+                  arr[2] ===
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          ) {
+            if (this.count != 1) {
+              for (let i = 0; i < this.result.length; i++) {
+                if (
+                        this.result[i] ===
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>"
+                ) {
+                  this.isEqual = true;
+                }
+              }
+              if (!this.isEqual) {
+                this.result.push(
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>"
+                );
+                this.$refs[this.count][0].innerHTML =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.count++;
+              }
+            } else {
+              this.result.push(
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>"
+              );
+              this.$refs[this.count][0].innerHTML =
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>";
+              this.count++;
+            }
+            if (this.result.length == 4) {
+              this.isFinish = true;
+              return;
+            }
           }
         }
       } else if (j === arr.length && arr.length === 4) {
@@ -718,55 +829,93 @@ export default {
         location = this.mapFourOption.get(
           document.getElementById("selectSentence").value.slice(1, 2) * 1
         );
-        // alert("arr location1="+arr[location]+"; location="+location);
-        //         alert("location2"+document.getElementById("selectSentence").value.slice(0, 1) * 1);
-        if (
-          arr[location] ===
-          document.getElementById("selectSentence").value.slice(0, 1) * 1
-        ) {
-          if (this.count != 1) {
-            for (let i = 0; i < this.result.length; i++) {
-              // alert("result="+"<div style='border: 1px solid; width: 85%; text-align: center'>" +
-              //         result +
-              //         "</div>");
-              // alert(this.result[i]);
-              // alert("<div style='border: 1px solid; width: 85%; text-align: center'>" +
-              //         result +
-              //         "</div>");
-              if (
-                this.result[i] ===
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>"
-              ) {
-                this.isEqual = true;
+        if(document.getElementById("selectSentence").value.slice(1, 2)!=7) {
+          if (
+                  arr[location] ===
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          ) {
+            if (this.count != 1) {
+              for (let i = 0; i < this.result.length; i++) {
+                if (
+                        this.result[i] ===
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>"
+                ) {
+                  this.isEqual = true;
+                }
               }
-            }
-            if (!this.isEqual) {
+              if (!this.isEqual) {
+                this.result[this.count - 1] =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.$refs[this.count][0].innerHTML =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.count++;
+              }
+            } else {
               this.result[this.count - 1] =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>";
               this.$refs[this.count][0].innerHTML =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>";
               this.count++;
             }
-          } else {
-            this.result[this.count - 1] =
-              "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-              result +
-              "</div>";
-            this.$refs[this.count][0].innerHTML =
-              "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-              result +
-              "</div>";
-            this.count++;
+            if (this.result.length === 6) {
+              this.isFinish = true;
+              return;
+            }
           }
-          if (this.result.length === 6) {
-            this.isFinish = true;
-            return;
+        }else{
+          if (
+                  arr[0] ===
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1 ||
+                  arr[3] ===
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          ) {
+            if (this.count != 1) {
+              for (let i = 0; i < this.result.length; i++) {
+                if (
+                        this.result[i] ===
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>"
+                ) {
+                  this.isEqual = true;
+                }
+              }
+              if (!this.isEqual) {
+                this.result[this.count - 1] =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.$refs[this.count][0].innerHTML =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.count++;
+              }
+            } else {
+              this.result[this.count - 1] =
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>";
+              this.$refs[this.count][0].innerHTML =
+                      "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                      result +
+                      "</div>";
+              this.count++;
+            }
+            if (this.result.length === 12) {
+              this.isFinish = true;
+              return;
+            }
           }
         }
       } else if (j === arr.length && arr.length === 5) {
@@ -785,112 +934,253 @@ export default {
         );
 
         if (document.getElementById("selectSentence").value.length === 2) {
-          if (
-            arr[location] ===
-            document.getElementById("selectSentence").value.slice(0, 1) * 1
-          ) {
-            if (this.count != 1) {
-              for (let i = 0; i < this.result.length; i++) {
-                // alert("result="+"<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                //         result +
-                //         "</div>");
-                // alert(this.result[i]);
-                // alert("<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                //         result +
-                //         "</div>");
-                if (
-                  this.result[i] ===
-                  "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                    result +
-                    "</div>"
-                ) {
-                  this.isEqual = true;
+          if(document.getElementById("selectSentence").value.slice(1, 2)!=7) {
+            if (
+                    arr[location] ===
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1
+            ) {
+              if (this.count != 1) {
+                for (let i = 0; i < this.result.length; i++) {
+                  if (
+                          this.result[i] ===
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>"
+                  ) {
+                    this.isEqual = true;
+                  }
                 }
-              }
-              if (!this.isEqual) {
+                if (!this.isEqual) {
+                  this.result[this.count - 1] =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.$refs[this.count][0].innerHTML =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.count++;
+                }
+              } else {
                 this.result[this.count - 1] =
-                  "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>";
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
                 this.$refs[this.count][0].innerHTML =
-                  "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>";
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
                 this.count++;
               }
-            } else {
-              this.result[this.count - 1] =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
-              this.$refs[this.count][0].innerHTML =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
-              this.count++;
+              if (this.result.length === 24) {
+                this.isFinish = true;
+                return;
+              }
             }
-            if (this.result.length === 24) {
-              this.isFinish = true;
-              return;
+          }else{
+            if (
+                    arr[0] ===
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1 ||
+                    arr[4] ===
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1
+            ) {
+              if (this.count != 1) {
+                for (let i = 0; i < this.result.length; i++) {
+                  if (
+                          this.result[i] ===
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>"
+                  ) {
+                    this.isEqual = true;
+                  }
+                }
+                if (!this.isEqual) {
+                  this.result[this.count - 1] =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.$refs[this.count][0].innerHTML =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.count++;
+                }
+              } else {
+                this.result[this.count - 1] =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.$refs[this.count][0].innerHTML =
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
+                this.count++;
+              }
+              if (this.result.length === 48) {
+                this.isFinish = true;
+                return;
+              }
             }
           }
         }
 
         if (document.getElementById("selectSentence").value.length === 4) {
-          let location1 = this.mapFiveOption.get(
-            document.getElementById("selectSentence").value.slice(3, 4) * 1
-          );
-          if (
-            arr[location] ===
-              document.getElementById("selectSentence").value.slice(0, 1) * 1 &&
-            arr[location1] ===
-              document.getElementById("selectSentence").value.slice(2, 3) * 1
-          ) {
-            if (this.count != 1) {
-              for (let i = 0; i < this.result.length; i++) {
-                // alert("result="+"<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                //         result +
-                //         "</div>");
-                // alert(this.result[i]);
-                // alert("<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                //         result +
-                //         "</div>");
-                if (
-                  this.result[i] ===
-                  "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                    result +
-                    "</div>"
-                ) {
-                  this.isEqual = true;
+          if(document.getElementById("selectSentence").value.slice(1, 2) != 7 && document.getElementById("selectSentence").value.slice(3, 4) != 7){
+            let location1 = this.mapFiveOption.get(
+                    document.getElementById("selectSentence").value.slice(3, 4) * 1
+            );
+            if (
+                    arr[location] ===
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1 &&
+                    arr[location1] ===
+                    document.getElementById("selectSentence").value.slice(2, 3) * 1
+            ) {
+              if (this.count != 1) {
+                for (let i = 0; i < this.result.length; i++) {
+                  // alert("result="+"<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                  //         result +
+                  //         "</div>");
+                  // alert(this.result[i]);
+                  // alert("<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                  //         result +
+                  //         "</div>");
+                  if (
+                          this.result[i] ===
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>"
+                  ) {
+                    this.isEqual = true;
+                  }
                 }
-              }
-              if (!this.isEqual) {
+                if (!this.isEqual) {
+                  this.result[this.count - 1] =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.$refs[this.count][0].innerHTML =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.count++;
+                }
+              } else {
                 this.result[this.count - 1] =
-                  "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>";
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
                 this.$refs[this.count][0].innerHTML =
-                  "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                  result +
-                  "</div>";
+                        "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                        result +
+                        "</div>";
                 this.count++;
               }
-            } else {
-              this.result[this.count - 1] =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
-              this.$refs[this.count][0].innerHTML =
-                "<div style='border: 1px solid; width: 85%; text-align: center'>" +
-                result +
-                "</div>";
-              this.count++;
+            }
+            if (this.result.length === 6) {
+              this.isFinish = true;
+              return;
+            }
+          }else{
+            if(document.getElementById("selectSentence").value.slice(1, 2) == 7 && document.getElementById("selectSentence").value.slice(3, 4) != 7){
+              let location1 = this.mapFiveOption.get(
+                      document.getElementById("selectSentence").value.slice(3, 4) * 1
+              );
+              if (
+                      (arr[0] ===
+                      document.getElementById("selectSentence").value.slice(0, 1) * 1 || arr[4] ===
+                      document.getElementById("selectSentence").value.slice(0, 1) * 1) &&
+                      arr[location1] ===
+                      document.getElementById("selectSentence").value.slice(2, 3) * 1
+              ) {
+                if (this.count != 1) {
+                  for (let i = 0; i < this.result.length; i++) {
+                    if (
+                            this.result[i] ===
+                            "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                            result +
+                            "</div>"
+                    ) {
+                      this.isEqual = true;
+                    }
+                  }
+                  if (!this.isEqual) {
+                    this.result[this.count - 1] =
+                            "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                            result +
+                            "</div>";
+                    this.$refs[this.count][0].innerHTML =
+                            "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                            result +
+                            "</div>";
+                    this.count++;
+                  }
+                } else {
+                  this.result[this.count - 1] =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.$refs[this.count][0].innerHTML =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.count++;
+                }
+              }
+              if (this.result.length === 12) {
+                this.isFinish = true;
+                return;
+              }
+            }
+            if(document.getElementById("selectSentence").value.slice(1, 2) != 7 && document.getElementById("selectSentence").value.slice(3, 4) == 7){
+              if (
+                      (arr[0] ===
+                              document.getElementById("selectSentence").value.slice(2, 3) * 1 || arr[4] ===
+                              document.getElementById("selectSentence").value.slice(2, 3) * 1) &&
+                      arr[location] ===
+                      document.getElementById("selectSentence").value.slice(0, 1) * 1
+              ) {
+                if (this.count != 1) {
+                  for (let i = 0; i < this.result.length; i++) {
+                    if (
+                            this.result[i] ===
+                            "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                            result +
+                            "</div>"
+                    ) {
+                      this.isEqual = true;
+                    }
+                  }
+                  if (!this.isEqual) {
+                    this.result[this.count - 1] =
+                            "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                            result +
+                            "</div>";
+                    this.$refs[this.count][0].innerHTML =
+                            "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                            result +
+                            "</div>";
+                    this.count++;
+                  }
+                } else {
+                  this.result[this.count - 1] =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.$refs[this.count][0].innerHTML =
+                          "<div style='border: 1px solid; width: 85%; text-align: center'>" +
+                          result +
+                          "</div>";
+                  this.count++;
+                }
+              }
+              if (this.result.length === 12) {
+                this.isFinish = true;
+                return;
+              }
             }
           }
-          if (this.result.length === 6) {
-            this.isFinish = true;
-            return;
-          }
+
         }
       } else {
         for (let i = j; i < arr.length; i++) {
@@ -920,24 +1210,39 @@ export default {
         res += id1;
         res += id2;
         res += id3;
-        curLocation = this.mapThreeOption.get(
-          document.getElementById("selectSentence").value.slice(1, 2) * 1
-        );
-        curId = this.mapCarname.get(
-          document.getElementById("selectSentence").value.slice(0, 1) * 1
-        );
+        if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7){
+          curLocation = this.mapThreeOption.get(
+                  document.getElementById("selectSentence").value.slice(1, 2) * 1
+          );
+          curId = this.mapCarname.get(
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          );
 
-        if (curLocation == 0) {
-          trueID = id1;
-        } else if (curLocation == 1) {
-          trueID = id2;
-        } else trueID = id3;
-        if (curId == trueID) {
-          this.okClicked();
-        } else if (curId != trueID) {
-          this.isAlert = false;
-          this.alertMessage = "The solution is not correct!";
+          if (curLocation == 0) {
+            trueID = id1;
+          } else if (curLocation == 1) {
+            trueID = id2;
+          } else trueID = id3;
+          if (curId == trueID) {
+            this.okClicked();
+          } else if (curId != trueID) {
+            this.isAlert = false;
+            this.alertMessage = "The solution is not correct!";
+          }
+        }else{
+          curId = this.mapCarname.get(
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          );
+
+          if (curId == id1 || curId == id3) {
+            this.okClicked();
+          } else {
+            this.isAlert = false;
+            this.alertMessage = "The solution is not correct!";
+          }
         }
+
+
       }
       if (count == 4) {
         let id4 = document.getElementById("dropzone4").children[0].children[0]
@@ -947,24 +1252,37 @@ export default {
         res += id2;
         res += id3;
         res += id4;
-        curLocation = this.mapFourOption.get(
-          document.getElementById("selectSentence").value.slice(1, 2) * 1
-        );
-        curId = this.mapCarname.get(
-          document.getElementById("selectSentence").value.slice(0, 1) * 1
-        );
-        if (curLocation == 0) {
-          trueID = id1;
-        } else if (curLocation == 1) {
-          trueID = id2;
-        } else if (curLocation == 2) {
-          trueID = id3;
-        } else trueID = id4;
-        if (curId == trueID) {
-          this.okClicked();
-        } else if (curId != trueID) {
-          this.isAlert = false;
-          this.alertMessage = "The solution is not correct!";
+        if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7) {
+          curLocation = this.mapFourOption.get(
+                  document.getElementById("selectSentence").value.slice(1, 2) * 1
+          );
+          curId = this.mapCarname.get(
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          );
+          if (curLocation == 0) {
+            trueID = id1;
+          } else if (curLocation == 1) {
+            trueID = id2;
+          } else if (curLocation == 2) {
+            trueID = id3;
+          } else trueID = id4;
+          if (curId == trueID) {
+            this.okClicked();
+          } else if (curId != trueID) {
+            this.isAlert = false;
+            this.alertMessage = "The solution is not correct!";
+          }
+        }else{
+          curId = this.mapCarname.get(
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
+          );
+
+          if (curId == id1 || curId == id4) {
+            this.okClicked();
+          } else {
+            this.isAlert = false;
+            this.alertMessage = "The solution is not correct!";
+          }
         }
       }
       if (count == 5) {
@@ -979,42 +1297,111 @@ export default {
         res += id4;
         res += id5;
         if (document.getElementById("selectSentence").value.length === 2) {
-          curLocation = this.mapFiveOption.get(
-            document.getElementById("selectSentence").value.slice(1, 2) * 1
-          );
-          curId = this.mapCarname.get(
-            document.getElementById("selectSentence").value.slice(0, 1) * 1
-          );
-          if (curLocation == 0) {
-            trueID = id1;
-          } else if (curLocation == 1) {
-            trueID = id2;
-          } else if (curLocation == 2) {
-            trueID = id3;
-          } else if (curLocation == 3) {
-            trueID = id4;
+          if (document.getElementById("selectSentence").value.slice(1, 2) * 1 != 7) {
+            curLocation = this.mapFiveOption.get(
+                    document.getElementById("selectSentence").value.slice(1, 2) * 1
+            );
+            curId = this.mapCarname.get(
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1
+            );
+            if (curLocation == 0) {
+              trueID = id1;
+            } else if (curLocation == 1) {
+              trueID = id2;
+            } else if (curLocation == 2) {
+              trueID = id3;
+            } else if (curLocation == 3) {
+              trueID = id4;
+            } else {
+              trueID = id5;
+            }
+            if (curId == trueID) {
+              this.okClicked();
+            } else if (curId != trueID) {
+              this.isAlert = false;
+              this.alertMessage = "The solution is not correct!";
+            }
           } else {
-            trueID = id5;
-          }
-          if (curId == trueID) {
-            this.okClicked();
-          } else if (curId != trueID) {
-            this.isAlert = false;
-            this.alertMessage = "The solution is not correct!";
+            curId = this.mapCarname.get(
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1
+            );
+
+            if (curId == id1 || curId == id5) {
+              this.okClicked();
+            } else {
+              this.isAlert = false;
+              this.alertMessage = "The solution is not correct!";
+            }
           }
         }
         if (document.getElementById("selectSentence").value.length === 4) {
+          if (document.getElementById("selectSentence").value.slice(1, 2) == 7 && document.getElementById("selectSentence").value.slice(3, 4) != 7) {
+            curId = this.mapCarname.get(
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1
+            );
+            let curLocation1 = this.mapFiveOption.get(
+                    document.getElementById("selectSentence").value.slice(3, 4) * 1
+            );
+            let curId1 = this.mapCarname.get(
+                    document.getElementById("selectSentence").value.slice(2, 3) * 1
+            );
+            if (curLocation1 == 0) {
+              trueID1 = id1;
+            } else if (curLocation1 == 1) {
+              trueID1 = id2;
+            } else if (curLocation1 == 2) {
+              trueID1 = id3;
+            } else if (curLocation1 == 3) {
+              trueID1 = id4;
+            } else {
+              trueID1 = id5;
+            }
+            if ((curId == id1 || curId == id5) && curId1 == trueID1) {
+              this.okClicked();
+            } else {
+              this.isAlert = false;
+              this.alertMessage = "The solution is not correct!";
+            }
+          }else if (document.getElementById("selectSentence").value.slice(3, 4) == 7 && document.getElementById("selectSentence").value.slice(1, 2) != 7){
+            curLocation = this.mapFiveOption.get(
+                    document.getElementById("selectSentence").value.slice(1, 2) * 1
+            );
+            curId = this.mapCarname.get(
+                    document.getElementById("selectSentence").value.slice(0, 1) * 1
+            );
+
+            let curId1 = this.mapCarname.get(
+                    document.getElementById("selectSentence").value.slice(2, 3) * 1
+            );
+            if (curLocation == 0) {
+              trueID = id1;
+            } else if (curLocation == 1) {
+              trueID = id2;
+            } else if (curLocation == 2) {
+              trueID = id3;
+            } else if (curLocation == 3) {
+              trueID = id4;
+            } else {
+              trueID = id5;
+            }
+            if (curId == trueID && (curId1 == id1 || curId1 == id5)) {
+              this.okClicked();
+            } else {
+              this.isAlert = false;
+              this.alertMessage = "The solution is not correct!";
+            }
+          }else{
           curLocation = this.mapFiveOption.get(
-            document.getElementById("selectSentence").value.slice(1, 2) * 1
+                  document.getElementById("selectSentence").value.slice(1, 2) * 1
           );
           curId = this.mapCarname.get(
-            document.getElementById("selectSentence").value.slice(0, 1) * 1
+                  document.getElementById("selectSentence").value.slice(0, 1) * 1
           );
           let curLocation1 = this.mapFiveOption.get(
-            document.getElementById("selectSentence").value.slice(3, 4) * 1
+                  document.getElementById("selectSentence").value.slice(3, 4) * 1
           );
           let curId1 = this.mapCarname.get(
-            document.getElementById("selectSentence").value.slice(2, 3) * 1
+                  document.getElementById("selectSentence").value.slice(2, 3) * 1
           );
           if (curLocation == 0) {
             trueID = id1;
@@ -1044,6 +1431,7 @@ export default {
             this.isAlert = false;
             this.alertMessage = "The solution is not correct!";
           }
+        }
         }
       }
     },
@@ -1078,40 +1466,96 @@ export default {
         "</div>";
       this.result.push([a, b, c, d, g]);
       if (this.carNumber == 3) {
-        this.alertMessage = "Correct! There are 2 ways in total.";
+        if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7){
+          this.alertMessage = "Correct! There are 2 ways in total.";
+        }else{
+          this.alertMessage = "Correct! There are 4 ways in total.";
+        }
+
       }
       if (this.carNumber == 4) {
-        this.alertMessage = "Correct! There are 6 ways in total.";
+        if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7){
+          this.alertMessage = "Correct! There are 6 ways in total.";
+        }else{
+          this.alertMessage = "Correct! There are 12 ways in total.";
+        }
       }
       if (this.carNumber == 5) {
         if (document.getElementById("selectSentence").value.length === 4) {
-          this.alertMessage = "Correct! There are 6 ways in total.";
+          if(document.getElementById("selectSentence").value.slice(1, 2)==7||document.getElementById("selectSentence").value.slice(3, 4)){
+            this.alertMessage = "Correct! There are 12 ways in total.";
+          }else{
+            this.alertMessage = "Correct! There are 6 ways in total.";
+          }
         } else {
-          this.alertMessage = "Correct! There are 24 ways in total.";
+          if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7){
+            this.alertMessage = "Correct! There are 24 ways in total.";
+          }else{
+            this.alertMessage = "Correct! There are 48 ways in total.";
+          }
         }
       }
       this.isAlert = true;
       this.count++;
       if (this.carNumber == 3) {
-        if (parseInt(this.count - 1) === 2) {
-          this.alertMessage = "All 2 ways found!";
-          this.isAlert = true;
-          this.isFinish = true;
+        if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7) {
+          if (parseInt(this.count - 1) === 2) {
+            this.alertMessage = "All 2 ways found!";
+            this.isAlert = true;
+            this.isFinish = true;
+          }
+        }else{
+          if (parseInt(this.count - 1) === 4) {
+            this.alertMessage = "All 4 ways found!";
+            this.isAlert = true;
+            this.isFinish = true;
+          }
         }
       }
       if (this.carNumber == 4) {
-        if (parseInt(this.count - 1) === 6) {
-          this.alertMessage = "All 6 ways found!";
-          this.isAlert = true;
-          this.isFinish = true;
+        if(document.getElementById("selectSentence").value.slice(1, 2) * 1!=7) {
+          if (parseInt(this.count - 1) === 6) {
+            this.alertMessage = "All 6 ways found!";
+            this.isAlert = true;
+            this.isFinish = true;
+          }
+        }else{
+          if (parseInt(this.count - 1) === 12) {
+            this.alertMessage = "All 12 ways found!";
+            this.isAlert = true;
+            this.isFinish = true;
+          }
         }
       }
       if (this.carNumber == 5) {
-        if (parseInt(this.count - 1) === 24) {
-          this.alertMessage = "All 24 ways found!";
-          this.isAlert = true;
-          this.isFinish = true;
+        if (document.getElementById("selectSentence").value.length == 4) {
+          if(document.getElementById("selectSentence").value.slice(1, 2)==7||document.getElementById("selectSentence").value.slice(3, 4)){
+            if (parseInt(this.count - 1) === 12) {
+              this.alertMessage = "All 12 ways found!";
+              this.isAlert = true;
+              this.isFinish = true;
+            }
+          }else {
+            if (parseInt(this.count - 1) === 6) {
+              this.alertMessage = "All 6 ways found!";
+              this.isAlert = true;
+              this.isFinish = true;
+            }
+          }
+        } else{ if (document.getElementById("selectSentence").value.slice(1, 2) * 1 != 7) {
+          if (parseInt(this.count - 1) === 24) {
+            this.alertMessage = "All 24 ways found!";
+            this.isAlert = true;
+            this.isFinish = true;
+          }
+        } else {
+          if (parseInt(this.count - 1) === 48) {
+            this.alertMessage = "All 48 ways found!";
+            this.isAlert = true;
+            this.isFinish = true;
+          }
         }
+      }
       }
     },
     initReset: function() {
@@ -1250,7 +1694,7 @@ export default {
       }
       this.isAlert = false;
       this.alertMessage = "";
-      for (let i = 1; i <= 24; i++) {
+      for (let i = 1; i <= 48; i++) {
         this.$refs[i][0].innerHTML = "";
       }
       this.count = 1;
@@ -1646,7 +2090,7 @@ export default {
 }
 
 .drop-target {
-  background: #f4ffec;
+  background: #7fff99;
 }
 
 .dropzone-drop {
