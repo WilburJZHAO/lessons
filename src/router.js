@@ -397,6 +397,12 @@ const WhatsMyRule = resolve => {
   });
 };
 
+const FractionEstimation = resolve => {
+  require.ensure("./components/lessons/fraction-estimation/App.vue", () => {
+    resolve(require("./components/lessons/fraction-estimation/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -741,7 +747,12 @@ const routes = [
     component: CarsInAGarage,
     name: "Cars In A Garage"
   },
-  { path: "/whats-my-rule", component: WhatsMyRule, name: "What's My Rule" }
+  { path: "/whats-my-rule", component: WhatsMyRule, name: "What's My Rule" },
+  {
+    path: "/fraction-estimation",
+    component: FractionEstimation,
+    name: "Fraction Estimation"
+  }
 ];
 
 const router = new VueRouter({
