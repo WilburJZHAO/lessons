@@ -403,6 +403,12 @@ const FractionEstimation = resolve => {
   });
 };
 
+const FractionsToDecimals = resolve => {
+  require.ensure("./components/lessons/fractions-to-decimals/App.vue", () => {
+    resolve(require("./components/lessons/fractions-to-decimals/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -752,6 +758,11 @@ const routes = [
     path: "/fraction-estimation",
     component: FractionEstimation,
     name: "Fraction Estimation"
+  },
+  {
+    path: "/fractions-to-decimals",
+    component: FractionsToDecimals,
+    name: "Fractions To Decimals"
   }
 ];
 

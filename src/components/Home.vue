@@ -90,7 +90,8 @@ export default {
         { name: "Heads and Legs", link: "/heads-and-legs" },
         { name: "Cars In A Garage", link: "/cars-in-a-garage" },
         { name: "What's My Rule", link: "/whats-my-rule" },
-        { name: "Fraction Estimation", link: "/fraction-estimation" }
+        { name: "Fraction Estimation", link: "/fraction-estimation" },
+        { name: "Fractions To Decimals", link: "/fractions-to-decimals" }
       ]
     };
   },
