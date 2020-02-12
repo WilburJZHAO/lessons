@@ -39,7 +39,8 @@ export default {
       layer: null,
       tagLayer: null,
       ropeData: [],
-      status: 0
+      status: 0,
+      targetTagContainer: null
     };
   },
   methods: {
@@ -219,7 +220,7 @@ export default {
       this.stage.on("dragend", e => {
         // console.log(this.tagContainer);
         const targetId = e.target._id;
-        const targetTagContainer = this.tagContainer.find(tag => {
+        this.targetTagContainer = this.tagContainer.find(tag => {
           return tag._id === targetId;
         });
         const targetTag = this.ropeData.find(el => el.id === targetId);
@@ -230,10 +231,24 @@ export default {
           targetTag.positioned = true;
         } else {
           targetTag.positioned = false;
+          this.targetTagContainer.fire(
+            "drop",
+            {
+              type: "drop",
+              target: this.targetTagContainer,
+              evt: e.evt
+            },
+            true
+          );
         }
+      });
 
-        // console.log(targetId, e.target.attrs.x, e.target.attrs.y);
-        // console.log(this.tagArr[targetTagContainer.index]);
+      this.stage.on("drop", e => {
+        e.target.position({ x: 0, y: 0 });
+        e.target.draw();
+
+        // console.log("drop end", e.target.position());
+        this.stage.add(this.tagLayer);
       });
       this.stage.add(this.tagLayer);
     },
