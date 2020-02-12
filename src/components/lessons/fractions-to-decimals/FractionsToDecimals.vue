@@ -6,11 +6,7 @@
       <div class="col-md-3">
         <div class="mb-3">
           <label>Enter an estimate of the decimal equivalent</label>
-          <input
-            type="number"
-            class="form-control mb-2"
-            v-model.number="decimalInput"
-          />
+          <input type="number" class="form-control mb-2" v-model.number="decimalInput" />
           <h5 v-if="status === 2" class="text-center">{{ decimalData }}</h5>
         </div>
         <div class="text-center mb-2">
@@ -18,22 +14,17 @@
             class="btn btn-outline-dark mb-2"
             @click="handleNext"
             :disabled="status !== 2"
-          >
-            Next
-          </button>
+          >Next</button>
           <br />
-          <button
-            class="btn btn-outline-success"
-            @click="handleCheck"
-            :disabled="status !== 1"
-          >
-            OK
-          </button>
+          <button class="btn btn-outline-success" @click="handleCheck" :disabled="status !== 1">OK</button>
         </div>
         <div>
-          <h3 class="text-center">
-            {{ fractionData.numerator }} / {{ fractionData.denominator }}
-          </h3>
+          <h3 class="text-center" style="transform: translateY(100%);">{{ fractionData.numerator }}</h3>
+          <h3 class="text-center">___</h3>
+          <h3
+            class="text-center"
+            style="transform: translateY(-20%);"
+          >{{ fractionData.denominator }}</h3>
         </div>
         <app-fraction-selection
           :fractionSelection="fractionSelection"
@@ -43,9 +34,7 @@
       <div class="col-md-9">
         <div id="ropeContainer" class="canvasContainer"></div>
         <div class="text-danger mb-3 text-center">
-          <span v-if="status !== 2"
-            >Click on the pink rope to estimate the given fraction</span
-          >
+          <span v-if="status !== 2">Click on the pink rope to estimate the given fraction</span>
           <span v-if="status === 2">Next button for new challenge</span>
         </div>
         <app-accuracy-stat

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered text-center table-danger">
       <thead>
         <tr>
           <th>Trial number</th>
@@ -11,22 +11,13 @@
       <tbody>
         <tr>
           <td>
-            <span
-              :style="{ visibility: trialNumber > 0 ? 'visible' : 'hidden' }"
-              >{{ trialNumber }}</span
-            >
+            <span :style="{ visibility: trialNumber > 0 ? 'visible' : 'hidden' }">{{ trialNumber }}</span>
           </td>
           <td>
-            <span
-              :style="{ visibility: trialNumber > 0 ? 'visible' : 'hidden' }"
-              >{{ estAccuracy }}%</span
-            >
+            <span :style="{ visibility: trialNumber > 0 ? 'visible' : 'hidden' }">{{ estAccuracy }}%</span>
           </td>
           <td>
-            <span
-              :style="{ visibility: trialNumber > 0 ? 'visible' : 'hidden' }"
-              >{{ average }}%</span
-            >
+            <span :style="{ visibility: trialNumber > 0 ? 'visible' : 'hidden' }">{{ average }}%</span>
           </td>
         </tr>
       </tbody>
