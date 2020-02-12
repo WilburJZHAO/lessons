@@ -172,7 +172,7 @@ export default {
         this.canDrag = true;
       });
       this.stage.on("touchmove", () => {
-        console.log("move", this.canDrag);
+        // console.log("move", this.canDrag);
         const mousePos = this.stage.getPointerPosition();
         if (this.canDrag) {
           // console.log(mousePos);
@@ -223,7 +223,7 @@ export default {
     drawTags() {
       // this.tagLayer = new Konva.Layer();
       const unitRopeWidth = this.ropeWidth / 10;
-      const length = 11;
+      // const length = 11;
       const offsetX = (this.maxWidth - this.ropeWidth) / 2;
 
       [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1].forEach(
