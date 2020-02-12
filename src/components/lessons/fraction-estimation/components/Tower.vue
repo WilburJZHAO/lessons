@@ -229,7 +229,7 @@ export default {
             canvasConstant.START_X + canvasConstant.TOWER_WIDTH,
             canvasConstant.START_Y + this.rectDiviedHeight
           ],
-          stroke: "white",
+          stroke: "red",
           strokeWidth: 2
         });
         this.layer.add(dividedLine);

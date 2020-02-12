@@ -290,7 +290,7 @@ export default {
             position.x,
             position.y
           ],
-          stroke: "white",
+          stroke: "red",
           strokeWidth: 2
         });
         this.layer.add(dividedLine);

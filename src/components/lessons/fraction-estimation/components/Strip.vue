@@ -225,7 +225,7 @@ export default {
             canvasConstant.START_X + this.rectDividedWidth,
             canvasConstant.START_Y + canvasConstant.STRIP_HEIGHT
           ],
-          stroke: "white",
+          stroke: "red",
           strokeWidth: 2
         });
         this.layer.add(dividedLine);
