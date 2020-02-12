@@ -66,8 +66,9 @@ export default {
       maxWidth: 0,
       stage: null,
       layer: null,
-      tagLayer: null,
-      divideLineLayer: null,
+      // tagLayer: null,
+      // divideLineLayer: null,
+      divideLine: null,
       tagLineLayer: null,
       canDrag: false,
       divideLineX: 0,
@@ -158,12 +159,41 @@ export default {
           ).toFixed(3)
         );
       });
+
+      this.stage.on("touchstart", () => {
+        if (this.status === 2) {
+          return;
+        }
+        if (this.status === 0) {
+          this.status = 1;
+        }
+        const mousePos = this.stage.getPointerPosition();
+        this.drawDivideLine(mousePos.x, 0, mousePos.x, APP_CONST.ROPE_HEIGHT);
+        this.canDrag = true;
+      });
+      this.stage.on("touchmove", () => {
+        console.log("move", this.canDrag);
+        const mousePos = this.stage.getPointerPosition();
+        if (this.canDrag) {
+          // console.log(mousePos);
+          this.drawDivideLine(mousePos.x, 0, mousePos.x, APP_CONST.ROPE_HEIGHT);
+        }
+      });
+      this.stage.on("touchend", () => {
+        this.canDrag = false;
+        this.estimateDecimal = Number(
+          (
+            (this.divideLineX - (this.maxWidth - this.ropeWidth) / 2) /
+            this.ropeWidth
+          ).toFixed(3)
+        );
+      });
     },
     drawDivideLine(startX, startY, endX, endY) {
-      if (this.divideLineLayer) {
-        this.divideLineLayer.destroy();
-      }
-      this.divideLineLayer = new Konva.Layer();
+      // if (!this.divideLineLayer) {
+      // this.divideLineLayer.destroy();
+      // this.divideLineLayer = new Konva.Layer();
+      // }
       const boundaryLeft = (this.maxWidth - this.ropeWidth) / 2;
       const boundaryRight = boundaryLeft + this.ropeWidth;
       this.divideLineX =
@@ -172,17 +202,26 @@ export default {
           : startX >= boundaryRight
           ? boundaryRight
           : startX;
-
-      const line = new Konva.Line({
-        points: [this.divideLineX, startY, this.divideLineX, endY],
-        stroke: "black",
-        strokeWidth: 1
-      });
-      this.divideLineLayer.add(line);
-      this.stage.add(this.divideLineLayer);
+      if (!this.divideLine) {
+        this.divideLine = new Konva.Line({
+          points: [this.divideLineX, startY, this.divideLineX, endY],
+          stroke: "black",
+          strokeWidth: 1
+        });
+      } else {
+        this.divideLine.points([
+          this.divideLineX,
+          startY,
+          this.divideLineX,
+          endY
+        ]);
+        this.divideLine.draw();
+      }
+      this.layer.add(this.divideLine);
+      this.stage.add(this.layer);
     },
     drawTags() {
-      this.tagLayer = new Konva.Layer();
+      // this.tagLayer = new Konva.Layer();
       const unitRopeWidth = this.ropeWidth / 10;
       const length = 11;
       const offsetX = (this.maxWidth - this.ropeWidth) / 2;
@@ -210,12 +249,12 @@ export default {
             fontSize: 13,
             fill: "blue"
           });
-          this.tagLayer.add(tag);
-          this.tagLayer.add(text);
+          this.layer.add(tag);
+          this.layer.add(text);
         }
       );
 
-      this.stage.add(this.tagLayer);
+      this.stage.add(this.layer);
     },
 
     drawTagsLine() {

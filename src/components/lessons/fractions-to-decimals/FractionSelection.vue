@@ -10,7 +10,7 @@
         />
         <label :for="index" class="form-check-label">{{ el.number}} {{ el.words}}</label>
       </div>
-      <div class="mt-3 text-center">
+      <div class="my-3 text-center">
         <button class="btn btn-outline-success" @click="handleOk">OK</button>
       </div>
     </div>
@@ -22,7 +22,7 @@
           {{ fractionSelection[index].words}}
         </span>
       </div>
-      <div class="mt-3 text-center">
+      <div class="my-3 text-center">
         <button class="btn btn-outline-success" @click="editMode = true">Change fractions</button>
       </div>
     </div>
