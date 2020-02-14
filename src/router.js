@@ -409,6 +409,12 @@ const FractionsToDecimals = resolve => {
   });
 };
 
+const MathsOfLotto = resolve => {
+  require.ensure("./components/lessons/maths-of-lotto/App.vue", () => {
+    resolve(require("./components/lessons/maths-of-lotto/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -763,6 +769,11 @@ const routes = [
     path: "/fractions-to-decimals",
     component: FractionsToDecimals,
     name: "Fractions To Decimals"
+  },
+  {
+    path: "/maths-of-lotto",
+    component: MathsOfLotto,
+    name: "Maths Of Lotto"
   }
 ];
 

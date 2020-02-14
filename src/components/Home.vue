@@ -1,18 +1,12 @@
 <template>
-  <transition
-    appear
-    appear-class="options-appear"
-    appear-active-class="options-appear-active"
-  >
+  <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
     <div class="container app--link-list">
-      <div
-        class="app--link-item"
-        v-for="lesson in sortedLessons"
-        :key="lesson.name"
-      >
-        <router-link :to="lesson.link" class="btn btn-outline-success">{{
+      <div class="app--link-item" v-for="lesson in sortedLessons" :key="lesson.name">
+        <router-link :to="lesson.link" class="btn btn-outline-success">
+          {{
           lesson.name
-        }}</router-link>
+          }}
+        </router-link>
       </div>
     </div>
   </transition>
@@ -91,7 +85,8 @@ export default {
         { name: "Cars In A Garage", link: "/cars-in-a-garage" },
         { name: "What's My Rule", link: "/whats-my-rule" },
         { name: "Fraction Estimation", link: "/fraction-estimation" },
-        { name: "Fractions To Decimals", link: "/fractions-to-decimals" }
+        { name: "Fractions To Decimals", link: "/fractions-to-decimals" },
+        { name: "Maths Of Lotto", link: "/maths-of-lotto" }
       ]
     };
   },
