@@ -37,7 +37,7 @@
               </tr>
               <tr class="table-danger">
                 <th>Volume</th>
-                <td>{{volume}}</td>
+                <td>{{Number(volume.toFixed(6))}}</td>
               </tr>
             </table>
           </div>
@@ -50,7 +50,9 @@
               </tr>
               <tr v-for="(box, index) in boxVolumeArr" :key="index">
                 <td>{{ box.squareLength }}</td>
-                <td :class="{'text-danger': index==biggestVolumeIndex }">{{ box.volume }}</td>
+                <td
+                  :class="{'text-danger': index==biggestVolumeIndex }"
+                >{{ Number(box.volume.toFixed(6)) }}</td>
               </tr>
             </table>
           </div>
@@ -101,10 +103,10 @@ export default {
       // console.log(this.squareSize);
       if (
         this.squareSize.toString().split(".")[1] &&
-        this.squareSize.toString().split(".")[1].length > 1
+        this.squareSize.toString().split(".")[1].length > 6
       ) {
         this.isInvalidInput = true;
-        this.errorMsg = "Please input a number with no more than 1 decimals";
+        this.errorMsg = "Please input a number with no more than 6 decimals";
         return;
       }
       // Check if the input is between 0 and maxSquareSize

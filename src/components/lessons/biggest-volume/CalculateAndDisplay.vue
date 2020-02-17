@@ -154,7 +154,7 @@ export default {
     squareLength: function(squareLength) {
       if (
         // Check input in square length
-        calDecimal(squareLength) > 1 ||
+        calDecimal(squareLength) > 6 ||
         squareLength > this.maxSquareLength ||
         squareLength <= 0
       ) {
@@ -166,7 +166,7 @@ export default {
     incrementLength: function(incrementLength) {
       if (
         // Check input in increment length
-        calDecimal(incrementLength) > 1 ||
+        calDecimal(incrementLength) > 6 ||
         incrementLength <= 0 ||
         incrementLength > this.maxIncrementLength
       ) {
@@ -212,7 +212,7 @@ export default {
         // console.log(volume);
         this.boxVolumeArr.push({
           squareSize: size,
-          volume
+          volume: Number(volume.toFixed(6))
         });
       }
       // console.log(this.boxVolumeArr);
