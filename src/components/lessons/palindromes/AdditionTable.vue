@@ -1,6 +1,6 @@
 <template>
-  <div class="app--table-container">
-    <table class="table app--table">
+  <div class="app--table-container" id="add-table-container">
+    <table class="table app--table" style="margin-bottom: 100px;">
       <tbody v-for="k in 3" :key="k-1">
         <tr class="table-success">
           <td>{{tableData && tableData[k-1] && tableData[k-1].number }}</td>
@@ -30,6 +30,12 @@
 <script>
 export default {
   props: ["tableData"],
+  watch: {
+    tableData() {
+      const addTableContainer = document.getElementById("add-table-container");
+      addTableContainer.scrollTop = addTableContainer.scrollHeight + 500;
+    }
+  },
   computed: {
     remainTableData() {
       if (!this.tableData || this.tableData.length <= 3) {
@@ -49,7 +55,7 @@ export default {
 <style scoped>
 .app--table-container {
   max-width: 100%;
-  max-height: 470px;
+  max-height: 450px;
   overflow-y: auto;
   overflow-x: auto;
 }

@@ -1,6 +1,9 @@
 <template>
-  <div class="app--table-container">
-    <table class="table table-bordered table-striped text-center app--table">
+  <div class="app--table-container" id="table-container">
+    <table
+      class="table table-bordered table-striped text-center app--table"
+      style="margin-bottom: 32px;"
+    >
       <thead>
         <th>Number</th>
         <th># Additions</th>
@@ -48,6 +51,12 @@
 <script>
 export default {
   props: ["tableData", "selectedIndex"],
+  watch: {
+    tableData(value, oldValue) {
+      const tableContainer = document.getElementById("table-container");
+      tableContainer.scrollTop = tableContainer.scrollHeight;
+    }
+  },
   computed: {
     remainTableData() {
       if (!this.tableData || this.tableData.length <= 8) {
