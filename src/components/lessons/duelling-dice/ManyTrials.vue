@@ -143,9 +143,11 @@
                 greenWinPercentage: "",
                 blackWinPercentage: "",
                 count: 0,
+                gameCount: 0,
                 timer: null,
                 trialNum: "",
                 isSet: false,
+                isDraw: false,
                 finished: false,
                 isStart: false,
                 isAutoStart: false,
@@ -270,8 +272,10 @@
                 }
             },
             startManually() {
+                this.isDraw = false;
                 this.isStart = true;
                 this.count++;
+                this.gameCount++;
                 let winDices = [];
                 this.isRedWin = false;
                 this.isGreenWin = false;
@@ -302,28 +306,38 @@
                         winDices.push(this.diceNumandCol[i]);
                     }
                 }
-                for (let i = 0; i < winDices.length; i++) {
-                    if (winDices[i][1] === "red") {
+                if (winDices.length === 1) {
+                    if (winDices[0][1] === "red") {
                         this.redWinNumber++;
                         this.isRedWin = true;
                     }
-                    if (winDices[i][1] === "blue") {
+                    if (winDices[0][1] === "blue") {
                         this.blueWinNumber++;
                         this.isBlueWin = true;
                     }
-                    if (winDices[i][1] === "green") {
+                    if (winDices[0][1] === "green") {
                         this.greenWinNumber++;
                         this.isGreenWin = true;
                     }
-                    if (winDices[i][1] === "black") {
+                    if (winDices[0][1] === "black") {
                         this.blackWinNumber++;
                         this.isBlackWin = true;
                     }
+                }else{
+                    this.gameCount--;
+                    this.isDraw = true;
                 }
-                this.redWinPercentage = (this.redWinNumber * 100 / this.count).toFixed(1);
-                this.blackWinPercentage = (this.blackWinNumber * 100 / this.count).toFixed(1);
-                this.greenWinPercentage = (this.greenWinNumber * 100 / this.count).toFixed(1);
-                this.blueWinPercentage = (this.blueWinNumber * 100 / this.count).toFixed(1);
+                if(this.count === 0){
+                    this.redWinPercentage = (this.redWinNumber * 100).toFixed(1) + "%";
+                    this.blackWinPercentage = (this.blackWinNumber * 100).toFixed(1) + "%";
+                    this.greenWinPercentage = (this.greenWinNumber * 100).toFixed(1) + "%";
+                    this.blueWinPercentage = (this.blueWinNumber * 100).toFixed(1) + "%";
+                }else{
+                    this.redWinPercentage = (this.redWinNumber * 100 / this.gameCount).toFixed(1) + "%";
+                    this.blackWinPercentage = (this.blackWinNumber * 100 / this.gameCount).toFixed(1) + "%";
+                    this.greenWinPercentage = (this.greenWinNumber * 100 / this.gameCount).toFixed(1) + "%";
+                    this.blueWinPercentage = (this.blueWinNumber * 100 / this.gameCount).toFixed(1) + "%";
+                }
                 if (parseInt(this.count) === parseInt(this.trialNum)) {
                     this.finished = true;
                 }
