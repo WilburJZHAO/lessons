@@ -229,13 +229,13 @@ export const drawCoord = (
 ) => {
   // const biggestVolume = boxVolumeArr[biggestVolumeIndex].volume;
   const xOffset = 10;
-  const xUnit = (270 - xOffset) / 10;
+  const xUnit = (250 - xOffset) / 10;
   const ctx = canvas.getContext("2d");
-  const textOffset = 3;
+  const textOffset = 10;
 
   ctx.beginPath();
   ctx.strokeStyle = "#222";
-  ctx.strokeRect(xOffset, 20, 270, 250);
+  ctx.strokeRect(xOffset, 20, 250, 250);
 
   ctx.font = "16px sans-serif";
   // ctx.fillText('Vol', 2, 145);
@@ -243,7 +243,7 @@ export const drawCoord = (
 
   ctx.beginPath();
   ctx.strokeStyle = "blue";
-  for (let i = xOffset; i <= 270; i += (270 - xOffset) / 10) {
+  for (let i = xOffset; i <= 270; i += (250 - xOffset) / 10) {
     ctx.moveTo(i, 270);
     ctx.lineTo(i, 275);
     ctx.stroke();
@@ -274,8 +274,8 @@ export const drawCoord = (
     biggestVolumeIndex * xUnit + xOffset - textOffset,
     16
   ); // 最大volume值
-  ctx.moveTo(biggestVolumeIndex * ((270 - xOffset) / 10) + xOffset, 270);
-  ctx.lineTo(biggestVolumeIndex * ((270 - xOffset) / 10) + xOffset, 20);
+  ctx.moveTo(biggestVolumeIndex * ((250 - xOffset) / 10) + xOffset, 270);
+  ctx.lineTo(biggestVolumeIndex * ((250 - xOffset) / 10) + xOffset, 20);
   ctx.stroke();
 
   // 画在坐标上的每一个点，每个点对应一个box volume
@@ -287,7 +287,7 @@ export const drawCoord = (
     ctx.beginPath();
     ctx.fillStyle = "blue";
     ctx.arc(
-      ((270 - xOffset) / 10) * i + xOffset,
+      ((250 - xOffset) / 10) * i + xOffset,
       270 - ((boxVolumeArr[i].volume - smallestVolume) / yDiff) * 250,
       4,
       0,
