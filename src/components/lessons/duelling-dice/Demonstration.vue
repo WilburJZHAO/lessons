@@ -40,28 +40,28 @@
                         <td>% Wins</td>
                     </tr>
                     <tr v-if="isRed" style="color: red">
-                        <td>{{isRedWin?"Wins":""}}</td>
+                        <td>{{isRedWin?"Wins":""}}{{isDraw?"Draw":""}}</td>
                         <td><input class="theRed" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="redNumber" readonly id="redPlayNum"></td>
                         <td style="text-align: left">Red</td>
                         <td><input class="theRed" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="redWinNumber" readonly id="redWinNum"></td>
                         <td><input class="theRed" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="redWinPercentage" readonly id="redWinPercentage"></td>
                     </tr>
                     <tr v-if="isBlue" style="color: blue">
-                        <td>{{isBlueWin?"Wins":""}}</td>
+                        <td>{{isBlueWin?"Wins":""}}{{isDraw?"Draw":""}}</td>
                         <td><input class="theBlue" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="blueNumber" readonly id="bluePlayNum"></td>
                         <td style="text-align: left">Blue</td>
                         <td><input class="theBlue" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blueWinNumber" readonly id="blueWinNum"></td>
                         <td><input class="theBlue" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blueWinPercentage" readonly id="blueWinPercentage"></td>
                     </tr>
                     <tr v-if="isGreen" style="color: green">
-                        <td>{{isGreenWin?"Wins":""}}</td>
+                        <td>{{isGreenWin?"Wins":""}}{{isDraw?"Draw":""}}</td>
                         <td><input class="theGreen" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="greenNumber" readonly id="greenPlayNum"></td>
                         <td style="text-align: left">Green</td>
                         <td><input class="theGreen" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="greenWinNumber" readonly id="greenWinNum"></td>
                         <td><input class="theGreen" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="greenWinPercentage" readonly id="greenWinPercentage"></td>
                     </tr>
                     <tr v-if="isBlack" style="color: black">
-                        <td>{{isBlackWin?"Wins":""}}</td>
+                        <td>{{isBlackWin?"Wins":""}}{{isDraw?"Draw":""}}</td>
                         <td><input class="theBlack" style="width: 80%; background: #fff7f2; border: 0px; text-align: center" v-model="blackNumber" readonly id="blackPlayNum"></td>
                         <td style="text-align: left">Black</td>
                         <td><input class="theBlack" style="width: 80%; background: #ebffe8; border: 0px; text-align: center" v-model="blackWinNumber" readonly id="blackWinNum"></td>
@@ -92,7 +92,7 @@
                         <td v-for="i in gameRule.diceFaces">{{gameRule.blackDiceFace[i]}}</td>
                     </tr>
                     <tr>
-                        <td :colspan="gameRule.diceFaces">Game {{count}}</td>
+                        <td :colspan="gameRule.diceFaces">Game {{gameCount}}</td>
                     </tr>
 
                 </table>
@@ -142,6 +142,7 @@
                 blueWinNumber: 0,
                 greenWinNumber: 0,
                 blackWinNumber: 0,
+                gameCount: 0,
                 redWinPercentage: "",
                 blueWinPercentage: "",
                 greenWinPercentage: "",
@@ -162,6 +163,7 @@
                 isBlueWin: false,
                 isGreenWin: false,
                 isBlackWin: false,
+                isDraw: false,
                 a: [],
             };
         },
@@ -271,6 +273,7 @@
                 this.demoAutoOption="2";
             },
             getWinner(){
+                this.isDraw = false;
                 let winDices = [];
                 let winner = this.biggestNum(this.diceNumandCol);
                 for (let i = 0; i < this.diceNumandCol.length; i++) {
@@ -278,28 +281,39 @@
                         winDices.push(this.diceNumandCol[i]);
                     }
                 }
-                for (let i = 0; i < winDices.length; i++) {
-                    if (winDices[i][1] === "red") {
+                if (winDices.length === 1) {
+                    if (winDices[0][1] === "red") {
                         this.redWinNumber++;
                         this.isRedWin = true;
                     }
-                    if (winDices[i][1] === "blue") {
+                    if (winDices[0][1] === "blue") {
                         this.blueWinNumber++;
                         this.isBlueWin = true;
                     }
-                    if (winDices[i][1] === "green") {
+                    if (winDices[0][1] === "green") {
                         this.greenWinNumber++;
                         this.isGreenWin = true;
                     }
-                    if (winDices[i][1] === "black") {
+                    if (winDices[0][1] === "black") {
                         this.blackWinNumber++;
                         this.isBlackWin = true;
                     }
+                }else{
+                    this.count--;
+                    this.isDraw = true;
                 }
-                this.redWinPercentage = (this.redWinNumber * 100 / this.count).toFixed(1) + "%";
-                this.blackWinPercentage = (this.blackWinNumber * 100 / this.count).toFixed(1) + "%";
-                this.greenWinPercentage = (this.greenWinNumber * 100 / this.count).toFixed(1) + "%";
-                this.blueWinPercentage = (this.blueWinNumber * 100 / this.count).toFixed(1) + "%";
+                if(this.count === 0){
+                    this.redWinPercentage = (this.redWinNumber * 100).toFixed(1) + "%";
+                    this.blackWinPercentage = (this.blackWinNumber * 100).toFixed(1) + "%";
+                    this.greenWinPercentage = (this.greenWinNumber * 100).toFixed(1) + "%";
+                    this.blueWinPercentage = (this.blueWinNumber * 100).toFixed(1) + "%";
+                }else{
+                    this.redWinPercentage = (this.redWinNumber * 100 / this.count).toFixed(1) + "%";
+                    this.blackWinPercentage = (this.blackWinNumber * 100 / this.count).toFixed(1) + "%";
+                    this.greenWinPercentage = (this.greenWinNumber * 100 / this.count).toFixed(1) + "%";
+                    this.blueWinPercentage = (this.blueWinNumber * 100 / this.count).toFixed(1) + "%";
+                }
+                this.gameCount = this.count;
                 if(this.demoAutoOption === "2") {
                     this.demoAutoOption="0";
 
@@ -307,9 +321,10 @@
                 this.isDemoStart = false;
             },
             startManually() {
+                this.isDraw = false;
                 this.isStart = true;
                 this.isDemoStart = true;
-                this.count++;
+                this.isDemoStart = true;
                 this.isRedWin = false;
                 this.isGreenWin = false;
                 this.isBlueWin = false;
@@ -328,6 +343,9 @@
                 let greenOutTime = 0;
                 let blackOutTime = 0;
                 let getWinnerTime = 0;
+                if(!this.isDraw){
+                    this.count++;
+                }
                 if(this.isRed){
                     redOutTime = outTime;
                     if(this.isBlue||this.isGreen||this.isBlack){
@@ -349,7 +367,7 @@
                 if(this.isBlack){
                     blackOutTime = outTime;
                 }
-                    getWinnerTime = outTime + 600;
+                getWinnerTime = outTime + 600;
                 if (this.isRed) {
                     setTimeout(this.setRedNumber, redOutTime);
                 }
