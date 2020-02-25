@@ -415,6 +415,12 @@ const MathsOfLotto = resolve => {
   });
 };
 
+const Protons = resolve => {
+  require.ensure("./components/lessons/protons/App.vue", () => {
+    resolve(require("./components/lessons/protons/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -774,6 +780,11 @@ const routes = [
     path: "/maths-of-lotto",
     component: MathsOfLotto,
     name: "Maths Of Lotto"
+  },
+  {
+    path: "/protons",
+    component: Protons,
+    name: "Protons"
   }
 ];
 

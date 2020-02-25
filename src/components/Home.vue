@@ -86,7 +86,8 @@ export default {
         { name: "What's My Rule", link: "/whats-my-rule" },
         { name: "Fraction Estimation", link: "/fraction-estimation" },
         { name: "Fractions To Decimals", link: "/fractions-to-decimals" },
-        { name: "Maths Of Lotto", link: "/maths-of-lotto" }
+        { name: "Maths Of Lotto", link: "/maths-of-lotto" },
+        { name: "Protons & anti-Protons", link: "/protons" }
       ]
     };
   },
