@@ -421,6 +421,12 @@ const Protons = resolve => {
   });
 };
 
+const GameOf31 = resolve => {
+  require.ensure("./components/lessons/game-of-31/App.vue", () => {
+    resolve(require("./components/lessons/game-of-31/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -785,6 +791,11 @@ const routes = [
     path: "/protons",
     component: Protons,
     name: "Protons"
+  },
+  {
+    path: "/game-of-31",
+    component: GameOf31,
+    name: "Game Of 31"
   }
 ];
 

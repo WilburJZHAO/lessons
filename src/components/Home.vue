@@ -87,7 +87,8 @@ export default {
         { name: "Fraction Estimation", link: "/fraction-estimation" },
         { name: "Fractions To Decimals", link: "/fractions-to-decimals" },
         { name: "Maths Of Lotto", link: "/maths-of-lotto" },
-        { name: "Protons & anti-Protons", link: "/protons" }
+        { name: "Protons & anti-Protons", link: "/protons" },
+        { name: "Game Of 31", link: "/game-of-31" }
       ]
     };
   },
