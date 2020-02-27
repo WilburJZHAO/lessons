@@ -427,6 +427,12 @@ const GameOf31 = resolve => {
   });
 };
 
+const WinAtTheFair = resolve => {
+  require.ensure("./components/lessons/win-at-the-fair/App.vue", () => {
+    resolve(require("./components/lessons/win-at-the-fair/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -796,6 +802,11 @@ const routes = [
     path: "/game-of-31",
     component: GameOf31,
     name: "Game Of 31"
+  },
+  {
+    path: "/win-at-the-fair",
+    component: WinAtTheFair,
+    name: "Win At The Fair"
   }
 ];
 
