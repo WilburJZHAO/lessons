@@ -1,14 +1,8 @@
 <template>
-  <transition
-    appear
-    appear-class="bottom-appear"
-    appear-active-class="bottom-appear-active"
-  >
+  <transition appear appear-class="bottom-appear" appear-active-class="bottom-appear-active">
     <div class="app--bottom-nav">
       <div class="text-center">
-        <strong
-          >Copyright &copy; {{ new Date().getFullYear() }} Maths 300.</strong
-        >
+        <strong>Copyright &copy; {{ new Date().getFullYear() }} Maths 300.</strong>
         All rights reserved.
       </div>
     </div>

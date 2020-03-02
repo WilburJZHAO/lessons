@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-3">
+  <div class="container mt-3 pb-5 mb-5">
     <h3 class="text-success text-center">Auto Appear</h3>
     <div class="mt-3 app--container">
       <div class="app--input d-flex align-items-center justify-content-center">

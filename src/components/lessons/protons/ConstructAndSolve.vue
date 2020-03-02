@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-3">
+  <div class="container mt-3 mb-5 pb-5">
     <h3 class="text-success text-center">Construct and solve</h3>
     <div class="mt-3 container">
       <div class="row">
