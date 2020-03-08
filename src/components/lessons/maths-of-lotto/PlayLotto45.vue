@@ -5,14 +5,18 @@
       <div class="col-md-6">
         <!-- Selection area -->
         <div class="app--selection-area-box">
-          <div class="app--selection-area">
+          <div class="app--selection-area"> 
             <div
               v-for="(el, index) in lottoNumbers"
               :key="index"
-              class="app--selection-number"
-              :class="el.selected ? 'app--selection-number-selected' : ''"
               @click="handleSelectNumber(el.number)"
-            >{{ el.number }}</div>
+            >
+              <div
+                class="app--selection-number"
+                :class="el.selected ? 'app--selection-number-selected' : ''"
+              >{{ el.number }}</div>
+              <br v-if="el.number%8===0" style="clear:both" />
+            </div> 
           </div>
           <div
             class="text-center app--selection-message my-2"
@@ -115,12 +119,12 @@
             <tbody>
               <tr v-for="(item, index) in divisionTable" :key="index">
                 <td>{{ item.div }}</td>
-                <td>&yen; {{ separateFloating(item.prize) }}</td>
+                <td>&dollar; {{ separateFloating(item.prize) }}</td>
                 <td>
                   <span v-if="item.wins>0">{{ item.wins }}</span>
                 </td>
                 <td>
-                  <span v-if="item.amount>0">&yen; {{ separateFloating(item.amount) }}</span>
+                  <span v-if="item.amount>0">&dollar; {{ separateFloating(item.amount) }}</span>
                 </td>
               </tr>
             </tbody>
@@ -138,7 +142,7 @@
             <tr>
               <th class="text-danger">Cost:</th>
               <td>
-                &yen;
+                &dollar;
                 {{
                 separateFloating(
                 Number((gamesPlayed * COST_PER_GAME).toFixed(2))
@@ -149,7 +153,7 @@
             <tr>
               <th class="text-primary">Winnings:</th>
               <td>
-                <span v-if="totalWinningMoney > 0">&yen; {{ separateFloating(totalWinningMoney) }}</span>
+                <span v-if="totalWinningMoney > 0">&dollar; {{ separateFloating(totalWinningMoney) }}</span>
               </td>
             </tr>
           </table>
@@ -560,6 +564,10 @@ export default {
 </script>
 
 <style scoped>
+.app--selection-area {
+  max-width: 300px;
+  margin: 0 auto;
+}
 .app--selection-area::after {
   content: "";
   display: block;

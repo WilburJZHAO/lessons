@@ -185,4 +185,13 @@ export default {
 </script>
 
 <style scoped>
+.table thead th {
+  padding-top: 7px;
+  padding-bottom: 7px;
+
+}
+.table tbody td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
 </style>

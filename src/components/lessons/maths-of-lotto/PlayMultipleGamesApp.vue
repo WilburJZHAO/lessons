@@ -33,7 +33,8 @@
     <div v-if="status === 2 || status === 3" class="mt-3">
       <table class="table table-bordered text-center" style="table-layout: fixed">
         <tr>
-          <td>{{ winGames }} win{{winGames > 1 ? 's' : ''}} in {{ triedGames }} game{{triedGames > 1 ? 's' : ''}}</td>
+          <td v-if="winGames > 0">1 win in {{ Number((triedGames / winGames).toFixed(2)) }} games</td>
+          <td v-else>0 wins</td>
           <td>
             <span v-if="winGames > 0">{{ winGames }} win{{winGames > 1 ? 's' : ''}}</span>
           </td>
