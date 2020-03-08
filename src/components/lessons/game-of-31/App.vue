@@ -31,9 +31,6 @@
         <app-play-lotto-45 v-if="selectedOption === 5"></app-play-lotto-45>
       </transition>
     </div>
-    <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
-      <app-bottom-nav></app-bottom-nav>
-    </transition>
   </div>
 </template>
 

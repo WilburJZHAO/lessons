@@ -1,12 +1,12 @@
 <template>
   <div>
-    <h5>Game 1</h5>
-    <p>Total: {{ game.total }}</p>
-    <p>
+    <h5 class="text-danger">Game 1</h5>
+    <p class="text-primary">Total: {{ game.total }}</p>
+    <p class="text-primary">
       Wins for {{ game.whoseFirst === 1 ? game.partyAName : game.partyBName }}:
       {{ game.whoseFirst === 1 ? game.winsForPartyA : game.winsForPartyB }}
     </p>
-    <p>
+    <p class="text-primary">
       Wins for {{ game.whoseFirst === 1 ? game.partyBName : game.partyAName }}:
       {{ game.whoseFirst === 1 ? game.winsForPartyB : game.winsForPartyA }}
     </p>
