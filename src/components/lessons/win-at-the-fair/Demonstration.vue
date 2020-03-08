@@ -111,9 +111,15 @@ export default {
         this.layer.add(hexagon);
         if (this.map[i].value) {
           const text = new Konva.Text({
-            x: this.map[i].position.x - 8,
+            x:
+              this.map[i].value < 1
+                ? this.map[i].position.x - 18
+                : this.map[i].position.x - 7,
             y: this.map[i].position.y - 10,
-            text: `${this.map[i].value}`,
+            text:
+              this.map[i].value < 1
+                ? `${this.map[i].value.toFixed(2)}`
+                : `${this.map[i].value}`,
             fontFamily: "Calibri",
             fontSize: 20,
             fill: "black"
@@ -183,9 +189,14 @@ export default {
       this.counterLayer.add(this.counter);
       if (this.current.value) {
         const text = new Konva.Text({
-          x: this.current.position.x - 8,
+          x: this.current.value < 1
+                ? this.current.position.x - 18
+                : this.current.position.x - 7,
           y: this.current.position.y - 10,
-          text: `${this.current.value}`,
+          text:
+            this.current.value < 1
+              ? `${this.current.value.toFixed(2)}`
+              : `${this.current.value}`,
           fontFamily: "Calibri",
           fontSize: 20,
           fill: "yellow"
