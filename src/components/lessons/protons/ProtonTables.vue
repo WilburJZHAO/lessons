@@ -5,7 +5,16 @@
       <div class="col-md-10 app--grid">
         <table class="table table-bordered text-center" v-if="protonsGrid">
           <tr v-for="(row, i) in protonsGrid" :key="i" class="app--grid-row">
-            <td v-for="(item, j) in row" :key="j" class="app--grid-item">
+            <td
+              v-for="(item, j) in row"
+              :key="j"
+              class="app--grid-item"
+              :class="{
+                'app--bg-info': i===0 && j===0,
+                'app--bg-primary': (i===0 && j!== 0) || (j===0 && i!==0),
+                'app--bg-warning': i!==0&&j!==0
+              }"
+            >
               <span v-if="i===0 && j===0" style="font-size: 25px;">{{item}}</span>
               <span v-else-if="item.show=== false">
                 <input
@@ -178,9 +187,22 @@ export default {
   padding: 0;
   border: none;
   text-align: center;
+  background-color: #fcfbf8;
 }
 .app--grid-item {
   padding: 5px;
   vertical-align: center;
+}
+.app--bg-info {
+  background-color: #bfe0ff;
+  border: 1px solid #999;
+}
+.app--bg-primary {
+  background-color: #7fffd4;
+  border: 1px solid #999;
+}
+.app--bg-warning {
+  background-color: #ecd872;
+  border: 1px solid #999;
 }
 </style>
