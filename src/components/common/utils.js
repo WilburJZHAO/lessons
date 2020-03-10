@@ -35,7 +35,7 @@ export const pickNumber = (min, max) => {
 };
 
 /**
- * Separate number digits by blanks.
+ * Separate number digits by commas.
  * e.g. 12345678 => 12,345,678
  * @param {number} number
  */

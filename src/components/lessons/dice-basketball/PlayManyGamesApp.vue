@@ -18,7 +18,7 @@
           </thead>
           <tbody>
             <tr>
-              <th class="text-danger">Avg number</th>
+              <th class="text-danger">Average number</th>
               <td>{{ averageNumberFor3Point ? averageNumberFor3Point : '' }}</td>
               <td>{{ averageNumberFor2Point ? averageNumberFor2Point : '' }}</td>
               <td>{{ averageNumberFor1Point ? averageNumberFor1Point : '' }}</td>
@@ -26,13 +26,15 @@
             </tr>
             <tr>
               <th class="text-danger">Total</th>
-              <td>{{ totalNumberFor3Point ? totalNumberFor3Point * 3 : '' }}</td>
-              <td>{{ totalNumberFor2Point ? totalNumberFor2Point * 2: '' }}</td>
-              <td>{{ totalNumberFor1Point ? totalNumberFor1Point * 1: '' }}</td>
-              <td class="text-primary">{{ totalNumberForAll ? totalNumberForAll : '' }}</td>
+              <td>{{ totalNumberFor3Point ? separateNumber(totalNumberFor3Point * 3) : '' }}</td>
+              <td>{{ totalNumberFor2Point ? separateNumber(totalNumberFor2Point * 2) : '' }}</td>
+              <td>{{ totalNumberFor1Point ? separateNumber(totalNumberFor1Point * 1) : '' }}</td>
+              <td
+                class="text-primary"
+              >{{ totalNumberForAll ? separateNumber(totalNumberForAll) : '' }}</td>
             </tr>
             <tr>
-              <th class="text-danger">Avg Pt</th>
+              <th class="text-danger">Average Points</th>
               <td>{{ averagePointsFor3Point ? averagePointsFor3Point : '' }}</td>
               <td>{{ averagePointsFor2Point ? averagePointsFor2Point : '' }}</td>
               <td>{{ averagePointsFor1Point ? averagePointsFor1Point : '' }}</td>
@@ -74,7 +76,7 @@
 import ChangeRule from "./ChangeRule.vue";
 import DemoAutoOption from "./DemoAutoOption.vue";
 import { throwDiceOnce, throwDiceThree } from "./utils.js";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, separateNumber } from "../../common/utils";
 export default {
   props: ["trialNumber"],
   components: {
@@ -97,7 +99,8 @@ export default {
       totalNumberFor1Point: 0,
       averageNumberFor3Point: 0,
       averageNumberFor2Point: 0,
-      averageNumberFor1Point: 0
+      averageNumberFor1Point: 0,
+      separateNumber
     };
   },
   computed: {
@@ -133,9 +136,9 @@ export default {
     },
     totalNumberForAll() {
       return (
-        this.totalNumberFor3Point +
-        this.totalNumberFor2Point +
-        this.totalNumberFor1Point
+        this.totalNumberFor3Point * 3 +
+        this.totalNumberFor2Point * 2 +
+        this.totalNumberFor1Point * 1
       );
     },
     timerInterval() {
