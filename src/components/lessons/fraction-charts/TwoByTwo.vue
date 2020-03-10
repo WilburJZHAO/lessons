@@ -40,7 +40,7 @@
                                             {{arrSimpleThree[j-2]/root[i-2]*arrSimpleTwo[i-2]}}
                                         </b>
                                         <b v-else-if="i===1&&j!==1">
-                                            <input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum((i*10+j), inputNum[i*10+j])" type="text" style='width: 3.5vw; height: 3.5vw;border: 0px' />
+                                            <input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum((i*10+j), inputNum[i*10+j])" type="text" style='width: 4vw; height: 4vw;border: 0px' />
                                         </b>
                                         <b v-else-if="j===1&&i!==1">
                                             <div style='border-bottom: #0f0f0f solid;margin: 0 auto;width: 3.5vw;height:3.5vw;border-top: #0f0f0f 1px solid; border-left:#0f0f0f 1px solid; border-right: #0f0f0f 1px solid;'>
@@ -51,7 +51,7 @@
                                             </div>
                                         </b>
                                         <b v-else>
-                                            <input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum((i*10+j), inputNum[i*10+j])" type="text" style='width: 3.5vw; height: 3.5vw;border: 0px;' />
+                                            <input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum((i*10+j), inputNum[i*10+j])" type="text" style='width: 4vw; height: 4vw;border: 0px;' />
                                         </b>
                                     </td>
                                 </tr>
@@ -59,8 +59,8 @@
                         </div>
                     </div>
                     <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 200px;overflow: visible; max-width: 50%">
-                        <div class="tt-right-box"></div>
+                    <div class="col-12 col-md-6 app--lesson-right" ref="qqq" style="padding-left: 10px;overflow: visible; max-width: 50%">
+
                         <div><br><br>
                             <div style="font-size: 1vw;color: #0f0f0f;position: relative">
                                 <br />
@@ -82,7 +82,7 @@
                                     <div class="row table" style="margin-left: 0;">
                                         <table class="ckboxTable">
                                             <tr v-for="i in 4">
-                                                <td v-for="j in 4"><div :style="{visibility: ((i!==4||j<=2)&& isChecked === true) ? 'visible':'hidden'}"><label><input :ref="ckboxValue[4*(i-1)+(j-1)]" type="checkbox" :checked="i===1&&j<4"> {{ckboxValue[4*(i-1)+(j-1)]}}  halves  </label></div></td>
+                                                <td v-for="j in 4"><div :style="{visibility: ((i!==4||j<=2)&& isChecked === true) ? 'visible':'hidden'}"><label><input :ref="ckboxValue[4*(i-1)+(j-1)]" type="checkbox" :checked="i===1&&j<4"> {{ckboxValue[4*(i-1)+(j-1)]}}  {{ckboxWord[4*(i-1)+(j-1)]}}  </label></div></td>
                                             </tr>
                                         </table>
                                         <button id="checkedBoxGenerate" class="btn btn-outline-success" v-on:click="generateTable()" style="margin: auto">OK</button>
@@ -133,6 +133,7 @@
                 correctNum: [],
                 randomIndex: "",
                 ckboxValue: [2,3,4,5,6,7,8,9,10,12,15,16,18,20],
+                ckboxWord: ['halves', 'thirds', 'quarters', 'fifths', 'sixths', 'sevenths', 'eighths', 'ninths', 'tenths', 'twelfths', 'fifteenths', 'sixteenths', 'eighteenths', 'twentieths'],
                 isChecked: false,
                 h: true,
             };
@@ -289,6 +290,7 @@
             },
             check: function() {
                 this.correctNum = [];
+                this.correctNum1 = [];
                 this.alertMessage = "";
                 this.isAlert = false;
                 for (let i = 0; i < this.checkV.length; i++) {
@@ -371,7 +373,6 @@
                             if (this.correctNum1[a] === "g") {
                                 count++;
                             }
-
                         }
                         if (count === l) {
 
@@ -398,6 +399,11 @@
                                 count++;
                             }
                         }
+                        for (let a = 0; a < this.correctNum1.length; a++) {
+                            if (this.correctNum1[a] === "red") {
+                                count++;
+                            }
+                        }
                         if(count === 1){
                             this.alertMessage =
                                 "All entries are checked. There is 1 error.";
@@ -417,9 +423,53 @@
                     this.startTime = new Date().getTime();
                 }
                 if (num === "") {
-                    return;
+                    if(r>10 && r<100){
+                        for (let i = 0; i < this.checkV.length; i++) {
+                            if (this.checkR[i] === r) {
+                                this.checkV.splice(i, 1);
+                                this.checkR.splice(i, 1);
+                                let index = r;
+                                this.$refs[index][0].classList.remove("red");
+                                this.$refs[index][0].classList.remove("g");
+                                return;
+                            }
+                        }
+                    }
+                    if(r-Math.floor(r/10)*10===1){
+                        for (let i = 0; i < this.checkNume.length; i++) {
+                            if (this.checkNume[i] === r) {
+                                this.checkNume.splice(i, 1);
+                                this.checkValNume.splice(i, 1);
+                                this.checkDemo.splice(i, 1);
+                                this.checkValDemo.splice(i, 1);
+                                let y=r+1;
+                                this.$refs[r][0].classList.remove("red");
+                                this.$refs[r][0].classList.remove("g");
+                                this.$refs[y][0].classList.remove("red");
+                                this.$refs[y][0].classList.remove("g");
+                                this.inputNum[y] = "";
+                                return;
+                            }
+                        }
+                    }
+                    if(r-Math.floor(r/10)*10===2){
+                        for (let i = 0; i < this.checkDemo.length; i++) {
+                            if (this.checkDemo[i] === r) {
+                                this.checkNume.splice(i, 1);
+                                this.checkValNume.splice(i, 1);
+                                this.checkDemo.splice(i, 1);
+                                this.checkValDemo.splice(i, 1);
+                                let y=r-1;
+                                this.$refs[r][0].classList.remove("red");
+                                this.$refs[r][0].classList.remove("g");
+                                this.$refs[y][0].classList.remove("red");
+                                this.$refs[y][0].classList.remove("g");
+                                this.inputNum[y] = "";
+                                return;
+                            }
+                        }
+                    }
                 } else {
-
                     if(Math.floor(r/100) !== 0){
                         if(r-Math.floor(r/10)*10===1){
                             for (let i = 0; i < this.checkNume.length; i++) {
@@ -455,7 +505,6 @@
                     }else{
                         if(r>10 && r<100){
                             for (let i = 0; i < this.checkV.length; i++) {
-
                                 if (this.checkR[i] === r) {
                                     let index = r;
                                     this.$refs[index][0].classList.remove("red");
@@ -507,7 +556,7 @@
         height: 8vw;
         overflow:hidden;
         border: #7f8c8d solid;
-        font-size: 28px;
+        font-size: 1.5rem;
         padding: 5px;
     }
 
