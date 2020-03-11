@@ -241,17 +241,17 @@ export default {
       this.arr.push(this.finalNum);
       this.arr.push(this.playNum);
       this.checkEmpty();
-      if (this.ifChange) {
-        let maxTimes = 250;
-        do {
-          let num2 = this.generateRandom();
-          if (this.arr.indexOf(num2) == -1 && num2 != this.playNum) {
-            this.playNum = num2;
-            break;
-          }
-          maxTimes--;
-        } while (maxTimes);
-      }
+      // if (this.ifChange) {
+      //   let maxTimes = 250;
+      //   do {
+      //     let num2 = this.generateRandom();
+      //     if (this.arr.indexOf(num2) == -1 && num2 != this.playNum) {
+      //       this.playNum = num2;
+      //       break;
+      //     }
+      //     maxTimes--;
+      //   } while (maxTimes);
+      // }
       this.checkPrice();
     },
 
@@ -290,11 +290,19 @@ export default {
       } while (maxTimes);
     },
     updatePersentage() {
-      this.winsPersentage = this.calculatePrecentage(this.wins, this.counter);
-      this.lossesPersentage = this.calculatePrecentage(
-        this.losses,
-        this.counter
-      );
+      if (this.ifChange) {
+        this.lossesPersentage = this.calculatePrecentage(this.wins, this.counter);
+        this.winsPersentage = this.calculatePrecentage(
+                this.losses,
+                this.counter
+        );
+      }else{
+        this.winsPersentage = this.calculatePrecentage(this.wins, this.counter);
+        this.lossesPersentage = this.calculatePrecentage(
+                this.losses,
+                this.counter
+        );
+      }
     },
 
     calculatePrecentage(Numerator, denominator) {
