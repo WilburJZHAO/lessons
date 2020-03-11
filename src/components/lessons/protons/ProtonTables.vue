@@ -10,40 +10,64 @@
               :key="j"
               class="app--grid-item"
               :class="{
-                'app--bg-info': i===0 && j===0,
-                'app--bg-primary': (i===0 && j!== 0) || (j===0 && i!==0),
-                'app--bg-warning': i!==0&&j!==0
+                'app--bg-info': i === 0 && j === 0,
+                'app--bg-primary': (i === 0 && j !== 0) || (j === 0 && i !== 0),
+                'app--bg-warning': i !== 0 && j !== 0
               }"
             >
-              <span v-if="i===0 && j===0" style="font-size: 25px;">{{item}}</span>
-              <span v-else-if="item.show=== false">
+              <span v-if="i === 0 && j === 0" style="font-size: 25px;">{{
+                item
+              }}</span>
+              <span v-else-if="item.show === false">
                 <input
                   type="text"
                   class="form-control"
                   v-model="item.answer"
                   @keypress="handleSetPress"
-                  :disabled="item.check===true"
-                  :class="item.check=== true ? 'text-success' : item.check===false ? 'text-danger' : ''"
+                  :disabled="item.check === true"
+                  :class="
+                    item.check === true
+                      ? 'text-success'
+                      : item.check === false
+                      ? 'text-danger'
+                      : ''
+                  "
                 />
               </span>
-              <span v-else-if="item.show ===true">{{ convertProton(item.number) }}</span>
+              <span v-else-if="item.show === true">{{
+                convertProton(item.number)
+              }}</span>
             </td>
           </tr>
         </table>
+
         <div class="text-center text-danger">
-          <span v-if="status===0">Complete the {{ operator === 1 ? 'addition' : 'subtraction'}} grid</span>
-          <span v-if="status===1 && wrongEntriesCount===0" class="text-success">All entries correct</span>
+          <span v-if="status === 0"
+            >Complete the
+            {{ operator === 1 ? "addition" : "subtraction" }} grid</span
+          >
           <span
-            v-if="status===1 && wrongEntriesCount>0"
-          >All entries checked. There is {{wrongEntriesCount}} error{{wrongEntriesCount>1 ? 's' : ''}}</span>
-          <div v-if="status===2">
+            v-if="status === 1 && wrongEntriesCount === 0"
+            class="text-success"
+            >All entries correct</span
+          >
+          <span v-if="status === 1 && wrongEntriesCount > 0"
+            >All entries checked. There is {{ wrongEntriesCount }} error{{
+              wrongEntriesCount > 1 ? "s" : ""
+            }}</span
+          >
+          <div v-if="status === 2">
             <p>All entries correct.</p>
-            <button class="btn btn-outline-dark" @click="handleNext">Tap here for new grid</button>
+            <button class="btn btn-outline-dark" @click="handleNext">
+              Tap here for new grid
+            </button>
           </div>
         </div>
       </div>
       <div class="col-md-2">
-        <div class="d-flex flex-column align-items-center justify-content-center">
+        <div
+          class="d-flex flex-column align-items-center justify-content-center"
+        >
           <div class="custom-control custom-radio">
             <input
               type="radio"
@@ -68,9 +92,13 @@
               @change="handleNext"
               :disabled="status === 1"
             />
-            <label for="operator2" class="custom-control-label">Subtraction</label>
+            <label for="operator2" class="custom-control-label"
+              >Subtraction</label
+            >
           </div>
-          <button @click="handleCheck" class="btn btn-outline-success mt-3">Check</button>
+          <button @click="handleCheck" class="btn btn-outline-success mt-3">
+            Check
+          </button>
         </div>
       </div>
     </div>
@@ -129,7 +157,10 @@ export default {
       for (let i = 0; i <= 5; i++) {
         for (let j = 0; j <= 5; j++) {
           if (i === 0 && j === 0) continue;
-          if (this.protonsGrid[i][j].answer.trim() === "") continue;
+          if (this.protonsGrid[i][j].answer.trim() === "") {
+            this.protonsGrid[i][j].check = null;
+            continue;
+          }
           if (
             this.protonsGrid[i][j].show === false &&
             this.protonsGrid[i][j].check !== true
