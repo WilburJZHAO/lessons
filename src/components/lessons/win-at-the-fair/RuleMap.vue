@@ -1,10 +1,19 @@
 <template>
-  <div style="width: 150px; position: relative;" class="d-flex justify-content-center">
-    <div style="position: absolute; width: 50px; left: -40px; top: 40px;">{{ leftDices }}</div>
+  <div
+    style="width: 150px; position: relative;"
+    class="d-flex justify-content-center"
+  >
+    <div style="position: absolute; width: 50px; left: -40px; top: 10px;">
+      {{ leftDices }}
+    </div>
     <div
       style="position: absolute;left: 50%; top: 10px; transform: translateX(-50%);"
-    >{{ centerDices }}</div>
-    <div style="position: absolute; width: 50px;left: 120px; top: 40px;">{{ rightDices }}</div>
+    >
+      {{ centerDices }}
+    </div>
+    <div style="position: absolute; width: 50px;left: 120px; top: 10px;">
+      {{ rightDices }}
+    </div>
     <img
       :src="require('@/assets/win-at-the-fair/left.png')"
       alt="left-arrow"
