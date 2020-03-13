@@ -33,7 +33,7 @@
           <th>1</th>
           <th>0</th>
         </tr>
-        <tr v-for="(item, index) in animalsPartsCounter" :key="index">
+        <tr v-for="(item, index) in animalsPartsCounterDisplay" :key="index">
           <th>{{ item[0]}}</th>
           <td>{{ item[1][3] }}</td>
           <td>{{ item[1][2] }}</td>
@@ -95,6 +95,13 @@ export default {
   computed: {
     timerInterval() {
       return calculateTimerInterval(this.trialNumber);
+    },
+    animalsPartsCounterDisplay() {
+      if (this.numberOfAnimals === 2) {
+        return [this.animalsPartsCounter[0], this.animalsPartsCounter[1]];
+      } else {
+        return this.animalsPartsCounter;
+      }
     }
   },
   watch: {
@@ -160,26 +167,31 @@ export default {
       this.isStart = false;
       this.isFinish = false;
       this.count = 0;
+      this.numberOfAnimals = 3;
+      this.initAnimalsPartsCounter();
+    },
+    initAnimalsPartsCounter() {
+      switch (this.numberOfAnimals) {
+        case 2:
+          this.animalsPartsCounter = [
+            ["Giraffe", [0, 0, 0, 0]],
+            ["Horse", [0, 0, 0, 0]]
+          ];
+          break;
+        case 3:
+          this.animalsPartsCounter = [
+            ["Giraffe", [0, 0, 0, 0]],
+            ["Horse", [0, 0, 0, 0]],
+            ["Duck", [0, 0, 0, 0]]
+          ];
+          break;
+        default:
+          this.animalsPartsCounter = [];
+      }
     }
   },
   created() {
-    switch (this.numberOfAnimals) {
-      case 2:
-        this.animalsPartsCounter = [
-          ["Giraffe", [0, 0, 0, 0]],
-          ["Horse", [0, 0, 0, 0]]
-        ];
-        break;
-      case 3:
-        this.animalsPartsCounter = [
-          ["Giraffe", [0, 0, 0, 0]],
-          ["Horse", [0, 0, 0, 0]],
-          ["Duck", [0, 0, 0, 0]]
-        ];
-        break;
-      default:
-        this.animalsPartsCounter = [];
-    }
+    this.initAnimalsPartsCounter();
   },
   destroyed() {
     clearInterval(this.timer);
