@@ -15,6 +15,9 @@
             min="1"
             max="36"
             class="form-control"
+            :class="{
+              'is-invalid': !hexSettingCheck[0][index].valid
+            }"
             v-model.number="hexLeft[index]"
           />
         </div>
@@ -27,6 +30,9 @@
             min="1"
             max="36"
             class="form-control"
+            :class="{
+              'is-invalid': !hexSettingCheck[1][index].valid
+            }"
             v-model.number="hexMiddle[index]"
           />
         </div>
@@ -39,6 +45,9 @@
             min="1"
             max="36"
             class="form-control"
+            :class="{
+              'is-invalid': !hexSettingCheck[2][index].valid
+            }"
             v-model.number="hexRight[index]"
           />
         </div>
@@ -98,6 +107,7 @@ export default {
       this.ownHexSetting[0] = this.hexLeft;
       this.ownHexSetting[1] = this.hexMiddle;
       this.ownHexSetting[2] = this.hexRight;
+      this.initHexSettingCheck();
     },
     checkInputHexagon() {
       const numberList = [
@@ -120,12 +130,46 @@ export default {
         30,
         36
       ];
-      const checkList = [...this.hexLeft, ...this.hexMiddle, ...this.hexRight];
-      for (let i = 0; i < numberList.length; i++) {
-        if (checkList.indexOf(numberList[i]) === -1) {
-          return false;
+      // const checkList = [...this.hexLeft, ...this.hexMiddle, ...this.hexRight];
+      // for (let i = 0; i < numberList.length; i++) {
+      //   if (checkList.indexOf(numberList[i]) === -1) {
+      //     return false;
+      //   }
+      // }
+      // console.log("check");
+      this.initHexSettingCheck();
+      for (let i = 0; i < this.hexSettingCheck.length; i++) {
+        for (let j = 0; j < this.hexSettingCheck[i].length; j++) {
+          // Check if the input number is the product of 1 - 6.
+          if (numberList.indexOf(this.hexSettingCheck[i][j].number) === -1) {
+            this.hexSettingCheck[i][j].valid = false;
+          }
+
+          // Check if there is duplicate input
+          for (let ii = 0; ii < this.hexSettingCheck.length; ii++) {
+            for (let jj = 0; jj < this.hexSettingCheck[ii].length; jj++) {
+              if (
+                this.hexSettingCheck[i][j].number ===
+                  this.hexSettingCheck[ii][jj].number &&
+                !(i === ii && j === jj)
+              ) {
+                this.hexSettingCheck[i][j].valid = false;
+                this.hexSettingCheck[ii][jj].valid = false;
+              }
+            }
+          }
         }
       }
+
+      this.hexSettingCheck = [...this.hexSettingCheck];
+      for (let i = 0; i < this.hexSettingCheck.length; i++) {
+        for (let j = 0; j < this.hexSettingCheck[i].length; j++) {
+          if (!this.hexSettingCheck[i][j].valid) {
+            return false;
+          }
+        }
+      }
+
       return true;
     },
     initHexSettingCheck() {
@@ -134,7 +178,7 @@ export default {
         let hex = this.ownHexSetting[i];
         for (let j = 0; j < hex.length; j++) {
           this.hexSettingCheck[i].push({
-            number: hex,
+            number: hex[j],
             valid: true
           });
         }
