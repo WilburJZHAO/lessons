@@ -16,7 +16,7 @@
             max="36"
             class="form-control"
             v-model.number="hexLeft[index]"
-          >
+          />
         </div>
       </div>
       <div class="app--set-hexagon-row">
@@ -28,7 +28,7 @@
             max="36"
             class="form-control"
             v-model.number="hexMiddle[index]"
-          >
+          />
         </div>
       </div>
       <div class="app--set-hexagon-row">
@@ -40,7 +40,7 @@
             max="36"
             class="form-control"
             v-model.number="hexRight[index]"
-          >
+          />
         </div>
       </div>
     </div>
@@ -58,6 +58,7 @@
 </template>
 
 <script>
+import _ from "lodash";
 import Hexagon from "./Hexagon.vue";
 
 export default {
@@ -70,7 +71,9 @@ export default {
       hexLeft: [],
       hexMiddle: [],
       hexRight: [],
-      invalidMessage: ""
+      invalidMessage: "",
+      hexSettingCheck: [],
+      ownHexSetting: null
     };
   },
   methods: {
@@ -80,6 +83,7 @@ export default {
           "There's invalid number, please check your input!";
         return;
       }
+      this.$emit("setHexSetting", this.ownHexSetting);
       this.$emit("backToMenu", -1);
     },
     handleRestore() {
@@ -91,9 +95,9 @@ export default {
       // this.hexLeft = [...this.hexSetting[0]];
       // this.hexMiddle = [...this.hexSetting[1]];
       // this.hexRight = [...this.hexSetting[2]];
-      this.hexSetting[0] = this.hexLeft;
-      this.hexSetting[1] = this.hexMiddle;
-      this.hexSetting[2] = this.hexRight;
+      this.ownHexSetting[0] = this.hexLeft;
+      this.ownHexSetting[1] = this.hexMiddle;
+      this.ownHexSetting[2] = this.hexRight;
     },
     checkInputHexagon() {
       const numberList = [
@@ -123,12 +127,26 @@ export default {
         }
       }
       return true;
+    },
+    initHexSettingCheck() {
+      for (let i = 0; i < this.ownHexSetting.length; i++) {
+        this.hexSettingCheck[i] = [];
+        let hex = this.ownHexSetting[i];
+        for (let j = 0; j < hex.length; j++) {
+          this.hexSettingCheck[i].push({
+            number: hex,
+            valid: true
+          });
+        }
+      }
     }
   },
   created() {
-    this.hexLeft = this.hexSetting[0];
-    this.hexMiddle = this.hexSetting[1];
-    this.hexRight = this.hexSetting[2];
+    this.ownHexSetting = _.cloneDeep(this.hexSetting);
+    this.initHexSettingCheck();
+    this.hexLeft = this.ownHexSetting[0];
+    this.hexMiddle = this.ownHexSetting[1];
+    this.hexRight = this.ownHexSetting[2];
   }
 };
 </script>
