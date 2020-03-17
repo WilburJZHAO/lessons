@@ -433,6 +433,12 @@ const WinAtTheFair = resolve => {
   });
 };
 
+const TemperatureGraphs = resolve => {
+  require.ensure("./components/lessons/temperature-graphs/App.vue", () => {
+    resolve(require("./components/lessons/temperature-graphs/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -807,6 +813,11 @@ const routes = [
     path: "/win-at-the-fair",
     component: WinAtTheFair,
     name: "Win At The Fair"
+  },
+  {
+    path: "/temperature-graphs",
+    component: TemperatureGraphs,
+    name: "Temperature Graphs"
   }
 ];
 
