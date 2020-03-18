@@ -1,18 +1,8 @@
 <template>
-  <transition
-    appear
-    appear-class="options-appear"
-    appear-active-class="options-appear-active"
-  >
+  <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
     <div class="container app--link-list">
-      <div
-        class="app--link-item"
-        v-for="lesson in sortedLessons"
-        :key="lesson.name"
-      >
-        <router-link :to="lesson.link" class="btn btn-outline-success">
-          {{ lesson.name }}
-        </router-link>
+      <div class="app--link-item" v-for="lesson in sortedLessons" :key="lesson.name">
+        <router-link :to="lesson.link" class="btn btn-outline-success">{{ lesson.name }}</router-link>
       </div>
     </div>
   </transition>
@@ -95,8 +85,8 @@ export default {
         { name: "Maths Of Lotto", link: "/maths-of-lotto" },
         { name: "Protons & anti-Protons", link: "/protons" },
         { name: "Game Of 31", link: "/game-of-31" },
-        { name: "Win At The Fair", link: "/win-at-the-fair" },
-        { name: "Temperature Graphs", link: "/temperature-graphs" }
+        { name: "Win At The Fair", link: "/win-at-the-fair" }
+        // { name: "Temperature Graphs", link: "/temperature-graphs" }
       ]
     };
   },
