@@ -78,8 +78,10 @@
       </div>
     </div>
     <div v-else>
-      <table class="table text-center">
+      <table class="table text-center" style="table-layout: fixed;">
+        <col width="80" />
         <tr>
+          <th>#</th>
           <th>
             <span :style="{visibility: selectedHex.indexOf('left') >= 0 ? 'visible':'hidden'}">Left</span>&nbsp;
           </th>
@@ -94,19 +96,29 @@
             >Right</span>&nbsp;
           </th>
         </tr>
-        <tr>
+        <tr v-if="selectedHex.length > 1">
+          <td>% Wins</td>
           <td v-for="(percent, index) in resultPercent" :key="index">
             <span v-if="percent > 0">{{percent}}%</span>
             &nbsp;
           </td>
         </tr>
-        <tr>
+        <tr v-if="selectedHex.length === 1">
+          <td>Mean rolls</td>
+          <td v-for="(item, index) in result" :key="index">
+            <span v-if="item > 0">{{ item }}</span>
+            &nbsp;
+          </td>
+        </tr>
+        <tr v-if="selectedHex.length > 1">
+          <td># Wins</td>
           <td v-for="(item, index) in result" :key="index">
             <span v-if="item > 0">{{ item }}</span>
             &nbsp;
           </td>
         </tr>
         <tr>
+          <td>Trial</td>
           <td>
             <span v-if="numberOfTried > 0" class="text-primary">{{ numberOfTried}}&nbsp;</span>
           </td>
@@ -175,7 +187,9 @@ export default {
       result: [0, 0, 0], // The number of winning for each hexagon: 'left', 'middle' and 'right'
       trialNumber: null, // Total number to try
       numberOfTried: 0, // Number of games tried
-      isEnd: false // If the number played reaches total trial number
+      isEnd: false, // If the number played reaches total trial number
+      meanResult: [0, 0, 0], // Mean rolls for left, middle or right
+      rolls: 0
     };
   },
   watch: {
@@ -195,11 +209,13 @@ export default {
   methods: {
     handlePlayOneGame() {
       if (!this.isStart) this.isStart = true;
+      this.numberOfTried++;
       while (
         this.dataLeftTest.length > 0 &&
         this.dataMiddleTest.length > 0 &&
         this.dataRightTest.length > 0
       ) {
+        this.rolls++;
         let product = throwDiceOnce() * throwDiceOnce();
         if (this.selectedNumberInGame.indexOf(product) < 0) {
           this.selectedNumberInGame.push(product);
@@ -219,21 +235,38 @@ export default {
         if (this.dataLeftTest.length === 0) {
           // If left hex is winner
           const resultArr = [++this.result[0], this.result[1], this.result[2]];
-          this.result = [...resultArr];
+          const resultMeanArr = [
+            Number((this.rolls / this.numberOfTried).toFixed(2)),
+            0,
+            0
+          ];
+          this.result =
+            this.selectedHex.length === 1 ? [...resultMeanArr] : [...resultArr];
         }
         if (this.dataMiddleTest.length === 0) {
           // If middle hex is winner
           const resultArr = [this.result[0], ++this.result[1], this.result[2]];
-          this.result = [...resultArr];
+          const resultMeanArr = [
+            0,
+            Number((this.rolls / this.numberOfTried).toFixed(2)),
+            0
+          ];
+          this.result =
+            this.selectedHex.length === 1 ? [...resultMeanArr] : [...resultArr];
         }
         if (this.dataRightTest.length === 0) {
           // If right hex is winner
           const resultArr = [this.result[0], this.result[1], ++this.result[2]];
-          this.result = [...resultArr];
+          const resultMeanArr = [
+            0,
+            0,
+            Number((this.rolls / this.numberOfTried).toFixed(2))
+          ];
+          this.result =
+            this.selectedHex.length === 1 ? [...resultMeanArr] : [...resultArr];
         }
       }
 
-      this.numberOfTried++;
       this.resetGame();
       if (this.numberOfTried >= this.trialNumber) {
         this.isEnd = true;
@@ -260,6 +293,7 @@ export default {
       this.result = [0, 0, 0];
       this.isEnd = false;
       this.isStart = false;
+      this.rolls = 0;
     }
   },
   computed: {
