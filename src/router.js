@@ -439,6 +439,12 @@ const TemperatureGraphs = resolve => {
   });
 };
 
+const GreedyPig = resolve => {
+  require.ensure("./components/lessons/greedy-pig/App.vue", () => {
+    resolve(require("./components/lessons/greedy-pig/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -818,6 +824,11 @@ const routes = [
     path: "/temperature-graphs",
     component: TemperatureGraphs,
     name: "Temperature Graphs"
+  },
+  {
+    path: "/greedy-pig",
+    component: GreedyPig,
+    name: "Greedy Pig"
   }
 ];
 
