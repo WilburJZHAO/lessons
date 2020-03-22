@@ -92,7 +92,10 @@ export default {
         winnerIndex = this.checkWinnerIndex();
       }
       this.game[winnerIndex].wins++;
-      this.game[winnerIndex].currentSpace = 0;
+      // reset all players to the start line
+      for (let i = 0; i < this.game.length; i++) {
+        this.game[i].currentSpace = 0;
+      }
       this.tried++;
       if (this.tried >= this.trialNumber) {
         this.status = 2;
