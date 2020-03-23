@@ -54,7 +54,7 @@
               </div>
               <div id="inputData4" style="visibility: hidden;">
                 <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="clickDrawLine">
-                  {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                  {{ isStart ? "Tap here for next line" : "Tap here for first line" }}
                 </button>
                 <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                   {{
@@ -183,7 +183,7 @@ export default {
       smallCycleArray1: [],
       centerX: 300,
       centerY: 160,
-      radius: 150,
+      radius: 140,
       smallCenterX: 150,
       smallCenterY: 80,
       smallCycleRadius: 60,
@@ -339,20 +339,23 @@ export default {
     pointsSetUp: function(angle, index) {
       angle = angle + 90;
       let radians = (angle / 180) * Math.PI;
-      let endX = this.centerX + this.radius * Math.cos(radians);
+      let endX = this.centerX - this.radius * Math.cos(radians);
       let endY = this.centerY - this.radius * Math.sin(radians);
+      let textX = this.centerX - (this.radius + 12) * Math.cos(radians);
+      let textY = this.centerY - (this.radius + 12) * Math.sin(radians);
       endX = Math.round(endX); // reduce deviation
       endY = Math.round(endY);
       let tempCoordinate = new this.coordinate(endX, endY);
       this.pointsArray.push(tempCoordinate);
-      this.drawPoints(endX, endY, index);
+      this.drawPoints(endX, endY, textX, textY, index);
     },
     coordinate: function(x, y) {
       this.x = x;
       this.y = y;
     },
-    drawPoints: function(x, y, index) {
+    drawPoints: function(x, y, tx, ty, index) {
       index += 1;
+      this.p.save();
       this.p.beginPath();
       this.p.arc(x, y, 2, 0, Math.PI * 2, false);
       this.p.strokeStyle = "red";
@@ -360,8 +363,11 @@ export default {
       this.p.closePath();
       this.p.stroke();
       this.p.font = "14px Arial";
-      this.p.fillStyle = "";
-      this.p.fillText(index, x + 1, y + 1);
+      this.p.fillStyle = 'rgb(30, 0, 0)'; // a tinge of red to match circle
+      this.p.textAlign = 'center';
+      this.p.textBaseline = 'middle';
+      this.p.fillText(index, tx, ty);
+      this.p.restore();
     },
     chooseSmallCycle: function() {
       let tempOrder = this.smallCycleNum % 4;
