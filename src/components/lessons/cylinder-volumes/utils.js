@@ -19,12 +19,12 @@ export const calculateArea = (radius, floating = 6) => {
 };
 
 /**
- * Calculate volumne of cylinder
+ * Calculate volume of cylinder
  * 计算圆柱体体积
  * @param {Number} area
  * @param {Number} height
  * @param {Number} floating
  */
-export const calculateVolumne = (area, height, floating = 6) => {
+export const calculateVolume = (area, height, floating = 6) => {
   return Number((area * height).toFixed(floating));
 };

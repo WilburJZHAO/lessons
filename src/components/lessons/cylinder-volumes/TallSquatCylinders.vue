@@ -15,17 +15,17 @@
             </thead>
             <tbody>
               <tr>
-                <th>Height(cm)</th>
+                <th>Height (cm)</th>
                 <td>{{ leftHeight }}</td>
                 <td>{{ rightHeight }}</td>
               </tr>
               <tr>
-                <th>Radius(cm)</th>
+                <th>Radius (cm)</th>
                 <td>{{ leftRadius }}</td>
                 <td>{{ rightRadius }}</td>
               </tr>
               <tr>
-                <th>Volumne(L)</th>
+                <th>Volume (L)</th>
                 <td>{{ currentLeftVol }}</td>
                 <td>{{ currentRightVol }}</td>
               </tr>
@@ -72,7 +72,7 @@
 
 <script>
 import InputPanel from "./InputPanel.vue";
-import { calculateRadius, calculateArea, calculateVolumne } from "./utils";
+import { calculateRadius, calculateArea, calculateVolume } from "./utils";
 export default {
   components: {
     appInputPanel: InputPanel
@@ -200,7 +200,7 @@ export default {
     }
   },
   methods: {
-    /** Calculate cylinder's radius, volumne */
+    /** Calculate cylinder's radius, volume */
     initData() {
       if (this.paperSize.length >= this.paperSize.width) {
         this.leftHeight = this.paperSize.length;
@@ -217,11 +217,11 @@ export default {
       }
       this.leftRadius = calculateRadius(this.leftCycle);
       this.leftArea = calculateArea(this.leftRadius);
-      this.leftVol = calculateVolumne(this.leftArea, this.leftHeight);
+      this.leftVol = calculateVolume(this.leftArea, this.leftHeight);
 
       this.rightRadius = calculateRadius(this.rightCycle);
       this.rightArea = calculateArea(this.rightRadius);
-      this.rightVol = calculateVolumne(this.rightArea, this.rightHeight);
+      this.rightVol = calculateVolume(this.rightArea, this.rightHeight);
       this.leftFinished = false;
       this.rightFinished = false;
     },
