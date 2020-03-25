@@ -6,8 +6,9 @@
                     <!-- Left part -->
                     <div class="col-12 col-md-6 app--lesson-left">
                         <div>
-                            <h5 class="text-success">
-                                Drag some number tiles to the blanks then click to test.
+
+                            <h5 class="text-warning">
+                                Note: This simulation takes significant time.
                             </h5>
 
                             <table>

@@ -66,7 +66,7 @@
         methods: {
             diceFacesChange(){
                 if (this.thisDiceFaces < 1 || this.thisDiceFaces > 6) {
-                    document.getElementById("outOfRange").innerHTML = "The number inserted is out of Range";
+                    document.getElementById("outOfRange").innerHTML = "The number inserted is out of range!";
                 } else{
                     this.gameRule.diceFaces = parseInt(this.thisDiceFaces);
                     document.getElementById("outOfRange").innerHTML = "";
@@ -76,7 +76,7 @@
             saveDice() {
                 for (let i = 1; i < 7; i++) {
                     if (this.gameRule.redDiceFace[i] < 0 || this.gameRule.redDiceFace[i] > 20 || this.gameRule.blueDiceFace[i] < 0 || this.gameRule.blueDiceFace[i] > 20 || this.gameRule.greenDiceFace[i] < 0 || this.gameRule.greenDiceFace[i] > 20 || this.gameRule.blackDiceFace[i] < 0 || this.gameRule.blackDiceFace[i] > 20) {
-                        document.getElementById("outOfRange").innerHTML = "The number inserted is out of Range";
+                        document.getElementById("outOfRange").innerHTML = "The number inserted is out of range!";
                         return;
                     }
                 }

@@ -98,7 +98,7 @@
           selectedStrategy.id !== 0 && (gameStatus === 0 || gameStatus === -1)
         "
         @click="handleStart"
-      >Change numbers then spacebar to set</button>
+      >Change numbers then tap to set</button>
       <button
         v-if="gameStatus === 1"
         class="btn btn-outline-success"
@@ -108,7 +108,7 @@
         v-if="gameStatus === 2"
         class="btn btn-outline-success"
         @click="handleDrawTwoNumbers"
-      >Press spacebar to draw two numbers</button>
+      >Press spacebar or tap to draw two numbers</button>
       <button
         v-if="gameStatus === 3"
         class="btn btn-outline-dark"

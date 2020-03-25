@@ -174,7 +174,7 @@
                                 <div >
                                     <button class="btn btn-outline-secondary btn-lg" style="border: white" @click="ourTeamGenerator">Our teams</button></div>
                                 <br>
-                                <div> <button class="btn btn-outline-secondary btn-lg " style="border: white" @click="AFLteamGenerator">AFL teams</button></div></div>
+                                <div> <button class="btn btn-outline-secondary btn-lg " style="border: white" @click="NRLteamGenerator">NRL teams</button></div></div>
                             <br>
                             <br>
 
@@ -231,7 +231,7 @@
                 minus11 : true,
                 plus12: false,
                 randomPick : false,
-                AFL : ["Dragons","Bulldogs","Titans","Storm","Broncos","Cowboys","Panthers","Knights","Sea Eagles","Rabbitohs","Warriors","Wests Tigers",
+                NRL : ["Dragons","Bulldogs","Titans","Storm","Broncos","Cowboys","Panthers","Knights","Sea Eagles","Rabbitohs","Warriors","Wests Tigers",
                     "Raiders","Eels","Sharks","Roosters","Magpies","Gold Coast Chargers"],
                 picked:"One",
 
@@ -924,49 +924,49 @@
             this.resTeams.push(this.input1)
             count++
         }else{
-            this.resTeams.push(this.AFL[0])
+            this.resTeams.push(this.NRL[0])
         }
         if(this.input2!=""){
             this.resTeams.push(this.input2)
             count++
         }else{
-            this.resTeams.push(this.AFL[1])
+            this.resTeams.push(this.NRL[1])
         }
         if(this.input3!=""){
             this.resTeams.push(this.input3)
             count++
         }else{
-            this.resTeams.push(this.AFL[2])
+            this.resTeams.push(this.NRL[2])
         }
         if(this.input4!=""){
             this.resTeams.push(this.input4)
             count++
         }else{
-            this.resTeams.push(this.AFL[3])
+            this.resTeams.push(this.NRL[3])
         }
         if(this.input5!=""){
             this.resTeams.push(this.input5)
             count++
         }else{
-            this.resTeams.push(this.AFL[4])
+            this.resTeams.push(this.NRL[4])
         }
         if(this.input6!=""){
             this.resTeams.push(this.input6)
             count++
         }else{
-            this.resTeams.push(this.AFL[5])
+            this.resTeams.push(this.NRL[5])
         }
         if(this.input7!=""){
             this.resTeams.push(this.input7)
             count++
         }else{
-            this.resTeams.push(this.AFL[6])
+            this.resTeams.push(this.NRL[6])
         }
         if(this.input8!=""){
             this.resTeams.push(this.input8)
             count++
         }else{
-            this.resTeams.push(this.AFL[7])
+            this.resTeams.push(this.NRL[7])
         }
         if(this.input9!=""){
             this.resTeams.push(this.input9)
@@ -1242,30 +1242,30 @@
             this.input18 = j
         }
     },
-    AFLteamGenerator:function () {
+    NRLteamGenerator:function () {
         this.countOfOwnTeamsGreater = true
         for(var i=0;i<10;i++){
             this.plusFunction(i)
         }
 
-        this.input1=this.AFL[0]
-        this.input2=this.AFL[1]
-        this.input3=this.AFL[2]
-        this.input4=this.AFL[3]
-        this.input5=this.AFL[4]
-        this.input6=this.AFL[5]
-        this.input7=this.AFL[6]
-        this.input8=this.AFL[7]
-        this.input9=this.AFL[8]
-        this.input10=this.AFL[9]
-        this.input11=this.AFL[10]
-        this.input12=this.AFL[11]
-        this.input13=this.AFL[12]
-        this.input14=this.AFL[13]
-        this.input15=this.AFL[14]
-        this.input16=this.AFL[15]
-        this.input17=this.AFL[16]
-        this.input18=this.AFL[17]
+        this.input1=this.NRL[0]
+        this.input2=this.NRL[1]
+        this.input3=this.NRL[2]
+        this.input4=this.NRL[3]
+        this.input5=this.NRL[4]
+        this.input6=this.NRL[5]
+        this.input7=this.NRL[6]
+        this.input8=this.NRL[7]
+        this.input9=this.NRL[8]
+        this.input10=this.NRL[9]
+        this.input11=this.NRL[10]
+        this.input12=this.NRL[11]
+        this.input13=this.NRL[12]
+        this.input14=this.NRL[13]
+        this.input15=this.NRL[14]
+        this.input16=this.NRL[15]
+        this.input17=this.NRL[16]
+        this.input18=this.NRL[17]
 
 
 

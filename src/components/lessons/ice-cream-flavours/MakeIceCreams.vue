@@ -7,20 +7,20 @@
 			<form @submit.prevent="handleNumberInput">
 				<div class="form-group row">
 					<label for="number-input" class="col-sm-4">
-						Enter an integer(2-4)
+						Enter an integer (2-4)
 					</label>
 					<div class="col-sm-8">
-						<input 
+						<input
 							type="number"
 							id="number-input"
-							class="form-control" 
+							class="form-control"
 							required
 							v-model="numberOfFlavours"
 							min="2"
 							max="4"
 							@focus="()=>{ this.isNumberChecked = false; }"
 							>
-						<div class="badge badge-danger mt-2" 
+						<div class="badge badge-danger mt-2"
 							v-bind:style="{visibility: (isNumberChecked && !isNumberValid && numberOfFlavours) ? 'visible' : 'hidden' }">
 							Invalid input
 						</div>
@@ -55,7 +55,7 @@ export default {
 			this.isNumberChecked = true;
 			// console.log('ok', this.isNumberChecked);
 			if( Number.isInteger( Number(this.numberOfFlavours) ) && 
-				this.numberOfFlavours <= 4 &&  
+				this.numberOfFlavours <= 4 &&
 				this.numberOfFlavours >= 2 ) {
 					this.isNumberValid = true;
 				}
