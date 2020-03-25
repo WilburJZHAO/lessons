@@ -4,7 +4,8 @@
 			<div class="row">
 				<!-- Left part -->
 				<div class="col-12 col-md-6">
-					<canvas id="app-canvas"></canvas>
+					<h5 class="text-success">Click on the circle</h5>
+					<canvas id="app-canvas" width="600" height="600"></canvas>
 					<h5 v-if="degree!==null"> A = {{ degree }} degrees</h5>
 				</div>
 				<!-- Right part -->
@@ -21,21 +22,21 @@
 									<th>sinA</th>
 									<th>cosA</th>
 								</tr>
-							</thead> 
+							</thead>
 							<tbody>
 								<tr v-for="q in questions" :key="q.degree">
 									<td>
 										{{ q.degree }}
 									</td>
-									<td class="tri--rfa-input">										
+									<td class="tri--rfa-input">
 										<input type="number" class="form-control" v-model="q['sin'+q.degree+'answer']">
 										<span class="badge badge-info tri--rfa-answer" v-show="q.seeSinAnswer === true">{{ q.sinDegree }}</span>
 										<span class="tri--rfa-result">
 											<i class="fas fa-check text-success" v-if="q.sinResult === true"></i>
 											<i class="fas fa-times text-danger" v-if="q.sinResult === false"></i>
-										</span>										
+										</span>
 									</td>
-									<td class="tri--rfa-input">										
+									<td class="tri--rfa-input">
 										<input type="number" class="form-control" v-model="q['cos'+q.degree+'answer']">
 										<span class="badge badge-info tri--rfa-answer" v-show="q.seeCosAnswer === true">{{ q.cosDegree }}</span>
 										<span class="tri--rfa-result">
@@ -91,7 +92,7 @@ export default {
 				seeSinAnswer: false,	// If show the answer of sin
 				seeCosAnswer: false		// If show the answer of cos
 			}
-			question['sin'+degree+'answer'] = null;		// The user input	
+			question['sin'+degree+'answer'] = null;		// The user input
 			question['cos'+degree+'answer'] = null;		// The user input
 			// question['sin'+degree+'result'] = null;
 			// question['cos'+degree+'result'] = null;
@@ -113,7 +114,7 @@ export default {
 		},
 		drawCanvas() {
 			const canvas = document.querySelector('#app-canvas');
-			canvas.height = canvas.width;	// Make the canvas a square(responsive)
+			//canvas.height = canvas.width;	// Make the canvas a square(responsive)
 			// console.log(canvas);
 			if(canvas.getContext) {
 				drawCircle(canvas);
@@ -121,7 +122,7 @@ export default {
 				canvas.addEventListener('mousedown', (e) => {
 					this.degree = drawPosition(canvas, e.clientX, e.clientY);
 					this.isDrawing = true;
-					// this.degree = degree;		
+					// this.degree = degree;
 				});
 				canvas.addEventListener('mousemove', (e) => {
 					// console.log(e);
@@ -137,7 +138,7 @@ export default {
 				canvas.addEventListener('touchstart', (e) => {
 					this.degree = drawPosition(canvas, e.touches[0].clientX, e.touches[0].clientY);
 					this.isDrawing = true;
-					// this.degree = degree;		
+					// this.degree = degree;
 				});
 				canvas.addEventListener('touchmove', (e) => {
           e.preventDefault();
@@ -159,7 +160,7 @@ export default {
 				const degree = question.degree;
 				if(question['sin'+degree+'answer']) {
 					// console.log('has sin answer', question['sin'+degree+'answer']);
-					question.sinResult = 
+					question.sinResult =
 						Number(Math.abs(Number(question['sin'+degree+'answer'])-question.sinDegree).toFixed(2)) <= 0.03 ?
 						true :
 						false;
@@ -169,7 +170,7 @@ export default {
 				}
 				if(question['cos'+degree+'answer']) {
 					// console.log('has cos answer', question['cos'+degree+'answer']);
-					question.cosResult = 
+					question.cosResult =
 						Number(Math.abs(Number(question['cos'+degree+'answer'])-question.cosDegree).toFixed(2)) <= 0.03 ?
 						true :
 						false;
@@ -177,15 +178,15 @@ export default {
 					question.cosResult = null;
 					question.seeCosAnswer = false;
 				}
-			}			
+			}
 			// console.log('check answer!', this.questions);
 		},
-		seeAnswer() {	
+		seeAnswer() {
 			for(let i in this.questions) {
 				const question = this.questions[i];
 				const degree = question.degree;
 				if(question['sin'+degree+'answer']) {
-					question.seeSinAnswer = true; 
+					question.seeSinAnswer = true;
 				} else {
 					question.seeSinAnswer = false;
 					question.sinResult = null;

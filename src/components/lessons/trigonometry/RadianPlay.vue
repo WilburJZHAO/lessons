@@ -1,15 +1,15 @@
 <template>
 	<div>
 		<div class="container mt-4 mb-5">
-			<div class="row">				
+			<div class="row">
 				<div class="col-12">
-					<h4 class="text-success">Click and drag on circle</h4>
+					<h5 class="text-success">Click and drag on the circle</h5>
 				</div>
 			</div>
 			<div class="row">
 				<!-- Left part -->
 				<div class="col-12 col-md-4">
-					<canvas id="app-canvas"></canvas>
+					<canvas id="app-canvas" width="600" height="600"></canvas>
 					<div class="tri--radian-data mt-4 mb-2" v-if="degree !== null">
 						<div>
 							<div class="form-check">
@@ -30,7 +30,7 @@
 				</div>
 				<!-- Right part -->
 				<div class="col-12 col-md-8">
-					<canvas id="app-coord-canvas"></canvas>
+					<canvas id="app-coord-canvas" width="640" height="300"></canvas>
 				</div>
 			</div>
 		</div>
@@ -60,7 +60,7 @@ export default {
 		drawCanvas() {
 			const canvas = document.querySelector('#app-canvas');
 			const coordCanvas = document.querySelector('#app-coord-canvas');
-			canvas.height = canvas.width;	// Make the canvas a square(responsive)
+			//canvas.height = canvas.width;	// Make the canvas a square(responsive)
 			// console.log(canvas);
 			if(canvas.getContext) {
 				drawCircle(canvas);
@@ -70,7 +70,7 @@ export default {
 					if(this.operator === 'sin') drawSinWave(coordCanvas, this.degree);
 					if(this.operator === 'cos') drawCosWave(coordCanvas, this.degree);
 					this.isDrawing = true;
-					// this.degree = degree;		
+					// this.degree = degree;
 				});
 				canvas.addEventListener('mousemove', (e) => {
 					// console.log(e);
@@ -81,7 +81,7 @@ export default {
 					}
 				});
 				canvas.addEventListener('mouseup', (e) => {
-					this.degree = drawPosition(canvas, e.clientX, e.clientY); 
+					this.degree = drawPosition(canvas, e.clientX, e.clientY);
 					if(this.operator === 'sin') drawSinWave(coordCanvas, this.degree);
 					if(this.operator === 'cos') drawCosWave(coordCanvas, this.degree);
 					this.isDrawing = false;
@@ -92,7 +92,7 @@ export default {
 					this.degree = drawPosition(canvas, e.touches[0].clientX, e.touches[0].clientY);
 					if(this.operator === 'sin') drawSinWave(coordCanvas, this.degree);
 					if(this.operator === 'cos') drawCosWave(coordCanvas, this.degree);
-					// this.degree = degree;		
+					// this.degree = degree;
 				});
 				canvas.addEventListener('touchmove', (e) => {
           e.preventDefault();
@@ -105,7 +105,7 @@ export default {
 				});
 				canvas.addEventListener('touchend', (e) => {
 					this.isDrawing = false;
-					this.degree = drawPosition(canvas, e.touches[0].clientX, e.touches[0].clientY); 
+					this.degree = drawPosition(canvas, e.touches[0].clientX, e.touches[0].clientY);
 					if(this.operator === 'sin') drawSinWave(coordCanvas, this.degree);
 					if(this.operator === 'cos') drawCosWave(coordCanvas, this.degree);
 				});

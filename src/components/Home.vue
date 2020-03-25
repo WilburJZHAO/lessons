@@ -18,7 +18,7 @@ export default {
         { name: "Garden Beds", link: "/garden-beds" },
         { name: "Same or Different", link: "/same-or-different" },
         { name: "Tackling Times Tables", link: "/times-tables" },
-        { name: "Trigonometry Walking", link: "/trigonometry" },
+        { name: "Trigonometry Walk", link: "/trigonometry" },
         { name: "Truth Tiles 1", link: "/truth-tiles-1" },
         { name: "Truth Tiles 2", link: "/truth-tiles-2" },
         { name: "Take Away Tiles", link: "/take-away-tiles" },
