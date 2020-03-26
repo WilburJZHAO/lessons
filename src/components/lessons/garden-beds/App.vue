@@ -1,25 +1,25 @@
 <template>
 	<div>
 		<div v-if="selectedOption===-1">
-			<app-title-static>Garden Bed</app-title-static>
+			<app-title-static>Garden Beds</app-title-static>
 			<transition appear appear-class="options-appear" appear-active-class="options-appear-active">
 				<app-options :options="options" @selectOption="selectedOption=$event"></app-options>
 			</transition>
 		</div>
 		<div class="container-fluid" v-else>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-top-nav @backToMenu="selectedOption = $event">Garden Bed</app-top-nav> 
-			</transition> 
-				
+				<app-top-nav @backToMenu="selectedOption = $event">Garden Beds</app-top-nav>
+			</transition>
+
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-garden-bed v-if="selectedOption === 1"></app-garden-bed>
 			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-bed-length v-if="selectedOption === 2"></app-bed-length>
-			</transition> 
+			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-challenge v-if="selectedOption === 3"></app-challenge>
-			</transition> 
+			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-expert-challenge v-if="selectedOption === 4"></app-expert-challenge>
 			</transition>

@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success">Goods and Bads: Level 2</h3>
+    <h3 class="text-center text-success">Level 2</h3>
     <app-goods-bads :level="2"></app-goods-bads>
   </div>
 </template>

@@ -1,15 +1,15 @@
-  
+
 <template>
   <div>
     <div v-if="selectedOption === -1">
-      <app-title-static>Bob's button</app-title-static>
+      <app-title-static>Bob's Buttons</app-title-static>
       <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
         <app-options :options="options" @selectOption="selectedOption = $event"></app-options>
       </transition>
     </div>
     <div class="container-fluid" v-else>
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-        <app-top-nav @backToMenu="selectedOption = $event">Bob's Button</app-top-nav>
+        <app-top-nav @backToMenu="selectedOption = $event">Bob's Buttons</app-top-nav>
       </transition>
 
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
@@ -21,13 +21,13 @@
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
         <app-computer-solutions v-if="selectedOption === 3"></app-computer-solutions>
       </transition>
-    </div> 
+    </div>
   </div>
 </template>
 
 <script>
 import TitleStatic from "../../layout/TitleStatic.vue";
-import TopNav from "../../layout/TopNav.vue"; 
+import TopNav from "../../layout/TopNav.vue";
 import Options from "../../layout/Options.vue";
 import ComputerSolutions from "./ComputerSolutions.vue";
 import Demonstration from "./Demonstration.vue";
@@ -37,7 +37,7 @@ export default {
   components: {
     appTitleStatic: TitleStatic,
     appTopNav: TopNav,
-    appOptions: Options, 
+    appOptions: Options,
     appComputerSolutions: ComputerSolutions,
     appDemonstration: Demonstration,
     appSolveProblem: SolveProblem
@@ -55,5 +55,5 @@ export default {
 };
 </script>
 
-<style> 
+<style>
 </style>

@@ -8,18 +8,18 @@
 		</div>
 		<div class="container-fluid" v-else>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-top-nav @backToMenu="selectedOption = $event">Ice Cream Flavours</app-top-nav> 
-			</transition> 
-				
+				<app-top-nav @backToMenu="selectedOption = $event">Ice Cream Flavours</app-top-nav>
+			</transition>
+
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-make-ice-creams v-if="selectedOption === 1"></app-make-ice-creams>
-			</transition> 
+			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-how-many-ice-creams v-if="selectedOption === 2"></app-how-many-ice-creams>
-			</transition> 
-		</div> 
+			</transition>
+		</div>
     <!-- <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
-			<app-bottom-nav></app-bottom-nav> 
+			<app-bottom-nav></app-bottom-nav>
 		</transition> -->
 	</div>
 </template>
@@ -47,7 +47,7 @@ export default {
 		return {
 			options: [
 				{id: 1, title: 'Make some ice creams'},
-				{id: 2, title: 'How many ice creams can be made'}
+				{id: 2, title: 'How many ice creams can be made?'}
 			],
 			selectedOption: -1
 		}

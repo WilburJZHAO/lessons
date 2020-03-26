@@ -77,7 +77,7 @@
         class="btn btn-outline-success"
         v-if="selectedStrategy.id !== 0 && (gameStatus===0 || gameStatus===-1)"
         @click="handleStart"
-      >Change numbers then spacebar to set</button>
+      >Change numbers then tap to set</button>
       <div v-if="gameStatus === 1 || gameStatus === 2">
         <button
           class="btn btn-outline-success"

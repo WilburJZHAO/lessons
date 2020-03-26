@@ -62,7 +62,7 @@ export default {
       options: [
         {
           id: 1,
-          title: "How many piges and chickens in the field?"
+          title: "How many pigs and chickens in the field?"
         },
         {
           id: 2,

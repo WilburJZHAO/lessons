@@ -2,7 +2,7 @@
     <div>
         <div v-if="selectedOption === -1">
             <app-title-static>
-                Rectangle Fraction
+                Rectangle Fractions
             </app-title-static>
             <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
                 <app-options :options="options" @selectOption="selectedOption=$event"></app-options>
@@ -11,7 +11,7 @@
 
         <div class="container-fluid" v-else>
             <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-                <app-top-nav @backToMenu="selectedOption = $event">Rectangle Fraction</app-top-nav>
+                <app-top-nav @backToMenu="selectedOption = $event">Rectangle Fractions</app-top-nav>
             </transition>
 
             <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
@@ -51,7 +51,7 @@
                 options: [
                     { id: 1, title: 'How many columns' },
                     { id: 2, title: 'Show the fraction' },
-                    { id: 3, title: 'Adding fraction'},
+                    { id: 3, title: 'Adding fractions'},
                 ],
                 selectedOption: -1,
             }
