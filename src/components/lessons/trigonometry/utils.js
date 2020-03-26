@@ -6,16 +6,16 @@
  * @returns A random number
  */
 export const pickRandomNumberWithExcept = (min, max, exceptArr = []) => {
-	let randomNum; 
+	let randomNum;
 	do {
 		randomNum = Math.floor(Math.random() * (max-min+1)) + min;
-	} while ( exceptArr.indexOf(randomNum) !== -1) 
+	} while ( exceptArr.indexOf(randomNum) !== -1)
 	return randomNum;
 }
 
 /**
  * Pick up a random element from an array
- * @param Array arr 
+ * @param Array arr
  */
 export const pickRandomElementFromArray = (arr=[]) => {
 	if(arr.length === 0) {
@@ -28,10 +28,10 @@ export const pickRandomElementFromArray = (arr=[]) => {
 /**
  * Given a point(x, y) on round and radius(r), calculate the angle.
  * 给定圆周上一点（平面直角坐标系），计算其对应的角度值
- * @param Number x 
- * @param Number y 
+ * @param Number x
+ * @param Number y
  * @param Number r
- * @returns Angle value 
+ * @returns Angle value
  */
 export const getDegree = (x, y, r) => {
 	let degree;
@@ -46,66 +46,65 @@ export const getDegree = (x, y, r) => {
 /**
  * Draw a circle and its corresponding rectangular plane coordinate system
  * 在Canvas上画圆和平面直角坐标系
- * @param Canvas Object canvas 
+ * @param Canvas Object canvas
  * @returns ctx Object
  */
-export const drawCircle = (canvas) => {
-		if(!canvas || !canvas.getContext) {
-			return null;
-		} 
-		const ctx = canvas.getContext('2d');
-		ctx.clearRect(0, 0, canvas.width, canvas.height);
-		/** Width: 300, Height: 300 */
-		/** Center: 150, 150  R: 120 */
-		ctx.beginPath();
-		ctx.strokeStyle = '#000';
-		ctx.moveTo(29, 29);
-		ctx.strokeRect(29, 29, 242, 242);	// Draw outer square
-
-		ctx.beginPath();
-		ctx.filleStyle = '#000';
-		ctx.font="12px";
-		ctx.fillText('1', 148, 20); 	// Draw 1 on X axis
-		ctx.fillText('1', 274, 152); 	// Draw 1 on Y axis
-		ctx.fillText('-1', 16, 152); 	// Draw -1 on X axis
-		ctx.fillText('-1', 146, 282);	// Draw -1 on Y axis
-
-		ctx.beginPath();
-		ctx.strokeStyle = '#ccc';
-		for(let i=1; i<=9; i++) {		// Draw grid on Y direction
-			if( ((120/5)*i + 30) === 150 ) {
-				continue;		// Skip Y axis 
-			}
-			ctx.moveTo( (120/5)*i+30, 29);
-			ctx.lineTo( (120/5)*i+30, 271);
-			ctx.stroke();
-		}
-
-		for(let i=1; i<=9; i++) {		// Draw grid on X direction
-			if( ((120/5)*i + 30) === 150 ) {
-				continue;		// Skip X axis 
-			}
-			ctx.moveTo( 29, (120/5)*i+30);
-			ctx.lineTo( 271, (120/5)*i+30);
-			ctx.stroke();
-		}
-		
-		ctx.beginPath();
-		ctx.strokeStyle = 'blue';
-		ctx.moveTo(29, 150);
-		ctx.lineTo(271, 150);	// Draw X axis
-		ctx.stroke();
-		ctx.moveTo(150, 29);
-		ctx.lineTo(150, 271);	// Draw Y axis
-		ctx.stroke();
-
-		ctx.beginPath();
-		ctx.strokeStyle = '#f00';
-		ctx.arc(150, 150, 120, 0, Math.PI * 2, true); // Draw circle
-		ctx.stroke();
+ export const drawCircle = (canvas) => {
+ 		if(!canvas || !canvas.getContext) {
+ 			return null;
+ 		}
+ 		const ctx = canvas.getContext('2d');
 		ctx.save();
-		return ctx;
-}
+		ctx.lineWidth = 2;
+ 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+ 		/** Width: 600, Height: 600 */
+ 		/** Center: 300, 300  R: 240 */
+ 		ctx.beginPath();
+ 		ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+ 		ctx.textAlign = 'center';
+		ctx.textBaseline = 'middle';
+ 		ctx.font="24px Verdana";
+ 		ctx.fillText('1', 300, 40); 	// Draw 1 on X axis
+ 		ctx.fillText('1', 560, 300); 	// Draw 1 on Y axis
+ 		ctx.fillText('-1', 40, 300); 	// Draw -1 on X axis
+ 		ctx.fillText('-1', 300, 560);	// Draw -1 on Y axis
+
+ 		ctx.beginPath();
+ 		ctx.strokeStyle = 'rgba(180, 180, 180, 0.8)';
+ 		for(let i = 1; i <= 9 ; i++) {		// Draw grid on Y direction
+ 			if( ((240 / 5) * i + 60) === 300 ) {
+ 				continue;		// Skip Y axis
+ 			}
+ 			ctx.moveTo( (240 / 5) * i + 60, 58);
+ 			ctx.lineTo( (240 / 5) * i + 60, 542);
+ 			ctx.stroke();
+ 		}
+
+ 		for(let i = 1; i <= 9; i++) {		// Draw grid on X direction
+ 			if( ((240 / 5) * i + 60) === 300 ) {
+ 				continue;		// Skip X axis
+ 			}
+ 			ctx.moveTo( 58, (240 / 5) * i + 60);
+ 			ctx.lineTo( 542, (240 / 5) * i + 60);
+ 			ctx.stroke();
+ 		}
+
+ 		ctx.strokeRect(58, 58, 484, 484);	// Draw outer square
+		ctx.lineWidth = 4;
+ 		ctx.beginPath();
+ 		ctx.strokeStyle = 'rgba(50, 90, 250, 0.8)';
+ 		ctx.moveTo(58, 300);
+ 		ctx.lineTo(542, 300);	// Draw X axis
+ 		ctx.stroke();
+ 		ctx.moveTo(300, 58);
+ 		ctx.lineTo(300, 542);	// Draw Y axis
+ 		ctx.stroke();
+ 		ctx.strokeStyle = 'rgba(255, 45, 45, 0.8)';
+ 		ctx.beginPath();
+ 		ctx.arc(300, 300, 240, 0, Math.PI * 2, true); // Draw circle
+ 		ctx.stroke();
+		ctx.restore();
+ }
 
 /**
  * Draw the position on circle based on where mouse clicked
@@ -117,94 +116,96 @@ export const drawCircle = (canvas) => {
 export const drawPosition = (canvas, clientX, clientY) => {
 	const ctx = canvas.getContext('2d');
 	const rect = canvas.getBoundingClientRect();
-	// console.log(rect);
-	// console.log(canvas.width, canvas.height);
-	
+
 	// Get the position on canvas when user clicks mouse.
-	const x = (clientX - rect.left)*(canvas.width/rect.width);
-	const y = (clientY - rect.top)*(canvas.height/rect.height);
+	const x = (clientX - rect.left) * (canvas.width / rect.width);
+	const y = (clientY - rect.top) * (canvas.height / rect.height);
 
 	// Get the distance from click position to center
-	const r = Math.sqrt((x-150)*(x-150) + (y-150)*(y-150));
-	// Check if the mouse is clicked within the circl area
-	if(r>0 && r<=120) {		// If click happens within the circle
-		// ctx.clearRect(0, 0, canvas.width, canvas.height);
-		// ctx.restore();
+	const r = Math.sqrt((x - 300) * (x - 300) + (y - 300) * (y - 300));
+	// Check if the mouse is clicked within the circle area
+	if (r > 0 && r <= 240) {		// If click happens within the circle
 		drawCircle(canvas);
-		// console.log('in circle');
-		const xToCenter = x-150;
-		const yToCenter = 150-y;	// Get the position relative to center
+		const xToCenter = x - 300;
+		const yToCenter = 300 - y;	// Get the position relative to center
 
-		const xToCenterR = xToCenter*(120/r);
-		const yToCenterR = yToCenter*(120/r);	// Get the position on circle(relative to center)
-		// const radian = Math.asin(yToCenterR / 120);
-		// let degree;
-		// if(radian>=0 && radian<= Math.PI/2) degree = radian * (180/Math.PI);
-		// else if(radian > Math.PI/2 )
-		// const degree = Math.acos(yToCenterR / 120) * (180/Math.PI);
-		const degree = getDegree(xToCenterR, yToCenterR, 120);
-		// console.log('degree', degree);
+		const xToCenterR = xToCenter * (240 / r);
+		const yToCenterR = yToCenter * (240 / r);	// Get the position on circle(relative to center)
 
-		const xEnd = 150 + xToCenterR;
-		const yEnd = 150 - yToCenterR;	// Get the position on circle(relative to up-left point)
+		const degree = getDegree(xToCenterR, yToCenterR, 240);
 
+		const xEnd = 300 + xToCenterR;
+		const yEnd = 300 - yToCenterR;	// Get the position on circle(relative to up-left point)
+		ctx.save();
+		ctx.lineWidth = 3;
+		// draw guides
 		ctx.beginPath();
-		ctx.strokeStyle = '#f00';
-		ctx.moveTo(150, 150);
+		ctx.strokeStyle = 'rgba(255, 60, 230, 0.5)';
+		ctx.moveTo(xEnd, yEnd);
+		ctx.lineTo(xEnd ,300);
+		ctx.stroke();
+		ctx.moveTo(xEnd, yEnd);
+		ctx.lineTo(300, yEnd);
+		ctx.stroke();
+
+		// draw angles
+		ctx.strokeStyle = 'rgba(255, 50, 50, 1)';
+		ctx.beginPath();
+		ctx.moveTo(300, 300);
+		ctx.lineTo(540, 300);
+		ctx.moveTo(300, 300);
 		ctx.lineTo(xEnd, yEnd);
 		ctx.stroke();
 
 		ctx.beginPath();
-		ctx.strokeStyle = '#ffb3b3';
-		ctx.moveTo(xEnd, yEnd);
-		ctx.lineTo(xEnd ,150);
+		ctx.arc(300, 300, 60, 0, (360 - degree) * (Math.PI/180), true);
 		ctx.stroke();
-		ctx.moveTo(xEnd, yEnd);
-		ctx.lineTo(150, yEnd);
-		ctx.stroke();
-
-		// ctx.moveTo();
-		ctx.beginPath();
-		ctx.strokeStyle = '#f00';
-		ctx.arc(150, 150, 30, 0, (360-degree)*(Math.PI/180), true);
-		ctx.stroke();
+		ctx.restore();
 		return degree;
 	} else {
 		return null;
 	}
 }
 
+
+// DONE TO HERE
+
+
+
 export const drawCoord = (canvas) => {
 		/**
-		 * Width: 300, Height: 150
-		 * X axis: 300, Y axis: 120
+		 * Width: 600, Height: 300
+		 * X axis: 300, Y axis: 120 ???? TODO - work this out - double???
 		 */
 		if(!canvas || !canvas.getContext) {
 			return null;
 		}
 		const ctx = canvas.getContext('2d');
+
+		ctx.save();
 		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		ctx.beginPath();
-		ctx.strokeStyle = '#888';
-		ctx.strokeRect(0, 10, 300, 120);
+		ctx.strokeStyle = 'rgba(180, 180, 180, 1)';
+		ctx.strokeRect(0, 20, 600, 240);
 
 		ctx.beginPath();
 		ctx.strokeStyle = 'blue';
-		ctx.moveTo(0, 10);
-		ctx.lineTo(0, 130);
+		ctx.moveTo(0, 20);
+		ctx.lineTo(0, 260);
 		ctx.stroke();
 
 		ctx.beginPath();
-		ctx.moveTo(0, 70);
-		ctx.lineTo(300, 70);
+		ctx.moveTo(0, 140);
+		ctx.lineTo(600, 140);
 		ctx.stroke();
 
 		ctx.beginPath();
-		ctx.fillStyle = 'blue';
-		ctx.font="12px sans-serif";
-		ctx.fillText('X', 287, 65);
-		ctx.fillText('Y', 3, 25);
-		// ctx.fillText('0', 5, 80);
+		ctx.fillStyle = 'rgba(50, 50, 255, 1)';
+		ctx.font="24px Verdana";
+		ctx.fillText('X', 574, 130);
+		ctx.fillText('Y', 6, 50);
+		// ctx.fillText('0', 8, 165);
+		ctx.restore();
 
 }
 
@@ -220,42 +221,42 @@ export const drawSinWave = (canvas, degree = 0) => {
 	}
 	drawCoord(canvas);
 	const ctx = canvas.getContext('2d');
+
+	ctx.save();
 	ctx.beginPath();
-	ctx.strokeStyle = '#000';
-	// let counter = 0, x=0, y=70;
-	let startX = 0, startY = 70;
-	// y = 70, 原点
-	// let increase = 90/70*Math.PI / 7.5;
-	for(let i=0; i<=degree; i++) {	// i - degree (the value on X axis)
+	ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+	let startX = 0, startY = 140;
+
+	for(let i = 0; i <= degree; i++) {	// i - degree (the value on X axis)
 		ctx.moveTo(startX, startY);  // start point
 
-		let endX = i * 300/360; // 300 - X轴在Canvas上的长度
+		let endX = i * 600 / 360; // 300 - X轴在Canvas上的长度
 		// 360 - 实际X轴上应有数
 
 		// 70 - 坐标原点到Canvas原点的距离
 		// 60 - 120/2 坐标Y轴的高度
-		let endY = 70 - Math.sin(i*Math.PI/180)*60;
+		let endY = 140 - Math.sin(i * Math.PI / 180) * 120;
 		// counter += increase;
 		ctx.lineTo(endX, endY);
 		ctx.stroke();
-	
+
 		startX = endX; startY = endY;	// 记录下一次的开始点位置
 	}
-	
-	ctx.beginPath();
-	ctx.font = '10px sans-serif';
+
+	ctx.font = '18px Verdana';
 	// ctx.fillText('X:' + (degree*Math.PI/180).toFixed(2) + 'radian', 12, 115);
 	// ctx.fillText('Y:' + Math.sin(degree*Math.PI/180).toFixed(2), 12, 125);
-	ctx.fillText( (degree*Math.PI/180).toFixed(2), degree/360*300, 80);
-	
+	ctx.fillText( (degree * Math.PI / 180).toFixed(2), degree / 360 * 600, 160);
+
 	ctx.beginPath();
-	ctx.strokeStyle="#ffb3b3";
+	ctx.strokeStyle="rgba(255, 30, 30, 0.8)";
 	ctx.moveTo(startX, startY);
-	ctx.lineTo(startX, 70);
+	ctx.lineTo(startX, 140);
 	ctx.stroke();
 	ctx.moveTo(startX, startY);
 	ctx.lineTo(0, startY);
 	ctx.stroke();
+	ctx.restore();
 }
 
 /**
@@ -270,31 +271,32 @@ export const drawCosWave = (canvas, degree = 0) => {
 	}
 	drawCoord(canvas);
 	const ctx = canvas.getContext('2d');
+	ctx.save();
 	ctx.beginPath();
-	ctx.strokeStyle = '#000';
-	
-	let startX = 0, startY = 10;
-	for(let i=0; i<=degree; i++) {
+	ctx.strokeStyle = 'rgba(0, 0, 0, 1)';
+
+	let startX = 0, startY = 20;
+	for(let i = 0; i <= degree; i++) {
 		ctx.moveTo(startX, startY);
-		let endX = i*300/360;
-		let endY = 70 - Math.cos(i*Math.PI/180)*60;
+		let endX = i * 600 / 360;
+		let endY = 140 - Math.cos(i * Math.PI / 180) * 120;
 		ctx.lineTo(endX, endY);
 		ctx.stroke();
-		startX = endX; startY = endY;	
+		startX = endX; startY = endY;
 	}
- 
-	ctx.beginPath();
-	ctx.font = '10px sans-serif';
+
+	ctx.font = '18px Verdana';
 	// ctx.fillText('X:' + (degree*Math.PI/180).toFixed(2) + 'radian', 12, 115);
-	// ctx.fillText('Y:' + Math.cos(degree*Math.PI/180).toFixed(2), 12, 125);	
-	ctx.fillText( (degree*Math.PI/180).toFixed(2), degree/360*300, 80);
+	// ctx.fillText('Y:' + Math.sin(degree*Math.PI/180).toFixed(2), 12, 125);
+	ctx.fillText( (degree * Math.PI / 180).toFixed(2), degree / 360 * 600, 160);
 
 	ctx.beginPath();
-	ctx.strokeStyle="#ffb3b3";
+	ctx.strokeStyle="rgba(255, 30, 30, 0.8)";
 	ctx.moveTo(startX, startY);
-	ctx.lineTo(startX, 70);
+	ctx.lineTo(startX, 140);
 	ctx.stroke();
 	ctx.moveTo(startX, startY);
 	ctx.lineTo(0, startY);
 	ctx.stroke();
+	ctx.restore();
 }

@@ -4,7 +4,8 @@
 			<div class="row">
 				<!-- Left part -->
 				<div class="col-12 col-md-6">
-					<canvas id="app-canvas"></canvas>
+					<h5 class="text-success">Click on the circle</h5>
+					<canvas id="app-canvas" width='600' height='600'></canvas>
 					<h5 v-if="degree!==null">A = {{ degree }} degrees</h5>
 				</div>
 				<!-- Right part -->
@@ -111,8 +112,8 @@ export default {
 					question.angle2 = 360 - question.angle1;
 					break;
 				case 'tan':
-					if(question.degree===90 || question.degree===270) question.degree++;	 
-					// Because the result of tan90 and tan270 is infinity, add it by one.  
+					if(question.degree===90 || question.degree===270) question.degree++;
+					// Because the result of tan90 and tan270 is infinity, add it by one.
 					question.ratio = Number(Math.tan(degree*Math.PI/180).toFixed(2));
 					if(question.ratio >= 0) {
 						question.angle1 = Math.round(Math.atan(question.ratio)*180/Math.PI);
@@ -123,7 +124,7 @@ export default {
 					break;
 				default:
 					break;
-			}			 
+			}
 			return question;
 		},
 		/**
@@ -141,7 +142,7 @@ export default {
 		},
 		drawCanvas() {
 			const canvas = document.querySelector('#app-canvas');
-			canvas.height = canvas.width;	// Make the canvas a square(responsive)
+			//canvas.height = canvas.width;	// Make the canvas a square(responsive)
 			// console.log(canvas);
 			if(canvas.getContext) {
 				drawCircle(canvas);
@@ -149,7 +150,7 @@ export default {
 				canvas.addEventListener('mousedown', (e) => {
 					this.degree = drawPosition(canvas, e.clientX, e.clientY);
 					this.isDrawing = true;
-					// this.degree = degree;		
+					// this.degree = degree;
 				});
 				canvas.addEventListener('mousemove', (e) => {
 					// console.log(e);
@@ -165,7 +166,7 @@ export default {
 				canvas.addEventListener('touchstart', (e) => {
 					this.degree = drawPosition(canvas, e.touches[0].clientX, e.touches[0].clientY);
 					this.isDrawing = true;
-					// this.degree = degree;		
+					// this.degree = degree;
 				});
 				canvas.addEventListener('touchmove', (e) => {
           e.preventDefault();
@@ -185,7 +186,7 @@ export default {
 				const question = this.questions[i];
 				const degree = question.degree;
 				if(question['angle1' + degree + 'answer']) {
-					question.angle1Result = 
+					question.angle1Result =
 						Math.abs(Number(question['angle1'+degree+'answer']) - question.angle1) <= 1 ?
 						true :
 						false;
@@ -194,7 +195,7 @@ export default {
 					question.seeAngle1Answer = false;
 				}
 				if(question['angle2' + degree + 'answer']) {
-					question.angle2Result = 
+					question.angle2Result =
 						Math.abs(Number(question['angle2'+degree+'answer']) - question.angle2) <= 1 ?
 						true :
 						false;
