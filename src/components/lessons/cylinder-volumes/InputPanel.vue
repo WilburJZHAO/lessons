@@ -2,9 +2,9 @@
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6 col-sm-8 col-xs-10">
-        <h5 class="text-success mb-3">Enter the length and width of the paper</h5>
+        <h5 class="text-success mb-3">Enter the length and width of the paper in centimetres.</h5>
         <div class="d-flex align-items-center mb-3">
-          <label class="mr-3">Length(cm)</label>
+          <label class="mr-3">Length:</label>
           <input
             type="text"
             class="form-control"
@@ -13,7 +13,7 @@
           />
         </div>
         <div class="d-flex align-items-center mb-3">
-          <label class="mr-3">Width(cm){{ ' '}}</label>
+          <label class="mr-3">Width:{{ ' '}}</label>
           <input
             type="text"
             class="form-control"

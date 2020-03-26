@@ -10,21 +10,20 @@
           <table class="table text-center" style="table-layout: fixed;">
             <tr>
               <th>
-                Area(cm
-                <sup>2</sup>)
+                Area (cm<sup>2</sup>)
               </th>
               <td>{{ area }}</td>
             </tr>
             <tr>
-              <th>Paper height(cm)</th>
+              <th>Paper height (cm)</th>
               <td>{{ height }}</td>
             </tr>
             <tr>
-              <th>Paper width(cm)</th>
+              <th>Paper width (cm)</th>
               <td>{{ width }}</td>
             </tr>
             <tr>
-              <th>Current height(cm)</th>
+              <th>Current height (cm)</th>
               <td>{{ currentHeight }}</td>
             </tr>
             <tr>
@@ -55,7 +54,7 @@
               </td>
             </tr>
             <tr>
-              <th>Enter increment(cm)</th>
+              <th>Enter increment (cm)</th>
               <td>
                 <input class="form-control" name="increment" v-model="increment" type="number" />
                 <br />
@@ -77,9 +76,9 @@
         <div class="col-md-6">
           <table class="table table-bordered text-center">
             <tr>
-              <th>Height(cm)</th>
-              <th>Radius(cm)</th>
-              <th>Volume(L)</th>
+              <th>Height (cm)</th>
+              <th>Radius (cm)</th>
+              <th>Volume (L)</th>
             </tr>
             <tr
               v-for="(data, index) in resultArr"
@@ -99,7 +98,7 @@
 
 <script>
 import InputPanel from "./InputPanel.vue";
-import { calculateRadius, calculateArea, calculateVolumne } from "./utils";
+import { calculateRadius, calculateArea, calculateVolume } from "./utils";
 
 export default {
   components: {
@@ -200,7 +199,7 @@ export default {
       let width = this.area / height;
       let radius = calculateRadius(width);
       let area = calculateArea(radius);
-      let volume = calculateVolumne(area, height) / 1000;
+      let volume = calculateVolume(area, height) / 1000;
       return [height, radius, volume];
     }
   }
