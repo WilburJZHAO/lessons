@@ -55,7 +55,7 @@
                                 <button
                                         type="submit"
                                         class="btn btn-outline-success btn-lg"
-                                        :disabled="finishAnswer" @click="reset">Reset</button>
+                                        :disabled="finish" @click="reset">Reset</button>
                             </div>
                             <div class="tt--solutions mb-5" style="padding-bottom: 30px">
                                 <div class="mr-3 tt--solutions-count">
@@ -78,7 +78,7 @@
                                 <span style="font-size: 115%;" class="badge badge-dark">{{ uniqueSolutions }}</span> Unique solutions found
                             </p>
 
-                            <select name="uniqueRes" @change="changeGridValue($event)" v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="20" class="style-select">
+                            <select id="solutionsField" name="uniqueRes" @change="changeGridValue($event)" v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="12" class="style-select">
 
                             </select>
                         </div>
@@ -118,6 +118,7 @@
                 uniqueSolutionsHTML:"<br>",
 
                 setRes: new Set(),
+                finish: false,
 
             }
         },
@@ -147,12 +148,17 @@
             this.initDropArea(this.$refs.dropzonePlace2)
             this.initDropArea(this.$refs.dropzonePlace3)
             this.initDropArea(this.$refs.dropzonePlace4)
-
-
-
-
-
         },
+
+        watch: {
+          uniqueSolutionsHTML() {
+            this.$nextTick( function() {
+              const solutionsField = document.getElementById("solutionsField");
+              solutionsField.scrollTop = solutionsField.scrollHeight;
+            });
+          }
+        },
+
         methods:{
             changeGridValue: function(event){
                 var value = event.target.value
@@ -375,8 +381,8 @@
                 interact(selector).dropzone({
                     // only accept elements matching this CSS selector
                     accept: '#y1,#y2,#y3,#y4,#y5,#y6,#y7,#y8,#y9,.dropzone-drop',
-                    // Require a 75% element overlap for a drop to be possible
-                    overlap: 0.75,
+                    // Require a 50% element overlap for a drop to be possible
+                    overlap: 0.5,
 
                     // listen for drop related events:
 
@@ -630,7 +636,7 @@
                     }
                 }
             },
-            
+
             reset: function () {
                 this.initReset()
 
