@@ -445,6 +445,12 @@ const GreedyPig = resolve => {
   });
 };
 
+const SnakesAndLadders = resolve => {
+  require.ensure("./components/lessons/snakes-and-ladders/App.vue", () => {
+    resolve(require("./components/lessons/snakes-and-ladders/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -829,6 +835,11 @@ const routes = [
     path: "/greedy-pig",
     component: GreedyPig,
     name: "Greedy Pig"
+  },
+  {
+    path: "/snakes-and-ladders",
+    component: SnakesAndLadders,
+    name: "Snakes And Ladders"
   }
 ];
 
