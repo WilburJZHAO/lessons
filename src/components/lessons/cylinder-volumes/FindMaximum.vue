@@ -10,7 +10,8 @@
           <table class="table text-center" style="table-layout: fixed;">
             <tr>
               <th>
-                Area (cm<sup>2</sup>)
+                Area (cm
+                <sup>2</sup>)
               </th>
               <td>{{ area }}</td>
             </tr>
@@ -165,7 +166,7 @@ export default {
       this.resultArr = [];
       //  this.currentHeight = this.height;
       let count = 0;
-      while (count <= 10 && this.currentHeight > 0) {
+      while (count <= 11 && this.currentHeight > 0) {
         const [height, radius, volume] = this.calculate(this.currentHeight);
         this.resultArr.push({
           height: height,
@@ -173,7 +174,7 @@ export default {
           volume: Number(volume.toFixed(2))
         });
         count++;
-        if (count >= 10) {
+        if (count >= 11) {
           break;
         }
         let nextCurrentHeight = Number(
