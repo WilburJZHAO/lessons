@@ -37,7 +37,7 @@
           <button
             class="btn btn-outline-success"
             @click="handlePlayOneGame"
-            v-if="demoAutoOption === '0'"
+            v-if="demoAutoOption === '0'&& numberOverflow === false"
           >
             {{
             status === 1
@@ -48,7 +48,7 @@
           <button
             class="btn btn-outline-success"
             @click="handleToggleTimer"
-            v-if="demoAutoOption === '1'"
+            v-if="demoAutoOption === '1'&& numberOverflow === false"
           >
             {{
             timer
@@ -58,6 +58,11 @@
             : "Tap here to resume"
             }}
           </button>
+          <button
+            class="btn btn-outline-success"
+            @click="handleMoreTrials"
+            v-if=" numberOverflow === true"
+          >Tap here for more trials</button>
           <div class="text-center mt-2">
             <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
           </div>
@@ -106,7 +111,8 @@ export default {
       points1: [],
       points2: [],
       demoAutoOption: "0",
-      timer: null
+      timer: null,
+      numberOverflow: false
     };
   },
   computed: {
@@ -183,10 +189,22 @@ export default {
     },
     handleOverflow($event) {
       if (this.status === 2) {
-        this.status = 3;
+        // this.status = 3;
+        this.numberOverflow = true;
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
       } else if (this.status === 3) {
         this.status = 4;
         this.demoAutoOption = $event;
+      }
+    },
+    handleMoreTrials() {
+      this.status = 3;
+      this.numberOverflow = false;
+      if (this.demoAutoOption === "1") {
+        this.timer = setInterval(this.handlePlayOneGame, 200);
       }
     },
     handleReset() {
