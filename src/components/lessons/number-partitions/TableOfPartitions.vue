@@ -3,7 +3,7 @@
     <h3 class="text-center text-success mb-3">Table of number partitions</h3>
     <div class="row">
       <div class="col-md-5">
-        <div style="height: 500px; overflow: auto;">
+        <div  id="solutionsField" style="height: 500px; overflow: auto;">
           <table class="table">
             <thead class="text-primary">
               <th>n</th>
@@ -120,6 +120,11 @@ export default {
         this.gameStatus = 2;
         this.clearTimer();
       }
+      // scroll to bottom
+      this.$nextTick( function() {
+        const solutionsField = document.getElementById("solutionsField");
+        solutionsField.scrollTop = solutionsField.scrollHeight;
+      });
     }
   },
   methods: {
@@ -215,6 +220,33 @@ export default {
       this.gameStatus = 0;
       this.dataSetDisplay = [];
       this.nIndex = 1;
+
+      // reset graph, changes may only show after first iteration of new trial
+      this.dataSet = [];
+      this.timer = null;
+      this.showRatio = false;
+      this.chart = null;
+      this.chartLabel = [];
+      this.chartData = [];
+      for (let i = 1; i <= 100; i++) {
+        this.chartLabel.push(i);
+        this.chartData.push[0];
+        let partitionsNumber = integerPartition(i);
+        let partitionsNumberPrev = 0;
+        if (i > 1) {
+          partitionsNumberPrev = integerPartition(i - 1);
+        }
+        this.dataSet.push({
+          n: i,
+          pn: partitionsNumber,
+          ratio:
+            i > 1
+              ? Number((partitionsNumber / partitionsNumberPrev).toFixed(2))
+              : null
+        });
+      }
+      this.createDataChart(); // old one will be garbage collected
+
     }
   },
   created() {
