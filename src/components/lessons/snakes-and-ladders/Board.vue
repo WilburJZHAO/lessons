@@ -642,6 +642,8 @@ export default {
           path.setAttr("points", [
             currentFromX,
             currentFromY,
+            ((currentFromX + currentToX) / 2) * 0.8,
+            ((currentFromY + currentToY) / 2) * 0.8,
             currentToX,
             currentToY
           ]);
@@ -676,6 +678,8 @@ export default {
           path.setAttr("points", [
             currentFromX,
             currentFromY,
+            ((currentFromX + currentToX) / 2) * 0.8,
+            ((currentFromY + currentToY) / 2) * 0.8,
             currentToX,
             currentToY
           ]);
