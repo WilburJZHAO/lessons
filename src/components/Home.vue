@@ -88,7 +88,8 @@ export default {
         { name: "Win At The Fair", link: "/win-at-the-fair" },
         { name: "Temperature Graphs", link: "/temperature-graphs" },
         { name: "Greedy Pig", link: "/greedy-pig" },
-        { name: "Snakes And Ladders", link: "/snakes-and-ladders" }
+        { name: "Snakes And Ladders", link: "/snakes-and-ladders" },
+        { name: "Square Pairs", link: "/square-pairs" }
       ]
     };
   },

@@ -451,6 +451,12 @@ const SnakesAndLadders = resolve => {
   });
 };
 
+const SquarePairs = resolve => {
+  require.ensure("./components/lessons/square-pairs/App.vue", () => {
+    resolve(require("./components/lessons/square-pairs/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -840,6 +846,11 @@ const routes = [
     path: "/snakes-and-ladders",
     component: SnakesAndLadders,
     name: "Snakes And Ladders"
+  },
+  {
+    path: "/square-pairs",
+    component: SquarePairs,
+    name: "Square Pairs"
   }
 ];
 
