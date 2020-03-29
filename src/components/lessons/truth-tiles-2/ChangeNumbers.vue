@@ -3,8 +3,7 @@
         <transition appear appear-class="app-appear" appear-active-class="app-appear-active">
             <div class="container mt-4 mb5">
                 <div class="row">
-                    <!-- Left part -->
-                    <div class="col-12 col-md-6 app--lesson-left">
+                    <div class="col-12 app--lesson-action">
                         <div>
 
                             <h5 class="text-success">
@@ -34,7 +33,9 @@
                                     <button
                                             type="submit"
                                             class="btn btn-outline-success btn-lg"
-                                            :disabled="finishAnswer" @click="reset">Reset</button>
+                                            @click="reset">Reset</button>
+
+
                                 <p class="alert-danger alert" v-if="alertIf">{{alert}}</p>
 
                                 </div>
@@ -44,20 +45,6 @@
                             </div>
 
 
-                        </div>
-                    </div>
-
-                    <!-- Right part -->
-                    <div class="col-12 col-md-6 app--lesson-right" style="overflow: visible;">
-                        <div class="tt-right-box"></div>
-                        <div>
-                            <p>
-                                <span style="font-size: 115%;" class="badge badge-dark">{{ uniqueSolutions }}</span> Unique solutions found
-                            </p>
-
-                            <div v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px">
-
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -72,27 +59,11 @@
         numbers,
         data:function(){
             return{
-                countOfSolutions:0,
-                countOfFound:0,
-                uniqueSolutions:0,
-                uniqueSolutionsHTML:"<br>",
-
-                setRes: new Set(),
-
-
-                set1 : new Set,
-                res : new Set,
-                countM:0,
-                switcher:false,
-
                 alert:"",
-
                 alertIf : false
-
             }
         },
         created:function(){
-
 
         },
         mounted: function(){
@@ -149,8 +120,8 @@
                     this.alertIf = false
                     cur.classList = "selected"
                     numbers.push(value)
+                    numbers.sort(function(a, b) {return a - b});
                 }
-
             },
             removeByValue: function(val){
                 for(var i=0; i<numbers.length; i++) {

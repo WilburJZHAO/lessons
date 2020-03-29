@@ -75,7 +75,7 @@
                                     <button
                                             type="submit"
                                             class="btn btn-outline-success btn-lg"
-                                            :disabled="finishAnswer" @click="reset">Reset</button>
+                                            :disabled="finish" @click="reset">Reset</button>
                                 </div>
                             </div>
                             <div>
@@ -94,7 +94,7 @@
                                 <span style="font-size: 115%;" class="badge badge-dark">{{ uniqueSolutions }}</span> Unique solutions found
                             </p>
                             <form>
-                                <select name="uniqueRes" @change="changeGridValue($event)" v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="20" class="style-select">
+                                <select id="solutionsField" name="uniqueRes" @change="changeGridValue($event)" v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="15" class="style-select">
 
                             </select></form>
                         </div>
@@ -176,11 +176,17 @@
             this.initDropArea(this.$refs.dropzonePlace3)
             this.initDropArea(this.$refs.dropzonePlace4)
 
-
-
-
-
         },
+
+        watch: {
+          uniqueSolutionsHTML() {
+            this.$nextTick( function() {
+              const solutionsField = document.getElementById("solutionsField");
+              solutionsField.scrollTop = solutionsField.scrollHeight;
+            });
+          }
+        },
+
         methods:{
             initResetColor:function() {
                 if(this.appear==true){
@@ -596,8 +602,8 @@
                 interact(selector).dropzone({
                     // only accept elements matching this CSS selector
                     accept: '#y1,#y2,#y3,#y4,#y5,#y6,#y7,#y8,#y9,.dropzone-drop',
-                    // Require a 75% element overlap for a drop to be possible
-                    overlap: 0.75,
+                    // Require a 50% element overlap for a drop to be possible
+                    overlap: 0.5,
 
                     // listen for drop related events:
 
@@ -901,7 +907,8 @@
                 this.res = new Set();
                 this.countM = 0;
                 this.switcher = false;
-
+                this.uniqueSolutions = 0;
+                this.uniqueSolutionsHTML = "<br>";
                 this.countOfFound = 0;
                 this.countOfSolutions = 0;
 

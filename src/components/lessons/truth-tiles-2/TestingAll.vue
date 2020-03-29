@@ -72,7 +72,7 @@
                                     <button
                                             type="submit"
                                             class="btn btn-outline-success btn-lg"
-                                            :disabled="finishAnswer" @click="reset">Reset</button>
+                                            :disabled="finish" @click="reset">Reset</button>
                                 </div>
                             </div>
                             <div>
@@ -91,7 +91,7 @@
                                 <span style="font-size: 115%;" class="badge badge-dark">{{ uniqueSolutions }}</span> Unique solutions found
                             </p>
                             <form>
-                            <select name="uniqueRes" @change="changeGridValue($event)" v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="20" class="style-select">
+                            <select id="solutionsField" name="uniqueRes" @change="changeGridValue($event)" v-html="uniqueSolutionsHTML" style="text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="15" class="style-select">
                             </select>
                             </form>
 
@@ -110,6 +110,8 @@
     export default {
         data:function(){
             return{
+                cardNumbers: [],
+
                 appear : false,
                 appear2 : false,
                 appear3 : false,
@@ -124,7 +126,6 @@
                 dropzone2:null,
                 dropzone3:null,
                 dropzone4:null,
-
 
                 countOfSolutions:0,
                 countOfFound:0,
@@ -145,47 +146,52 @@
 
             }
         },
-        created:function(){
-            var numbers = global.methods.numberReturn();
+        created: function () {
+            let cardNumbers = global.methods.numberReturn().slice(0);
             this.mapNumberDisappear()
-            for(var i=0; i<numbers.length;i++){
-                var cur = numbers[i]*1
-                this.mapNumbersAppear(cur)
+            for(var i=0; i < cardNumbers.length; i++){
+                var current = Number(cardNumbers[i])
+                this.mapNumbersAppear(current)
             }
+            this.cardNumbers = cardNumbers.slice(0); // save card numbers for later use
         },
-        mounted: function(){
 
-
-
-
-
+        watch: {
+          uniqueSolutionsHTML() {
+            this.$nextTick( function() {
+              const solutionsField = document.getElementById("solutionsField");
+              solutionsField.scrollTop = solutionsField.scrollHeight;
+            });
+          }
         },
+
         methods:{
-            initReset(){
-                if(this.appear==true){
-                    this.$refs.myDraggable.classList="drag-drop"
-                }if(this.appear2==true){
-                    this.$refs.myDraggable2.classList="drag-drop"
-                }if(this.appear3==true){
-                    this.$refs.myDraggable3.classList="drag-drop"
-                }if(this.appear4==true){
-                    this.$refs.myDraggable4.classList="drag-drop"
-                }if(this.appear5==true){
-                    this.$refs.myDraggable5.classList="drag-drop"
-                }if(this.appear6==true){
-                    this.$refs.myDraggable6.classList="drag-drop"
-                }if(this.appear7==true){
-                    this.$refs.myDraggable7.classList="drag-drop"
-                }if(this.appear8==true){
-                    this.$refs.myDraggable8.classList="drag-drop"
-                }if(this.appear9==true){
-                    this.$refs.myDraggable9.classList="drag-drop"
-                }
-            },
+
+          initReset: function () {
+              if(this.appear==true){
+                  this.$refs.myDraggable.classList="drag-drop"
+              }if(this.appear2==true){
+                  this.$refs.myDraggable2.classList="drag-drop"
+              }if(this.appear3==true){
+                  this.$refs.myDraggable3.classList="drag-drop"
+              }if(this.appear4==true){
+                  this.$refs.myDraggable4.classList="drag-drop"
+              }if(this.appear5==true){
+                  this.$refs.myDraggable5.classList="drag-drop"
+              }if(this.appear6==true){
+                  this.$refs.myDraggable6.classList="drag-drop"
+              }if(this.appear7==true){
+                  this.$refs.myDraggable7.classList="drag-drop"
+              }if(this.appear8==true){
+                  this.$refs.myDraggable8.classList="drag-drop"
+              }if(this.appear9==true){
+                  this.$refs.myDraggable9.classList="drag-drop"
+              }
+          },
+
             changeGridValue: function(event){
                 var value = event.target.value
                 this.addToGridChange(value)
-
             },
             addToGridChange:function(num){
                 var res = num.split("")
@@ -333,21 +339,21 @@
                     this.res = new Set()
 
                     if (this.dropzone1 != null) {
-                        this.res.add(this.dropzone1 * 1)
+                        this.res.add(Number(this.dropzone1))
                     }
                     if (this.dropzone2 != null) {
-                        this.res.add(this.dropzone2 * 1)
+                        this.res.add(Number(this.dropzone2))
                     }
                     if (this.dropzone3 != null) {
-                        this.res.add(this.dropzone3 * 1)
+                        this.res.add(Number(this.dropzone3))
                     }
                     if (this.dropzone4 != null) {
-                        this.res.add(this.dropzone4 * 1)
+                        this.res.add(Number(this.dropzone4))
                     }
                     var newR = []
 
-                    for (var l = 0; l < global.numbers.length; l++) {
-                        var cur = global.numbers[l];
+                    for (var l = 0; l < this.cardNumbers.length; l++) {
+                        var cur = this.cardNumbers[l];
                         if (this.res.has(cur)) {
 
                         } else {
@@ -804,7 +810,7 @@
             },
 
             generateFunction: function(){
-                var str = this.dropzone1 +"+"+this.dropzone2+"-"+this.dropzone3+"="+this.dropzone4
+                var str = this.dropzone1 + "+" + this.dropzone2 + "-" + this.dropzone3 + "=" + this.dropzone4
                 return str;
             },
 
@@ -817,7 +823,7 @@
 
             },
             checkNumber: function(){
-                if(this.dropzone1*1+this.dropzone2*1-this.dropzone3*1==this.dropzone4*1){
+                if(Number(this.dropzone1) + Number(this.dropzone2) - Number(this.dropzone3) === Number(this.dropzone4)){
                     this.countOfSolutions++;
                     var res = this.generateFunction();
                     if(!this.setRes.has(res)){
@@ -829,7 +835,6 @@
             },
 
             reset: function () {
-                this.countM = 0
                 this.resSet = new Set()
                 this.finish = true
 
@@ -843,9 +848,13 @@
                 this.res = new Set();
                 this.countM = 0;
                 this.switcher = false;
+
+                this.countOfSolutions = 0;
+                this.countOfFound = 0;
+                this.uniqueSolutions = 0;
+                this.uniqueSolutionsHTML = "<br>";
+                this.setRes = new Set();
             },
-
-
         },
         name: "TestingAll"
     }
@@ -937,8 +946,5 @@
         -webkit-border-radius: 5px;
         -moz-border-radius: 5px;
         border-radius: 5px;
-
-
-
     }
 </style>
