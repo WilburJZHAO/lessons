@@ -3,25 +3,25 @@
     <h3 class="text-center text-success">Calculate the number of partitions</h3>
     <div class="row">
       <div class="col-md-3">
-        <h6>Enter a number to partion(1- 500)</h6>
+        <h6>Enter a number to partition:</h6>
         <input
           type="text"
           class="form-control"
-          v-model.number="numberToPartion"
+          v-model.number="numberToPartition"
           @keypress="handleCheckNumber"
         />
         <div class="my-3 text-center">
           <button
             class="btn btn-outline-success"
             @click="handleOk"
-            :disabled="numberToPartion > 500 || numberToPartion < 1"
+            :disabled="numberToPartition > 500 || numberToPartition < 1"
           >OK</button>
         </div>
         <div class="alert alert-danger">Enter a number between 1 and 500</div>
       </div>
       <div class="col-md-9">
         <div class="d-flex justify-content-around" v-if="partitionsNumber">
-          <h5 class="text-primary">{{ numberToPartionResult }}</h5>
+          <h5 class="text-primary">{{ numberToPartitionResult }}</h5>
           <h5 class="text-primary">{{ partitionsNumber }} partitions</h5>
         </div>
         <div>
@@ -50,9 +50,9 @@ import {
 export default {
   data: function() {
     return {
-      numberToPartion: null,
+      numberToPartition: null,
       partitionsNumber: null,
-      numberToPartionResult: null
+      numberToPartitionResult: null
     };
   },
   methods: {
@@ -66,19 +66,19 @@ export default {
       }
     },
     handleOk() {
-      // if (this.numberToPartion <= 300) {
+      // if (this.numberToPartition <= 300) {
       // } else {
       //   // this.partitionsNumber = String(
-      //   //   bigIntegerPartition[this.numberToPartion - 300 - 1]
+      //   //   bigIntegerPartition[this.numberToPartition - 300 - 1]
       //   // );
-      //   this.partitionsNumber = integerPartition(this.numberToPartion);
-      //   // let temp = bigIntegerPartition[this.numberToPartion - 300 - 1];
+      //   this.partitionsNumber = integerPartition(this.numberToPartition);
+      //   // let temp = bigIntegerPartition[this.numberToPartition - 300 - 1];
       //   // return temp;
       // }
       this.partitionsNumber = separateNumber(
-        integerPartition(this.numberToPartion)
+        integerPartition(this.numberToPartition)
       );
-      this.numberToPartionResult = this.numberToPartion;
+      this.numberToPartitionResult = this.numberToPartition;
     }
   }
 };

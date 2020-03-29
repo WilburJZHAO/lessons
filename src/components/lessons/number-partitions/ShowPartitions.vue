@@ -3,11 +3,11 @@
     <h3 class="text-center text-success mb-3">Show number partitions</h3>
     <div class="row">
       <div class="col-md-3">
-        <h6>Enter a number to partion(1- 40)</h6>
+        <h6>Enter a number to partition:</h6>
         <input
           type="text"
           class="form-control"
-          v-model.number="numberToPartion"
+          v-model.number="numberToPartition"
           @keypress="handleCheckNumber"
           :disabled="gameStatus!==0"
         />
@@ -15,7 +15,7 @@
           <button
             class="btn btn-outline-success"
             @click="handleOk"
-            :disabled="numberToPartion > 40 || numberToPartion < 1"
+            :disabled="numberToPartition > 40 || numberToPartition < 1"
             v-if="gameStatus === 0 || gameStatus===1"
           >OK</button>
           <button class="btn btn-outline-dark" @click="handleReset" v-if="gameStatus===2">Reset</button>
@@ -24,7 +24,7 @@
       </div>
       <div class="col-md-9">
         <div v-if="gameStatus===2" class="d-flex justify-content-around mb-4">
-          <h6>{{ numberToPartion }}</h6>
+          <h6>{{ numberToPartition }}</h6>
           <h6>{{ partitionsNumber }} partitions</h6>
         </div>
         <div class="app--table-container">
@@ -46,7 +46,7 @@ import { partition, integerPartition, separateNumber, sumArray } from "./utils";
 export default {
   data: function() {
     return {
-      numberToPartion: null,
+      numberToPartition: null,
       partitions: [],
       gameStatus: 0,
       partitionsNumber: 0
@@ -64,15 +64,17 @@ export default {
     },
     handleOk() {
       this.gameStatus = 1;
+      this.partitions.push([this.numberToPartition]); // add the first partition
       this.partitionsNumber = separateNumber(
-        integerPartition(this.numberToPartion)
+        integerPartition(this.numberToPartition)
       );
+
       // let tableContainer = document.getElementById("app--table-container");
-      partition(this.numberToPartion, p => {
+      partition(this.numberToPartition, p => {
         // eslint-disable-next-line no-console
         let sum = sumArray(p);
-        console.log(p, "---", sum);
-        let diff = sum - this.numberToPartion;
+        // console.log(p, "---", sum);
+        let diff = sum - this.numberToPartition;
         p.splice(p.length - diff, diff);
 
         let arr = [...p];
@@ -82,7 +84,7 @@ export default {
     },
 
     handleReset() {
-      this.numberToPartion = null;
+      this.numberToPartition = null;
       this.partitions = [];
       this.gameStatus = 0;
     }
