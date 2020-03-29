@@ -118,7 +118,7 @@
                             <p>
                                 <span style="font-size: 115%;" class="badge badge-dark">{{ countOfSolutions }}</span> Solutions
                             </p>
-                            <ol @click="changeGridValue" name="uniqueRes" ref="olRefT" v-html="uniqueSolutionsHTML" style="max-height: 500px;text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="20" class="style-select">
+                            <ol @click="changeGridValue" id="solutionsField" name="uniqueRes" ref="olRefT" v-html="uniqueSolutionsHTML" style="height: 250px;text-align: left;font-size:15px;border:white 0px;overflow-y:scroll" size="20" class="style-select">
 
                             </ol>
 
@@ -210,7 +210,7 @@
                 countNow:0,
                 countMove:0,
 
-                alertText:"No moves on next row",
+                alertText:"All possibilities tested.",
 
                 alert : false,
 
@@ -235,6 +235,23 @@
 
             this.initBoardDraggable()
             //this.initDropArea(this.$refs.testDiv)
+        },
+
+        watch: {
+          uniqueSolutionsHTML() {
+            this.$nextTick( function() {
+              const solutionsField = document.getElementById("solutionsField");
+              solutionsField.scrollTop = solutionsField.scrollHeight;
+            });
+          }
+        },
+
+        /* This is to cancel the infinite promise loop if "play auto" is active when you quit.
+          Tt's not perfect but can't see a better fix at the moment - causes one round of silent
+          warnings instead of never-ending warnings! */
+        beforeDestroy: function () {
+          this.terminate = true;
+          this.terminate2 = true;
         },
 
         methods:{
