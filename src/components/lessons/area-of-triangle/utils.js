@@ -2,7 +2,7 @@
  * Pick up a random number between min(inclusive) and max(exclusive)
  */
 const pickRandomNumber = (min, max) => {
-	return Math.floor(Math.random() * (max-min)) + min;
+	return Math.floor(Math.random() * (max - min)) + min;
 }
 
 /**
@@ -10,7 +10,7 @@ const pickRandomNumber = (min, max) => {
  * @param Boolean hasDecimal
  * @return Number a random value which represents the area of a triangle
  */
-export const generateTriangleArea = (hasDecimal=false) => {
+export const generateTriangleArea = (hasDecimal = false) => {
 	let angle = pickRandomNumber(10, 40);
 	if(hasDecimal) {
 		angle = angle - .5 * (Math.random() > 0.2 ? 1 : 0);
@@ -26,57 +26,57 @@ export const drawGrid = (canvas) => {
 		return null;
 	}
 	const ctx = canvas.getContext('2d');
+	ctx.save();
 	ctx.beginPath();
-	ctx.strokeStyle = '#8EEFFA';
-	for(let i=0; i<=15; i++) {	// Draw grid on Y direction
-		ctx.moveTo(15+18*i, 5);
-		ctx.lineTo(15+18*i ,185);
+	ctx.lineWidth = 1;
+	ctx.strokeStyle = 'rgba(119, 218, 230, 0.7)';
+	for(let i = 0; i <= 15; i++) {	// Draw grid on Y direction
+		ctx.moveTo(30 + 36 * i, 10);
+		ctx.lineTo(30 + 36 * i , 370);
 		ctx.stroke();
 	}
-	for(let i=0; i<=10; i++) {	// Draw grid on X direction
-		ctx.moveTo(15, 5+18*i);
-		ctx.lineTo(285, 5+18*i);
+	for(let i = 0; i <= 10; i++) {	// Draw grid on X direction
+		ctx.moveTo(30, 10 + 36 * i);
+		ctx.lineTo(570, 10 + 36 * i);
 		ctx.stroke();
 	}
 
 	ctx.beginPath();
-	ctx.fillStyle = 'blue';
-	ctx.font="12px";
-	ctx.fillText('0', 5, 188);
-	for(let i=1; i<=10; i++) {	// Draw number 1 to 10
-		if(i>=10) {
-			ctx.fillText(i, 2, (185-18*i)+3);
-			continue;
-		}
-		ctx.fillText(i, 5, (185-18*i)+3 );
+	ctx.fillStyle = "rgba(50, 120, 255, 1)";
+	ctx.font ="20px Verdana";
+	ctx.textAlign = 'center'
+	ctx.textBaseline = 'middle';
+
+	ctx.fillText('0', 13, 385);
+
+	for(let i = 1; i <= 10; i++) { // y axis labels
+			ctx.fillText(i, 13, (370 - 36 * i));
 	}
-	for(let i=1; i<=15; i++) {	// Draw number 1 to 15
-		if(i>=10) {
-			ctx.fillText(i, 10+18*i ,198);
-			continue;
-		}
-		ctx.fillText(i, 12+18*i ,198);
+	for(let i = 1; i <= 15; i++) { // x axis labels
+			ctx.fillText(i, 30 + 36 * i , 385);
 	}
+	ctx.restore();
 }
 
 /**
- * Draw a point based on X, Y value on axis.
  * 将平面直角坐标系上的点转换成Canvas上的坐标
+ * Convert from Cartesian plane point to Canvas coordinates
  */
-export const drawPoint = (x, y) => {
+export const cartesianToCanvas = (x, y) => {
 	return {
-		canvasX: x*18+15,
-		canvasY: 200-15-y*18
+		canvasX: x * 36 + 30,
+		canvasY: 400 - 30 - y * 36
 	}
 };
 
 /**
  * 将Canvas上的坐标转换成平面直角坐标系上的点
+ * Convert from Canvas coordinates to Cartesian plane point
  */
-export const convertCanvasPoint = (canvasX, canvasY) => {
+export const canvasToCartesian = (canvasX, canvasY) => {
 	return {
-		x: (canvasX-15)/18,
-		y: (200-15-canvasY)/18
+		x: (canvasX - 30) / 36,
+		y: (400 - 30 - canvasY) / 36
 	}
 }
 
@@ -91,17 +91,22 @@ export const drawTriangle = (canvas, p1, p2, p0 = {x: 0, y:0}) => {
 	if(!canvas || !canvas.getContext) {
 		return null;
 	}
-	const canvasP1 = drawPoint(p1.x, p1.y);
-	const canvasP2 = drawPoint(p2.x, p2.y);
-	const canvasP0 = drawPoint(p0.x, p0.y);
+	const canvasP1 = cartesianToCanvas(p1.x, p1.y);
+	const canvasP2 = cartesianToCanvas(p2.x, p2.y);
+	const canvasP0 = cartesianToCanvas(p0.x, p0.y);
 	const ctx = canvas.getContext('2d');
+	ctx.save();
 	ctx.beginPath();
-	ctx.strokeStyle='#000';
+	ctx.strokeStyle = '#000';
+	ctx.fillStyle = 'rgba(245, 180, 50, 0.4)';
 	ctx.moveTo(canvasP0.canvasX, canvasP0.canvasY);
-	ctx.lineTo(canvasP1.canvasX, canvasP1.canvasY); 
-	ctx.lineTo(canvasP2.canvasX, canvasP2.canvasY); 
-	ctx.lineTo(canvasP0.canvasX, canvasP0.canvasY);	// Draw triangle
+	ctx.lineTo(canvasP1.canvasX, canvasP1.canvasY);
+	ctx.lineTo(canvasP2.canvasX, canvasP2.canvasY);
+	ctx.lineTo(canvasP0.canvasX, canvasP0.canvasY);
+	// Draw triangle
+	ctx.fill();
 	ctx.stroke();
+	ctx.restore();
 }
 
 /**
@@ -112,11 +117,16 @@ export const drawDraggableArea = (canvas, p) => {
 		return null;
 	}
 	const ctx = canvas.getContext('2d');
-	const canvasP = drawPoint(p.x, p.y);
+	const canvasP = cartesianToCanvas(p.x, p.y);
+	ctx.save();
 	ctx.beginPath();
-	ctx.strokeStyle = 'red';
-	ctx.arc(canvasP.canvasX, canvasP.canvasY, 5, 0, Math.PI*2, true);
+	ctx.lineWidth = 1;
+	ctx.fillStyle = 'rgba(230, 0, 0, 0.15)';
+	ctx.strokeStyle = 'rgba(230, 0, 0, 1)';
+	ctx.arc(canvasP.canvasX, canvasP.canvasY, 10, 0, Math.PI * 2, true);
+	ctx.fill();
 	ctx.stroke();
+	ctx.restore();
 }
 
 /** Allow user to drag p1 i.e. height of triangle */
@@ -126,29 +136,34 @@ export const dragHeight = (canvas, clientX, clientY, p1, p2) => {
 
 	// The position on canvas
 	const canvasX = (clientX - rect.left)*(canvas.width/rect.width);
-	const canvasY = (clientY - rect.top)*(canvas.height/rect.height); 
+	const canvasY = (clientY - rect.top)*(canvas.height/rect.height);
 	// console.log(canvasX, canvasY);
-	// const canvasP1 = drawPoint(p1.x, p1.y);	
+	// const canvasP1 = cartesianToCanvas(p1.x, p1.y);
 	// const dToP1 = Math.sqrt((canvasX-canvasP1.canvasX)*(canvasX-canvasP1.canvasX) + (canvasY-canvasP1.canvasY)*(canvasY-canvasP1.canvasY) );
-	let {x, y} = convertCanvasPoint(canvasX, canvasY);	// 获得在平面直角坐标系中的位置
+	let {x, y} = canvasToCartesian(canvasX, canvasY);	// 获得在平面直角坐标系中的位置
 
 	let newP1 = p1;
 	if(x>=0 && x<=15 && y>=1) {	// 如果y>=0.5 则移动三角形的高
 		if(y > 10) {
 			newP1 = { x, y: 10 };
 		} else {
-			newP1 = {x, y}; 
+			newP1 = {x, y};
 		}
 		// console.log(newP1);
 		// if(x>=0 && x<=15 && y<=10) {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
 			drawGrid(canvas);
-			drawTriangle(canvas, newP1, p2); 
+			drawTriangle(canvas, newP1, p2);
 			drawDraggableArea(canvas, newP1);
 			drawDraggableArea(canvas, p2);
 		// }
-	} 	
+	}
 	return newP1;
+}
+
+export const clearCanvas = (canvas) => {
+	const ctx = canvas.getContext('2d');
+	ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 /** Allow user to drag p2 i.e. base of triangle */
@@ -158,11 +173,11 @@ export const dragBase = (canvas, clientX, clientY, p1, p2) => {
 
 	// The position on canvas
 	const canvasX = (clientX - rect.left)*(canvas.width/rect.width);
-	const canvasY = (clientY - rect.top)*(canvas.height/rect.height); 
+	const canvasY = (clientY - rect.top)*(canvas.height/rect.height);
 	// console.log(canvasX, canvasY);
-	// const canvasP1 = drawPoint(p1.x, p1.y);	
+	// const canvasP1 = cartesianToCanvas(p1.x, p1.y);
 	// const dToP1 = Math.sqrt((canvasX-canvasP1.canvasX)*(canvasX-canvasP1.canvasX) + (canvasY-canvasP1.canvasY)*(canvasY-canvasP1.canvasY) );
-	let {x, y} = convertCanvasPoint(canvasX, canvasY);	// 获得在平面直角坐标系中的位置
+	let {x, y} = canvasToCartesian(canvasX, canvasY);	// 获得在平面直角坐标系中的位置
 	// if(x<0) x=0;
 	// if(x>15) x=15;
 	// if(y<=0.5) y=0.5;
@@ -175,9 +190,9 @@ export const dragBase = (canvas, clientX, clientY, p1, p2) => {
 			newP2 = {x, y: 0};
 		}
 		// if(x>=0 && x<=10) {
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			clearCanvas(canvas);
 			drawGrid(canvas);
-			drawTriangle(canvas, p1, newP2); 
+			drawTriangle(canvas, p1, newP2);
 			drawDraggableArea(canvas, p1);
 			drawDraggableArea(canvas, newP2);
 		// }
