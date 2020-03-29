@@ -125,7 +125,7 @@
         <div class="col-12 col-md-7">
           <h4 class="text-success text-center">Maximum base length is 10.</h4>
           <br>
-          <canvas id="app-canvas"></canvas>
+          <canvas id="app-canvas" width='600px' height='400px'></canvas>
           <br>
           <br>
           <p
@@ -140,6 +140,7 @@
 <script>
 import {
   generateTriangleArea,
+  clearCanvas,
   drawGrid,
   drawTriangle,
   drawDraggableArea,
@@ -224,8 +225,9 @@ export default {
     },
     drawCanvas() {
       const canvas = document.querySelector("#app-canvas");
-      canvas.height = (2 / 3) * canvas.width;
+      //canvas.height = (2 / 3) * canvas.width;
       // const ctx = canvas.getContext('2d');
+      clearCanvas(canvas);
       drawGrid(canvas);
       // const p1 = {x: 3, y: 6};
       // const p2 = {x: 6, y: 0};
