@@ -8,72 +8,56 @@
         initAppGame();
       "
       :max="36"
+      :min="8"
     ></app-enter-number>
     <div v-else>
       <h5>Sequence for {{ trialNumber }}</h5>
       <div class="app---data d-flex">
-        <div
-          class="app--data-row mx-2"
-          v-for="(data, index) in gameData"
-          :key="index"
-        >
-          <div class="text-center">
-            {{ data.paired ? "-" : data.pairs.length }}
-          </div>
-          <div class="text-danger font-weight-bold text-center">
-            {{ data.number }}
-          </div>
+        <div class="app--data-row mx-2" v-for="(data, index) in gameData" :key="index">
+          <div class="text-center">{{ data.paired ? "-" : data.pairs.length }}</div>
+          <div class="text-danger font-weight-bold text-center">{{ data.number }}</div>
           <div
             v-for="(pair, index) in data.pairs"
             :key="`p${index}`"
             class="text-center font-weight-bold"
             :class="pair.paired ? 'text-warning' : 'text-primary'"
             style="cursor: pointer;"
-          >
-            {{ pair.number }}
-          </div>
+          >{{ pair.number }}</div>
         </div>
       </div>
-      <div class=" mt-4">
+      <div class="mt-4">
         <h5 class="text-center">Solution pathways for {{ trialNumber }}</h5>
         <div
           v-if="pathways && pathways.length === 0"
           class="text-center text-danger"
-        >
-          No solution found
-        </div>
+        >No solution found</div>
         <div v-if="pathways && pathways.length > 0">
-          <div class="text-danger text-center">
-            {{ pathways.length }} solution{{ pathways.length > 1 ? "s" : "" }}
-          </div>
+          <div
+            class="text-danger text-center"
+          >{{ pathways.length }} solution{{ pathways.length > 1 ? "s" : "" }}</div>
         </div>
       </div>
       <div class="app--pair-list">
-        <div
-          class="d-flex"
-          v-for="(pathway, pIndex) in pathways"
-          :key="`p${pIndex}`"
-        >
+        <div class="d-flex" v-for="(pathway, pIndex) in pathways" :key="`p${pIndex}`">
           <div
             v-for="(data, index) in pathway"
             :key="index"
             style="border: 1px solid #ccc; margin: 3px; padding: 3px; min-width: 60px; "
-          >
-            {{ data.join(", ") }}
-          </div>
+          >{{ data.join(", ") }}</div>
         </div>
       </div>
       <div class="text-center mt-4">
-        <button class="btn btn-outline-success" @click="handleFindPathway">
-          Tap here to search for pathways
-        </button>
+        <button
+          class="btn btn-outline-success"
+          @click="handleFindPathway"
+        >Tap here to search for pathways</button>
       </div>
       <!-- <div class="text-center mt-1">
         <app-demo-auto-option
           @changeOption="demoAutoOption = $event"
           :option="demoAutoOption"
         ></app-demo-auto-option>
-      </div> -->
+      </div>-->
     </div>
   </div>
 </template>

@@ -5,6 +5,7 @@
       v-if="trialNumber===null"
       @acceptTrialNumber="trialNumber=$event; initAppGame() "
       :max="98"
+      :min="4"
     ></app-enter-number>
     <div v-else>
       <h5>Sequence for {{ trialNumber }}</h5>
@@ -89,6 +90,23 @@ export default {
         }
       }
       return true;
+    },
+    noPaired() {
+      for (let i = 0; i < this.gameData.length; i++) {
+        const oneData = this.gameData[i];
+        const { pairs } = oneData;
+        let possMatchPaired = true;
+        for (let j = 0; j < pairs.length; j++) {
+          if (!pairs[j].paired) {
+            possMatchPaired = false;
+            break;
+          }
+        }
+        if (possMatchPaired && !oneData.paired) {
+          return true;
+        }
+      }
+      return false;
     }
   },
   watch: {
@@ -96,7 +114,14 @@ export default {
       if (value.length === this.trialNumber / 2 && this.allPaired) {
         this.status = 1;
       }
-      if (value.length < this.trialNumber / 2 && this.allPaired) {
+      if (
+        (value.length > 0 &&
+          value.length < this.trialNumber / 2 &&
+          this.allPaired) ||
+        (value.length > 0 &&
+          value.length < this.trialNumber / 2 &&
+          this.noPaired)
+      ) {
         this.status = 2;
       }
     }

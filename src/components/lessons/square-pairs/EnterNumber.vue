@@ -4,7 +4,7 @@
       <label
         for="trial-numbers"
         class="col-form-label col-sm-6"
-      >Enter an even number(8 - {{ max }}):</label>
+      >Enter an even number({{min}} - {{ max }}):</label>
       <div class="col-sm-6">
         <input type="number" class="form-control" v-model.number="trialNumber" required />
       </div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  props: ["max"],
+  props: ["max", "min"],
   data: function() {
     return {
       trialNumber: null
@@ -32,7 +32,7 @@ export default {
       if (
         !this.trialNumber ||
         isNaN(Number(this.trialNumber)) ||
-        this.trialNumber < 8 ||
+        this.trialNumber < this.min ||
         this.trialNumber > this.max ||
         this.trialNumber % 2 !== 0
       ) {
