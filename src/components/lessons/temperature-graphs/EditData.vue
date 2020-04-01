@@ -13,12 +13,10 @@
                   :class="{
                     active: data.selected === true
                   }"
-                  v-for="(data, index) in appData"
+                  v-for="(data, index) in appData.data"
                   :key="index"
                   @click="handleSelectCity(index)"
-                >
-                  {{ data.city }}
-                </li>
+                >{{ data.city }}</li>
               </ul>
             </div>
           </div>
@@ -42,9 +40,7 @@
                 id="asiaPacific"
                 class="custom-control-input"
               />
-              <label for="asiaPacific" class="custom-control-label"
-                >Asia Pacific</label
-              >
+              <label for="asiaPacific" class="custom-control-label">Asia Pacific</label>
             </div>
 
             <div class="custom-control custom-radio">
@@ -66,9 +62,7 @@
                 id="theAmericans"
                 class="custom-control-input"
               />
-              <label for="theAmericans" class="custom-control-label"
-                >Americans</label
-              >
+              <label for="theAmericans" class="custom-control-label">Americans</label>
             </div>
           </div>
         </div>
@@ -181,9 +175,7 @@
               id="fahrenheit"
               class="custom-control-input"
             />
-            <label for="fahrenheit" class="custom-control-label"
-              >Fahrenheit</label
-            >
+            <label for="fahrenheit" class="custom-control-label">Fahrenheit</label>
           </div>
           <input
             type="text"
@@ -192,16 +184,8 @@
             @focus="message = 'Enter a city name'"
           />
           <div class="d-flex justify-content-around my-3">
-            <button class="btn btn-outline-danger" @click="handleNew">
-              New
-            </button>
-            <button
-              class="btn btn-outline-success"
-              @click="handleSave"
-              :disabled="!validInput"
-            >
-              Save
-            </button>
+            <button class="btn btn-outline-danger" @click="handleNew">New</button>
+            <button class="btn btn-outline-success" @click="handleSave" :disabled="!validInput">Save</button>
           </div>
         </div>
         <div class="text-center text-danger" v-if="message">{{ message }}</div>
@@ -229,8 +213,9 @@ export default {
     editMode() {
       // if editMode is true, update the record; if editMode is false, add a record
       if (
-        this.appData[this.selectedIndex] &&
-        this.appData[this.selectedIndex].city.trim() === this.inputData.city
+        this.appData.data[this.selectedIndex] &&
+        this.appData.data[this.selectedIndex].city.trim() ===
+          this.inputData.city.trim()
       ) {
         return true;
       }
@@ -289,25 +274,25 @@ export default {
       this.selectedIndex = e;
       this.selectedState = "";
       // console.log(this.appData[selectedIndex]);
-      for (let i = 0; i < this.appData.length; i++) {
-        this.appData[i].selected = false;
+      for (let i = 0; i < this.appData.data.length; i++) {
+        this.appData.data[i].selected = false;
       }
-      this.appData[this.selectedIndex].selected = true;
-      this.selectedState = this.appData[this.selectedIndex].state;
-      this.inputData = _.cloneDeep(this.appData[this.selectedIndex]);
+      this.appData.data[this.selectedIndex].selected = true;
+      this.selectedState = this.appData.data[this.selectedIndex].state;
+      this.inputData = _.cloneDeep(this.appData.data[this.selectedIndex]);
       this.message = "";
     },
     handleSave() {
       if (this.editMode) {
         // Update record
         this.inputData.state = this.selectedState;
-        this.appData[this.selectedIndex] = this.inputData;
+        this.appData.data[this.selectedIndex] = this.inputData;
       } else {
         // Add a record
         this.inputData.selected = false;
-        this.inputData.id = this.appData.length + 1;
+        this.inputData.id = this.appData.data.length + 1;
         this.inputData.state = this.selectedState;
-        this.appData.push(this.inputData);
+        this.appData.data.push(this.inputData);
       }
       localStorage.setItem("appData", JSON.stringify(this.appData));
       this.inputData = _.cloneDeep(initInputData);

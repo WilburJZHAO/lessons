@@ -1,4 +1,6 @@
-[
+{ 
+  "version": 2.1,   
+  "data": [
   {
     "id": 1,
     "city": "Adelaide",
@@ -1183,7 +1185,7 @@
   {
     "id": 33,
     "city": "Kabul ",
-    "state": " AsiaPacific",
+    "state": "AsiaPacific",
     "added": false,
     "edited": false,
     "selected": false,
@@ -1226,7 +1228,7 @@
   {
     "id": 34,
     "city": " Katmandu",
-    "state": " AsiaPacific",
+    "state": "AsiaPacific",
     "added": false,
     "edited": false,
     "selected": false,
@@ -1721,7 +1723,7 @@
   {
     "id": 47,
     "city": "Perth",
-    "state": " AsiaPacific",
+    "state": "AsiaPacific",
     "added": false,
     "edited": false,
     "selected": false,
@@ -2043,7 +2045,7 @@
   {
     "id": 56,
     "city": "Tokyo ",
-    "state": " AsiaPacific",
+    "state": "AsiaPacific",
     "added": false,
     "edited": false,
     "selected": false,
@@ -2127,3 +2129,4 @@
     }
   }
 ]
+}

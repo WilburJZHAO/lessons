@@ -65,8 +65,12 @@ export default {
   },
   created() {
     const storageData = JSON.parse(localStorage.getItem("appData"));
-    if (!storageData || data.length > storageData.length) {
-      // If data in file is more than in local storage, update local storage.
+    if (
+      !storageData ||
+      !storageData.version ||
+      data.version > storageData.version
+    ) {
+      // Update local storage
       this.appData = data;
       localStorage.setItem("appData", JSON.stringify(this.appData));
     } else {

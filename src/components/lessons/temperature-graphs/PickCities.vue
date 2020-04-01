@@ -17,9 +17,7 @@
                   v-for="(data, index) in sortedAppData"
                   :key="index"
                   @click="handleSelectCity(index)"
-                >
-                  {{ data.city }}
-                </li>
+                >{{ data.city }}</li>
               </ul>
             </div>
           </div>
@@ -54,9 +52,7 @@
                 id="asiaPacific"
                 class="custom-control-input"
               />
-              <label for="asiaPacific" class="custom-control-label"
-                >Asia Pacific</label
-              >
+              <label for="asiaPacific" class="custom-control-label">Asia Pacific</label>
             </div>
 
             <div class="custom-control custom-radio">
@@ -78,9 +74,7 @@
                 id="theAmericans"
                 class="custom-control-input"
               />
-              <label for="theAmericans" class="custom-control-label"
-                >Americans</label
-              >
+              <label for="theAmericans" class="custom-control-label">Americans</label>
             </div>
           </div>
         </div>
@@ -94,9 +88,7 @@
               v-for="(data, index) in selectedCities"
               :key="index"
               @click="handleRemoveCity(index)"
-            >
-              {{ data.city }}
-            </li>
+            >{{ data.city }}</li>
           </ul>
           <p v-else class="text-center">No cities selected</p>
         </div>
@@ -121,21 +113,15 @@
             id="fahrenheit"
             class="custom-control-input"
           />
-          <label for="fahrenheit" class="custom-control-label"
-            >Fahrenheit</label
-          >
+          <label for="fahrenheit" class="custom-control-label">Fahrenheit</label>
         </div>
         <div class="mt-3 text-center d-flex justify-content-around">
-          <button class="btn btn-outline-dark" @click="handleRandomPick">
-            Random Pick
-          </button>
+          <button class="btn btn-outline-dark" @click="handleRandomPick">Random Pick</button>
           <button
             class="btn btn-outline-success"
             @click="handleOk"
             :disabled="selectedCities.length < 2"
-          >
-            OK
-          </button>
+          >OK</button>
         </div>
       </div>
     </div>
@@ -176,11 +162,11 @@ export default {
   watch: {
     selectedState(value) {
       if (value === "World") {
-        this.sortedAppData = _.cloneDeep(this.appData);
+        this.sortedAppData = _.cloneDeep(this.appData.data);
       } else {
-        this.sortedAppData = this.appData.filter(el => el.state === value);
+        this.sortedAppData = this.appData.data.filter(el => el.state === value);
       }
-      this.sortedAppData.sort((a, b) => {
+      this.sortedAppData.data.sort((a, b) => {
         return a.city.toLowerCase() < b.city.toLowerCase() ? -1 : 1;
       });
     }
@@ -232,7 +218,7 @@ export default {
     }
   },
   created() {
-    this.sortedAppData = _.cloneDeep(this.appData);
+    this.sortedAppData = _.cloneDeep(this.appData.data);
     this.sortedAppData.sort((a, b) => {
       return a.city.toLowerCase() < b.city.toLowerCase() ? -1 : 1;
     });

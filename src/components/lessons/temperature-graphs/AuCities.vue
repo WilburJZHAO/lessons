@@ -1,10 +1,7 @@
 <template>
   <div class="container mt-3">
     <h3 class="text-success text-center">Australian capital cities</h3>
-    <app-graph
-      :selectedCities="auCapitalCities"
-      :temperatureType="'fahren'"
-    ></app-graph>
+    <app-graph :selectedCities="auCapitalCities" :temperatureType="'fahren'"></app-graph>
   </div>
 </template>
 
@@ -24,7 +21,7 @@ export default {
   },
   methods: {},
   created() {
-    this.auCapitalCities = this.appData.filter(
+    this.auCapitalCities = this.appData.data.filter(
       data => data.auCapitalCity === true
     );
   }
