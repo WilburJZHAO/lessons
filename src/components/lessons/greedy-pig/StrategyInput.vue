@@ -1,6 +1,6 @@
 <template>
   <div class="text-center">
-    <h5>Strategy {{strategy.index}}</h5>
+    <h5 :class="strategy.index===2 ? 'text-danger' :'text-primary'">Strategy {{strategy.index}}</h5>
     <div class="mb-3">
       <div class="form-check">
         <input

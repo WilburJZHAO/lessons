@@ -1,12 +1,15 @@
 <template>
   <div class="container" style="margin-bottom: 1rem;">
     <div class="row">
-      <h6 class="col text-center" :style="{ visibility: strategy2 ? 'visible' : 'hidden' }">
+      <h6
+        class="col text-center text-danger"
+        :style="{ visibility: strategy2 ? 'visible' : 'hidden' }"
+      >
         Quit after {{ strategy2 ? strategy2.value : strategy1.value }}
         {{ strategy2 ? strategy2.type : strategy1.type }}
       </h6>
       <h6 class="col-.5 text-primary app--stem">{{ killerDice }}</h6>
-      <h6 class="col text-center">Quit after {{ strategy1.value }} {{ strategy1.type }}</h6>
+      <h6 class="col text-center text-primary">Quit after {{ strategy1.value }} {{ strategy1.type }}</h6>
     </div>
     <div>
       <div v-for="(data, index) in stemLeafData1" :key="index" class="row">

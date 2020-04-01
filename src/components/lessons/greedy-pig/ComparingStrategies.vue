@@ -4,10 +4,10 @@
     <div v-if="status === 0" class="container">
       <div class="row">
         <div class="col-sm-6">
-          <app-strategy-input :strategy="strategy1"></app-strategy-input>
+          <app-strategy-input :strategy="strategy2"></app-strategy-input>
         </div>
         <div class="col-sm-6">
-          <app-strategy-input :strategy="strategy2"></app-strategy-input>
+          <app-strategy-input :strategy="strategy1"></app-strategy-input>
         </div>
       </div>
       <div class="mt-4 text-center">
