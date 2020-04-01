@@ -221,7 +221,7 @@ export default {
           } else {
             this.handleNextRoll();
           }
-        }, 500);
+        }, 800);
       }
     },
     handleReset() {

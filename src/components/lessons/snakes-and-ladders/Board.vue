@@ -186,7 +186,7 @@ export default {
           let currentRow = 1;
 
           const animation1 = new Konva.Animation(frame => {
-            const inc = 5;
+            const inc = 3;
             if (middleNumber) {
               if (
                 currentRow === 1 &&
@@ -364,7 +364,7 @@ export default {
           let currentRow = 1;
 
           const animation2 = new Konva.Animation(frame => {
-            const inc = 5;
+            const inc = 3;
             if (middleNumber) {
               if (
                 currentRow === 1 &&
@@ -478,7 +478,7 @@ export default {
   },
   methods: {
     initStage() {
-      this.maxWidth = document.getElementById("boardCanvas").offsetWidth;
+      this.maxWidth = document.getElementById("boardCanvas").offsetWidth*.8;
       this.stage = new Konva.Stage({
         container: "boardCanvas",
         width: this.maxWidth,
