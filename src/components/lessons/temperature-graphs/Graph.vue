@@ -2,15 +2,8 @@
   <div class="row">
     <div class="col-md-9 mb-4">
       <div class="row">
-        <div
-          class="col-md-6"
-          v-for="(data, index) in shuffledSelectedCities"
-          :key="index"
-        >
-          <app-graphData
-            :temperatureData="data"
-            :temperatureType="temperatureType"
-          ></app-graphData>
+        <div class="col-md-6" v-for="(data, index) in shuffledSelectedCities" :key="index">
+          <app-graphData :temperatureData="data" :temperatureType="temperatureType"></app-graphData>
           <div class="d-flex justify-content-between align-items-center">
             <input
               type="number"
@@ -30,44 +23,35 @@
               }"
             >
               {{
-                selectedCities[myAnswers[index] - 1] &&
-                  selectedCities[myAnswers[index] - 1].city
+              selectedCities[myAnswers[index] - 1] &&
+              selectedCities[myAnswers[index] - 1].city
               }}
-              <i class="fas fa-check" v-if="checkStatus[index] === true"></i>
+              <i
+                class="fas fa-check"
+                v-if="checkStatus[index] === true"
+              ></i>
             </div>
           </div>
         </div>
       </div>
       <div
-        class="text-center  mt-2"
+        class="text-center mt-2"
         :class="status === 1 ? 'text-success' : 'text-danger'"
-      >
-        {{ message }}
-      </div>
+      >{{ message }}</div>
     </div>
     <div class="col-md-3">
-      <ul class="list-group mb-4">
+      <ul class="list-group mb-4 app--city-list" style="position: sticky; top: 0;">
         <li
           class="list-group-item text-primary"
           v-for="(data, index) in selectedCities"
           :key="index"
-        >
-          {{ index + 1 }} - {{ data.city }}
-        </li>
+        >{{ index + 1 }} - {{ data.city }}</li>
       </ul>
       <div class="text-center mb-3">
-        <button
-          class="btn btn-outline-success"
-          @click="handleOk"
-          :disabled="status === 1"
-        >
-          OK
-        </button>
+        <button class="btn btn-outline-success" @click="handleOk" :disabled="status === 1">OK</button>
       </div>
       <div v-if="status === 1" class="text-center">
-        <button class="btn btn-outline-dark" @click="handleNewCities">
-          Tap here for new cities
-        </button>
+        <button class="btn btn-outline-dark" @click="handleNewCities">Tap here for new cities</button>
       </div>
     </div>
   </div>
@@ -141,4 +125,19 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.app--city-list {
+  width: 65%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 1200px) {
+  .app--city-list {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .app--city-list {
+    width: 70%;
+  }
+}
+</style>
