@@ -17,19 +17,22 @@ export const getBoardHeight = (maxWidth, rows, columns) => {
  * @param {number} maxWidth: the whole width of canvas area
  * @param {number} rows: how many rows of the board
  * @param {number} columns: how many columns of the board
- * @param {array} snakes
- * @param {array} ladders
  */
-export const createBoard = (maxWidth, rows, columns, snakes, ladders) => {
+export const createBoard = (
+  maxWidth,
+  rows,
+  columns /* , snakes, ladders */
+) => {
   const board = [];
   const width = maxWidth / columns; // Width of a single block
   const height = width * RATIO; // height of a single block
+  const maxHeight = height * columns; // Height of board
   for (let r = 1; r <= rows; r++) {
     if (r % 2 === 1) {
       // 奇数行 odd number-th rows
       for (let c = 1; c <= columns; c++) {
         const startX = width * (c - 1);
-        const startY = height * (r - 1);
+        const startY = maxHeight - height * r;
         board.push({
           rect: {
             x: startX,
@@ -48,8 +51,8 @@ export const createBoard = (maxWidth, rows, columns, snakes, ladders) => {
     if (r % 2 === 0) {
       // 偶数行 even number-th rows
       for (let c = columns; c >= 1; c--) {
-        const startX = (c - 1) * width;
-        const startY = height * (r - 1);
+        const startX = width * (c - 1);
+        const startY = maxHeight - height * r;
         board.push({
           rect: {
             x: startX,

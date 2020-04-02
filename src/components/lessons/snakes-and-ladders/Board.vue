@@ -42,16 +42,27 @@ export default {
         this.player2Number = 0;
       }
       if (value === 2) {
+        const boardHeight = getBoardHeight(
+          this.maxWidth,
+          this.boardSettings.rows,
+          this.boardSettings.columns
+        );
         // If game is ready to start, draw the starting position for player1 and player2
         this.player1Layer = new Konva.Layer();
         this.player2Layer = new Konva.Layer();
         this.player1ButtonOriginalPosition = {
           x: this.whoIsTurn === 1 ? buttonRadius : buttonRadius * 3,
-          y: buttonRadius
+          y:
+            boardHeight *
+              ((this.boardSettings.columns - 1) / this.boardSettings.columns) +
+            buttonRadius
         };
         this.player2ButtonOriginalPosition = {
           x: this.whoIsTurn === 1 ? buttonRadius * 3 : buttonRadius,
-          y: buttonRadius
+          y:
+            boardHeight *
+              ((this.boardSettings.columns - 1) / this.boardSettings.columns) +
+            buttonRadius
         };
         this.player1Button = new Konva.Circle({
           x: this.player1ButtonOriginalPosition.x,
@@ -183,36 +194,44 @@ export default {
           const middleY = middlePoint && middlePoint.y;
           const jumpToX = jumpToPoint && jumpToPoint.x;
           const jumpToY = jumpToPoint && jumpToPoint.y;
-          let currentRow = 1;
+          let currentRow = this.boardSettings.rows;
 
           const animation1 = new Konva.Animation(frame => {
-            const inc = 3;
+            const inc = 4;
             if (middleNumber) {
               if (
-                currentRow === 1 &&
+                currentRow === this.boardSettings.rows &&
                 fromX < prevMiddleX &&
                 currentX < prevMiddleX
               ) {
-                currentX += inc;
+                currentX += inc; // Move horizontally on the first line from let to right
               } else if (
-                currentRow === 1 &&
+                currentRow === this.boardSettings.rows &&
                 fromX > prevMiddleX &&
                 currentX > prevMiddleX
               ) {
-                currentX -= inc;
+                currentX -= inc; // Move horizontally on the first line from right to left
               } else if (
                 (fromX <= prevMiddleX &&
                   currentX >= prevMiddleX &&
-                  currentY <= middleY) ||
+                  currentY >= middleY) ||
                 (fromX >= prevMiddleX &&
                   currentX <= prevMiddleX &&
-                  currentY <= middleY)
+                  currentY >= middleY)
               ) {
-                currentY += inc;
-                currentRow++;
-              } else if (currentRow > 1 && toX > middleX && currentX < toX) {
+                currentY -= inc;
+                currentRow--;
+              } else if (
+                currentRow < this.boardSettings.rows &&
+                toX > middleX &&
+                currentX < toX
+              ) {
                 currentX += inc;
-              } else if (currentRow > 1 && toX < middleX && currentX > toX) {
+              } else if (
+                currentRow < this.boardSettings.rows &&
+                toX < middleX &&
+                currentX > toX
+              ) {
                 currentX -= inc;
               } else {
                 animation1.stop();
@@ -225,8 +244,9 @@ export default {
                 }
               }
             } else {
+              // Move on the same level
               if (fromX < toX && currentX < toX) {
-                currentX += inc;
+                currentX += inc; // Move from left to right
               } else if (fromX < toX && currentX >= toX) {
                 animation1.stop();
                 this.$emit("stopMoving", true);
@@ -238,7 +258,7 @@ export default {
                 }
               }
               if (fromX > toX && currentX > toX) {
-                currentX -= inc;
+                currentX -= inc; // Move from right to left
               } else if (fromX > toX && currentX <= toX) {
                 animation1.stop();
                 this.$emit("stopMoving", true);
@@ -361,19 +381,19 @@ export default {
           const middleY = middlePoint && middlePoint.y;
           const jumpToX = jumpToPoint && jumpToPoint.x;
           const jumpToY = jumpToPoint && jumpToPoint.y;
-          let currentRow = 1;
+          let currentRow = this.boardSettings.rows;
 
           const animation2 = new Konva.Animation(frame => {
             const inc = 3;
             if (middleNumber) {
               if (
-                currentRow === 1 &&
+                currentRow === this.boardSettings.rows &&
                 fromX < prevMiddleX &&
                 currentX < prevMiddleX
               ) {
                 currentX += inc;
               } else if (
-                currentRow === 1 &&
+                currentRow === this.boardSettings.rows &&
                 fromX > prevMiddleX &&
                 currentX > prevMiddleX
               ) {
@@ -381,16 +401,24 @@ export default {
               } else if (
                 (fromX <= prevMiddleX &&
                   currentX >= prevMiddleX &&
-                  currentY <= middleY) ||
+                  currentY >= middleY) ||
                 (fromX >= prevMiddleX &&
                   currentX <= prevMiddleX &&
-                  currentY <= middleY)
+                  currentY >= middleY)
               ) {
-                currentY += inc;
-                currentRow++;
-              } else if (currentRow > 1 && toX > middleX && currentX < toX) {
+                currentY -= inc;
+                currentRow--;
+              } else if (
+                currentRow < this.boardSettings.rows &&
+                toX > middleX &&
+                currentX < toX
+              ) {
                 currentX += inc;
-              } else if (currentRow > 1 && toX < middleX && currentX > toX) {
+              } else if (
+                currentRow < this.boardSettings.rows &&
+                toX < middleX &&
+                currentX > toX
+              ) {
                 currentX -= inc;
               } else {
                 animation2.stop();
@@ -478,7 +506,7 @@ export default {
   },
   methods: {
     initStage() {
-      this.maxWidth = document.getElementById("boardCanvas").offsetWidth*.8;
+      this.maxWidth = document.getElementById("boardCanvas").offsetWidth * 0.9;
       this.stage = new Konva.Stage({
         container: "boardCanvas",
         width: this.maxWidth,
@@ -555,16 +583,22 @@ export default {
           draggable: this.draggable,
           dragBoundFunc: pos => {
             // console.log(pos);
-            const leftBoundary = 10; // 10 - radius
+            const leftBoundary = 10; // 10 - button radius
             const rightBoundary = this.maxWidth - 10;
-            const upBoundary =
-              Math.ceil(to / this.boardSettings.columns) * fromRect.height + 11;
+            // const upBoundary =
+            //   Math.ceil(to / this.boardSettings.columns) * fromRect.height + 11;
+            // const downBoundary =
+            //   getBoardHeight(
+            //     this.maxWidth,
+            //     this.boardSettings.rows,
+            //     this.boardSettings.columns
+            //   ) - 10;
+            const upBoundary = 10;
             const downBoundary =
-              getBoardHeight(
-                this.maxWidth,
-                this.boardSettings.rows,
-                this.boardSettings.columns
-              ) - 10;
+              (this.boardSettings.rows -
+                Math.ceil(to / this.boardSettings.columns)) *
+                fromRect.height -
+              10;
             return {
               x:
                 pos.x <= leftBoundary
@@ -592,11 +626,22 @@ export default {
           dragBoundFunc: pos => {
             const leftBoundary = 10; // 10 - radius
             const rightBoundary = this.maxWidth - 10;
-            const upBoundary = 0;
+            // const upBoundary = 0;
+            // const downBoundary =
+            //   (Math.ceil(from / this.boardSettings.columns) - 1) *
+            //     fromRect.height -
+            //   10;
+            const upBoundary =
+              (this.boardSettings.rows -
+                Math.floor(from / this.boardSettings.columns)) *
+                fromRect.height +
+              11;
             const downBoundary =
-              (Math.ceil(from / this.boardSettings.columns) - 1) *
-                fromRect.height -
-              10;
+              getBoardHeight(
+                this.maxWidth,
+                this.boardSettings.rows,
+                this.boardSettings.columns
+              ) - 10;
             return {
               x:
                 pos.x <= leftBoundary
@@ -729,11 +774,23 @@ export default {
           dragBoundFunc: pos => {
             const leftBoundary = 0;
             const rightBoundary = this.maxWidth - 20;
-            const upBoundary = 0;
+            // const upBoundary = 0;
+            // const downBoundary =
+            //   (Math.ceil(to / this.boardSettings.columns) - 1) *
+            //     fromRect.height -
+            //   20;
+            const upBoundary =
+              (this.boardSettings.rows -
+                Math.ceil(to / this.boardSettings.columns) +
+                1) *
+              fromRect.height;
             const downBoundary =
-              (Math.ceil(to / this.boardSettings.columns) - 1) *
-                fromRect.height -
-              20;
+              getBoardHeight(
+                this.maxWidth,
+                this.boardSettings.rows,
+                this.boardSettings.columns
+              ) - 20;
+
             return {
               x:
                 pos.x <= leftBoundary
@@ -762,14 +819,13 @@ export default {
           dragBoundFunc: pos => {
             const leftBoundary = 0;
             const rightBoundary = this.maxWidth - 20;
-            const upBoundary =
-              Math.ceil(from / this.boardSettings.columns) * fromRect.height;
+            const upBoundary = 0;
+
             const downBoundary =
-              getBoardHeight(
-                this.maxWidth,
-                this.boardSettings.rows,
-                this.boardSettings.columns
-              ) - 20;
+              (this.boardSettings.rows -
+                Math.ceil(from / this.boardSettings.columns)) *
+                fromRect.height -
+              20;
             return {
               x:
                 pos.x <= leftBoundary
