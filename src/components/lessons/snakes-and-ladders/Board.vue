@@ -197,7 +197,7 @@ export default {
           let currentRow = this.boardSettings.rows;
 
           const animation1 = new Konva.Animation(frame => {
-            const inc = 4;
+            const inc = 3;
             if (middleNumber) {
               if (
                 currentRow === this.boardSettings.rows &&
