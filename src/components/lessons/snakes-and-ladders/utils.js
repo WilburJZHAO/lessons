@@ -26,7 +26,7 @@ export const createBoard = (
   const board = [];
   const width = maxWidth / columns; // Width of a single block
   const height = width * RATIO; // height of a single block
-  const maxHeight = height * columns; // Height of board
+  const maxHeight = getBoardHeight(maxWidth, rows, columns); // Height of board
   for (let r = 1; r <= rows; r++) {
     if (r % 2 === 1) {
       // 奇数行 odd number-th rows
