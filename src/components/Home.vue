@@ -86,10 +86,10 @@ export default {
         { name: "Protons & anti-Protons", link: "/protons" },
         { name: "Game Of 31", link: "/game-of-31" },
         { name: "Win At The Fair", link: "/win-at-the-fair" },
-        { name: "Temperature Graphs", link: "/temperature-graphs" },
         { name: "Greedy Pig", link: "/greedy-pig" },
-        { name: "Snakes And Ladders", link: "/snakes-and-ladders" },
-        { name: "Square Pairs", link: "/square-pairs" }
+        // { name: "Temperature Graphs", link: "/temperature-graphs" },
+        // { name: "Snakes And Ladders", link: "/snakes-and-ladders" },
+        // { name: "Square Pairs", link: "/square-pairs" }
       ]
     };
   },

@@ -832,26 +832,26 @@ const routes = [
     component: WinAtTheFair,
     name: "Win At The Fair"
   },
-  {
-    path: "/temperature-graphs",
-    component: TemperatureGraphs,
-    name: "Temperature Graphs"
-  },
+  // {
+  //   path: "/temperature-graphs",
+  //   component: TemperatureGraphs,
+  //   name: "Temperature Graphs"
+  // },
   {
     path: "/greedy-pig",
     component: GreedyPig,
     name: "Greedy Pig"
-  },
-  {
-    path: "/snakes-and-ladders",
-    component: SnakesAndLadders,
-    name: "Snakes And Ladders"
-  },
-  {
-    path: "/square-pairs",
-    component: SquarePairs,
-    name: "Square Pairs"
   }
+  // {
+  //   path: "/snakes-and-ladders",
+  //   component: SnakesAndLadders,
+  //   name: "Snakes And Ladders"
+  // },
+  // {
+  //   path: "/square-pairs",
+  //   component: SquarePairs,
+  //   name: "Square Pairs"
+  // }
 ];
 
 const router = new VueRouter({
