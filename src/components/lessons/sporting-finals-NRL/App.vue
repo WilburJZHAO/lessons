@@ -2,7 +2,7 @@
     <div>
         <div v-if="selectedOption === -1">
             <app-title-static>
-                Sporting Finals(NRL)
+                Sporting Finals (NRL)
             </app-title-static>
             <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
                 <app-options :options="options" @selectOption="selectedOption=$event"></app-options>
@@ -11,7 +11,7 @@
 
         <div class="container-fluid" v-else>
             <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-                <app-top-nav @backToMenu="selectedOption = $event">Sporting Finals(NRL)</app-top-nav>
+                <app-top-nav @backToMenu="selectedOption = $event">Sporting Finals (NRL)</app-top-nav>
             </transition>
 
             <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
