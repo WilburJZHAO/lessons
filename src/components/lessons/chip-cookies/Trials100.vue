@@ -10,6 +10,10 @@
         class="text-center text-success"
       >{{ cookieSet.cookieNumber }} cookies: Minimum of {{ cookieSet.chipNumber }} chocolate chips</h3>
       <h5 class="text-center">
+        Minimum:
+        <span class="text-danger">{{ minBatchNumber }}</span>
+      </h5>
+      <h5 class="text-center">
         Maximum:
         <span class="text-danger">{{ maxBatchNumber }}</span>
       </h5>
@@ -68,7 +72,8 @@ export default {
       // 1 - finish
       cookieSet: null,
       batchNumber: 0,
-      maxBatchNumber: 0,
+      minBatchNumber: '',
+      maxBatchNumber: '',
       demoAutoOption: "0",
       timer: null,
       resultData: [],
@@ -128,8 +133,11 @@ export default {
         count++;
         minNumber = minInArray(this.resultData);
       }
-      if (count > this.maxBatchNumber) {
+      if (this.maxBatchNumber === '' || count > this.maxBatchNumber) {
         this.maxBatchNumber = count;
+      }
+      if (this.minBatchNumber === '' || count < this.minBatchNumber) {
+        this.minBatchNumber = count;
       }
       let stem = Math.floor(count / 10) - this.startNumber;
       if (stem >= this.batchData.length - 1) {
@@ -155,7 +163,8 @@ export default {
       this.gameStatus = -1;
       // this.cookieSet = null;
       this.batchNumber = 0;
-      this.maxBatchNumber = 0;
+      this.minBatchNumber = '';
+      this.maxBatchNumber = '';
       this.demoAutoOption = "0";
       this.resultData = [];
       this.initBatchData();
