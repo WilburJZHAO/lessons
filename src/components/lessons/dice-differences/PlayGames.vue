@@ -35,8 +35,8 @@
 
             <div class="top" style="margin-top: 10px; border: none">
                 <div class="row justify-content-end">
-                    <div v-if="inputPromp" style="color: red; font-size: 25px; margin-top: 10px" v-text="ShowPromp"></div>
-                    <div v-else style="color: red; font-size: 25px; margin-top: 10px" v-text="ErrorPromp"></div>
+                    <div v-if="inputPrompt" style="color: red; font-size: 25px; margin-top: 10px" v-text="ShowPrompt"></div>
+                    <div v-else style="color: red; font-size: 25px; margin-top: 10px" v-text="ErrorPrompt"></div>
                 </div>
                 <div class="row justify-content-end">
                     <button style="margin-top: 8px;" class="btn btn-outline-success" @click="CheckError">OK</button>
@@ -129,12 +129,12 @@
                 reset1:false,
                 PlayAutoWord:"Play Auto",
                 next: false,
-                inputPromp: true,
-                ErrorPromp: "",
+                inputPrompt: true,
+                ErrorPrompt: "",
                 Error1: 2,
                 playDemoGame:true,
                 playAutoGame:true,
-                MaxPrisoner: 9,
+                maxPrisoners: 9,
                 num1: 0,
                 num2: 0,
                 num3: 0,
@@ -162,22 +162,30 @@
             }
         },
         computed:{
-            ShowPromp(){
-                if (this.inputPromp){
-                    return "Enter the number of prisoners (0-" + (this.MaxPrisoner - this.num1 - this.num2 - this.num3 - this.num4 - this.num5 - this.num6) +")";
-                }
+            ShowPrompt(){
+              if (this.inputPrompt){
+                return "Add or remove prisoners from the cells.";
+              }
             },
         },
         methods:{
             CheckError(){
-                this.inputPromp = false;
-                if (this.Error1 == 1) this.ErrorPromp = "Enter a smaller number for strategy "+this.strategy;
-                else if (this.Error1 == 2) this.ErrorPromp = "Enter at least one prisoner for strategy " + this.strategy;
+                this.inputPrompt = false;
+                let sum = Number.parseInt(this.num1)+ Number.parseInt(this.num2) + Number.parseInt(this.num3) + Number.parseInt(this.num4) + Number.parseInt(this.num5) + Number.parseInt(this.num6);
+
+                if (this.Error1 == 1) {
+                  let overfill = sum - this.maxPrisoners;
+                  let overfillString = this.numToString(overfill).toLowerCase();
+                  this.ErrorPrompt = "Please remove at least " + overfillString + " prisoner" + (overfill === 1 ? '' : 's') + ". The maximum is nine.";
+                }
+                else if (this.Error1 == 2) {
+                  this.ErrorPrompt = "Place at least one prisoner in a cell.";
+                }
                 else {
                     if(this.trails > 0){
                         this.next = true;
                     }else{
-                        this.ErrorPromp = "Enter the number of trials";
+                        this.ErrorPrompt = "Enter the number of trials";
                     }
                 }
             },
@@ -278,9 +286,9 @@
                 }
             },
             displayInputPrompt(){
-                this.inputPromp = true;
+                this.inputPrompt = true;
             },
-            convertNum(num) {
+            numToString(num) {
                 switch (num) {
                     case 1:
                         return "One";
@@ -300,29 +308,39 @@
                         return "Eight";
                     case 9:
                         return "Nine";
+                    default:
+                        return num.toString();
                 }
             },
             CheckNums(){
-                if (this.num1 > 0 || this.num2 > 0 ||  this.num3 > 0|| this.num4 > 0|| this.num5 > 0|| this.num6 > 0){
-                    let sum = Number.parseInt(this.num1)+ Number.parseInt(this.num2) + Number.parseInt(this.num3) + Number.parseInt(this.num4) + Number.parseInt(this.num5) + Number.parseInt(this.num6);
-                    if ( 9 < sum ){
-                        // 1 : sum of input numbers are biger than MaxPrisoner
-                        this.Error1 = 1;
-                        this.ErrorPromp = "Enter a smaller number for strategy "+this.strategy;
-                    }else if (9 == sum){
-                        this.Error1 = 0;
-                        this.ErrorPromp = "All "+ this.MaxPrisoner +" prisoners have been entered for strategy "+this.strategy;
-                    }else{
-                        this.ErrorPromp = this.convertNum(sum)+" prisoners have been entered for strategy "+this.strategy;
-                        this.Error1 = 0;
+              if (this.num1 > 0 || this.num2 > 0 ||  this.num3 > 0|| this.num4 > 0|| this.num5 > 0|| this.num6 > 0){
+                  let sum = Number.parseInt(this.num1)+ Number.parseInt(this.num2) + Number.parseInt(this.num3) + Number.parseInt(this.num4) + Number.parseInt(this.num5) + Number.parseInt(this.num6);
+                  if ( sum > 9 ){
+                      this.Error1 = 1;
+                      let overfill = sum - this.maxPrisoners;
+                      let overfillString = this.numToString(overfill).toLowerCase();
+                      this.ErrorPrompt = "Please remove at least " + overfillString + " prisoner" + (overfill === 1 ? '' : 's') + ". The maximum is nine.";
                     }
-                }else{
-                    // 1 : all input numbers are 0
-                    this.Error1 = 2;
-                    this.ErrorPromp = "Enter at least one prisoner for strategy " + this.strategy;
-                    // this.inputPromp = true;
-                }
-                this.inputPromp = false;
+                  else if (9 == sum){
+                      this.Error1 = 0;
+                      this.ErrorPrompt = "Nine prisoners have been placed in the cells. Software maximum reached.";
+                  }
+                  else{
+                      if (sum == 1) {
+                        this.ErrorPrompt = "One prisoner has been placed in the cells.";
+                      }
+                      else {
+                        this.ErrorPrompt = this.numToString(sum) + " prisoners have been placed in the cells.";
+                      }
+                      this.Error1 = 0;
+                  }
+              }else{
+                  // 1 : all input numbers are 0
+                  this.Error1 = 2;
+                  this.ErrorPrompt = "Enter at least one prisoner.";
+                  // this.inputPrompt = true;
+              }
+              this.inputPrompt = false;
             },
         },
         name: "PlayGames"
