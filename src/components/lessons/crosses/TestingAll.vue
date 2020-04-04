@@ -6,8 +6,9 @@
                     <!-- Left part -->
                     <div class="col-12 col-md-6 app--lesson-left">
                         <div>
-                            <h5 class="text-success">
-                            </h5>
+                          <h5 class="text-warning">
+                              Note: This simulation takes significant time.
+                          </h5>
 
                             <table>
                                 <tr>
