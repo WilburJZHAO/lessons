@@ -3,7 +3,7 @@
     <div class="col-md-9 mb-4">
       <div class="row">
         <div class="col-md-6" v-for="(data, index) in shuffledSelectedCities" :key="index">
-          <app-graphData :temperatureData="data" :temperatureType="temperatureType"></app-graphData>
+          <app-graphData :temperatureData="data" :temperatureType="temperatureType" id="graph-data"></app-graphData>
           <div class="d-flex justify-content-between align-items-center">
             <input
               type="number"
@@ -40,18 +40,22 @@
       >{{ message }}</div>
     </div>
     <div class="col-md-3">
-      <ul class="list-group mb-4 app--city-list" style="position: sticky; top: 0;">
-        <li
-          class="list-group-item text-primary"
-          v-for="(data, index) in selectedCities"
-          :key="index"
-        >{{ index + 1 }} - {{ data.city }}</li>
-      </ul>
-      <div class="text-center mb-3">
-        <button class="btn btn-outline-success" @click="handleOk" :disabled="status === 1">OK</button>
-      </div>
-      <div v-if="status === 1" class="text-center">
-        <button class="btn btn-outline-dark" @click="handleNewCities">Tap here for new cities</button>
+      <div style="position: sticky; top: 0;">
+        <ul class="list-group mb-4 app--city-list">
+          <li
+            class="list-group-item text-primary"
+            v-for="(data, index) in selectedCities"
+            :key="index"
+          >{{ index + 1 }} - {{ data.city }}</li>
+        </ul>
+        <div class="text-center mb-3">
+          <button class="btn btn-outline-success" @click="handleOk" :disabled="status === 1">OK</button>
+          <!-- <div class="mb-3"></div>
+          <button class="btn btn-outline-dark" @click="handlePrintGraph" v-if="hasPrint">Print</button>-->
+        </div>
+        <div v-if="status === 1" class="text-center">
+          <button class="btn btn-outline-dark" @click="handleNewCities">Tap here for new cities</button>
+        </div>
       </div>
     </div>
   </div>
@@ -64,7 +68,7 @@ export default {
   components: {
     appGraphData: GraphData
   },
-  props: ["selectedCities", "temperatureType"],
+  props: ["selectedCities", "temperatureType", "hasPrint"],
   data: function() {
     return {
       shuffledSelectedCities: null,
@@ -118,6 +122,14 @@ export default {
       this.myAnswers = new Array(this.selectedCities.length);
       this.checkStatus = new Array(this.selectedCities.length);
     }
+    // handlePrintGraph() {
+    //   const restorePage = document.body.innerHTML;
+    //   const printContent = document.getElementById("graph-data").innerHTML;
+    //   console.log(printContent);
+    //   document.body.innerHTML = printContent;
+    //   window.print();
+    //   document.body.innerHTML = restorePage;
+    // }
   },
   created() {
     this.shuffledSelectedCities = _.shuffle(this.selectedCities);

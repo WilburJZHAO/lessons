@@ -2,6 +2,11 @@
   <div class="container mt-3">
     <h3 class="text-success text-center">Australian capital cities</h3>
     <app-graph :selectedCities="auCapitalCities" :temperatureType="'fahren'"></app-graph>
+
+    <div
+      class="text-success text-center"
+      v-if="showMessage"
+    >To print, press Control+P(Windows) or Command+P(Macintosh)</div>
   </div>
 </template>
 
@@ -16,7 +21,8 @@ export default {
   data: function() {
     return {
       auCapitalCities: [],
-      status: 0
+      status: 0,
+      showMessage: true
     };
   },
   methods: {},
@@ -24,6 +30,14 @@ export default {
     this.auCapitalCities = this.appData.data.filter(
       data => data.auCapitalCity === true
     );
+  },
+  mounted() {
+    window.addEventListener("beforeprint", () => {
+      this.showMessage = false;
+    });
+    window.addEventListener("afterprint", () => {
+      this.showMessage = true;
+    });
   }
 };
 </script>

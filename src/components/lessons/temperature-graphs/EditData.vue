@@ -293,6 +293,9 @@ export default {
         this.inputData.id = this.appData.data.length + 1;
         this.inputData.state = this.selectedState;
         this.appData.data.push(this.inputData);
+        this.appData.data.sort((a, b) => {
+          return a.city.toLowerCase() < b.city.toLowerCase() ? -1 : 1;
+        });
       }
       localStorage.setItem("appData", JSON.stringify(this.appData));
       this.inputData = _.cloneDeep(initInputData);
