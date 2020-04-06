@@ -3,7 +3,7 @@
     <h3 class="text-center text-success mb-4">Enter Diameter, Radius, Circumference or Volume</h3>
     <div class="app--container">
       <div class="form-group row">
-        <label for="diameter" class="col-sm-3 col-form-label">Diameter(cm)</label>
+        <label for="diameter" class="col-sm-3 col-form-label">Diameter (cm)</label>
         <div class="col-sm-9">
           <input
             type="number"
@@ -17,7 +17,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="radius" class="col-sm-3 col-form-label">Radius(cm)</label>
+        <label for="radius" class="col-sm-3 col-form-label">Radius (cm)</label>
         <div class="col-sm-9">
           <input
             type="number"
@@ -30,7 +30,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="circumference" class="col-sm-3 col-form-label">Circumference(cm)</label>
+        <label for="circumference" class="col-sm-3 col-form-label">Circumference (cm)</label>
         <div class="col-sm-9">
           <input
             type="number"
@@ -43,7 +43,7 @@
       </div>
 
       <div class="form-group row">
-        <label for="volume" class="col-sm-3 col-form-label">Volume(L)</label>
+        <label for="volume" class="col-sm-3 col-form-label">Volume (L)</label>
         <div class="col-sm-9">
           <input
             type="number"
