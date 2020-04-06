@@ -545,7 +545,8 @@ export default {
           y: this.board[i].number.y,
           text: this.board[i].number.value,
           fontSize: 18,
-          fill: "#DC3545"
+          fill: "#DC3545",
+          name: `${this.board[i].number.value}`
         });
         this.boardLayer.add(text);
 
@@ -741,6 +742,7 @@ export default {
                 this.boardSettings.columns +
               1;
             if (
+              newToNumber > 0 &&
               newToNumber < maxNumberAllowed &&
               this.usedNumbers.indexOf(newToNumber) === -1
             ) {
@@ -760,6 +762,7 @@ export default {
       this.ladderLayer = new Konva.Layer();
       for (let i = 0; i < ladders.length; i++) {
         const { from, to } = ladders[i];
+        // console.log(ladders[i]);
         const fromRect = this.board[from - 1].rect;
         const toRect = this.board[to - 1].rect;
         const fromPoint = new Konva.Rect({
@@ -878,6 +881,7 @@ export default {
                 this.boardSettings.columns +
               1;
             if (
+              newFromNumber > 1 &&
               newFromNumber < maxNumberAllowed &&
               this.usedNumbers.indexOf(newFromNumber) === -1
             ) {
@@ -885,6 +889,7 @@ export default {
             }
           }
           this.ladderLayer.destroy();
+          // console.log("draw ladders");
           this.drawLadders(this.boardSettings.ladders);
         });
 
