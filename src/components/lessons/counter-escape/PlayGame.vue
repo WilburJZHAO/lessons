@@ -1,7 +1,7 @@
 <template>
 	<div class="container mt-4 mb-5">
 		<h3 class="text-success text-center">
-			Which arrangement is the best<br>
+			Which arrangement is the best?<br>
 			<span v-if="numberOfGames != 1" class="small">{{ numberOfGames }} trials</span>
 		</h3>
 		<p class="text-dark text-center">
@@ -28,20 +28,20 @@
 					<app-rule-box :ruleNumber="rule.join(', ')"></app-rule-box>
 				</div>
 			</div>
-		</div> 
+		</div>
 		<div class="app--game-stat mt-3 row">
 			<div class="app--game-stat-data col-sm-8">
 				<table class="table table-bordered" style="table-layout: fixed">
 					<tr>
 						<th>Game {{ gameCounts > 0 ? gameCounts : '' }}</th>
-						<td v-if="numberOfGames == 1">{{ rollCounts > 0 ? 
-								rollCounts +' roll' + (rollCounts===1 ? '' : 's') : 
+						<td v-if="numberOfGames == 1">{{ rollCounts > 0 ?
+								rollCounts +' roll' + (rollCounts===1 ? '' : 's') :
 								''}}</td>
 						<td v-else>{{ tempRollCounts > 0 ? tempRollCounts + ' rolls' : ''}}</td>
 					</tr>
 					<tr>
 						<th>Average</th>
-						<td>{{ averageRollCounts > 0 ? averageRollCounts.toFixed(1) : ''}}</td>
+						<td>{{ averageRollCounts > 0 ? averageRollCounts.toFixed(2) : ''}}</td>
 					</tr>
 				</table>
 			</div>
@@ -55,19 +55,19 @@
 			</div>
 		</div>
 		<div class="app-action mt-3">
-			<button 
-				class="btn btn-outline-success" 
+			<button
+				class="btn btn-outline-success"
 				:disabled="!isSet"
-				v-if="!isStart" 
-				@click="handleStart"> 
+				v-if="!isStart"
+				@click="handleStart">
 				Tap here to begin
 			</button>
-			<button 
-				class="btn btn-outline-success" 
+			<button
+				class="btn btn-outline-success"
 				v-if="isStart && !isEnd && numberOfGames == 1 && demoAutoOption === '0'"
 				@click="handlePlayOnce"
 			>
-				Tap here to roll dice
+				{{rollDiceMessage}}
 			</button>
 			<button
 				class="btn btn-outline-success"
@@ -83,16 +83,16 @@
 			>
 				{{ timer ? "Tap here to pause" : "Tap here to resume" }}
 			</button>
-			<button 
-				class="btn btn-outline-dark" 
+			<button
+				class="btn btn-outline-dark"
 				v-if="numberOfGames > 1 && isEnd"
 				@click="handleReset"
 			>
 				Reset
 			</button>
-			<app-demo-auto-option 
-				class="mt-1" 
-				@changeOption="demoAutoOption=$event" 
+			<app-demo-auto-option
+				class="mt-1"
+				@changeOption="demoAutoOption=$event"
 				v-if="isSet"
 				:option = "demoAutoOption">
 			</app-demo-auto-option>
@@ -130,16 +130,18 @@ export default {
 			isEnd: false,		// If the lesson ends
 			isAutoStart: false,		// If auto running started
 			demoAutoOption: "0",	// 0 - demo, 1 - auto
-			timer: null, 
+			timer: null,
 			counterToMove: null,	// The current counter selected
 			isSameCounter: false,	// If the current counter selected is the same as the previous one
-			diceNumber: null,	// dice number 
+			diceNumber: null,	// dice number
 			gameCounts: 0,		// How many games are played
-			rollCounts: 0,		// How many rolls are played in one game 
+			rollCounts: 0,		// How many rolls are played in one game
 			tempRollCounts: 0,
 			totalRollCounts: 0,		//  How many rolls are played in total
 			averageRollCounts: 0,  // Average roll counts in many games
 			isOneGameEnd: false,		// If one game ends,
+
+			rollDiceMessage: "Tap here to roll dice",
 		}
 	},
 	computed: {
@@ -234,7 +236,7 @@ export default {
 		handleOnDragEnd(e) {
 			// console.log('drag end');
 			e.target.classList.remove('app--counter-selected');
-			if(!this.canDropHere) {		// counter 回到原位 
+			if(!this.canDropHere) {		// counter 回到原位
 				e.target.style.webkitTransform =
 				e.target.style.transform =
 						'translate(0, 0)';
@@ -260,7 +262,7 @@ export default {
 				ondropactivate: this.handleOnDropActivate,
 				ondragenter: this.handleOnDragEnter,
 				ondragleave: this.handleOnDragLeave,
-				ondrop: this.handleOnDrop,	
+				ondrop: this.handleOnDrop,
 				ondropdeactivate: this.handleOndropdeactivate
 			})
 		},
@@ -286,12 +288,12 @@ export default {
 		handleOnDrop(e) {
 			// console.log('drop');
 			this.canDropHere = false;
-			// let 
+			// let
 			// 	selectedCounter = e.relatedTarget.textContent,
 			// 	targetBox = e.target.textContent;
-			// 	console.log(e.target.textContent, e.relatedTarget.textContent); 
+			// 	console.log(e.target.textContent, e.relatedTarget.textContent);
 				// this.removeCounterFromArrangement(targetBox);
-				// this.addCounterToArrangement(targetBox); 
+				// this.addCounterToArrangement(targetBox);
 		},
 		handleOnDropdeactivate(e) {
 			// console.log('drop deactivate');
@@ -302,7 +304,7 @@ export default {
 			this.unsetDropzone();
 			// this.setOriginalPosition();
 			if(this.numberOfGames == 1) {
-				this.gameCounts++;				
+				this.gameCounts++;
 			}
 			if(this.demoAutoOption === '1') {	// 'Demo' option
 				// this.handlePlayOnce();
@@ -310,20 +312,28 @@ export default {
 			}
 		},
 
-		handlePlayOnce() {			
+		handlePlayOnce() {
 			// console.log(this.$refs.counterItem);
 			let indexToRemove;
 			if(!this.isStart) this.isStart = true;
 			this.checkOneGameEnd();
 			if(this.isOneGameEnd) {
 				this.startNewGame();
+				//this.rollDiceMessage = 'Tap here to roll dice';
 			} else {
 				this.rollDice();
 				indexToRemove = this.checkRemoveCounter();
 				if(indexToRemove !== -1) {
 					this.handleRemoveCounter(indexToRemove);
 				}
-			}			
+			}
+			if (this.checkOneGameEnd()) {
+				this.rollDiceMessage = 'Tap for next game';
+			}
+			else {
+				this.rollDiceMessage = 'Tap here to roll dice';
+			}
+
 		},
 		handlePlayOneGame() {
 			let indexToRemove;
@@ -337,7 +347,7 @@ export default {
 				}
 				this.rollDice();
 				indexToRemove = this.checkRemoveCounter();
-				this.arrangementWatch[indexToRemove] = null;				
+				this.arrangementWatch[indexToRemove] = null;
 				if(this.gameCounts >= this.numberOfGames) {
 					this.isEnd = true;
 					break;
@@ -357,7 +367,7 @@ export default {
 					break;
 				}
 			}
-			return this.arrangementWatch.indexOf(removedBox); 
+			return this.arrangementWatch.indexOf(removedBox);
 		},
 		handleRemoveCounter(index) {	// Remove the counter of index and put it to its original position
 			if(index > -1) {
@@ -372,7 +382,7 @@ export default {
 				return item !== null;
 			});
 			if(filteredArrangement.length === 0) {
-				this.isOneGameEnd = true;				
+				this.isOneGameEnd = true;
 				return true;
 			} else {
 				this.isOneGameEnd = false;
@@ -386,7 +396,7 @@ export default {
 			this.gameCounts++;
 			this.rollCounts = 0;
 			this.arrangementWatch = [...this.arrangement];
-			let counters = this.$refs.countersRef; 
+			let counters = this.$refs.countersRef;
 			for(let i = 1; i <= counters.length; i++) {
 				let x = counters[i-1].$el.getAttribute('data-x');
 				let y = counters[i-1].$el.getAttribute('data-y');
@@ -423,7 +433,7 @@ export default {
 			this.isStart = false;
 			this.rollCounts = this.tempRollCounts = this.totalRollCounts = 0;
 			this.timer = null;
-			let counters = this.$refs.countersRef; 
+			let counters = this.$refs.countersRef;
 			for(let i = 1; i <= counters.length; i++) {
 				this.$refs.countersRef[i-1].$el.setAttribute('style', `transform: translate(0, 0)`);
 				this.$refs.countersRef[i-1].$el.setAttribute('data-x', '0');
