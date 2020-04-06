@@ -1,4 +1,4 @@
-const RATIO = 1; // The ratio of height/width
+const RATIO = 1.2; // The ratio of height/width
 
 /**
  * Get the board's whole height

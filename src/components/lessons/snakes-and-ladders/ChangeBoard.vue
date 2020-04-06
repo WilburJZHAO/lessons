@@ -19,7 +19,13 @@
             </div>
           </div>
           <p class="text-danger text-center">Enter a number between 5 and 10</p>
-          <button type="submit" style="visibility: hidden;">change</button>
+          <div class="text-center w-50 mb-4" style="margin: 0 auto;">
+            <button
+              class="btn btn-outline-success btn-block"
+              type="submit"
+              :disabled="!validInputs"
+            >Save</button>
+          </div>
         </form>
         <div class="text-center w-50" style="margin: 0 auto;">
           <button
@@ -76,6 +82,17 @@ export default {
         used.push(item.to);
       });
       return used;
+    },
+    validInputs() {
+      if (
+        this.rows < 5 ||
+        this.rows > 10 ||
+        this.columns < 5 ||
+        this.columns > 10
+      ) {
+        return false;
+      }
+      return true;
     }
   },
   methods: {
@@ -112,12 +129,7 @@ export default {
       this.boardSettings.ladders.pop();
     },
     handleChangeBoard(e) {
-      if (
-        this.rows < 5 ||
-        this.rows > 10 ||
-        this.columns < 5 ||
-        this.columns > 10
-      ) {
+      if (!this.validInputs) {
         return;
       }
       this.boardSettings.rows = this.rows;
