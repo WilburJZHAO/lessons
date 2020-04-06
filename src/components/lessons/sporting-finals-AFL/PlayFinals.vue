@@ -738,7 +738,7 @@
                 this.playAutoGame = true
                 this.count++
 
-                
+
             },
             playAuto:async function(){
                 if(this.PlayAutoWord=="Play Auto") {
@@ -880,11 +880,11 @@
                 }
 
                 else if(i==2){
-                    htmlContent = '<table class=\'dice\'><tbody><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr><tr><td><div class="diceCircle"></div></td><td class="disappearDice"></td><td><div class="diceCircle"></div></td></tr><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr></tbody></table>'
+                    htmlContent = '<table class=\'dice\'><tbody><tr><td class="diceCircle"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr><tr><td><div class="disappearDice"></div></td><td class="disappearDice"></td><td><div class="disappearDice"></div></td></tr><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="diceCircle"></td></tr></tbody></table>'
 
                 }
                 else if(i==3){
-                    htmlContent = '<table class=\'dice\'><tbody><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr><tr><td><div class="diceCircle"></div></td><td><div class="diceCircle"></div></td><td><div class="diceCircle"></div></td></tr><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr></tbody></table>'
+                    htmlContent = '<table class=\'dice\'><tbody><tr><td class="diceCircle"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr><tr><td><div class="disappearDice"></div></td><td><div class="diceCircle"></div></td><td><div class="disappearDice"></div></td></tr><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="diceCircle"></td></tr></tbody></table>'
                 }
                 else if(i==4){
                     htmlContent = '<table class=\'dice\'><tbody><tr><td><div class="diceCircle"></div></td><td class="disappearDice"></td><td><div class="diceCircle"></div></td></tr><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr><tr><td><div class="diceCircle"></div></td><td class="disappearDice"></td><td><div class="diceCircle"></div></td></tr></tbody></table>'
@@ -892,7 +892,7 @@
                 else if(i==5){
                     htmlContent ='<table class=\'dice\'><tbody><tr><td><div class="diceCircle"></div></td><td class="disappearDice"></td><td><div class="diceCircle"></div></td></tr><tr><td class="disappearDice"></td><td><div class="diceCircle"></div></td><td class="disappearDice"></td></tr><tr><td><div class="diceCircle"></div></td><td class="disappearDice"></td><td><div class="diceCircle"></div></td></tr></tbody></table>'
                 }else if(i==6){
-                    htmlContent = '<table class=\'dice\'><tbody><tr><td><div class="diceCircle"></div></td><td><div class="diceCircle"></div></td><td><div class="diceCircle"></div></td></tr><tr><td class="disappearDice"></td><td class="disappearDice"></td><td class="disappearDice"></td></tr><tr><td><div class="diceCircle"></div></td><td><div class="diceCircle"></div></td><td><div class="diceCircle"></div></td></tr></tbody></table>'
+                    htmlContent = '<table class=\'dice\'><tbody><tr><td><div class="diceCircle"></div></td><td><div class="disappearDice"></div></td><td><div class="diceCircle"></div></td></tr><tr><td class="diceCircle"></td><td class="disappearDice"></td><td class="diceCircle"></td></tr><tr><td><div class="diceCircle"></div></td><td><div class="disappearDice"></div></td><td><div class="diceCircle"></div></td></tr></tbody></table>'
                 }
                 }else {
 
