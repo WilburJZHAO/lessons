@@ -18,35 +18,40 @@
         <app-play-many-games v-if="selectedOption === 2" :boardSettings="boardSettings"></app-play-many-games>
       </transition>
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
+        <app-print-board v-if="selectedOption === 3" :boardSettings="boardSettings"></app-print-board>
+      </transition>
+      <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
         <app-change-board
-          v-if="selectedOption === 3"
+          v-if="selectedOption === 4"
           :boardSettings="boardSettings"
           @changeBoardSettings="boardSettings=$event"
         ></app-change-board>
       </transition>
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-        <app-landing-chance v-if="selectedOption === 4" :boardSettings="boardSettings"></app-landing-chance>
+        <app-landing-chance v-if="selectedOption === 5" :boardSettings="boardSettings"></app-landing-chance>
       </transition>
-    </div> 
+    </div>
   </div>
 </template>
 
 <script>
 import TitleStatic from "../../layout/TitleStatic.vue";
-import TopNav from "../../layout/TopNav.vue"; 
+import TopNav from "../../layout/TopNav.vue";
 import Options from "../../layout/Options.vue";
 import PlayAGame from "./PlayAGame.vue";
 import PlayManyGames from "./PlayManyGames.vue";
+import PrintBoard from "./PrintBoard.vue";
 import ChangeBoard from "./ChangeBoard.vue";
-import LandingChance from "./LandingChance.vue"; 
+import LandingChance from "./LandingChance.vue";
 
 export default {
   components: {
     appTitleStatic: TitleStatic,
     appTopNav: TopNav,
-    appOptions: Options, 
+    appOptions: Options,
     appPlayAGame: PlayAGame,
     appPlayManyGames: PlayManyGames,
+    appPrintBoard: PrintBoard,
     appChangeBoard: ChangeBoard,
     appLandingChance: LandingChance
   },
@@ -63,10 +68,14 @@ export default {
         },
         {
           id: 3,
-          title: "Change the board"
+          title: "Print the board"
         },
         {
           id: 4,
+          title: "Change the board"
+        },
+        {
+          id: 5,
           title: "What is the chance of landing on any square?"
         }
       ],
@@ -86,5 +95,5 @@ export default {
 };
 </script>
 
-<style> 
+<style>
 </style>
