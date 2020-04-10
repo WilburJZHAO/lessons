@@ -19,7 +19,7 @@
           class="btn btn-outline-dark"
           v-if="status === 3"
           @click="handleReset"
-        >Tap here to reset</button>
+        >Reset</button>
         <button
           class="btn btn-outline-success"
           v-if="status < 3 && demoAutoOption === '0'"
@@ -27,8 +27,8 @@
         >
           {{
           status === 0 || status === 1
-          ? "Tap here to throw dice "
-          : "Tap here to move counter"
+          ? "Roll dice "
+          : "Move counter"
           }}
         </button>
         <button
@@ -38,10 +38,10 @@
         >
           {{
           status === 0
-          ? "Tap here to begin"
+          ? "Start"
           : timer
-          ? "Tap here to pause"
-          : "Tap here to resume"
+          ? "Pause"
+          : "Resume"
           }}
         </button>
         <app-demo-auto-option

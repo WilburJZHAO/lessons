@@ -35,12 +35,12 @@
           class="btn btn-outline-success"
           @click="handleNext"
           v-if="demoAutoOption==='0'"
-        >Tap here for {{ batchNumber === 0 ? 'first' : 'next' }} batch</button>
+        >Show {{ batchNumber === 0 ? 'first' : 'next' }} batch</button>
         <button
           class="btn btn-outline-success"
           @click="handleToggleTimer"
           v-if="demoAutoOption==='1'"
-        >{{ batchNumber === 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+        >{{ batchNumber === 0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
         <app-demo-auto-option
           @changeOption="demoAutoOption = $event"
           :option="demoAutoOption"

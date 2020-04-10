@@ -10,7 +10,7 @@
       ></app-gameboard>
     </div>
     <div class="text-center mb-4">
-      <button class="btn btn-sm btn-outline-dark" @click="handleNextGameboard">Next Gameboard</button>
+      <button class="btn btn-sm btn-outline-dark" @click="handleNextGameboard">Next gameboard</button>
     </div>
     <div class="app--rule">
       <div v-if="rule.type==='dice' || rule.type==='default'">

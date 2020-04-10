@@ -57,12 +57,12 @@
               class="btn btn-outline-success"
               @click="handleDrawDiagonal"
               v-if="demoAutoOption==='0'"
-            >Tap here to draw diagonal</button>
+            >Draw diagonal</button>
             <button
               class="btn btn-outline-success"
               @click="handleToggleTimer"
               v-if="demoAutoOption==='1'"
-            >{{ tileNumber === 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+            >{{ tileNumber === 0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
             <app-demo-auto-option
               @changeOption="demoAutoOption = $event"
               :option="demoAutoOption"
@@ -73,12 +73,12 @@
             class="btn btn-outline-success"
             @click="handleCalculateAnswer"
             v-if="gameStatus === 2"
-          >Tap here to calculate answer</button>
+          >Calculate answer</button>
           <button
             class="btn btn-outline-dark"
             @click="handleReset"
             v-if="gameStatus === 3 || gameStatus === 4"
-          >Tap here to reset</button>
+          >Reset</button>
         </div>
         <div
           class="text-center alert alert-danger mt-3"

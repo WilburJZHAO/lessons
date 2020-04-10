@@ -55,7 +55,7 @@
                         <button class="btn btn-outline-success"  style="margin-right: 30px" @click="playAuto" v-if="playAutoGame">{{PlayAutoWord}}</button>
                     </div>
                     <div v-else>
-                        <button class="btn btn-outline-success"  style="margin-right: 30px" @click="Reset" >Finished! Tap here to reset</button>
+                        <button class="btn btn-outline-success"  style="margin-right: 30px" @click="Reset" >Finished! Reset</button>
                     </div>
                 </div>
             </div>

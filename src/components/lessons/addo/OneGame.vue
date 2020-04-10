@@ -100,22 +100,22 @@
         class="btn btn-outline-success"
         v-if="selectedStrategy.id !== 0 && (gameStatus===0 || gameStatus===-1)"
         @click="handleStart"
-      >Change numbers then spacebar to set</button>
+      >Proceed to game</button>
       <button
         v-if="gameStatus===1"
         class="btn btn-outline-success"
         @click="handleEnterAnswer"
-      >Enter the answer to the card</button>
+      >Check answer</button>
       <button
         v-if="gameStatus===2"
         class="btn btn-outline-success"
         @click="handleDrawTwoNumbers"
-      >Press spacebar to draw two numbers</button>
+      >Draw two numbers</button>
       <button
         v-if="gameStatus===3"
         class="btn btn-outline-dark"
         @click="handleReset"
-      >Tap here to reset</button>
+      >Reset</button>
     </div>
   </div>
 </template>

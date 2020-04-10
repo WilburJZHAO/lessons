@@ -19,21 +19,21 @@
             <button
               class="btn btn-outline-success"
               @click="handleComputerPlay"
-            >Tap here for computer's turn</button>
+            >Play computer's turn</button>
           </span>
           <span v-if="status === 0 && game.whoseFirst === 2">{{ game.partyBName }}. Click on a card</span>
           <span v-if="status === 1 && whoseTurn === 1">
             <button
               class="btn btn-outline-success"
               @click="handleComputerPlay"
-            >Tap here for computer's turn</button>
+            >Play computer's turn</button>
           </span>
           <span v-if="status===1 && whoseTurn ===2">{{ game.partyBName }}. Click on a card</span>
           <span v-if="status===2">Pick a lower card</span>
           <span v-if="status===3">
             Player {{ wins }} is the winner
             <br />
-            <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+            <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
           </span>
         </div>
       </div>

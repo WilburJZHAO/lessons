@@ -160,7 +160,7 @@
             </div>
             <div v-else class="top" style="margin-top: 20px; border: none">
                 <div class="row justify-content-center" style="margin-top: 20px;">
-                    <button  class="btn btn-outline-success" @click="Reset">Finished! Tap here to reset</button>
+                    <button  class="btn btn-outline-success" @click="Reset">Finished! Reset</button>
                 </div>
             </div>
         </div>

@@ -60,7 +60,7 @@
 				:disabled="!isSet"
 				v-if="!isStart"
 				@click="handleStart">
-				Tap here to begin
+				Start game
 			</button>
 			<button
 				class="btn btn-outline-success"
@@ -74,14 +74,14 @@
 				v-if="numberOfGames > 1 && isStart && !isEnd && demoAutoOption === '0'"
 				@click="handlePlayOneGame"
 			>
-				Tap here to play one game
+				Play one game
 			</button>
 			<button
 				class="btn btn-outline-success"
 				v-if="isStart && isSet && !isEnd && demoAutoOption === '1'"
 				@click="handleToggleTimer"
 			>
-				{{ timer ? "Tap here to pause" : "Tap here to resume" }}
+				{{ timer ? "Pause" : "Resume" }}
 			</button>
 			<button
 				class="btn btn-outline-dark"
@@ -141,7 +141,7 @@ export default {
 			averageRollCounts: 0,  // Average roll counts in many games
 			isOneGameEnd: false,		// If one game ends,
 
-			rollDiceMessage: "Tap here to roll dice",
+			rollDiceMessage: "Roll dice",
 		}
 	},
 	computed: {
@@ -319,7 +319,7 @@ export default {
 			this.checkOneGameEnd();
 			if(this.isOneGameEnd) {
 				this.startNewGame();
-				//this.rollDiceMessage = 'Tap here to roll dice';
+				//this.rollDiceMessage = 'Roll dice';
 			} else {
 				this.rollDice();
 				indexToRemove = this.checkRemoveCounter();
@@ -328,10 +328,10 @@ export default {
 				}
 			}
 			if (this.checkOneGameEnd()) {
-				this.rollDiceMessage = 'Tap for next game';
+				this.rollDiceMessage = 'Next game';
 			}
 			else {
-				this.rollDiceMessage = 'Tap here to roll dice';
+				this.rollDiceMessage = 'Roll dice';
 			}
 
 		},

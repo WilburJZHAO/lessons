@@ -40,7 +40,7 @@
 						</div>
 						<div class="app--tally-graph app--tally-graph-full" v-if="isFullGraph===true">
 							<div v-for="(item, index) in tallyTable"
-							:key="index" 
+							:key="index"
 							class="app--tally-graph-bar"
 							:style="{height: item.tally*unit + 'px'}">
 								<div class="app--tally-graph-index" v-if="index===0 || index===60 || index === 120">
@@ -51,7 +51,7 @@
 						</div>	<!-- Tally full graph -->
 						<div class="app--tally-graph app--tally-graph-simple" v-if="isFullGraph===false">
 							<div v-for="index in 21"
-							:key="index" 
+							:key="index"
 							class="app--tally-graph-bar"
 							:style="{height: tallyTable[index-1].tally*unit + 'px'}">
 								<div class="app--tally-graph-index" v-if="index===1 || index===11 || index === 21">
@@ -93,14 +93,14 @@
 									<td><span v-if="demoAutoOption==='0'">{{ teamBScoreArr[0]}}</span></td>
 									<td><span v-if="demoAutoOption==='0'">{{ teamBScoreArr[1]}}</span></td>
 									<td><span v-if="demoAutoOption==='0'">{{ teamBScoreArr[2]}}</span></td>
-									<td> 
+									<td>
 										<span v-if="teamBTotalScore > 0 && demoAutoOption==='0'">{{ teamBTotalScore }}</span>
 									</td>
-									<td> 
-										<input type="checkbox" id="full-graph" class="form-check-input" 
+									<td>
+										<input type="checkbox" id="full-graph" class="form-check-input"
 											v-model="isFullGraph">
 										<label for="full-graph" class="form-check-label"
-											style="font-size: 13px;">Full graph</label> 						
+											style="font-size: 13px;">Full graph</label>
 									</td>
 								</tr>
 							</tbody>
@@ -109,10 +109,10 @@
 			<div class="app--action text-center">
 				<h5 class="text-danger text-center" :style="{visibility: isEnd ? 'visible' : 'hidden' }">Finished</h5>
 				<button class="btn btn-outline-success" v-if="!isEnd && demoAutoOption==='0'" @click="handleSetNextGame">
-					{{ isStart ? "Tap here for next game" : "Tap here for first game"}}
+					{{ isStart ? "Next game" : "First game"}}
 				</button>
 				<button class="btn btn-outline-success" v-if="!isEnd && demoAutoOption==='1'" @click="handleToggleTimer">
-					{{ !isAutoStart ? "Tap here to begin" : (timer ? "Tap here to pause" : "Tap here to resume") }}
+					{{ !isAutoStart ? "Start" : (timer ? "Pause" : "Resume") }}
 				</button>
 				<button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>
 				<app-demo-auto-option class="mt-1" @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>
@@ -147,10 +147,10 @@ export default {
 			tallyTable: [],
 			isFullGraph: false,
 			teamAScoreArr: [],	// teamA's score array
-			teamBScoreArr: []		// teamB's score array 
+			teamBScoreArr: []		// teamB's score array
 		}
 	},
-	computed: { 
+	computed: {
 		teamATotalScore() {
 			if(this.teamAScoreArr.length === 0) {
 				return 0;
@@ -177,7 +177,7 @@ export default {
 			return this.tallyTable[0].tally;
 		},
 		occurrencePercent() {
-			return ((this.occurrenceOfDraw / this.numberTried)*100).toFixed(3); 
+			return ((this.occurrenceOfDraw / this.numberTried)*100).toFixed(3);
 		},
 		occurrenceInHowmanyGames() {
 			return (this.numberTried/this.occurrenceOfDraw).toFixed(1);
@@ -238,7 +238,7 @@ export default {
 		},
 		calculateBallsInOneGame() {
 			if(this.isChangeRule) {	// If rule is changed
-				// Get number of balls for each point in each quarter 
+				// Get number of balls for each point in each quarter
 				let numberForQ1 = throwDiceThree();
 				let numberForQ2 = throwDiceThree();
 				let numberForQ3 = throwDiceThree();

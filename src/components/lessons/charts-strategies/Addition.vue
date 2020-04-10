@@ -138,7 +138,7 @@
                   class="btn btn-outline-success"
                   style="margin: auto; width: 110px"
                 >
-                  New Game
+                  New game
                 </button>
               </div>
             </div>

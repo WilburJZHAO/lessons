@@ -109,7 +109,7 @@
                 playAutoGame:true,
                 next: false,
                 PlayAutoWord:"Play Auto",
-                RemoveWord:"Tap here to remove prisoner",
+                RemoveWord:"Remove prisoner",
                 strategy: 1,
                 diceOne:"",
                 diceTwo:"",
@@ -130,7 +130,7 @@
                     this.stop = true;
                     this.playDemoGame = false;
                     this.playAutoGame = false;
-                    this.RemoveWord = "All released, Tap here to reset";
+                    this.RemoveWord = "All released, reset";
                 }
             }
         },
@@ -234,7 +234,7 @@
                     this.difference = null
                     this.remove = false
                     this.PlayAutoWord = "Play Auto"
-                    this.RemoveWord = "Tap here to remove prisoner"
+                    this.RemoveWord = "Remove prisoner"
                     this.diceOne = ""
                     this.diceTwo = ""
                     this.playAutoGame = true;

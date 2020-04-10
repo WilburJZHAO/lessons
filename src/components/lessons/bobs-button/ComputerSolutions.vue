@@ -52,12 +52,12 @@
               class="btn btn-outline-success mb-2"
               v-if="demoAutoOption==='0'"
               @click="handleCreateGroup"
-            >{{ testNumber ? 'Tap here for next group' : 'Tap here for first group' }}</button>
+            >{{ testNumber ? 'Show next group' : 'Show first group' }}</button>
             <button
               class="btn btn-outline-success mb-2"
               v-if="demoAutoOption==='1'"
               @click="handleToggleTimer"
-            >{{ timer ? "Tap here to pause" : (testNumber ? "Tap here to resume" : "Tap here to begin") }}</button>
+            >{{ timer ? "Pause" : (testNumber ? "Resume" : "Start") }}</button>
             <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>
           </div>
           <div v-else class="text-center d-flex justify-content-center">
@@ -166,7 +166,7 @@ export default {
   }
 };
 </script>
- 
+
 <style scoped>
 .app--input {
   width: 150px;

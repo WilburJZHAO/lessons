@@ -5,9 +5,9 @@
 				<div class="col-12 col-md-6">
 					<div class="form-group">
 						<label for="team-name-1">Enter team name</label>
-						<input 
-							type="text" 
-							class="form-control" 
+						<input
+							type="text"
+							class="form-control"
 							id="team-name-1"
 							v-model="teamNameA"
 							:disabled="isStart"
@@ -29,7 +29,7 @@
 								<tr v-for="(scoreLine, indexTeam) in teamAScore" :key="indexTeam">
 									<th>Q{{indexTeam+1}}</th>
 									<td v-for="(score, indexLine) in scoreLine" :key="indexLine">
-										{{score}} 
+										{{score}}
 									</td>
 									<td class="table-primary text-center">{{ teamAScoreInQuarter[indexTeam] }}</td>
 								</tr>
@@ -48,12 +48,12 @@
 								</tr>
 							</tbody>
 						</table>
-					</div> 
+					</div>
 				</div>
 				<div class="col-12 col-md-6">
 					<div class="form-group">
 						<label for="team-name-2">Enter team name</label>
-						<input 
+						<input
 							type="text"
 							class="form-control"
 							id="team-name-2"
@@ -77,7 +77,7 @@
 								<tr v-for="(scoreLine, indexTeam) in teamBScore" :key="indexTeam">
 									<th>Q{{indexTeam+1}}</th>
 									<td v-for="(score, indexLine) in scoreLine" :key="indexLine">
-										{{score}} 
+										{{score}}
 									</td>
 									<td class="table-primary text-center">{{ teamBScoreInQuarter[indexTeam] }}</td>
 								</tr>
@@ -99,24 +99,24 @@
 					</div>
 				</div>
 				<div class="col-12 app--action text-center mt-3">
-					<button class="btn btn-outline-success" v-if="!isStart" @click="()=>{this.isStart=true;}">OK</button>
+					<button class="btn btn-outline-success" v-if="!isStart" @click="()=>{this.isStart=true;}">Start game</button>
 					<button class="btn btn-outline-success" v-if="isStart && !isEnd && demoAutoOption==='0'" @click="handleRollDice">
-						{{ isChangeRule ? "Tap here to roll all three dice" : "Tap here to roll first dice for 3 points" }}
+						{{ getButtonLabel() }}
 					</button>
-					<button 
-						class="btn btn-outline-success" 
+					<button
+						class="btn btn-outline-success"
 						v-if="isStart && !isEnd && demoAutoOption==='1'"
 						@click="handleToggleTimer"
 					>
-						{{ !isAutoStart ? "Tap here to begin" : (timer ? "Tap here to pause" : "Tap here to resume") }}
+						{{ !isAutoStart ? "Start" : (timer ? "Pause" : "Resume") }}
 					</button>
 					<button class="btn btn-outline-dark" v-if="isStart && isEnd" @click="handleReset">Reset</button>
-					<app-demo-auto-option class="mt-1" v-if="!isEnd" @changeOption="demoAutoOption=$event"></app-demo-auto-option>					
-				</div> 
+					<app-demo-auto-option class="mt-1" v-if="!isEnd" @changeOption="demoAutoOption=$event"></app-demo-auto-option>
+				</div>
 				<div class="col-12 text-danger text-center mt-2">
 					<p v-if="isStart && !isEnd">{{ whoseTurn === 1 ? teamNameB+"'s turn"  : teamNameA+"'s turn" }}</p>
 					<p v-if="isStart && isEnd">{{ winnerPrompt }}</p>
-				</div>		 
+				</div>
 				<div class="col-12">
 					<app-change-rule @changeRule="isChangeRule=$event" :isStart="isStart"></app-change-rule>
 				</div>
@@ -162,10 +162,10 @@ export default {
 	},
 	computed: {
 		teamAScore() {
-			const scoreArr = fillArray(this.teamAScoreArr, 12); 
+			const scoreArr = fillArray(this.teamAScoreArr, 12);
 			return [
 				[...scoreArr.slice(0, 3)],
-				[...scoreArr.slice(3, 6)],				
+				[...scoreArr.slice(3, 6)],
 				[...scoreArr.slice(6, 9)],
 				[...scoreArr.slice(9)],
 			];
@@ -174,7 +174,7 @@ export default {
 			const scoreArr = fillArray(this.teamBScoreArr, 12);
 			return [
 				[...scoreArr.slice(0, 3)],
-				[...scoreArr.slice(3, 6)],				
+				[...scoreArr.slice(3, 6)],
 				[...scoreArr.slice(6, 9)],
 				[...scoreArr.slice(9)],
 			];
@@ -219,30 +219,60 @@ export default {
 	},
 	watch: {
 		demoAutoOption(value) {
-			if(value === '0' && this.timer) {				
+			if(value === '0' && this.timer) {
 				clearInterval(this.timer);
-				this.timer = null; 
+				this.timer = null;
 			}
 		},
 		isEnd(value) {
 			if(value=== true && this.timer) {
 				clearInterval(this.timer);
-				this.timer = null; 
+				this.timer = null;
 			}
 		}
 	},
 	methods: {
+		getButtonLabel() {
+			if(this.isChangeRule) {
+				return (!(this.shouldCalculateScore) || this.teamAScoreArr.length === 0) ? "Roll all three dice" : "Calculate totals";
+			}
+
+			if(this.whoseTurn === 0) {	// Team A's turn
+				if(this.teamAScoreArr.length % 3 === 0) {
+					return (!(this.shouldCalculateScore) || this.teamAScoreArr.length === 0) ? "Roll the first dice for 3 points" : "Calculate totals";
+				}
+				else if (this.teamAScoreArr.length % 3 === 1) {
+					return "Roll the second dice for 2 points";
+				}
+				else if (this.teamAScoreArr.length % 3 === 2) {
+					return "Roll the third dice for 1 point";
+				}
+			}
+			else if(this.whoseTurn === 1) {	// Team B's turn
+				if(this.teamBScoreArr.length % 3 === 0) {
+					return !(this.shouldCalculateScore) ? "Roll the first dice for 3 points" : "Calculate totals";
+				}
+				else if (this.teamBScoreArr.length % 3 === 1) {
+					return "Roll the second dice for 2 points";
+				}
+				else if (this.teamBScoreArr.length % 3 === 2) {
+					return "Roll the third dice for 1 point";
+				}
+			}
+
+		},
+
 		changeTurn() {		// Change turn.
-			if(this.whoseTurn === 0) { 
+			if(this.whoseTurn === 0) {
 				this.whoseTurn = 1;
 				return;
 			}
-			if(this.whoseTurn === 1) { 
+			if(this.whoseTurn === 1) {
 				this.whoseTurn = 0;
 				return;
-			}		
+			}
 		},
-		checkEndQuarter(arr) {		// Check if it is in the end of a quarter 
+		checkEndQuarter(arr) {		// Check if it is in the end of a quarter
 			if(arr.length >0 && arr.length % 3 === 0) {
 				return true;
 			}
@@ -254,22 +284,22 @@ export default {
 			}
 			if(this.teamATotalScore > this.teamBTotalScore) {
 				this.teamAWinsTime++;
-			} 
+			}
 			if(this.teamBTotalScore > this.teamATotalScore) {
 				this.teamBWinsTime++;
 			}
 		},
 		calculateScoreInQuarter() {	// Calculate score in each quarter
-			if(this.whoseTurn == 0) {	
+			if(this.whoseTurn == 0) {
 				// console.log(this.teamADiceArr);
-				const scoreInQuarter = 
+				const scoreInQuarter =
 					3*this.teamADiceArr[0] + 2*this.teamADiceArr[1] + this.teamADiceArr[2];
 				this.teamAScoreInQuarterArr.push(scoreInQuarter);
 				return;
 			}
 			if(this.whoseTurn == 1) {
 				// console.log(this.teamBDiceArr);
-				const scoreInQuarter = 
+				const scoreInQuarter =
 					3*this.teamBDiceArr[0] + 2*this.teamBDiceArr[1] + this.teamBDiceArr[2];
 				this.teamBScoreInQuarterArr.push(scoreInQuarter);
 				return;
@@ -293,9 +323,9 @@ export default {
 		},
 
 		handleReset() {		// Reset and start a new game
-			this.isEnd = false;  
-			this.whoseTurn = 0; 
-			this.demoAutoOption = "0"; 
+			this.isEnd = false;
+			this.whoseTurn = 0;
+			this.demoAutoOption = "0";
 			this.teamAScoreArr = [];
 			this.teamBScoreArr = [];
 			this.teamAScoreInQuarterArr = [];
@@ -312,15 +342,15 @@ export default {
 			if(!this.isAutoStart) this.isAutoStart = true;
 			if(this.timer) {
 				clearInterval(this.timer);
-				this.timer = null; 
+				this.timer = null;
 			} else {
 				this.timer = setInterval(this.handleRollDice, 300);
-			} 
+			}
 		},
 
 		handleRollDice() {
 			let diceArr, diceNumber;
-			if(this.isChangeRule) {	 	// Handle rolling dice if 'change dice rule' is not selected 
+			if(this.isChangeRule) {	 	// Handle rolling dice if 'change dice rule' is selected
 				diceArr = throwDiceThree();
 				// console.log(diceArr);
 
@@ -396,7 +426,7 @@ export default {
 						this.calculateScoreInEachBall();
 						this.changeTurn();
 						this.shouldCalculateScore = false;
-					} else {						
+					} else {
 						this.shouldCalculateScore = true;
 						if(this.teamADiceArr.length>0) this.teamADiceArr = [];
 						this.teamBDiceArr.push(diceNumber);
@@ -404,7 +434,7 @@ export default {
 					}
 				}
 
-			// 	this.whoseTurn === 0 ? 
+			// 	this.whoseTurn === 0 ?
 			// 		this.teamAScore[this.currentQForTeamA][this.currentPForTeamA++] = diceNumber :
 			// 		this.teamBScore[this.currentQForTeamB][this.currentPForTeamB++] = diceNumber;
 			// 		this.teamAScore[this.currentQForTeamA] = [...this.teamAScore[this.currentQForTeamA]];
@@ -415,7 +445,7 @@ export default {
 }
 </script>
 
-<style scoped> 
+<style scoped>
 .app--dice-area {
 	height: 150px;
 	display: flex;

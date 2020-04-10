@@ -25,7 +25,7 @@
           <span v-if="status===3">
             {{ wins }} is the winner
             <br />
-            <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+            <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
           </span>
         </div>
       </div>

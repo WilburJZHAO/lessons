@@ -22,10 +22,10 @@
 						</form>
 					</div>
 
-					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to start</button>
+					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 					<div class="row" v-if="!showStart">
 						<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-						<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="submitInput" :disabled="isSubmitted">Submit Guess</button>
+						<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="submitInput" :disabled="isSubmitted">Submit guess</button>
 					</div>
 					<div class="row p-3 justify-content-center">
 						<p v-bind:class="{'alert mr-3':true, 'alert-success':(isCorrect), 'alert-danger':(!isCorrect)}" v-if="isFinished"><b>{{guessRes}}</b></p>

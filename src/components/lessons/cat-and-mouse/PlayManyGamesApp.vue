@@ -14,7 +14,7 @@
         class="btn btn-sm btn-outline-dark"
         @click="handleNextGameboard"
         :disabled="isStart"
-      >Next Gameboard</button>
+      >Next gameboard</button>
     </div>
 
     <div class="app--stat">
@@ -68,8 +68,8 @@
         v-if="!isFinish && demoAutoOption == '0'"
       >
         {{ isStart ?
-        "Tap here for next game" :
-        "Tap here to begin"
+        "Next game" :
+        "Start"
         }}
       </button>
       <button
@@ -77,8 +77,8 @@
         @click="handleToggleTimer"
         v-if="!isFinish && demoAutoOption == '1'"
       >
-        {{ !isStart ? "Tap here to begin" :
-        timer ? "Tap here to pause" : "Tap here to resume"
+        {{ !isStart ? "Start" :
+        timer ? "Pause" : "Resume"
         }}
       </button>
       <button class="btn btn-outline-dark" @click="handleReset" v-if="isFinish">Reset</button>

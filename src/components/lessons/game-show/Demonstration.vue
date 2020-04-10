@@ -133,7 +133,7 @@
             style="margin-top:30px;"
             @click="reset()"
           >
-            Click for next game
+            Next game
           </button>
         </div>
       </div>

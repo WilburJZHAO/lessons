@@ -53,13 +53,13 @@
         class="btn btn-outline-success"
         v-if="gameStatus===0"
         @click="handleBegin"
-      >Tap here to begin</button>
+      >Start</button>
       <div class="alert alert-danger" v-if="gameStatus===1">There are {{ cellNumbers }} cells</div>
       <button
         class="btn btn-outline-success"
         v-if="gameStatus===2"
         @click="handleNextQuestion"
-      >Correct! Spacebar for next question</button>
+      >Correct! Next question</button>
       <div class="alert alert-danger" v-if="gameStatus===3">Finished!</div>
     </div>
   </div>

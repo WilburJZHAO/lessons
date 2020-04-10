@@ -36,17 +36,17 @@
               v-if="status===0"
               class="btn btn-outline-success"
               @click="handleToggleTimer"
-            >Tap here to fill cylinders</button>
+            >Fill cylinders</button>
             <button
               v-if="status===1"
               class="btn btn-outline-success"
               @click="handleToggleTimer"
-            >{{ (leftTimer || rightTimer) ? 'Tap here to pause' : 'Tap here to resume'}}</button>
+            >{{ (leftTimer || rightTimer) ? 'Pause' : 'Resume'}}</button>
             <button
               v-if="status===2"
               class="btn btn-outline-dark"
               @click="handleReset"
-            >Tap here to reset</button>
+            >Reset</button>
             <div class="alert alert-danger mt-2" v-if="status===2">Both cylinders are full.</div>
           </div>
         </div>

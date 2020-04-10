@@ -112,7 +112,7 @@
                             </ol>
 
                             <br>
-                            <button @click="reset" class="btn btn-outline-success btn-lg">Clear Board</button>
+                            <button @click="reset" class="btn btn-outline-success btn-lg">Clear board</button>
                         </div>
                     </div>
                 </div>

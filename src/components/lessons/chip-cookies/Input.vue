@@ -30,7 +30,7 @@
       </div>
       <p class="text-danger text-center">Select cookie and chip numbers then...</p>
       <div class="text-center">
-        <button class="btn btn-outline-success" @click="handleSetCookie">Tap here to set cookies</button>
+        <button class="btn btn-outline-success" @click="handleSetCookie">Set cookies</button>
       </div>
     </div>
   </div>

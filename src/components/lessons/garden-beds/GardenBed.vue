@@ -24,7 +24,7 @@
 					<div class="row">
 						<div class="form-action">
 							<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-							<button type="button" class="btn btn-outline-success mr-3 btn-lg" @click="addTile" :disabled="isFinished">Add Tile</button>
+							<button type="button" class="btn btn-outline-success mr-3 btn-lg" @click="addTile" :disabled="isFinished">Add tile</button>
 						</div>
 					</div>
 					<div class="row p-3 justify-content-center">

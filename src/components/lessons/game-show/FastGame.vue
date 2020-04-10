@@ -104,7 +104,7 @@
         v-if="!finished && demoAutoOption === '0'"
         @click="startGameMuna"
       >
-        {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+        {{ isStart ? "Play next game" : "Play first game" }}
       </button>
       <button
         class="btn btn-outline-success"
@@ -113,10 +113,10 @@
       >
         {{
           !isAutoStart
-            ? "Tap here to begin"
+            ? "Start"
             : timer
-            ? "Tap here to pause"
-            : "Tap here to resume"
+            ? "Pause"
+            : "Resume"
         }}
       </button>
       <button class="btn btn-outline-dark" v-if="finished" @click="reset()">

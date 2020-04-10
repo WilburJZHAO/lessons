@@ -20,7 +20,7 @@
                                     id="controlBtn"
                                     v-if="!isSet"
                             >
-                                Click here to show the first 15,000 prime numbers
+                                Show the first 15,000 prime numbers
                             </button>
                         </td>
                     </tr>

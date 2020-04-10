@@ -46,7 +46,7 @@
               @click="handleBounce"
               v-if="demoAutoOption === '0'"
             >
-              Tap here for {{ bounces > 0 ? "next" : "first" }} pool shot
+              Show {{ bounces > 0 ? "next" : "first" }} pool shot
             </button>
             <button
               class="btn btn-outline-success"
@@ -55,10 +55,10 @@
             >
               {{
                 bounces === 0
-                  ? "Tap here to begin"
+                  ? "Start"
                   : timer
-                  ? "Tap here to pause"
-                  : "Tap here to resume"
+                  ? "Pause"
+                  : "Resume"
               }}
             </button>
             <app-demo-auto-option
@@ -166,7 +166,7 @@ export default {
     },
 
     handleOK() {
-      let errorMessage = "Enter a number(1 - 100) or (0.1 to 10)";
+      let errorMessage = "Enter a number (1 to 100) or (0.1 to 10)";
       if (!this.checkInput()) {
         this.message = errorMessage;
         return;
@@ -475,7 +475,7 @@ export default {
     handleReset() {
       this.inputLength = null;
       this.inputWidth = null;
-      (this.message = "Enter a number(1 - 100) or (0.1 to 10)"),
+      (this.message = "Enter a number (1 to 100) or (0.1 to 10)"),
         (this.canvas = null);
       this.bounces = 0;
       this.demoAutoOption = "0";
@@ -499,7 +499,7 @@ export default {
   },
   created() {
     this.direction = this.DIRECTION.UP_RIGHT;
-    this.message = "Enter a number(1 - 100) or (0.1 to 10)";
+    this.message = "Enter a number (1 to 100) or (0.1 to 10)";
   },
   mounted() {},
   unmounted() {

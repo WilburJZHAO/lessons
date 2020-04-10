@@ -34,12 +34,12 @@
           class="btn btn-outline-success"
           @click="handleNext"
           v-if="demoAutoOption==='0'"
-        >Tap here for {{ chipNumber === 0 ? 'first' : 'next' }} chocolate chip</button>
+        >Show {{ chipNumber === 0 ? 'first' : 'next' }} chocolate chip</button>
         <button
           class="btn btn-outline-success"
           @click="handleToggleTimer"
           v-if="demoAutoOption==='1'"
-        >{{ chipNumber === 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+        >{{ chipNumber === 0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
         <app-demo-auto-option
           @changeOption="demoAutoOption = $event"
           :option="demoAutoOption"

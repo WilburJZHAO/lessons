@@ -47,14 +47,14 @@
         v-if="demoAutoOption=='0' && !isFinish"
         class="btn btn-outline-success"
         @click="handleNextAnimal"
-      >Tap here for {{ isStart ? 'next' : 'first'}} animal</button>
+      >Make {{ isStart ? 'next' : 'first'}} animal</button>
       <button
         v-if="demoAutoOption=='1' && !isFinish"
         class="btn btn-outline-success"
         @click="handleToggle"
       >
-        {{ !isStart ? "Tap here to begin auto" :
-        ( timer ? "Tap here to pause" : "Tap here to resume" ) }}
+        {{ !isStart ? "Start" :
+        ( timer ? "Pause" : "Resume" ) }}
       </button>
       <button v-if="isFinish" class="btn btn-outline-dark" @click="handleReset">Reset</button>
     </div>

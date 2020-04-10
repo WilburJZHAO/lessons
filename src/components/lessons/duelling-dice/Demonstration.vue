@@ -4,7 +4,7 @@
         <div v-if="!isSet">
             <div style="height: 20px"></div>
             <div class="text-center">
-                <label for="description" class="col-sm-4" id="description">Select your dice(2, 3, or 4): </label>
+                <label for="description" class="col-sm-4" id="description">Select your dice (2, 3, or 4): </label>
             </div>
             <div style="margin-left: 43%">
                 <div>
@@ -24,7 +24,7 @@
                         <input type="checkbox" @click="diceChoose('black')">&nbsp;
                         <label class="theBlack">Black</label>
                     </div>
-                    <button class="btn btn-outline-success" style="margin-top:10px" @click="startGame()">Start Game</button>
+                    <button class="btn btn-outline-success" style="margin-top:10px" @click="startGame()">Start game</button>
                     <label id="outOfRange" style="color: red; margin-left: 10px"></label>
                 </div>
             </div>
@@ -100,22 +100,22 @@
         </div>
         <div class="text-center" v-if="isSet">
             <button id="startManuallyBtn" class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="startManually">
-                {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                {{ isStart ? "Next game" : "First game" }}
             </button>
             <button id="startManually2Btn" class="btn btn-outline-success" v-if="!finished && demoAutoOption === '2'" @click="getWinner">
-                Tap here to tally
+                Tally scores
             </button>
             <button id="startAutoBtn"  class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                 {{
                 !isAutoStart
-                ? "Tap here to begin"
+                ? "Start"
                 : timer
-                ? "Tap here to pause"
-                : "Tap here to resume"
+                ? "Pause"
+                : "Resume"
                 }}
             </button>
             <button class="btn btn-outline-dark" v-if="finished" @click="reset()">
-                Click here to reset
+                Reset
             </button>
             <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :isDemoStart="isDemoStart" :option="demoAutoOption"></app-demo-auto-option>
         </div>
@@ -232,7 +232,7 @@
             },
             startGame() {
                 if (this.activatedDices.length < 2) {
-                    document.getElementById("outOfRange").innerHTML = "Please select more than 2 dices!";
+                    document.getElementById("outOfRange").innerHTML = "Please select at least 2 dice!";
                     return;
                 }
                 document.getElementById("outOfRange").innerHTML = "";

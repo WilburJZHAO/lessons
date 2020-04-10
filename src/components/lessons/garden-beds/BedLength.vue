@@ -36,10 +36,10 @@
 						<div v-if="showStart">
 							<p v-bind:class="{'alert mr-3':true, 'alert-info':(!showInputError), 'alert-danger':(showInputError)}">Please enter an whole number between {{minBedLength}} to {{maxBedLength}}.</p>
 						</div>
-						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to start</button>
+						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 						<div v-if="!showStart">
 							<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-							<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="addTile" :disabled="isFinished||isAuto">Add Tile</button>
+							<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="addTile" :disabled="isFinished||isAuto">Add tile</button>
 						</div>
 						<div class="app--demo-auto-option mt-2">
 							<div class="form-check form-check-inline">

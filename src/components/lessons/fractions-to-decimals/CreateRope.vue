@@ -11,7 +11,7 @@
         v-if="status===1"
         class="btn btn-outline-dark"
         @click="handleReset"
-      >Tap here for another rope length</button>
+      >New rope length</button>
     </div>
     <div
       class="alert alert-danger text-center app--alert"
