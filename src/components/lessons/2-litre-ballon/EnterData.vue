@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Enter Diameter, Radius, Circumference or Volume</h3>
+    <h3 class="text-center text-success mb-4">Enter diameter, radius, circumference or volume</h3>
     <div class="app--container">
       <div class="form-group row">
         <label for="diameter" class="col-sm-3 col-form-label">Diameter (cm)</label>

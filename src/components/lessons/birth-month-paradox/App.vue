@@ -52,10 +52,10 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'Five Person Demonstration' },
-                    { id: 2, title: 'Vary the Group Size and the Number of Trials' },
-                    { id: 3, title: 'Many Trials Fast' },
-                    { id: 4, title: 'Birthday Paradox' },
+                    { id: 1, title: 'Five person demonstration' },
+                    { id: 2, title: 'Vary the group size and the number of trials' },
+                    { id: 3, title: 'Many trials fast' },
+                    { id: 4, title: 'Birthday paradox' },
                 ],
                 selectedOption: -1,
             }

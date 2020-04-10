@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success">How often does each number occur?</h3>
+    <h3 class="text-center text-success">How often does each total occur?</h3>
     <div class="row">
       <div class="col-md-9">
         <div class="app--table-line">

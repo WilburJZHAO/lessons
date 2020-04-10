@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Demonstration Game</h3>
+    <h3 class="text-success text-center">Demonstration game</h3>
     <div id="board-container" class="app--canvas-container"></div>
     <div class="row">
       <div class="col-sm-4"></div>

@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="text-center text-success mb-4">Vary the group size and the number of trial</h3>
+        <h3 class="text-center text-success mb-4">Vary the group size and the number of trials</h3>
 
         <div style="height: 10px"></div>
         <div class="container mt-4 mb-5" v-if="!isSet" style="width: 50%">

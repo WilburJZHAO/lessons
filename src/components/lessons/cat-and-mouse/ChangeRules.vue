@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-4 mb-5">
-    <h3 class="text-success text-center mb-4">Change the Rules</h3>
+    <h3 class="text-success text-center mb-4">Change the rules</h3>
     <div class="mb-2">
       <app-gameboard
         :gameboardIndex="gameboardIndex"

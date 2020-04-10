@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Many trials</h2>
+		<h3 class="text-success text-center">Many trials</h3>
 		<div class="container mt-4 mb-5">
 			<div class="row justify-content-center" id="canvas-container-graph">
 				<canvas id="app-canvas-graph"></canvas>
@@ -41,7 +41,7 @@
 						<p class="alert alert-info mt-1">Finished</p>
 					</div>
 				</div>
-				
+
 				<div class="col-sm-6 table-container">
 					<table class="table">
 						<tr>
@@ -74,7 +74,7 @@
 <script>
 /* eslint-disable */
 import Dice from './Dice.vue';
-import { 
+import {
 	drawInitialGraph,
 	rerollAtoms,
 	getRandomNumber,
@@ -251,10 +251,10 @@ export default {
 		nextStage(){
 			//update variables for current round/year
 			this.currentYear += 1;
-			
+
 			//generate the random values for the atoms
 			rerollAtoms(this);
-			
+
 			//generating the dice roll
 			this.diceRoll = getRandomNumber(0,this.trialInputs.probDecay);
 
@@ -262,7 +262,7 @@ export default {
 			const canvasGraph = document.querySelector('#app-canvas-graph');
 			removeDecayedAtoms(canvasGraph, this);
 		},
-		//This function initialises random numbers for all the 100 
+		//This function initialises random numbers for all the 100
 		start(){
 			//remove the Start button
 			this.showStart = false;

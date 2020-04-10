@@ -52,9 +52,9 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'Play Eight Queens' },
-                    { id: 2,title:'Marching Queens'},
-                    { id: 3,title:"Fast Computer Search"}
+                    { id: 1, title: "Play 'Eight Queens'" },
+                    { id: 2,title:'Marching queens'},
+                    { id: 3,title:"Fast computer search"}
 
                 ],
                 selectedOption: -1,

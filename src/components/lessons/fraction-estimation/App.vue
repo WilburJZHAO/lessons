@@ -79,35 +79,35 @@ export default {
       options: [
         {
           id: 1,
-          title: "Fraction Strip"
+          title: "Fraction strip"
         },
         {
           id: 2,
-          title: "Fraction Tower"
+          title: "Fraction tower"
         },
         {
           id: 3,
-          title: "Fraction Pie"
+          title: "Fraction pie"
         },
         {
           id: 4,
-          title: "Fraction Number"
+          title: "Fraction number"
         },
         {
           id: 5,
-          title: "Percentage Area"
+          title: "Percentage area"
         },
         {
           id: 6,
-          title: "Decimal Area"
+          title: "Decimal area"
         },
         {
           id: 7,
-          title: "Percentage Number"
+          title: "Percentage number"
         },
         {
           id: 8,
-          title: "Decimal Number"
+          title: "Decimal number"
         }
       ],
       selectedOption: -1

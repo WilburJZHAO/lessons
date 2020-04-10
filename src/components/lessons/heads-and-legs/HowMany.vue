@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-success text-center mb-4">How many pigs and chickens in the field</h3>
+    <h3 class="text-success text-center mb-4">How many pigs and chickens in the field?</h3>
     <div class="row">
       <div class="col-md-6 mb-3">
         <h6>There are {{ problem.heads }} animals with {{ problem.legs }} legs.</h6>
@@ -242,7 +242,7 @@ export default {
       // eslint-disable-next-line no-console
       // console.log(e.relatedTarget);
       e.target.innerHTML += `
-          <img src=${e.relatedTarget.src} style="width: 80px; touch-action: none; " 
+          <img src=${e.relatedTarget.src} style="width: 80px; touch-action: none; "
             class="app--image-draggable-positioned" data-animal=${animal}
           />
         `;

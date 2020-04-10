@@ -2,7 +2,7 @@
 	<div class="container mt-4 mb-5">
 		<div class="app--form-title" v-if="!finishInput">
 			<h4 class="text-success text-center mb-4">
-				Ice Cream Flavours
+				How many ice creams can be made?
 			</h4>
 			<form @submit.prevent="handleNumberInput">
 				<div class="form-group row">
@@ -18,7 +18,7 @@
 							min="2"
 							max="6"
 						>
-						<div class="badge badge-danger mt-2" 
+						<div class="badge badge-danger mt-2"
 							v-bind:style="{visibility: isValidNumberOfFlavours ? 'hidden' : 'visible' }">
 							Invalid input
 						</div>
@@ -38,7 +38,7 @@
 							min="2"
 							max="6"
 						>
-						<div class="badge badge-danger mt-2" 
+						<div class="badge badge-danger mt-2"
 							v-bind:style="{visibility: isValidNumberOfScoops ? 'hidden' : 'visible' }">
 							Invalid input
 						</div>
@@ -83,26 +83,26 @@ export default {
 	},
 	watch: {
 		numberOfFlavours: function(value) {	// Validate numberOfFlavours
-			let numberToTest = Number(value); 
-			if(!value || 
-				(Number.isInteger(numberToTest) && 
+			let numberToTest = Number(value);
+			if(!value ||
+				(Number.isInteger(numberToTest) &&
 				numberToTest >= 2 &&
 				numberToTest <= 6) ) {
 					return this.isValidNumberOfFlavours = true;
 				} else {
 					return this.isValidNumberOfFlavours = false;
-				}			
+				}
 		},
 		numberOfScoops: function(value) {	// Validate numberOfScoops
 			let numberToTest = Number(value);
-			if(!value || 
-				(Number.isInteger(numberToTest) && 
+			if(!value ||
+				(Number.isInteger(numberToTest) &&
 				numberToTest >= 2 &&
 				numberToTest <= 6) ) {
 					return this.isValidNumberOfScoops = true;
 				} else {
 					return this.isValidNumberOfScoops = false;
-				}	
+				}
 		}
 	},
 	methods: {

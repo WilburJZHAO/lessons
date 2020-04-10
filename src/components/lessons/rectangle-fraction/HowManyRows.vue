@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">How Many Rows</h3>
+    <h3 class="text-center text-success mb-4">How many rows and columns?</h3>
 
     <div style="display: flex; flex-direction: row">
       <div>

@@ -1,6 +1,5 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Cracked Tiles</h3>
     <div class="row mt-3">
       <div class="col-md-4">
         <div class="form-group row">

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Expert Challenge</h2>
+		<h3 class="text-success text-center">Expert challenge</h3>
 		<div class="container mt-4 mb-5">
 			<div class="row">
 				<div class="app--action mt-3 col-6">
@@ -12,7 +12,7 @@
 							<div class="form-group row">
 								<label for="numTilesInput" class="col-sm-9 col-form-label"><b>Guess</b> final number of tiles:</label>
 								<div class="col-sm-3">
-									<input type="number" 
+									<input type="number"
 										v-model="numTilesInput"
 										class="form-control"
 										id="numTilesInput"
@@ -62,7 +62,7 @@
 
 <script>
 /* eslint-disable */
-import { 
+import {
 	// getRandomNum
 	addNextTile,
 	drawNextCanvas,
@@ -171,7 +171,7 @@ export default {
 			addNextTile(colour, canvas, this);
 		},
 
-		//This function resets the plant to a new value and removes all the tiles from the canvas. 
+		//This function resets the plant to a new value and removes all the tiles from the canvas.
 		start(){
 			scrollToRecent();
 			//reset the variables

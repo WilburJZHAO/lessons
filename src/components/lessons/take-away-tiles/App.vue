@@ -50,7 +50,7 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'Take Away Tiles puzzle' },
+                    { id: 1, title: "'Take Away Tiles' puzzle" },
                     { id: 2, title: 'Place and try' },
                     { id: 3, title: 'Testing all combinations'}
                 ],

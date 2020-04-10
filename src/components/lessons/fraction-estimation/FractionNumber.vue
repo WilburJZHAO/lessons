@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Fraction Number</h3>
+    <h3 class="text-center text-success mb-4">Fraction number</h3>
     <div class="row">
       <div class="col-md-3">
         <app-fraction-input

@@ -1,6 +1,5 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success">Play Billard Ball Bounces</h3>
     <div class="row">
       <div class="col-md-8">
         <div class="row" v-if="gameStatus === 0">
@@ -440,7 +439,7 @@ export default {
           break;
         }
       }
- 
+
       if (this.rwidth === 0) {
         if (this.timer) {
           clearInterval(this.timer);

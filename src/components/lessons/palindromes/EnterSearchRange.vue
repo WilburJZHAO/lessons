@@ -1,6 +1,6 @@
 <template>
   <div class="mt-3 container">
-    <h3 class="text-center text-success">Enter your number</h3>
+    <h3 class="text-center text-success">Enter your number and search range</h3>
     <div class="row mt-3">
       <div class="col-md-5 text-center mb-3">
         <div class="d-flex align-items-center mb-3">

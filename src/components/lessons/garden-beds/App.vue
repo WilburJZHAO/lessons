@@ -54,7 +54,7 @@ export default {
 				{id: 1, title: 'Demonstration'},
 				{id: 2, title: 'Enter your own bed length'},
 				{id: 3, title: 'Challenge'},
-				{id: 4, title: 'Expert Challenge'}
+				{id: 4, title: 'Expert challenge'}
 			],
 			selectedOption: -1
 		}

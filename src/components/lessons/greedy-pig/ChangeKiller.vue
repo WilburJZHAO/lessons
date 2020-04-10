@@ -17,7 +17,7 @@
         @keypress="handleCheckInput"
       />
     </div>
-    <div class="text-center text-danger my-3">Enter the killer dice number(1-6)</div>
+    <div class="text-center text-danger my-3">Enter the killer dice number (1-6)</div>
     <div class="text-center">
       <button class="btn btn-outline-success" @click="handleSetKiller" :disabled="!validDice">OK</button>
     </div>

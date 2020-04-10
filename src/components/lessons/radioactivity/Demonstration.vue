@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Demonstration</h2>
+		<h3 class="text-success text-center">Demonstration</h3>
 		<div class="container mt-4 mb-5">
 			<div class="row justify-content-center" id="canvas-container-atoms">
 				<canvas id="app-canvas-atoms"></canvas>
@@ -48,7 +48,7 @@
 <script>
 /* eslint-disable */
 import Dice from './Dice.vue';
-import { 
+import {
 	drawGrid,
 	drawGraph,
 	generateRandomValues,
@@ -178,7 +178,7 @@ export default {
 		nextStage(){
 			const canvasAtoms = document.querySelector('#app-canvas-atoms');
 			const canvasGraph = document.querySelector('#app-canvas-graph');
-			//there are 4 different stages for each year, 
+			//there are 4 different stages for each year,
 			//stage 0 for generating rand number for atoms
 			if (this.stage == 0){
 				//generate the random values for the atoms
@@ -206,11 +206,11 @@ export default {
 				this.currentYear += 1;
 			}
 		},
-		//This function initialises random numbers for all the 100 
+		//This function initialises random numbers for all the 100
 		start(){
 			//remove the Start button
 			this.showStart = false;
-			
+
 			//generate the random values for the atoms
 			const canvasAtoms = document.querySelector('#app-canvas-atoms');
 			const canvasGraph = document.querySelector('#app-canvas-graph');
@@ -226,7 +226,7 @@ export default {
 			this.showStart = true;
 			this.currentYear = 0;
 			this.showPause = false;
-			
+
 			//reset the variables
 			this.atoms.splice(0,this.atoms.length);
 
