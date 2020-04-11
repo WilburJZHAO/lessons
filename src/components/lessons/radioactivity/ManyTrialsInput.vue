@@ -3,13 +3,13 @@
 		<h3 class="text-success text-center">Many trials</h3>
 		<div class="app--enter-number form-group row mt-5">
 			<label for="trial-numbers" class="col-form-label col-sm-6">
-				<span style="color: darkred">Enter the number of atoms</span> (10 - 10,000):
+				<span style="color: darkred">Enter the number of atoms</span> (10 to 10,000):
 			</label>
 			<div class="col-sm-6">
 				<input type="number" class="form-control" v-model="numAtoms" required>
 			</div>
 			<label for="trial-numbers" class="col-form-label col-sm-8 mt-3">
-				<span style="color: darkred">Enter the probability of decay</span> (2 - 100): <span style="color: blue">One in...</span>
+				<span style="color: darkred">Enter the probability of decay</span> (2 to 100): <span style="color: blue">One in...</span>
 			</label>
 			<div class="col-sm-4 mt-3">
 				<input type="number" class="form-control" v-model="probDecay" required>

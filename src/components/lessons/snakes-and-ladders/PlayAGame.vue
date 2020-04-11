@@ -72,24 +72,24 @@
                 class="btn btn-outline-success"
                 v-if="status===1"
                 @click="handleGoFirst"
-              >Tap here to see who goes first</button>
+              >See who goes first</button>
               <button
                 class="btn btn-outline-success"
                 v-if="status===2 && demoAutoOption==='0'"
                 @click="handleFirstRoll"
-              >Tap here for first roll</button>
+              >Roll dice</button>
               <button
                 class="btn btn-outline-success"
                 v-if="(status===3 || status ===4) && demoAutoOption==='0'"
                 @click="handleNextRoll"
                 :disabled="status===3"
-              >Tap here for next roll</button>
+              >Roll dice</button>
               <button
                 class="btn btn-outline-success"
                 v-if="(status===3 || status ===4 || status === 2) && demoAutoOption==='1' && !timer"
                 @click="handleToggleTimer"
                 :disabled="status===3"
-              >{{ status=== 2 ? 'Tap here to begin' : 'Tap here to resume'}}</button>
+              >{{ status=== 2 ? 'Start' : 'Resume'}}</button>
               <button
                 class="btn btn-outline-dark"
                 v-if="(status===3 || status ===4 || status === 2) && demoAutoOption==='1' && timer"

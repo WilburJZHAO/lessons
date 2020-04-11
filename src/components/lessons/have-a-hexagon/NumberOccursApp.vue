@@ -30,14 +30,14 @@
         class="btn btn-outline-success"
         v-if="demoAutoOption=='0' && !isEnd"
         @click="handlePlayOneGame"
-      >{{ isStart ? "Tap here for next game" : "Tap here for first game" }}</button>
+      >{{ isStart ? "Next game" : "First game" }}</button>
       <button
         class="btn btn-outline-success"
         v-if="demoAutoOption=='1' && !isEnd"
         @click="handleToggleTimer"
       >
-        {{ !isStart ? 'Tap here to begin' :
-        ( timer ? "Tap here to pause" : "Tap here to resume")
+        {{ !isStart ? 'Start' :
+        ( timer ? "Pause" : "Resume")
         }}
       </button>
       <button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>

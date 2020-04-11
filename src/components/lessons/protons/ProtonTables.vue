@@ -59,7 +59,7 @@
           <div v-if="status === 2">
             <p>All entries correct.</p>
             <button class="btn btn-outline-dark" @click="handleNext">
-              Tap here for new grid
+              New grid
             </button>
           </div>
         </div>

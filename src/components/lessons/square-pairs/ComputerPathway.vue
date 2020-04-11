@@ -50,7 +50,7 @@
         <button
           class="btn btn-outline-success"
           @click="handleFindPathway"
-        >Tap here to search for pathways</button>
+        >Search for pathways</button>
       </div>
       <!-- <div class="text-center mt-1">
         <app-demo-auto-option

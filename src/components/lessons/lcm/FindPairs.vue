@@ -33,17 +33,17 @@
             class="btn btn-outline-success"
             v-if="gameStatus === 1"
             @click="handleCalculateFactors"
-          >Tap here to calculate factors</button>
+          >Calculate factors</button>
           <button
             class="btn btn-outline-success"
             v-if="gameStatus === 2"
             @click="handleCalFirstGroupPairs"
-          >Tap here to calculate the first group of number pairs</button>
+          >Calculate the first group of number pairs</button>
           <button
             class="btn btn-outline-success"
             v-if="gameStatus === 3"
             @click="handleCalSecondGroupPairs"
-          >Tap here to calculate the second group of number pairs</button>
+          >Calculate the second group of number pairs</button>
           <button class="btn btn-outline-dark" v-if="gameStatus === 4" @click="handleReset">Reset</button>
           <div class="mt-3">
             <h5 class="text-primary" v-if="gameStatus > 0">

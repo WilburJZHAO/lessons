@@ -7,7 +7,7 @@
                     <div class="col-12 col-md-6 app--lesson-left">
                         <div>
                             <h5 class="text-success">
-                                Drag the number tiles to make each role and column the same.
+                                Drag the number tiles to make each row and column the same.
                             </h5>
                             <h5 class="text-success">
                                 All the blanks must be filled.

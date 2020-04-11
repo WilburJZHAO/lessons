@@ -252,13 +252,6 @@ export default {
       this.additionList = [];
     }
   },
-  created() {
-    window.addEventListener("keyup", e => {
-      if (e.code == "Space" && this.gameStatus === 2) {
-        this.handleDrawTwoNumbers();
-      }
-    });
-  }
 };
 </script>
 

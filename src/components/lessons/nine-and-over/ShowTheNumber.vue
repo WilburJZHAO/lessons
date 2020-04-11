@@ -3,40 +3,40 @@
 		<h3 class="text-success text-center mb-4">Show the Number</h3>
 		<div class="row">
 			<div class="col-md-6 pb-4">
-				<app-plugboard 
+				<app-plugboard
 					@setDigit="totalDigit=$event"
 					@setPlugboardNumber="plugboardNumberSet=$event"
 					:plugboardNumber="plugboardNumber"
 					:isDisable="plugboardDisable"
-					:isRadioDisable="plugboardRadioDisable" 
+					:isRadioDisable="plugboardRadioDisable"
 					:numberToCheck="numberToCheck"
 					:isCreatingNewNumber="isCreatingNewNumber"
 				></app-plugboard>
-				<app-plugboard-input 
+				<app-plugboard-input
 					@setInputNumber="inputNumberSet=$event"
 					:totalDigit="totalDigit"
-					:inputNumber="inputNumber" 
+					:inputNumber="inputNumber"
 					:isDisable="inputDisable"
 					:numberToCheck="numberToCheck"
 					:isCreatingNewNumber="isCreatingNewNumber"
 				></app-plugboard-input>
 			</div>
 			<div class="col-md-6">
-				<div style="display: flex; align-items: flex-start;">					
+				<div style="display: flex; align-items: flex-start;">
 					<app-calculator
-						:calNumber="calNumber" 
+						:calNumber="calNumber"
 						:isDisable="calDisable"
 						:numberToCheck="numberToCheck"
 						:isCreatingNewNumber="isCreatingNewNumber"
-					></app-calculator>					
+					></app-calculator>
 					<app-spelling-help
 						@setSpelling="handleSetSpelling"
 						:isDisable="spellingHelpDisable"
-					></app-spelling-help> 
+					></app-spelling-help>
 				</div>
 				<br>
 				<app-spelling-board
-					:spellingNumber="spellingNumber" 
+					:spellingNumber="spellingNumber"
 					:isDisable="spellingDisable"
 					:numberToCheck="numberToCheck"
 					:spelling="spelling"
@@ -48,14 +48,14 @@
 					<button
 						class="btn btn-outline-success"
 						@click="handleCreateNewNumber"
-					>Tap here for a new number</button>
+					>New number</button>
 					<button
 						class="btn btn-outline-dark"
 						@click="handleCheck"
 					>
 						OK
 					</button>
-				</div>				
+				</div>
 				<div v-if="number!==null" class=" mt-2 alert alert-danger">
 					Show this number in all the ways
 				</div>
@@ -116,7 +116,7 @@ export default {
 			this.inputDisable = true;
 			this.calDisable = true;
 			this.spellingDisable = true;
-			this.spellingHelpDisable = true; 
+			this.spellingHelpDisable = true;
 		},
 		handleCreateNewNumber() {
 			// totalDigit - 1, 1 10^0 - 9 10^1-1
@@ -127,7 +127,7 @@ export default {
 			this.init();
 			let mathRandom = Math.random();
 			let min = Math.pow(10, this.totalDigit-1);
-			let max = Math.pow(10, this.totalDigit);  
+			let max = Math.pow(10, this.totalDigit);
 			this.number = pickRandomNumber(min, max);
 			this.form = pickRandomNumber(1, 5);
 			this.plugboardRadioDisable = true;
@@ -135,7 +135,7 @@ export default {
 			this.inputDisable = false;
 			this.calDisable = false;
 			this.spellingDisable = false;
-			this.spellingHelpDisable = false; 
+			this.spellingHelpDisable = false;
 			this.isCreatingNewNumber = true;
 			switch(this.form) {
 				case 1:

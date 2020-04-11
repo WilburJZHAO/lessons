@@ -69,23 +69,23 @@
         class="btn btn-outline-success"
         @click="handleRollDirection"
         v-if="step===0 && !result"
-      >Tap here to roll for direction</button>
+      >Roll dice for direction</button>
       <button
         class="btn btn-outline-success"
         @click="handleRollWalk"
         v-if="step===1 && !result"
-      >Tap here to roll the walk</button>
+      >Roll dice for the walk</button>
       <button
         class="btn btn-outline-success"
         @click="handleWalkPlank"
         :disabled="isWalking"
         v-if="step===2 && !result"
-      >Tap here to walk the plank</button>
+      >Walk the plank</button>
       <button
         class="btn btn-outline-success"
         @click="handleNextTurn"
         v-if="step===3 && !result"
-      >Tap here for next turn</button>
+      >Next turn</button>
       <button class="btn btn-outline-dark" @click="handleReset" v-if="step===4">Reset</button>
     </div>
     <div class="app--action text-center" v-if="demoAutoOption=='1'">

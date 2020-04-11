@@ -64,7 +64,7 @@
         <label
           for="trial-numbers"
           class="col-form-label col-sm-6"
-        >Enter the number of trials(1 - 10000):</label>
+        >Enter the number of trials (1 to 10000):</label>
         <div class="col-sm-6">
           <input type="number" class="form-control" v-model="trialNumber" required />
         </div>
@@ -131,14 +131,14 @@
           v-if="demoAutoOption=='0' && !isEnd"
           class="btn btn-outline-success"
           @click="handlePlayOneGame"
-        >{{ isStart ? "Tap here for next game" : "Tap here for first game" }}</button>
+        >{{ isStart ? "Next game" : "First game" }}</button>
         <button
           v-if="demoAutoOption=='1' && !isEnd"
           class="btn btn-outline-success"
           @click="handleToggleTimer"
         >
-          {{ !isStart ? "Tap here to begin" :
-          ( timer ? "Tap here to pause" : "Tap here to resume")
+          {{ !isStart ? "Start" :
+          ( timer ? "Pause" : "Resume")
           }}
         </button>
         <button v-if="isEnd" class="btn btn-outline-dark" @click="handleReset">Reset</button>

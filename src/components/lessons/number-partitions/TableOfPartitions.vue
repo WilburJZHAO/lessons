@@ -34,8 +34,8 @@
           >
             {{
             gameStatus === 0
-            ? "Tap here for first number"
-            : "Tap here for next number"
+            ? "First number"
+            : "Next number"
             }}
           </button>
           <button
@@ -45,10 +45,10 @@
           >
             {{
             timer
-            ? "Tap here to pause"
+            ? "Pause"
             : gameStatus === 0
-            ? "Tap here to begin"
-            : "Tap here to resume"
+            ? "Start"
+            : "Resume"
             }}
           </button>
           <button class="btn btn-outline-dark" v-if="gameStatus === 2" @click="handleReset">Reset</button>

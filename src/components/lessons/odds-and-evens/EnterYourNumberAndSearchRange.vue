@@ -188,7 +188,7 @@
             v-if="!finalFinished && demoAutoOption === '0'"
             @click="startGame"
           >
-            {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+            {{ isStart ? "Next game" : "First game" }}
           </button>
           <button
             class="btn btn-outline-success"
@@ -197,10 +197,10 @@
           >
             {{
               !isAutoStart
-                ? "Tap here to begin"
+                ? "Start"
                 : timer
-                ? "Tap here to pause"
-                : "Tap here to resume"
+                ? "Pause"
+                : "Resume"
             }}
           </button>
           <button
@@ -208,7 +208,7 @@
             v-if="finalFinished"
             @click="reset()"
           >
-            Click here to reset</button
+            Reset</button
           >&nbsp;&nbsp;&nbsp;
           <app-demo-auto-option
             class="mt-1"

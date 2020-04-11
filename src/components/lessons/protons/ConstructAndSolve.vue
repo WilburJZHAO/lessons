@@ -38,7 +38,7 @@
           <div v-if="status === 2">
             <div class="text-success">Correct!</div>
             <div>
-              <button class="btn btn-outline-dark" @click="handleNext">Tap here for next question</button>
+              <button class="btn btn-outline-dark" @click="handleNext">Next question</button>
             </div>
           </div>
         </div>

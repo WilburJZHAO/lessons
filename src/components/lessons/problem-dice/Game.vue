@@ -83,12 +83,12 @@
         class="btn btn-outline-success"
         v-if="!isSet"
         @click="handleSetPlayer"
-      >Tap here to set players</button>
+      >Set players</button>
       <button
         class="btn btn-outline-success"
         v-if="isSet && demoAutoOption=='0' && gameType==2 && autoEnd==false"
         @click="handleNextMove"
-      >Tap here for next move</button>
+      >Next move</button>
       <button
         class="btn btn-outline-dark"
         v-if="isSet && gameType==2 && autoEnd==true"
@@ -98,12 +98,12 @@
         class="btn btn-outline-success"
         v-if="isSet && demoAutoOption=='0' && gameType==1"
         @click="handlePlayGame"
-      >{{ shouldRecord ? "Tap here to record and graph" : "Tap here to throw dice" }}</button>
+      >{{ shouldRecord ? "Record and graph" : "Roll dice" }}</button>
       <button
         class="btn btn-outline-success"
         v-if="isSet && demoAutoOption=='1' && autoEnd == false"
         @click="toggleTimer"
-      >{{ timer ? "Tap here to pause" : "Tap here to resume" }}</button>
+      >{{ timer ? "Pause" : "Resume" }}</button>
       <app-demo-auto-option
         v-if="isSet"
         class="mt-1"

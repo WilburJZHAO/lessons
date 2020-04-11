@@ -47,7 +47,7 @@
 
 				<div class="form-group form-check">
 					<input type="checkbox" class="form-check-input" id="allowRepeat" v-model="allowRepeat">
-					<label for="allowRepeat" class="form-check-label">Repeat allowed</label>
+					<label for="allowRepeat" class="form-check-label">Repeats allowed</label>
 				</div>
 
 				<div class="form-action text-center">

@@ -15,19 +15,19 @@
 					<p class="alert alert-danger" v-else>There are {{atomLeft}} atoms</p>
 				</div>
 				<div class="col-sm-3 app--action">
-					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to start</button>
+					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 					<div v-if="!showStart">
 						<div v-if="!isFinished">
 							<div v-if="isAuto">
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Tap here to pause</button>
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Tap here to resume</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Pause</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Resume</button>
 							</div>
 							<div v-else>
-								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-if="stage==1">Tap here to throw dice</button>
-								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-else>Tap here to continue</button>
+								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-if="stage==1">Roll dice</button>
+								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-else>Continue</button>
 							</div>
 						</div>
-						<div v-else><button type="button" class="btn btn-outline-dark" @click="reset" v-if="isFinished">Tap here to reset</button></div>
+						<div v-else><button type="button" class="btn btn-outline-dark" @click="reset" v-if="isFinished">Reset</button></div>
 					</div>
 					<div class="form-check form-check-inline">
 						<input type="radio" class="form-check-input" id="demo" name="demoOption" value= "demo" v-model="mode">

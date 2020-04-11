@@ -50,7 +50,7 @@
 					</div>
 					<div class="app--lesson-action">
 						<button class="btn btn-outline-success" @click="checkAnswer">Check</button>
-						<button class="btn btn-outline-dark" @click="seeAnswer">Answers</button>
+						<button class="btn btn-outline-dark" @click="seeAnswer">Show answers</button>
 					</div>
 				</div>
 			</div>

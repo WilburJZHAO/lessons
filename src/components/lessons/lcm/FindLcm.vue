@@ -61,12 +61,12 @@
           class="btn btn-outline-success"
           v-if="gameStatus === 1"
           @click="handleCalculateFactors"
-        >Tap here to calculate prime factors for each number</button>
+        >Calculate prime factors for each number</button>
         <button
           class="btn btn-outline-success"
           v-if="gameStatus === 2"
           @click="handleCalculateLCM"
-        >Tap here to caculate the LCM</button>
+        >Caculate the LCM</button>
         <button class="btn btn-outline-dark" v-if="gameStatus === 3" @click="handleReset">Reset</button>
       </div>
     </div>

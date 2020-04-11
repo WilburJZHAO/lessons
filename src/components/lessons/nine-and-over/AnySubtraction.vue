@@ -55,7 +55,7 @@
             v-if="step===1 && !isFinish"
             class="btn btn-outline-success"
             @click="handleRollDice"
-          >Tap here to roll dice</button>
+          >Roll dice</button>
           <div
             class="alert alert-info"
             v-if="step===2 && isPlugboardNumberCheckedRight === null"
@@ -68,7 +68,7 @@
             v-if="step===2 && !isFinish"
             class="btn btn-outline-success"
             @click="handleCheckPlugboard"
-          >Tap here to check</button>
+          >Check</button>
 
           <div
             class="alert alert-info"

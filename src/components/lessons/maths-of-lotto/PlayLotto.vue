@@ -20,19 +20,19 @@
           <button
             class="btn btn-outline-success"
             @click="handleDrawNumber"
-          >Tap here to draw a number</button>
+          >Draw a number</button>
         </div>
         <div v-if="status === 3" class="text-center">
           <button
             class="btn btn-outline-success"
             @click="handleCheckWin"
-          >Tap here to check for a win</button>
+          >Check for a win</button>
         </div>
         <div v-if="status === 4" class="text-center">
           <button
             class="btn btn-outline-success"
             @click="handleStartNext"
-          >Tap here to clear for next game</button>
+          >Clear for next game</button>
         </div>
       </div>
       <div class="col-md-4">

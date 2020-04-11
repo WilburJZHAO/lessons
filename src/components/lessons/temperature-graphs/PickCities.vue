@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-sm-6">
             <h5 class="text-center">Select up to 6 cities</h5>
-            <p class="text-center">Click on list to select your cities(2-6)</p>
+            <p class="text-center">Click on list to select cities (2-6)</p>
             <div class="app--list">
               <ul class="list-group">
                 <li
@@ -116,7 +116,7 @@
           <label for="fahrenheit" class="custom-control-label">Fahrenheit</label>
         </div>
         <div class="mt-3 text-center d-flex justify-content-around">
-          <button class="btn btn-outline-dark" @click="handleRandomPick">Random Pick</button>
+          <button class="btn btn-outline-dark" @click="handleRandomPick">Random pick</button>
           <button
             class="btn btn-outline-success"
             @click="handleOk"

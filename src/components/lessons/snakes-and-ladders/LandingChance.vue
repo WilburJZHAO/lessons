@@ -33,12 +33,12 @@
                 v-if="demoAutoOption==='0' && !finished"
                 class="btn btn-outline-success"
                 @click="handlePlayOneGame"
-              >Tap here for one game</button>
+              >Play one game</button>
               <button
                 v-if="demoAutoOption==='1' && !finished"
                 class="btn btn-outline-success"
                 @click="handleToggleTimer"
-              >{{ timer ? 'Tap here to pause' : playedGames ===0 ? 'Tap here to begin' : 'Tap here to resume'}}</button>
+              >{{ timer ? 'Pause' : playedGames ===0 ? 'Start' : 'Resume'}}</button>
               <button v-if="finished" class="btn btn-outline-dark" @click="handleReset">Reset</button>
             </div>
             <div v-if="finished" class="text-danger text-center">Finished</div>

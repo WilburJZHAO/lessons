@@ -22,14 +22,14 @@
         class="btn btn-outline-success"
         v-if="status===0"
         @click="handleThrowDice"
-      >Tap here to throw dice</button>
+      >Roll dice</button>
       <button
         class="btn btn-outline-success"
         v-if="status===1"
         @click="handleMoveCounter"
-      >Tap here to move counter</button>
+      >Move counter</button>
 
-      <button class="btn btn-outline-dark" v-if="status===2" @click="handleReset">Tap here to reset</button>
+      <button class="btn btn-outline-dark" v-if="status===2" @click="handleReset">Reset</button>
     </div>
   </div>
 </template>

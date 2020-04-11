@@ -63,7 +63,7 @@
         <div v-if="status===0" class="alert alert-danger mt-3">Choose an animal by clicking on blue</div>
         <div v-if="status===2" class="text-center mt-3">
           <div class="alert alert-success">Problem solved!</div>
-          <button class="btn btn-outline-success" @click="handleReset">Tap here for a new problem</button>
+          <button class="btn btn-outline-success" @click="handleReset">Next challenge</button>
         </div>
         <div v-if="status===3" class="text-center mt-3">
           <div class="alert alert-danger">
@@ -71,7 +71,7 @@
             <br />
             The answer is {{ problem.pigsHeads}} pigs
           </div>
-          <button class="btn btn-outline-success" @click="handleReset">Tap here for a new problem</button>
+          <button class="btn btn-outline-success" @click="handleReset">Next challenge</button>
         </div>
       </div>
       <div class="col-md-8">

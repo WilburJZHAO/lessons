@@ -59,21 +59,21 @@
                 class="btn btn-outline-dark btn-block"
                 @click="handleNewRule"
                 :disabled="status===1"
-              >New Rule</button>
-            </div>
-            <div class="text-center mb-3">
-              <button
-                class="btn btn-outline-success btn-block"
-                @click="handleAnswer"
-                :disabled="status===0 || status===2"
-              >Answer</button>
+              >New rule</button>
             </div>
             <div class="text-center mb-3">
               <button
                 class="btn btn-outline-success btn-block"
                 @click="handleCheck"
                 :disabled="status===0"
-              >Check</button>
+              >Check values</button>
+            </div>
+            <div class="text-center mb-3">
+              <button
+                class="btn btn-outline-success btn-block"
+                @click="handleAnswer"
+                :disabled="status===0 || status===2"
+              >Show answers</button>
             </div>
             <div class="text-center">
               <div class="form-check">

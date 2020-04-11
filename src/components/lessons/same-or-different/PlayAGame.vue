@@ -9,11 +9,11 @@
 							Enter number of red blocks(1-{{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
-							<input type="number" 
+							<input type="number"
 								v-model="numRedBlocks"
 								class="form-control"
 								min="1"
-								max="100" 
+								max="100"
 								id="numRedBlocks">
 						</div>
 					</div>
@@ -22,17 +22,17 @@
 							Enter number of blue blocks(1-{{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
-							<input type="number" 
+							<input type="number"
 								v-model="numBlueBlocks"
 								class="form-control"
 								min="1"
-								max="100" 
+								max="100"
 								id="numBlueBlocks">
 						</div>
 					</div>
 					<p v-if="showInputError" class="alert mt-3 alert-danger">Please enter a whole number between {{minBlockInput}} to {{maxBlockInput}} for number of blocks and {{minBlockInput}} to {{maxTrialInput}} for number of trials.</p>
 					<div class="form-action col-6 offset-sm-9 offset-4 mt-3">
-						<button 
+						<button
 							class="btn btn-outline-success btn-lg"
 							@click="checkInputs"
 						>OK</button>
@@ -78,15 +78,15 @@
 					</div>
 
 					<div class="app--action mt-4">
-						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to begin</button>
+						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 						<div v-if="!showStart">
 							<div v-if="!isAuto">
-								<button type="button" class="btn btn-outline-dark mr-3" @click="reset" v-if="isFinished">Tap here to reset</button>
-								<button type="button" class="btn btn-outline-success mr-3" @click="drawBlock" v-if="!isFinished">Tap here for Player {{player}} to draw a block at random</button>
+								<button type="button" class="btn btn-outline-dark mr-3" @click="reset" v-if="isFinished">Reset</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="drawBlock" v-if="!isFinished">Draw a block at random for player {{player}}</button>
 							</div>
 							<div v-if="isAuto">
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Tap here to pause</button>
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Tap here to resume</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Pause</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Resume</button>
 							</div>
 						</div>
 						<div class="app--demo-auto-option mt-2">
@@ -111,7 +111,7 @@
 
 <script>
 /* eslint-disable */
-import { 
+import {
 	drawNextBlock,
 	drawNextCanvas
 } from './utils';
@@ -158,7 +158,7 @@ export default {
 		}
 	},
 	computed: {
-		
+
 		isFinished: function(){
 			if (this.turn === 2){
 				return true;
@@ -229,7 +229,7 @@ export default {
 						if (this.isFinished){
 							//Clear the interval addition timer.
 							this.reset();
-							
+
 							//draw new canvas
 							const canvas = document.querySelector('#app-canvas');
 							drawNextCanvas(canvas, this);
@@ -283,7 +283,7 @@ export default {
 			this.turn += 1;
 		},
 
-		//This function resets the plant to a new value and removes all the tiles from the canvas. 
+		//This function resets the plant to a new value and removes all the tiles from the canvas.
 		start(){
 			//remove the Start button and input error msg on correct input
 			this.showStart = false;

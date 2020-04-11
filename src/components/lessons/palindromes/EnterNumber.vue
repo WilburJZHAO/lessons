@@ -19,7 +19,7 @@
             class="btn btn-outline-success"
             @click="handleAddition"
             v-if="demoAutoOption==='0'"
-          >Tap here for the {{ additionNumber === 0 ? 'first' : 'next'}} addition</button>
+          >Calculate {{ additionNumber === 0 ? 'first' : 'next'}} addition</button>
           <button
             class="btn btn-outline-success"
             @click="handleToggleTimer"
@@ -33,7 +33,7 @@
         </div>
 
         <div class="text-center mt-3" v-if="gameStatus===2">
-          <button class="btn btn-outline-success" @click="handleReset">Tap here to reset</button>
+          <button class="btn btn-outline-success" @click="handleReset">Reset</button>
         </div>
         <p class="text-center text-danger mt-2">{{ message }}</p>
         <app-addition :additionNumber="additionNumber"></app-addition>

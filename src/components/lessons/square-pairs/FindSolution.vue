@@ -47,11 +47,11 @@
       >Click on a blue number to make a pair with the red number above</div>
       <div v-if="status===1" class="text-center">
         <p class="text-success text-center">Congratulations you have found a successful pathway</p>
-        <button class="btn btn-outline-dark" @click="handleReset">Tap here to try again</button>
+        <button class="btn btn-outline-dark" @click="handleReset">Try again</button>
       </div>
       <div v-if="status===2" class="text-center">
         <p class="text-danger text-center">Not possible</p>
-        <button class="btn btn-outline-dark" @click="handleReset">Tap here to try again</button>
+        <button class="btn btn-outline-dark" @click="handleReset">Try again</button>
       </div>
     </div>
   </div>

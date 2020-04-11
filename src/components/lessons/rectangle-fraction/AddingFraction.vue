@@ -22,7 +22,7 @@
                 class="btn btn-outline-success"
                 id="resetBt"
               >
-                Tap here for new question
+                New question
               </button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
@@ -108,7 +108,7 @@
               v-if="isFinal2&&!finished"
               class="btn btn-outline-success"
             >
-              reset
+              Reset
             </button>
             <div style="margin-top: 5%"></div>
 

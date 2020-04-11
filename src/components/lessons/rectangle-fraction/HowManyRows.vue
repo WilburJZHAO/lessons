@@ -20,7 +20,7 @@
                 class="btn btn-outline-success"
                 id="resetBt"
               >
-                Tap here for new question
+                New question
               </button>
             </td>
           </tr>

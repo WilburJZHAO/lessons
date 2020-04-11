@@ -39,8 +39,7 @@
             @click="handleNewPalindrome"
             v-if="demoAutoOption === '0'"
           >
-            Tap here for the
-            {{ currentNumber > startNumber === 0 ? "first" : "next" }}
+            {{ currentNumber > startNumber === 0 ? "First" : "Next" }}
             palindrome
           </button>
           <button
@@ -65,7 +64,7 @@
 
         <div class="text-center mt-3" v-if="gameStatus === 2">
           <button class="btn btn-outline-success" @click="handleReset">
-            Tap here to reset
+            Reset
           </button>
         </div>
         <p class="text-center text-danger mt-2">{{ message }}</p>

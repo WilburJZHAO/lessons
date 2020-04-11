@@ -68,7 +68,7 @@
           <button
             class="btn btn-outline-success"
             @click="handleNewProblem"
-          >Tap here for a new problem</button>
+          >Next challenge</button>
         </div>
       </div>
       <div class="col-md-6">

@@ -72,7 +72,7 @@
             class="btn btn-outline-success"
             v-if="!shapeSelected"
             @click="handleStartCreateNewShape"
-          >Tap to create a new shape</button>
+          >Create a new shape</button>
           <button
             class="btn btn-outline-dark"
             v-if="shapeSelected"
@@ -120,7 +120,7 @@
       <button
         class="btn btn-outline-success"
         @click="handleCoverShape"
-      >Tap to cover the shape with tiles</button>
+      >Cover the shape with tiles</button>
     </div>
     <div class="text-center" v-if="step>=3">
       <p>{{ shapeData.totalTiles}} cover the shape</p>
@@ -167,7 +167,7 @@
         class="btn btn-outline-success"
         v-if="step===5"
         @click="handleCreateNewShape"
-      >Tap to create a new shape</button>
+      >Create a new shape</button>
     </div>
   </div>
 </template>
