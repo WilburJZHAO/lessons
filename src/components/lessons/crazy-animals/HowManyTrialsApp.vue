@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-4 mb-5">
-    <h3 class="text-success text-center">How many trials to make your favourite animal?</h3>
+    <h3 class="lesson-subheading">How many trials to make our favourite animal?</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-12 col-sm-6">
         <app-animal-picture :animalDrawn="animalDrawn"></app-animal-picture>

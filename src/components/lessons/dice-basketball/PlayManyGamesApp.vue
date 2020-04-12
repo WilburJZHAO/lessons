@@ -2,8 +2,8 @@
   <div>
     <div class="mt-3 mb-5">
       <div class="app--title mb-3">
-        <h4 class="text-success">Play Many Games - {{ trialNumber }} games</h4>
-        <h4 class="text-success">Game {{ numberTried }}</h4>
+        <h4 class="text-success">Total games: {{ trialNumber }}</h4>
+        <h4 class="text-success">Games played: {{ numberTried }}</h4>
       </div>
       <div class="app--score-table">
         <table class="table">

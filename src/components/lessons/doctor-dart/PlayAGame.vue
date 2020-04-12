@@ -1,6 +1,8 @@
 <template>
     <div>
         <div class="container mt-4 mb-5">
+        <h3 class="lesson-subheading mt-4">Play one game</h3>
+        <hr class="subheading-separator">
             <div class="row">
                 <div class="col-12 col-md-6">
                     <div v-if="IsOk" class="row tips" >Can you score {{score}} ?</div>
@@ -67,7 +69,7 @@
                         </form>
                     </div>
                     <div v-else>
-                        <div class="row" style="font-size: 25px; margin-bottom: 50px;"> Attemp {{Attempt}}</div>
+                        <div class="row" style="font-size: 25px; margin-bottom: 50px;"> Attempt {{Attempt}}</div>
                         <div class="row block1">
                             <label class="col-sm-3 label1">1 x 1st</label>
                             <input disabled class="col-sm-2" style="margin-right: 5px; text-align: center;color: red; font-size: 25px;" v-model="SelectedNums[0]">

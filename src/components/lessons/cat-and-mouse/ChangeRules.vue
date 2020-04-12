@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-4 mb-5">
-    <h3 class="text-success text-center mb-4">Change the rules</h3>
+  <h3 class="lesson-subheading">Change the rules</h3>
+  <hr class="subheading-separator"><br>
     <div class="mb-2">
       <app-gameboard
         :gameboardIndex="gameboardIndex"

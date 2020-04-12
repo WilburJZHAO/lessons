@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success">Demonstration Game</h3>
+    <h3 class="lesson-subheading mt-4">Demonstration game</h3>
+    <hr class="subheading-separator">
     <h6 class="text-center mb-3">Trial: {{ trialNumber }}</h6>
     <div style="position: relative">
       <div class="app--dice-container d-flex" v-if="dice1 && dice2">

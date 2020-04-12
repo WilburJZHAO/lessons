@@ -1,13 +1,14 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="text-center text-success mb-4">Change the number of dice faces</h3>
+        <h3 class="lesson-subheading mt-4">Change the dice faces</h3>
+        <hr class="subheading-separator">
         <div style="display: flex; flex-direction: row">
             <div>
                 <table>
                     <tr>
                         <td>
                             <h6 class="text-success">
-                                <b id="error2">Please enter dices faces (1-6), the number of each dice face (0-20)</b>
+                                <b id="error2">Set the type of dice (1-6 faces), and the number on each face (0-20)</b>
                             </h6>
                         </td>
                     </tr>
@@ -16,7 +17,7 @@
         </div>
         <div class="text-center" style="margin-top: 10px">
             <div class="col-sm-12">
-                <label class="col-sm-5 theFristTitle">Change the number of dice faces (1-6)</label>
+                <label class="col-sm-5 theFristTitle">Number of faces on each dice (1-6):</label>
                 <input type="number" class="col-sm-1" id="diceFaces" style="text-align:center;" v-model="thisDiceFaces" @change="diceFacesChange">
             </div>
             <div class="col-sm-12">

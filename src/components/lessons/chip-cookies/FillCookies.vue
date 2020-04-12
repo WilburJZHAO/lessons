@@ -1,5 +1,7 @@
 <template>
   <div class="container mt-3">
+    <h3 class="lesson-subheading">Fill the cookies</h3>
+    <hr class="subheading-separator">
     <app-input
       @setCookie="($event) => {this.cookieSet=$event; this.gameStatus = 0;}"
       v-if="gameStatus===-1"

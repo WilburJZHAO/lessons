@@ -3,10 +3,10 @@
 		<div class="container mt-3 mb-5">
 			<div class="app--title mb-3">
 				<h4 class="text-success">
-					Chance of a draw - {{ trialNumber }} games
+					Total games: {{ trialNumber }}
 				</h4>
 				<h4 class="text-success">
-					Game {{ numberTried }}
+					Games played: {{ numberTried }}
 				</h4>
 			</div>
 			<div class="row mb-2">

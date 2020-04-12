@@ -1,8 +1,9 @@
 <template>
   <div class="container mt-3">
+    <h3 class="lesson-subheading">Tall and squat cylinders</h3>
+    <hr class="subheading-separator">
     <app-input-panel v-if="!paperSize" @setPaperSize="paperSize=$event"></app-input-panel>
     <div v-if="paperSize">
-      <h3 class="text-center text-success">Tall and squat cylinders</h3>
       <div class="row">
         <div class="col-md-4">
           <table class="table text-center">

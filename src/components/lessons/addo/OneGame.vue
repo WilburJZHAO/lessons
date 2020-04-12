@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Play a game of Addo</h3>
+    <h3 class="lesson-subheading">Play a game of Addo</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-4">
         <app-strategies

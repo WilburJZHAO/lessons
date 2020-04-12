@@ -6,6 +6,9 @@
       appear-active-class="app-appear-active"
     >
       <div class="container mt-4 mb5">
+        <h3 class="lesson-subheading">Parking challenges</h3>
+        <hr class="subheading-separator">
+
         <div class="row">
           <div v-if="isSet" id="hide" class="chain-text">
             <h4>Enter the number of cars:</h4>

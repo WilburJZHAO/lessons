@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-4 mb-5">
-    <h3 class="text-success text-center">Whole and part animals</h3>
+    <h3 class="lesson-subheading">Whole and part animals</h3>
+    <hr class="subheading-separator">
     <div class="form-check form-check-inline d-flex justify-content-center">
       <input
         class="form-check-input"

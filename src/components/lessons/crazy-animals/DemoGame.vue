@@ -1,5 +1,7 @@
 <template>
 	<div class="container mt-4 mb-5">
+		<h3 class="lesson-subheading">Demonstration Game</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-12 col-sm-6 app--rules">
 				<h3 class="text-center text-success mb-3">Dice Rules</h3>

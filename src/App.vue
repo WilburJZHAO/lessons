@@ -24,13 +24,37 @@ export default {
 };
 </script>
 
+
 <style>
 /** Global styling is put here... */
 /**
-  light green: #77BD43 
+  light green: #77BD43
 	dark green: #43494B
   Break point: 576px - 768px - 992px - 1200px
 */
+
+@font-face {
+    font-family: 'Primer';
+    src: url('assets/fonts/Primer.ttf');
+}
+@font-face {
+    font-family: 'Primer-bold';
+    src: url('assets/fonts/Primer-bold.ttf');
+}
+
+.lesson-subheading {
+  color: rgba(20, 130, 115, 1);
+  margin-bottom: 1rem;
+  font-size: 2em;
+  text-align: center;
+  font-family: Primer, monospace;
+}
+
+.subheading-separator {
+  border: 1px solid rgba(150, 150, 150, 0.2);
+  margin-bottom: 1.5rem;
+}
+
 .container-fluid {
   padding: 0;
   margin-bottom: 5rem;

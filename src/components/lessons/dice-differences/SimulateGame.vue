@@ -1,5 +1,7 @@
 <template>
     <div>
+        <h3 class="lesson-subheading mt-4">Simulate Game</h3>
+        <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="row justify-content-md-center">
                 <div class="col-4"><input disabled class="zone1 noborder" value="Cell:"></div>

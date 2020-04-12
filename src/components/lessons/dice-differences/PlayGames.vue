@@ -1,5 +1,7 @@
 <template>
     <div>
+        <h3 class="lesson-subheading mt-4">Play many games</h3>
+          <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="top">
                 <div class="row justify-content-end">

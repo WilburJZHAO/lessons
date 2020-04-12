@@ -1,5 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container mt-4 mb-5">
+    <h3 class="lesson-subheading">Chance of a draw</h3>
+    <hr class="subheading-separator">
     <app-chance-of-draw-app v-if="trialNumber" :trialNumber="trialNumber"></app-chance-of-draw-app>
     <app-enter-trials-number @acceptTrialNumber="trialNumber=$event" v-else></app-enter-trials-number>
   </div>

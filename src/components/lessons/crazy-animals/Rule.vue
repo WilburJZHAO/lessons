@@ -1,6 +1,7 @@
 <template>
 	<div class="container app--container mt-3 mb-5">
-		<h3 class="text-center text-success">What is the rule</h3>
+		<h3 class="lesson-subheading">What is the rule?</h3>
+		<hr class="subheading-separator">
 		<div class="app--form mt-3">
 			<div class="form-group row">
 				<label for="how-many-animals" class="col-12 col-sm-4">How many animals</label>

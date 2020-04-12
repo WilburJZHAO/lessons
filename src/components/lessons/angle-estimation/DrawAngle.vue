@@ -1,14 +1,16 @@
 <template>
   <div>
     <div class="container mt-4" style="margin-bottom: 9rem;">
+      <h3 class="lesson-subheading">Draw an angle (5 to {{maxDegree}} degrees)</h3>
+      <hr class="subheading-separator">
       <div class="row">
         <div class="col-12 col-md-6">
           <h4 class="text-success mb-4">
             Draw an angle of {{degree}} degrees
           </h4>
-          <canvas id="app-canvas"></canvas> 
+          <canvas id="app-canvas"></canvas>
           <div class="app--lesson-action">
-            <button 
+            <button
               type="button"
               class="btn btn-outline-success"
               @click="handleCheckDegree"
@@ -18,7 +20,7 @@
               class="btn btn-outline-dark"
               @click="handleCreateNextAngle"
               :disabled="!isChecked">Next</button>
-          </div> 
+          </div>
           <div>
             <p class="alert alert-success" v-show="isChecked">
               {{estimateDegree}} degrees drawn
@@ -39,9 +41,9 @@
 </template>
 
 <script>
-import { 
-  pickRandomNumberWithExcept, 
-  drawAngleStarter, 
+import {
+  pickRandomNumberWithExcept,
+  drawAngleStarter,
   drawCorrectAngle,
   drawPosition } from './utils';
 import EstimateHistoryTable from './EstimateHistoryTable.vue';
@@ -56,7 +58,7 @@ export default {
     maxDegree: Number
   },
   data: function() {
-    return { 
+    return {
       degree: null,
       estimateDegree: null,
       isChecked: false,
@@ -115,7 +117,7 @@ export default {
       if(canvas.getContext) {
         drawAngleStarter(canvas);
         // let isDrawing = false;
-        canvas.addEventListener('mousedown', (e) => { 
+        canvas.addEventListener('mousedown', (e) => {
           if(this.isChecked) return;
           this.estimateDegree = drawPosition(canvas, e.clientX, e.clientY);
           this.isDrawing = true;
@@ -131,7 +133,7 @@ export default {
           this.estimateDegree = drawPosition(canvas, e.clientX, e.clientY);
           this.isDrawing = false;
         });
-        canvas.addEventListener('touchstart', (e) => { 
+        canvas.addEventListener('touchstart', (e) => {
           if(this.isChecked) return;
           this.isDrawing = true;
           this.estimateDegree = drawPosition(canvas, e.touches[0].clientX, e.touches[0].clientY);

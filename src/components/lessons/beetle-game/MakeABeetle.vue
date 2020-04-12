@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Make a beetle</h3>
+    <h3 class="lesson-subheading">Make a beetle</h3>
+    <hr class="subheading-separator">
     <div style="height: 10px"></div>
 
     <div class="row">

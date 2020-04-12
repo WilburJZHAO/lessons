@@ -1,6 +1,7 @@
 <template>
   <div class="app--container mt-4 mb-5">
-    <h3 class="text-success text-center">Play a match</h3>
+    <h3 class="lesson-subheading">Play a match</h3>
+    <hr class="subheading-separator">
     <h5 class="text-dark text-center">{{ matchSetting.wicketTaker }} takes a wicket</h5>
     <div class="row app--score-table mt-3">
       <div class="col-lg-6">

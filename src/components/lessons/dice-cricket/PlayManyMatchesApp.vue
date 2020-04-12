@@ -1,8 +1,8 @@
 <template>
   <div class="mt-4 mb-5">
+    <h3 class="lesson-subheading">Play many matches</h3>
+    <hr class="subheading-separator">
     <h3 class="text-success text-center mb-4">
-      Play many games
-      <br />
       <small>{{ gameNumber * 2 }} innings</small>
     </h3>
     <div class="row">

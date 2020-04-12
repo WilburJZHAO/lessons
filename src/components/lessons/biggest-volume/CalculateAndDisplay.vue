@@ -4,7 +4,9 @@
       <div class="row">
         <div class="col-12">
           <div>
-            <h4 class="text text-center text-success mb-4">Paper size</h4>
+            <h3 class="lesson-subheading">Calculate and display a range of up to 11 volumes</h3>
+            <hr class="subheading-separator">
+            <h4 class="text text-center mb-4">Paper size</h4>
             <div class="row">
               <div class="form-group col-12 col-sm-6 col-md-6">
                 <label class="text text-dark">Enter paper's length (4-30)</label>

@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="text-center text-success mb-4">Many trials</h3>
+        <h3 class="lesson-subheading mt-4">Many trials</h3>
+        <hr class="subheading-separator">
         <div v-if="!isSet" class="container">
             <div class="text-center">
                 <div class="row">

@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Enter diameter, radius, circumference or volume</h3>
+    <h3 class="lesson-subheading">Enter diameter, radius, circumference or volume</h3>
+    <hr class="subheading-separator">
     <div class="app--container">
       <div class="form-group row">
         <label for="diameter" class="col-sm-3 col-form-label">Diameter (cm)</label>
@@ -56,10 +57,10 @@
       </div>
 
       <div class="text-center alert alert-danger">
-        <span v-if="unit==='C'">Enter the Circumference</span>
-        <span v-else-if="unit==='R'">Enter the Radius</span>
-        <span v-else-if="unit==='V'">Enter the Volume</span>
-        <span v-else>Enter the Diameter</span>
+        <span v-if="unit==='C'">Enter the circumference</span>
+        <span v-else-if="unit==='R'">Enter the radius</span>
+        <span v-else-if="unit==='V'">Enter the volume</span>
+        <span v-else>Enter the diameter</span>
       </div>
       <div class="text-center">
         <button class="btn btn-outline-success" @click="handleCalculate">OK</button>

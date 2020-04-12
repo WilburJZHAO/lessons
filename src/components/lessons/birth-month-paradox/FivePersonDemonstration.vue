@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="text-center text-success mb-4">Five person demonstration</h3>
+    <h3 class="lesson-subheading">Five person demonstration</h3>
+    <hr class="subheading-separator">
 
         <div style="display: flex; flex-direction: row">
             <div>
@@ -8,7 +9,7 @@
                     <tr>
                         <td>
                             <h4 class="text-success">
-                                <b id="error" style="">Please click the button to begin</b>
+                                Start
                             </h4>
                         </td>
                     </tr>
@@ -45,19 +46,19 @@
                 <div id="controller" style="margin-left: 20%; margin-top: 20px;">
                     <div>
                         <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="executeManually">
-                            {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                            {{ isStart ? "Play one game" : "Play one game" }}
                         </button>
                         <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                             {{
                             !isAutoStart
-                            ? "Tap here to begin"
+                            ? "Start"
                             : timer
-                            ? "Tap here to pause"
-                            : "Tap here to resume"
+                            ? "Pause"
+                            : "Resume"
                             }}
                         </button>
                         <button class="btn btn-outline-dark" v-if="finished" @click="reset()">
-                            Click here to reset
+                            Reset
                         </button>
                         <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
                     </div>
