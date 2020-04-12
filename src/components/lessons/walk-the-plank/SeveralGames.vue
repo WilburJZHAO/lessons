@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-3">Several games slow: Plank length five each way</h3>
+    <h3 class="lesson-subheading">Several games slow: Plank length five each way</h3>
+    <hr class="subheading-separator">
     <app-game-table
       :plankLength="plankLength"
       :turns="turns"

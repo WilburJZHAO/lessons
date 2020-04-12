@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3">
+			<h3 class="lesson-subheading">Can you find all solutions?</h3>
+			<hr class="subheading-separator">
 			<div class="row">
 				<!-- Left part -->
 				<div class="col-12 col-md-6 app--lesson-left">
@@ -17,39 +19,39 @@
 
 						<div class="form-group container">
 							<div class="row">
-								<input type="number" class="form-control" min="1" max="100" style="width: auto" required v-model="myNumber1" > 
+								<input type="number" class="form-control" min="1" max="100" style="width: auto" required v-model="myNumber1" >
 								<span>&nbsp;	rows of &nbsp; </span>
-								<input type="number" class="form-control" min="1" max="100" style="width: auto" required v-model="myNumber2">									
-								<span>&nbsp; = {{ result }} </span>	
+								<input type="number" class="form-control" min="1" max="100" style="width: auto" required v-model="myNumber2">
+								<span>&nbsp; = {{ result }} </span>
 							</div>
 						</div>
 						<div class="app--lesson-action">
-							<button 
-								type="submit" 
+							<button
+								type="submit"
 								class="btn btn-outline-success btn-lg"
 								:disabled="finishAnswer">Answer</button>
-							<button 
-								type="button" 
-								class="btn btn-outline-dark btn-lg" 
+							<button
+								type="button"
+								class="btn btn-outline-dark btn-lg"
 								@click="createQuestion(level)" >Next</button>
 						</div>
 
 						<div class="tt-prompt">
 							<p v-show="answerResult.prompt"
-								class="alert" 
+								class="alert"
 								:class="{'alert-danger': !answerResult.isRight ,'alert-success': answerResult.isRight}">
 									{{ answerResult.prompt }}
 								</p>
 						</div>
-						
-						<div class="tt--solutions mb-5">					
+
+						<div class="tt--solutions mb-5">
 							<div class="mr-3 tt--solutions-count">
 								<p>
 									<span style="font-size: 115%;" class="badge badge-dark">{{ countOfSolutions }}</span> Solutions
 								</p>
 								<p>
 									<span style="font-size: 115%;" class="badge badge-dark">{{ countOfFound }}</span> Found.
-								</p> 
+								</p>
 							</div>
 							<div class="tt--solutions-list">
 								<h5>Solutions found</h5>
@@ -58,7 +60,7 @@
 										{{ solution.number1 }} x {{ solution.number2 }} = {{solution.result}}
 									</li>
 								</ul>
-							</div>		
+							</div>
 						</div>
 					</form>
 				</div>
@@ -78,8 +80,8 @@
 							</div>
 							<div v-if="myNumber1Temp > 10">... <small>More rows</small></div>
 						</div>
-					</div>	
-					<div v-if="myNumber2Temp > 10" style="transform: translateY(9%);"> ... <small>More</small></div>				
+					</div>
+					<div v-if="myNumber2Temp > 10" style="transform: translateY(9%);"> ... <small>More</small></div>
 				</div>
 			</div>
 		</div>
@@ -96,7 +98,7 @@ export default {
 	data: function() {
 		return {
 			level: 1,
-			number1: 0,	
+			number1: 0,
 			number2: 0,	// number1 and number2 for question
 			myNumber1: null,
 			myNumber2: null,	// myNumber1 and myNumber2 are from user input
@@ -110,7 +112,7 @@ export default {
 				isRight: false,
 				prompt: ''
 			},
-			finishAnswer: false,	// if all solutions are found 
+			finishAnswer: false,	// if all solutions are found
 			showDiagram: false
 		}
 	},
@@ -130,17 +132,17 @@ export default {
 			if(this.solutionsArr.length > 0) {
 				this.solutionsArr.length = 0;
 			}
-			if(parseInt(level) === 1) {				
+			if(parseInt(level) === 1) {
 				this.number1 = pickRandomNumber(1, 6);
 				this.number2 = pickRandomNumber(1, 6);
-			} else { 
-				this.number1 = pickRandomNumber(6, 11); 
+			} else {
+				this.number1 = pickRandomNumber(6, 11);
 				this.number2 = pickRandomNumber(6, 11);
-			} 
+			}
 			this.result = this.number1 * this.number2;
 			this.countOfSolutions = countSolutions(this.result);
 		},
-		
+
 		/*
 		 * Check input answer
 		*/
@@ -153,7 +155,7 @@ export default {
 				});
 				if(dupAnswerArr.length > 0) {
 					this.answerResult.isRight = false;
-					this.answerResult.prompt = 'This solution already found';	
+					this.answerResult.prompt = 'This solution already found';
 					this.myNumber1 = null;
 					this.myNumber2 = null;
 					return;
@@ -171,7 +173,7 @@ export default {
 				this.myNumber1Temp = this.myNumber1;
 				this.myNumber2Temp = this.myNumber2;
 
-				if(this.countOfFound === this.countOfSolutions) {	// If all solutions are found...					
+				if(this.countOfFound === this.countOfSolutions) {	// If all solutions are found...
 					this.answerResult.isRight = true;
 					this.answerResult.prompt = 'All solutions are found, well done!';
 					this.finishAnswer = true;
@@ -185,11 +187,11 @@ export default {
 			} else {
 				this.answerResult.isRight = false;
 				if(answer < this.result ) {
-					this.answerResult.prompt = `${answer} is too small`;				
+					this.answerResult.prompt = `${answer} is too small`;
 				} else if(answer > this.result) {
 					this.answerResult.prompt = `${answer} is too big`;
 				} else {
-					this.answerResult.prompt = 'Your answer is invalid.';					
+					this.answerResult.prompt = 'Your answer is invalid.';
 				}
 			}
 		}
@@ -232,6 +234,6 @@ export default {
 	flex-grow: 2;
 }
 /* .tt--solutions-count {
-	
+
 } */
 </style>

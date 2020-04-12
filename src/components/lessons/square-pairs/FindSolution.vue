@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Find a solution</h3>
+    <h3 class="lesson-subheading">Find a solution</h3>
+    <hr class="subheading-separator">
     <app-enter-number
       v-if="trialNumber===null"
       @acceptTrialNumber="trialNumber=$event; initAppGame() "

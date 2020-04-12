@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<transition appear appear-class="app-appear" appear-active-class="app-appear-active">
-		<div class="container mt-4 mb5">
+		<div class="container mt-3">
+			<h3 class="lesson-subheading">How many buttons?</h3>
+			<hr class="subheading-separator">
 			<div class="row">
 				<!-- Left part -->
 				<div class="col-12 col-md-6 app--lesson-left">
@@ -15,23 +17,23 @@
 							<input type="radio" class="form-check-input" name="level" value="2" id="check-level2" v-model="level" >
 							<label for="check-level2" class="form-check-label">Level 2</label>
 						</div>
-							
-						<div class="form-group"> 
+
+						<div class="form-group">
 							<input type="number" class="form-control" min="1" required :readonly="finishAnswer" v-model="answer">
 						</div>
 						<div class="app--lesson-action">
-							<button 
-								type="submit" 
+							<button
+								type="submit"
 								class="btn btn-outline-success btn-lg"
 								:disabled="finishAnswer">Answer</button>
-							<button 
-								type="button" 
-								class="btn btn-outline-dark btn-lg" 
+							<button
+								type="button"
+								class="btn btn-outline-dark btn-lg"
 								@click="createQuestion(level)" >Next</button>
 						</div>
 						<div class="tt-prompt">
 							<p v-show="answerResult.prompt"
-								class="alert" 
+								class="alert"
 								:class="{'alert-danger': !answerResult.isRight ,'alert-success': answerResult.isRight}">
 									{{ answerResult.prompt }}
 								</p>
@@ -94,13 +96,13 @@ export default {
 			this.finishAnswer = false;
 			this.answerResult.isRight = false;
 			this.answerResult.prompt = '';
-			if(parseInt(level) === 1) {				
-				this.number1 = pickRandomNumber(1, 6); 
+			if(parseInt(level) === 1) {
+				this.number1 = pickRandomNumber(1, 6);
 				this.number2 = pickRandomNumber(1, 6);
-			} else { 
-				this.number1 = pickRandomNumber(6, 11); 
+			} else {
+				this.number1 = pickRandomNumber(6, 11);
 				this.number2 = pickRandomNumber(6, 11);
-			} 
+			}
 			this.result = this.number1 * this.number2;
 		},
 

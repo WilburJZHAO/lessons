@@ -4,7 +4,7 @@
       <label
         for="trial-numbers"
         class="col-form-label col-sm-6"
-      >Enter an even number({{min}} - {{ max }}):</label>
+      >Enter an even number ({{min}} to {{ max }}):</label>
       <div class="col-sm-6">
         <input type="number" class="form-control" v-model.number="trialNumber" required />
       </div>

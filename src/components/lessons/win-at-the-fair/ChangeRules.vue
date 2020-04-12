@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Change prize values and rules</h3>
+    <h3 class="lesson-subheading">Change prize values and rules</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-9" style="position: relative;">
         <div

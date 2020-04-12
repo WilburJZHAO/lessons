@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Pick your own cities</h3>
+    <h3 class="lesson-subheading">Pick your own cities</h3>
+    <hr class="subheading-separator">
     <div class="row" v-if="status === 0">
       <div class="col-md-6 mb-4">
         <div class="row">

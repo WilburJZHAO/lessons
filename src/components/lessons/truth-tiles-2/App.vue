@@ -52,7 +52,7 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: "'Truth Tiles 2' puzzle" },
+                    { id: 1, title: 'Play the puzzle' },
                     { id: 2, title: 'Testing Strategies' },
                     { id: 3, title: 'Testing all combinations'},
                     { id: 4, title: 'Change the numbers'}

@@ -1,8 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3
-      class="text-center text-success mb-3"
-    >Many games fast: change the plank length - {{ gameSetting.trialNumber}} games</h3>
+    <h3 class="lesson-subheading">Many games fast: change the plank length - {{ gameSetting.trialNumber}} games</h3>
+    <hr class="subheading-separator">
     <app-game-table-max
       :plankLength="plankLength"
       :maximum="maximumTurns"

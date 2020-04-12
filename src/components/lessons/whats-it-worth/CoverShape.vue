@@ -1,8 +1,7 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success mb-4">
-			Cover the shape
-		</h3>
+		<h3 class="lesson-subheading">Cover the shape</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-sm-6 text-center mb-4">
 				<h5>Select Shape</h5>

@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Computer finds a pathway</h3>
+    <h3 class="lesson-subheading">Computer finds a pathway</h3>
+    <hr class="subheading-separator">
     <app-enter-number
       v-if="trialNumber === null"
       @acceptTrialNumber="

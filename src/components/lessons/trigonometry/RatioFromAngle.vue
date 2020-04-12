@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
+			<h3 class="lesson-subheading">Estimate trig ratios from a given angle</h3>
+			<hr class="subheading-separator">
 			<div class="row">
 				<!-- Left part -->
 				<div class="col-12 col-md-6">
