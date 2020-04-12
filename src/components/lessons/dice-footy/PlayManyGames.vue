@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-4">
+  <div class="container mt-3 mb-4">
     <h3 class="lesson-subheading">Play many games</h3>
     <hr class="subheading-separator">
     <app-play-many-games-app v-if="trialNumber" :trialNumber="trialNumber"></app-play-many-games-app>

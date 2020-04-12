@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
 			<h3 class="lesson-subheading">Play a game of football</h3>
 			<hr class="subheading-separator">
 			<div class="row">

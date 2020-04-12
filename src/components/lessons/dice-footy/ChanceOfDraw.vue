@@ -1,5 +1,5 @@
 <template>
-  <div class="container mb-4">
+  <div class="container mt-3 mb-4">
     <h3 class="lesson-subheading">Chance of a draw</h3>
     <hr class="subheading-separator">
     <app-chance-of-draw-app v-if="trialNumber" :trialNumber="trialNumber"></app-chance-of-draw-app>
