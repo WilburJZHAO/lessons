@@ -1,5 +1,7 @@
 <template>
-	<div class="container">
+	<div class="container mt-3">
+		<h3 class="lesson-subheading">Many trials</h3>
+		<hr class="subheading-separator">
 		<app-many-trials-app v-if="validInput" :trialInputs="trialInputs"></app-many-trials-app>
 		<app-many-trials-input @acceptTrialInputs="onValidInput" v-else></app-many-trials-input>
 	</div>

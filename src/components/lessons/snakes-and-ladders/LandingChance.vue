@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">What is the chance of landing on any square?</h3>
+    <h3 class="lesson-subheading">What is the chance of landing on any square?</h3>
+    <hr class="subheading-separator">
     <app-enter-trials-number v-if="trialNumber===null" @acceptTrialNumber="trialNumber=$event"></app-enter-trials-number>
     <div v-else>
       <div class="row">

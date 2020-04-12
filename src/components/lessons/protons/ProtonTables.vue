@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Proton and anti-proton tables</h3>
+    <h3 class="lesson-subheading">Proton and anti-proton tables</h3>
+    <hr class="subheading-separator">
     <div class="mt-3 row">
       <div class="col-md-10 app--grid">
         <table class="table table-bordered text-center" v-if="protonsGrid">

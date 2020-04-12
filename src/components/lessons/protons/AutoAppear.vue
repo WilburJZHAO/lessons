@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 pb-5 mb-5">
-    <h3 class="text-success text-center">Auto Appear</h3>
+    <h3 class="lesson-subheading">Auto appear</h3>
+    <hr class="subheading-separator">
     <div class="mt-3 app--container">
       <div class="app--input d-flex align-items-center justify-content-center">
         <div class="mx-2">({{ protonsPair.protonText }}, {{ protonsPair.antiText }}) =</div>

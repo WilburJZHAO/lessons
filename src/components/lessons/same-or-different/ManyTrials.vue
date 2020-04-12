@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Many trials</h2>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
+			<h3 class="lesson-subheading">Many trials</h3>
+			<hr class="subheading-separator">
 			<div v-if="showInputs" class="row justify-content-center">
 				<form>
 					<div class="app--enter-number form-group row mt-5">

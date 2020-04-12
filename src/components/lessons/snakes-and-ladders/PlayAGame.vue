@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Play a game</h3>
+    <h3 class="lesson-subheading">Play a game</h3>
+    <hr class="subheading-separator">
     <div v-if="status === 0">
       <h5 class="text-primary text-center mt-5">A game for two players</h5>
       <div style="min-width: 200px; max-width: 30%; margin: 0 auto;">

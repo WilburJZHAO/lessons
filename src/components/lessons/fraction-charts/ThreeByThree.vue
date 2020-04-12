@@ -1,7 +1,7 @@
 <template>
     <div>
         <transition appear appear-class="app-appear" appear-active-class="app-appear-active">
-            <div class="container mt-4 mb5" style="max-width: 100%">
+            <div class="container mt-3 mb5" style="max-width: 100%">
                 <h3 class="lesson-subheading">Three by three grid</h3>
                 <hr class="subheading-separator">
                 <div class="row" style="max-width: 100%; padding-left: 8%;">

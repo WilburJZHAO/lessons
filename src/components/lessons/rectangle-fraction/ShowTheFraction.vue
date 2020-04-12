@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Show the fraction</h3>
+    <h3 class="lesson-subheading">Show the fraction</h3>
+    <hr class="subheading-separator">
 
     <div style="display: flex; flex-direction: row; margin-left: 10%;">
       <div>

@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Play a game</h2>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
+			<h3 class="lesson-subheading">Play a game</h3>
+			<hr class="subheading-separator">
 			<div v-if="showInputs" class="row justify-content-center">
 				<form>
 					<div class="app--enter-number form-group row mt-3">

@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<h3 class="text-success text-center">Demonstration</h3>
 		<div class="container mt-4 mb-5">
+			<h3 class="lesson-subheading">Demonstration</h3>
+			<hr class="subheading-separator">
 			<div class="row justify-content-center" id="canvas-container-atoms">
 				<canvas id="app-canvas-atoms"></canvas>
 			</div>

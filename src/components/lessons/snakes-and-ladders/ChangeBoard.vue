@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Change the board</h3>
+    <h3 class="lesson-subheading">Change the board</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-8 mb-3">
         <app-board :boardSettings="myBoardSettings" :draggable="true"></app-board>

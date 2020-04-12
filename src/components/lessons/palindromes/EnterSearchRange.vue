@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3 container">
-    <h3 class="text-center text-success">Enter your number and search range</h3>
+    <h3 class="lesson-subheading">Enter your number and search range</h3>
+    <hr class="subheading-separator">
     <div class="row mt-3">
       <div class="col-md-5 text-center mb-3">
         <div class="d-flex align-items-center mb-3">
@@ -49,10 +50,10 @@
           >
             {{
               currentNumber > startNumber === 0
-                ? "Tap here to begin"
+                ? "Start"
                 : timer
-                ? "Tap here to pause"
-                : "Tap here to resume"
+                ? "Pause"
+                : "Resume"
             }}
           </button>
           <app-demo-auto-option

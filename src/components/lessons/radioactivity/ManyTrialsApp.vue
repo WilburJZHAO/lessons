@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h3 class="text-success text-center">Many trials</h3>
 		<div class="container mt-4 mb-5">
 			<div class="row justify-content-center" id="canvas-container-graph">
 				<canvas id="app-canvas-graph"></canvas>
