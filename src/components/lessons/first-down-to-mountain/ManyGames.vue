@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="lesson-subheading mt-4">Play many games</h3>
+    <h3 class="lesson-subheading">Play many games</h3>
     <hr class="subheading-separator">
     <app-many-games-app
       v-if="trialNumber"

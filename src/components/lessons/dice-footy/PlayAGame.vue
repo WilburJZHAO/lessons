@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="container mt-4 mb-5">
-			<h3 class="lesson-subheading mt-4">Play a game of football</h3>
+			<h3 class="lesson-subheading">Play a game of football</h3>
 			<hr class="subheading-separator">
 			<div class="row">
 				<div class="col-12 col-md-6">

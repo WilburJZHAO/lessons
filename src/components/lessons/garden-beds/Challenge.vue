@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<h3 class="text-success text-center">Challenge</h3>
+		<h3 class="lesson-subheading mt-4">Challenge</h3>
+		<hr class="subheading-separator">
 		<div class="container mt-4 mb-5">
 			<div class="row">
 				<div class="app--action mt-3 col-6">

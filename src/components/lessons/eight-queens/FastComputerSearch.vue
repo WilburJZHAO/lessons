@@ -2,7 +2,7 @@
     <div>
         <transition appear appear-class="app-appear" appear-active-class="app-appear-active">
             <div class="container mt-4 mb5">
-                <h3 class="lesson-subheading mt-4">Fast computer search</h3>
+                <h3 class="lesson-subheading">Fast computer search</h3>
                 <hr class="subheading-separator">
                 <div class="row">
                     <!-- Left part -->

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h3 class="text-success text-center my-3">Find the LCM</h3>
+    <h3 class="lesson-subheading">Find the lowest common multiple</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-sm-2 col-md-3"></div>
       <div class="col-sm-8 col-md-6">

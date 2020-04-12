@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h3 class="lesson-subheading mt-4">Simulate Game</h3>
+    <div class="mt-3">
+        <h3 class="lesson-subheading">Simulate Game</h3>
         <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="row justify-content-md-center">

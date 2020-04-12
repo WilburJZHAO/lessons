@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Demonstration game</h3>
+    <h3 class="lesson-subheading">Demonstration game</h3>
+    <hr class="subheading-separator">
     <div class="row mt-3">
       <div class="col-2">
         <p class="text-right font-weight-bold">Round</p>

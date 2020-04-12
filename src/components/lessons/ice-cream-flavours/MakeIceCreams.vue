@@ -1,5 +1,7 @@
 <template>
 	<div class="container mt-4 mb-5">
+		<h3 class="lesson-subheading">Make some flavours</h3>
+		<hr class="subheading-separator">
 		<div class="app--form-title" v-if="!numberOfFlavours || !isNumberValid">
 			<h4 class="text-success text-center mb-4">
 				Number of flavours
@@ -54,7 +56,7 @@ export default {
 		handleNumberInput() {
 			this.isNumberChecked = true;
 			// console.log('ok', this.isNumberChecked);
-			if( Number.isInteger( Number(this.numberOfFlavours) ) && 
+			if( Number.isInteger( Number(this.numberOfFlavours) ) &&
 				this.numberOfFlavours <= 4 &&
 				this.numberOfFlavours >= 2 ) {
 					this.isNumberValid = true;

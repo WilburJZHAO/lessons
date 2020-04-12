@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success mb-3">Show number partitions</h3>
+    <h3 class="lesson-subheading">Show number partitions</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-3">
         <h6>Enter a number to partition:</h6>

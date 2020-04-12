@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success">Fractions to decimals</h3>
+    <h3 class="lesson-subheading">Fractions to decimals</h3>
+    <hr class="subheading-separator">
     <div class="mb-3"></div>
     <div class="row">
       <div class="col-md-3">

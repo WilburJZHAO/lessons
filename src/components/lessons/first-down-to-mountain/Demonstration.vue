@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="lesson-subheading mt-4">Demonstration game</h3>
+    <h3 class="lesson-subheading">Demonstration game</h3>
     <hr class="subheading-separator">
     <h6 class="text-center mb-3">Trial: {{ trialNumber }}</h6>
     <div style="position: relative">

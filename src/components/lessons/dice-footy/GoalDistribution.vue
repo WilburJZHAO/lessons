@@ -1,6 +1,6 @@
 <template>
  <div class="container mb-4">
-   <h3 class="lesson-subheading mt-4">Goal distribution</h3>
+   <h3 class="lesson-subheading">Goal distribution</h3>
    <hr class="subheading-separator">
 		<app-goal-distribution-app v-if="trialNumber" :trialNumber="trialNumber">
 		</app-goal-distribution-app>

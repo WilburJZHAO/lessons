@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-4">Play lotto</h3>
+    <h3 class="lesson-subheading">Play lotto</h3>
+    <hr class="subheading-separator">
     <app-selection-panel :lottoNumbers="lottoNumbers" @selectNumber="handleSelectNumber"></app-selection-panel>
     <div class="row mt-4">
       <div class="col-md-8 mb-3">

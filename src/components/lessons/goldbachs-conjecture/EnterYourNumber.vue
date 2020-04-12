@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Enter your number</h3>
+    <h3 class="lesson-subheading">Enter your number</h3>
+    <hr class="subheading-separator">
 
     <div style="display: flex; flex-direction: row">
       <div>

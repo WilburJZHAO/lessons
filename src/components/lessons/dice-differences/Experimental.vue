@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h3 class="lesson-subheading mt-4">Experimental distribution of dice differences</h3>
+    <div class="mt-3">
+        <h3 class="lesson-subheading">Experimental distribution of dice differences</h3>
         <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="top">

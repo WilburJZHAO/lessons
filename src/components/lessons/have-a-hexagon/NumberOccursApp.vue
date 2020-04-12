@@ -1,8 +1,9 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3
-      class="text-success text-center"
-    >The number of times each product occurs - {{ trialNumber }} trials</h3>
+    <h3 class="lesson-subheading">
+      The number of times each product occurs - {{ trialNumber }} trials
+    </h3>
+    <hr class="subheading-separator">
     <h5 class="text-center">Trial {{ numberOfTrials }}</h5>
     <div class="app--table">
       <div

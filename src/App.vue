@@ -43,11 +43,11 @@ export default {
 }
 
 .lesson-subheading {
-  color: rgba(20, 130, 115, 1);
+  color: rgba(20, 130, 115, 0.8);
   margin-bottom: 1rem;
   font-size: 2em;
   text-align: center;
-  font-family: Primer, monospace;
+  font-family: Primer-bold, monospace;
 }
 
 .subheading-separator {

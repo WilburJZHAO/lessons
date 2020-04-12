@@ -1,6 +1,7 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-success text-center mb-4">Show the Number</h3>
+		<h3 class="lesson-subheading">Show the number</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-md-6 pb-4">
 				<app-plugboard

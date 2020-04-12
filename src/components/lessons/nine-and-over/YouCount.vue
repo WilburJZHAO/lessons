@@ -1,11 +1,10 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success mb-4">
-			You Count
-		</h3>
+		<h3 class="lesson-subheading">You count</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-md-6 pb-4">
-				<app-plugboard 
+				<app-plugboard
 					@setDigit="totalDigit=$event"
 					@setPlugboardNumber="handleSettingNumber"
 					:plugboardNumber="countingSet ? countingSet.startingNumber: null"
@@ -13,7 +12,7 @@
 					:isDisable="!countingSet ? true : false"
 					:countingSet="countingSet"
 				/>
-				<app-plugboard-input 
+				<app-plugboard-input
 					:totalDigit="totalDigit"
 					:inputNumber="countingSet ? countingSet.startingNumber : null"
 					:isDisable="true"
@@ -27,15 +26,15 @@
 						:isDisable="true"
 						:countingSet="countingSet"
 					></app-calculator>
-					<div v-if="countingSet===null" >		
-						<app-count-form 
+					<div v-if="countingSet===null" >
+						<app-count-form
 							@setCounting="countingSet=$event"
 							:totalDigit="totalDigit"
 							:countingSet="countingSet"
 						></app-count-form>
 					</div>
-					<div v-else class="pl-3" >	
-						<div>							
+					<div v-else class="pl-3" >
+						<div>
 							Started counting from {{ appStartingNumber }}
 							<br>
 							Counting by {{countingSet.countingBy }}s
@@ -45,7 +44,7 @@
 						</div>
 						<div class="text-center mt-3">
 							<button class="btn btn-outline-dark" @click="handleStartAgain">Start again</button>
-						</div>			
+						</div>
 					</div>
 				</div>
 				<br>
@@ -103,14 +102,14 @@ export default {
 			if(startingNumber + direction*countingBy === $event) {
 				this.countingSet.startingNumber = $event;
 				this.correctChoiceSound.play();
-				if ( $event === this.maxNumber || 
+				if ( $event === this.maxNumber ||
 				    $event === 0 ||
-						$event + direction*countingBy > this.maxNumber || 
+						$event + direction*countingBy > this.maxNumber ||
 						$event + direction*countingBy < 0) {
 					this.isFinish = true;
 				}
-			} 
-			
+			}
+
 		},
 		handleStartAgain() {
 			this.countingSet = null;

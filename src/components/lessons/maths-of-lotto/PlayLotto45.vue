@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Play 45:6 lotto</h3>
+    <h3 class="lesson-subheading">Play 45:6 lotto</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-6">
         <!-- Selection area -->

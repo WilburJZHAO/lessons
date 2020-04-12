@@ -2,12 +2,14 @@
     <div>
         <transition appear appear-class="app-appear" appear-active-class="app-appear-active">
             <div class="container mt-4 mb5">
+                <h3 class="lesson-subheading">Testing all combinations</h3>
+                <hr class="subheading-separator">
                 <div class="row">
                     <!-- Left part -->
                     <div class="col-12 col-md-6 app--lesson-left">
                         <div>
-                            <h5 class="text-success">
-                                Drag some number tiles to the blanks then click to test.
+                            <h5 class="text-warning">
+                                Note: This simulation takes significant time.
                             </h5>
 
                             <table>

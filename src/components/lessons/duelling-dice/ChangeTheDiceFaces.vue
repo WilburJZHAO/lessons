@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="lesson-subheading mt-4">Change the dice faces</h3>
+        <h3 class="lesson-subheading">Change the dice faces</h3>
         <hr class="subheading-separator">
         <div style="display: flex; flex-direction: row">
             <div>

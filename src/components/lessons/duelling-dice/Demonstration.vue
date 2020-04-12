@@ -1,6 +1,6 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="lesson-subheading mt-4">Demonstration</h3>
+        <h3 class="lesson-subheading">Demonstration</h3>
         <hr class="subheading-separator">
         <div v-if="!isSet">
             <div style="height: 20px"></div>

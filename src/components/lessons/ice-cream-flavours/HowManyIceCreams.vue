@@ -1,9 +1,8 @@
 <template>
 	<div class="container mt-4 mb-5">
+		<h3 class="lesson-subheading">How many ice creams can be made?</h3>
+		<hr class="subheading-separator">
 		<div class="app--form-title" v-if="!finishInput">
-			<h4 class="text-success text-center mb-4">
-				How many ice creams can be made?
-			</h4>
 			<form @submit.prevent="handleNumberInput">
 				<div class="form-group row">
 					<label for="flavour-input" class="col-sm-6">

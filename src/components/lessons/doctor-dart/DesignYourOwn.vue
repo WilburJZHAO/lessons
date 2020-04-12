@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container mt-4 mb-5">
-            <h3 class="lesson-subheading mt-4">Design your own</h3>
+            <h3 class="lesson-subheading">Design your own</h3>
             <hr class="subheading-separator">
             <div class="row justify-content-md-center">
                 <input class="zone" type="number" min="1" max="16" v-model="num1" oninput="value=value.replace('.','');if(value>16)value=16;if(value<1)value=null">

@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Change the killer dice</h3>
+    <h3 class="lesson-subheading">Change the killer dice</h3>
+    <hr class="subheading-separator">
     <div
       class="d-flex justify-content-center mt-5"
       :style="{ visibility: myKillerDice>=1 && myKillerDice <=6 ? 'visible' : 'hidden' }"

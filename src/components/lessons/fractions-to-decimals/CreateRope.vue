@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success mb-4">Create a decimal rope</h3>
+    <h3 class="lesson-subheading">Create a decimal rope</h3>
+    <hr class="subheading-separator">
     <div id="ropeContainer" class="canvasContainer"></div>
     <!-- <div class="mb-5"></div>
     <div id="tagContainer" class="canvasContainer"></div>-->

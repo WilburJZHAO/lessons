@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h3 class="text-success text-center my-3">Find pairs of numbers for a given LCM</h3>
+    <h3 class="lesson-subheading">Find pairs of numbers for a given LCM</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-4 col-sm-6">
         <h5>Enter a chosen LCM</h5>

@@ -1,8 +1,7 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success">
-			Play the game
-		</h3>
+		<h3 class="lesson-subheading">Play the game</h3>
+		<hr class="subheading-separator">
 		<div class="mt-4 row">
 			<app-hexagon class="col-md-4"
 				:data="hexSetting[0]"

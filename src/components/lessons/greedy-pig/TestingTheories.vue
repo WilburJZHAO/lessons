@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3">
-    <h3 class="text-success text-center mb-4">Testing theories</h3>
+    <h3 class="lesson-subheading">Testing theories</h3>
+    <hr class="subheading-separator">
 
     <div v-if="status === 0" class="container">
       <div class="row">

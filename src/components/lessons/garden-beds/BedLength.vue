@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<h3 class="text-success text-center">Enter your own bed length</h3>
+		<h3 class="lesson-subheading mt-4">Enter your own bed length</h3>
+		<hr class="subheading-separator">
 		<div class="container mt-4 mb-5">
 			<div class="row">
 				<div class="col-6">

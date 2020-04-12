@@ -1,6 +1,6 @@
 <template>
   <div class="container mb-4">
-    <h3 class="lesson-subheading mt-4">Point distribution</h3>
+    <h3 class="lesson-subheading">Point distribution</h3>
     <hr class="subheading-separator">
     <app-point-distribution-app v-if="trialNumber" :trialNumber="trialNumber"></app-point-distribution-app>
     <app-enter-trials-number @acceptTrialNumber="trialNumber=$event" v-else></app-enter-trials-number>

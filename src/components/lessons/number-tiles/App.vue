@@ -50,7 +50,7 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: "'Number Tiles' puzzle" },
+                    { id: 1, title: "Play the puzzle" },
                     { id: 2, title: 'Working backwards' },
                     { id: 3, title: 'Testing all combinations'}
                 ],
