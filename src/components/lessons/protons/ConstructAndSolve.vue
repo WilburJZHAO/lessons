@@ -174,6 +174,11 @@ export default {
     handleCheck() {
       // Validate input
       const re = /^\d*[apAP]?$/;
+      if (this.inputAnswer.length === 0) {
+        this.status = 1;
+        this.wrongMessage = "Please put your answer in the box above.";
+        return;
+      }
       if (!re.test(this.inputAnswer)) {
         this.status = 1;
         this.wrongMessage = "Enter a number";
