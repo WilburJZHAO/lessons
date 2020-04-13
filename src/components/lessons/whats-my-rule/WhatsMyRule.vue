@@ -153,7 +153,7 @@ import {
   generateFormation,
   generateRuleArray,
   generateWords,
-  converStr
+  convertStr
 } from "./utils";
 export default {
   data: function() {
@@ -207,7 +207,7 @@ export default {
       }
 
       this.ruleFormationCheck =
-        converStr(this.ruleFormationInput) === converStr(this.ruleFormation);
+        convertStr(this.ruleFormationInput) === convertStr(this.ruleFormation);
     }
   }
 };
