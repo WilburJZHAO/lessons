@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-4 mb-5">
-    <h3 class="text-success text-center">How many trials to make your favourite animal?</h3>
+    <h3 class="lesson-subheading">How many trials to make our favourite animal?</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-12 col-sm-6">
         <app-animal-picture :animalDrawn="animalDrawn"></app-animal-picture>
@@ -51,14 +52,14 @@
             class="btn btn-outline-success"
             v-if="demoAutoOption==0 && !isFinish"
             @click="handleNextAnimal"
-          >Tap here for {{ isStart ? 'next' : 'first' }} animal</button>
+          >Make {{ isStart ? 'next' : 'first' }} animal</button>
           <button
             class="btn btn-outline-success"
             v-if="demoAutoOption==1 && !isFinish"
             @click="handleToggleTimer"
           >
-            {{ !isStart ? "Tap here to begin auto" :
-            ( timer ? "Tap here to pause" : "Tap here to resume")
+            {{ !isStart ? "Start" :
+            ( timer ? "Pause" : "Resume")
             }}
           </button>
           <button class="btn btn-outline-dark" v-if="isFinish" @click="handleReset">Reset</button>

@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Gathering and displaying balloon data</h3>
+    <h3 class="lesson-subheading">Gathering and displaying balloon data</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-6">
         <div>
@@ -81,13 +82,13 @@
             class="btn btn-outline-success"
             @click="handleDrawPoint"
             v-if="!isFinish && demoAutoOption === '0'"
-          >{{ isStart ? 'Tap here for next point' : 'Tap here for first point' }}</button>
+          >{{ isStart ? 'Show next point' : 'Show first point' }}</button>
 
           <button
             class="btn btn-outline-success"
             @click="toggleTimer"
             v-if="!isFinish && demoAutoOption === '1'"
-          >{{ !isStart ? 'Tap here to begin' : ( timer ? 'Tap here to pause' : 'Tap here to resume') }}</button>
+          >{{ !isStart ? 'Start' : ( timer ? 'Pause' : 'Resume') }}</button>
           <button class="btn btn-outline-dark" @click="handleReset" v-if="isFinish">Reset</button>
           <app-demo-auto-option
             :option="demoAutoOption"

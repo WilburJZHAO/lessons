@@ -91,7 +91,7 @@
               @click="startGameManually"
             >
               {{
-                isStart ? "Tap here for next game" : "Tap here for first game"
+                "Run one game"
               }}
             </button>
             <button
@@ -101,10 +101,10 @@
             >
               {{
                 !isAutoStart
-                  ? "Tap here to begin"
+                  ? "Start"
                   : timer
-                  ? "Tap here to pause"
-                  : "Tap here to resume"
+                  ? "Pause"
+                  : "Resume"
               }}
             </button>
             <button

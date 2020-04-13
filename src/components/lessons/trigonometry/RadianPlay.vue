@@ -1,6 +1,8 @@
 <template>
 	<div>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
+			<h3 class="lesson-subheading">Radian play</h3>
+			<hr class="subheading-separator">
 			<div class="row">
 				<div class="col-12">
 					<h5 class="text-success">Click and drag on the circle</h5>

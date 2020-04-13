@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Play a game of Addo</h3>
+    <h3 class="lesson-subheading">Play a game of Addo</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-4">
         <app-strategies
@@ -100,22 +101,22 @@
         class="btn btn-outline-success"
         v-if="selectedStrategy.id !== 0 && (gameStatus===0 || gameStatus===-1)"
         @click="handleStart"
-      >Change numbers then spacebar to set</button>
+      >Proceed to game</button>
       <button
         v-if="gameStatus===1"
         class="btn btn-outline-success"
         @click="handleEnterAnswer"
-      >Enter the answer to the card</button>
+      >Check answer</button>
       <button
         v-if="gameStatus===2"
         class="btn btn-outline-success"
         @click="handleDrawTwoNumbers"
-      >Press spacebar to draw two numbers</button>
+      >Draw two numbers</button>
       <button
         v-if="gameStatus===3"
         class="btn btn-outline-dark"
         @click="handleReset"
-      >Tap here to reset</button>
+      >Reset</button>
     </div>
   </div>
 </template>
@@ -252,13 +253,6 @@ export default {
       this.additionList = [];
     }
   },
-  created() {
-    window.addEventListener("keyup", e => {
-      if (e.code == "Space" && this.gameStatus === 2) {
-        this.handleDrawTwoNumbers();
-      }
-    });
-  }
 };
 </script>
 

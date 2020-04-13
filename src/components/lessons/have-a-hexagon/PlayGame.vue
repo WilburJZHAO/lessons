@@ -1,20 +1,19 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success">
-			Play the game
-		</h3>
+		<h3 class="lesson-subheading">Play the game</h3>
+		<hr class="subheading-separator">
 		<div class="mt-4 row">
-			<app-hexagon class="col-md-4" 
+			<app-hexagon class="col-md-4"
 				:data="hexSetting[0]"
 				:selected="selectedNumber"
 				:style="{visibility: selectedHex.indexOf('left') >= 0 ? 'visible':'hidden'}"
 			></app-hexagon>
-			<app-hexagon class="col-md-4" 
+			<app-hexagon class="col-md-4"
 				:data="hexSetting[1]"
 				:selected="selectedNumber"
 				:style="{visibility: selectedHex.indexOf('middle') >= 0 ? 'visible':'hidden'}"
 			></app-hexagon>
-			<app-hexagon class="col-md-4" 
+			<app-hexagon class="col-md-4"
 				:data="hexSetting[2]"
 				:selected="selectedNumber"
 				:style="{visibility: selectedHex.indexOf('right') >= 0 ? 'visible':'hidden'}"
@@ -26,19 +25,19 @@
 			</div>
 			<div class="text-center mt-3">
 				<div class="form-check form-check-inline">
-					<input 
+					<input
 						id="hex-left"
-						type="checkbox" 
+						type="checkbox"
 						class="form-check-input"
 						v-model="selectedHex"
-						value="left" 
+						value="left"
 					>
 					<label for="hex-left" class="form-check-label">Left</label>
 				</div>
 				<div class="form-check form-check-inline">
-					<input 
+					<input
 						id="hex-middle"
-						type="checkbox" 
+						type="checkbox"
 						class="form-check-input"
 						v-model="selectedHex"
 						value="middle"
@@ -46,9 +45,9 @@
 					<label for="hex-middle" class="form-check-label">Middle</label>
 				</div>
 				<div class="form-check form-check-inline">
-					<input 
+					<input
 						id="hex-right"
-						type="checkbox" 
+						type="checkbox"
 						class="form-check-input"
 						v-model="selectedHex"
 						value="right"
@@ -61,17 +60,17 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<button 
+					<button
 						class="btn btn-outline-success mt-4"
 						@click="() => { isSelected = true;}"
 						:disabled="selectedHex.length === 0"
 					>OK</button>
 				</div>
-			</div>			
+			</div>
 		</div>
 		<div v-else>
 			<div class="row">
-				<div class="col-md-3 app--dice">					
+				<div class="col-md-3 app--dice">
 					<app-dice v-if="number1" :index="0" :number="number1" class="m-3"></app-dice>
 					<app-dice v-if="number2" :index="1" :number="number2" class="m-3"></app-dice>
 				</div>
@@ -86,7 +85,7 @@
 							<td><span v-if="turn > 0">{{ turn }}</span></td>
 						</tr>
 					</table>
-				</div>				
+				</div>
 				<div class="col-md-3 app--dice">
 				</div>
 			</div>
@@ -96,31 +95,31 @@
 					class="alert alert-danger">
 					The {{ result }} hexagon is the winner!
 				</div>
-				<button 
+				<button
 					v-if="demoAutoOption=='0' && !result"
-					class="btn btn-outline-success" 
+					class="btn btn-outline-success"
 					@click="handlePlay"
 				>
-					{{ step===1 ? 'Tap here to roll dice' : 'Tap here for product' }}
+					{{ step===1 ? 'Roll dice' : 'Calculate product' }}
 				</button>
 				<button
-					v-if="demoAutoOption=='1' && !result" 
-					class="btn btn-outline-success" 
+					v-if="demoAutoOption=='1' && !result"
+					class="btn btn-outline-success"
 					@click="handleToggleTimer"
 				>
-					{{ !isStart ? 'Tap here to begin' : 
-						(timer ? 'Tap here to pause' : 'Tap here to resume')
+					{{ !isStart ? 'Start' :
+						(timer ? 'Pause' : 'Resume')
 					}}
 				</button>
 				<button
-					v-if="result" 
+					v-if="result"
 					class="btn btn-outline-dark"
 					@click="handleReset"
 				>
 					Reset
 				</button>
 				<br>
-				<app-demo-auto-option 
+				<app-demo-auto-option
 					class="mt-1"
 					:option="demoAutoOption"
 					@changeOption="demoAutoOption=$event"
@@ -158,15 +157,15 @@ export default {
 			number2: null,
 			product: null,
 			turn: 0,
-			step: 1,	// 1 - tap for roll dice, 2 - tap for product 
+			step: 1,	// 1 - tap for roll dice, 2 - tap for product
 			dataLeftTest: [],
 			dataMiddleTest: [],
-			dataRightTest: [],	// The three arrays are the copies of 
+			dataRightTest: [],	// The three arrays are the copies of
 			// dataLeft, dataMiddle and dataRight to test which one is winner
 			result: null	// Who wins a game: 'left', 'middle' or 'right'
 		}
 	},
-	computed: { 
+	computed: {
 
 	},
 	watch: {

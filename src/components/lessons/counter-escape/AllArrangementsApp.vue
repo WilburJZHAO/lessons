@@ -31,12 +31,12 @@
         class="btn btn-outline-success"
         v-if="!isStart && !isEnd"
         @click="handleToggleTimer"
-      >Tap here to begin</button>
+      >Start</button>
       <button
         class="btn btn-outline-success"
         v-if="isStart && !isEnd"
         @click="handleToggleTimer"
-      >{{ timer ? "Tap here to pause" : "Tap here to resume" }}</button>
+      >{{ timer ? "Pause" : "Resume" }}</button>
       <h5 v-if="isEnd" class="text-danger">Finished</h5>
       <button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>
     </div>

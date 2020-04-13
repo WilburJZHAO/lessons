@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Enter Your Own Bed Length</h2>
+		<h3 class="lesson-subheading mt-4">Enter your own bed length</h3>
+		<hr class="subheading-separator">
 		<div class="container mt-4 mb-5">
 			<div class="row">
 				<div class="col-6">
@@ -12,21 +13,21 @@
 							<div class="form-group row">
 								<label for="numPlantsInput" class="col-sm-9 col-form-label">Number of <b>plants</b>:</label>
 								<div class="col-sm-3">
-									<input type="number" 
+									<input type="number"
 										v-model="numPlantsInput"
 										class="form-control"
 										min="1"
-										max="50" 
+										max="50"
 										id="numPlantsInput">
 								</div>
 							</div>
 							<div class="form-group row">
 								<label for="numTilesInput" class="col-sm-9 col-form-label">Number of <b>tiles</b>:</label>
 								<div class="col-sm-3">
-									<input type="number" 
+									<input type="number"
 										v-model="numTiles"
 										class="form-control"
-										:disabled="isDisabled" 
+										:disabled="isDisabled"
 										id="numTilesInput">
 								</div>
 							</div>
@@ -36,10 +37,10 @@
 						<div v-if="showStart">
 							<p v-bind:class="{'alert mr-3':true, 'alert-info':(!showInputError), 'alert-danger':(showInputError)}">Please enter an whole number between {{minBedLength}} to {{maxBedLength}}.</p>
 						</div>
-						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to start</button>
+						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 						<div v-if="!showStart">
 							<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-							<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="addTile" :disabled="isFinished||isAuto">Add Tile</button>
+							<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="addTile" :disabled="isFinished||isAuto">Add tile</button>
 						</div>
 						<div class="app--demo-auto-option mt-2">
 							<div class="form-check form-check-inline">
@@ -82,7 +83,7 @@
 
 <script>
 /* eslint-disable */
-import { 
+import {
 	addNextTile,
 	drawNextCanvas
 } from './utils';
@@ -176,7 +177,7 @@ export default {
 			addNextTile("yellow", canvas, this);
 		},
 
-		//This function resets the plant to a new value and removes all the tiles from the canvas. 
+		//This function resets the plant to a new value and removes all the tiles from the canvas.
 		start(){
 			const input = parseInt(this.numPlantsInput);
 			if ((input >= this.minBedLength) && (input <= this.maxBedLength)){

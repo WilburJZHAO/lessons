@@ -1,11 +1,12 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Play 45:6 lotto</h3>
+    <h3 class="lesson-subheading">Play 45:6 lotto</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-6">
         <!-- Selection area -->
         <div class="app--selection-area-box">
-          <div class="app--selection-area"> 
+          <div class="app--selection-area">
             <div
               v-for="(el, index) in lottoNumbers"
               :key="index"
@@ -16,7 +17,7 @@
                 :class="el.selected ? 'app--selection-number-selected' : ''"
               >{{ el.number }}</div>
               <br v-if="el.number%8===0" style="clear:both" />
-            </div> 
+            </div>
           </div>
           <div
             class="text-center app--selection-message my-2"
@@ -48,7 +49,7 @@
               class="btn btn-outline-success"
               @click="handleAddPick"
               :disabled="selectedNumbers.length < STANDARD_NUMBERS_TO_DRAW"
-            >Add Pick</button>
+            >Add pick</button>
           </div>
         </div>
 
@@ -183,7 +184,7 @@
       <div v-if="status === 0 || status === 1">
         <div class="text-center text-danger">Pick your lotto numbers</div>
         <div class="text-center" v-if="status === 1">
-          <button class="btn btn-outline-success" @click="handleSetTables">Tap here to set tables</button>
+          <button class="btn btn-outline-success" @click="handleSetTables">Set tables</button>
         </div>
       </div>
       <div v-if="status === 2">
@@ -192,7 +193,7 @@
             class="btn btn-outline-success"
             v-if="demoAutoOption == 0"
             @click="handlePlayOneGame"
-          >Tap here to play a game</button>
+          >Play a game</button>
           <button
             class="btn btn-outline-success"
             v-if="demoAutoOption == 1"
@@ -200,10 +201,10 @@
           >
             {{
             gamesPlayed === 0
-            ? "Tap here to begin"
+            ? "Start"
             : timer
-            ? "Tap here to pause"
-            : "Tap here to resume"
+            ? "Pause"
+            : "Resume"
             }}
           </button>
           <div class="mb-2"></div>

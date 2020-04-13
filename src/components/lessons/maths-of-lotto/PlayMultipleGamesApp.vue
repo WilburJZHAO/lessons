@@ -17,12 +17,12 @@
         class="btn btn-outline-success"
         @click="handlePlayOneGame"
         v-if="demoAutoOption==0"
-      >Tap here to play a game</button>
+      >Play a game</button>
       <button
         class="btn btn-outline-success"
         @click="handleToggleTimer"
         v-if="demoAutoOption==1"
-      >{{ status=== 2 ? (timer ? "Tap here to pause" : "Tap here to resume" ) : 'Tap here to begin' }}</button>
+      >{{ status=== 2 ? (timer ? "Pause" : "Resume" ) : 'Start' }}</button>
       <div class="mb-2"></div>
       <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>
     </div>

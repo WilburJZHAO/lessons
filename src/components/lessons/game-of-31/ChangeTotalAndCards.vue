@@ -1,8 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">
-      Change the target total and the number of cards
-    </h3>
+    <h3 class="lesson-subheading">Change the target total and the number of cards</h3>
+    <hr class="subheading-separator">
     <div class="mb-5"></div>
     <div class="form-group row">
       <label class="col-sm-5">Enter the number of cards</label>

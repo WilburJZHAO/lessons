@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success">Calculate the number of partitions</h3>
+    <h3 class="lesson-subheading">Calculate the number of partitions</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-3">
         <h6>Enter a number to partition:</h6>

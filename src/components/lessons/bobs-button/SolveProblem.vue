@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <h3 class="text-center text-success mt-3">Solve a problem</h3>
+  <div class="container  mt-4 mb-5">
+    <h3 class="lesson-subheading">Solve a problem</h3>
+    <hr class="subheading-separator">
     <app-input-panel @setGroupsRule="groupsRule=$event" v-if="!groupsRule"></app-input-panel>
     <div v-if="groupsRule">
       <div class="d-flex justify-content-center mt-3">
@@ -181,7 +182,7 @@ export default {
   }
 };
 </script>
- 
+
 <style scoped>
 .app--list {
   height: auto !important;

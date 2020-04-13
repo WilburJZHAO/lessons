@@ -2,7 +2,7 @@
     <div>
         <div class="app--enter-number form-group row mt-5">
             <label for="trial-numbers" class="col-form-label col-sm-6">
-                Enter the number of trials(100 - 10000):
+                Enter the number of trials (100 to 10,000):
             </label>
             <div class="col-sm-6">
                 <input type="number" class="form-control" v-model="trialNum" required>

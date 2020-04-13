@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3 container">
-    <h3 class="text-center text-success">Enter your number</h3>
+    <h3 class="lesson-subheading">Enter your number and search range</h3>
+    <hr class="subheading-separator">
     <div class="row mt-3">
       <div class="col-md-5 text-center mb-3">
         <div class="d-flex align-items-center mb-3">
@@ -39,8 +40,7 @@
             @click="handleNewPalindrome"
             v-if="demoAutoOption === '0'"
           >
-            Tap here for the
-            {{ currentNumber > startNumber === 0 ? "first" : "next" }}
+            {{ currentNumber > startNumber === 0 ? "First" : "Next" }}
             palindrome
           </button>
           <button
@@ -50,10 +50,10 @@
           >
             {{
               currentNumber > startNumber === 0
-                ? "Tap here to begin"
+                ? "Start"
                 : timer
-                ? "Tap here to pause"
-                : "Tap here to resume"
+                ? "Pause"
+                : "Resume"
             }}
           </button>
           <app-demo-auto-option
@@ -65,7 +65,7 @@
 
         <div class="text-center mt-3" v-if="gameStatus === 2">
           <button class="btn btn-outline-success" @click="handleReset">
-            Tap here to reset
+            Reset
           </button>
         </div>
         <p class="text-center text-danger mt-2">{{ message }}</p>

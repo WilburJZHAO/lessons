@@ -50,7 +50,7 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'crosses puzzle' },
+                    { id: 1, title: 'Crosses puzzle' },
                     { id: 2, title: 'Selecting the middle number' },
                     { id: 3, title: 'Testing all combinations'}
                 ],

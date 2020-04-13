@@ -1,7 +1,8 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-success text-center mb-3">Focus on strategies: 20-100 heads</h3>
-    <app-strategies-app :min="100" :max="1000"></app-strategies-app>
+      <h3 class="lesson-subheading">Focus on strategies: 20 to 100 heads</h3>
+      <hr class="subheading-separator">
+      <app-strategies-app :min="100" :max="1000"></app-strategies-app>
   </div>
 </template>
 

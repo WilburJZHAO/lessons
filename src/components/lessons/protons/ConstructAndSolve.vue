@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5 pb-5">
-    <h3 class="text-success text-center">Construct and solve</h3>
+    <h3 class="lesson-subheading">Construct and solve</h3>
+    <hr class="subheading-separator">
     <div class="mt-3 container">
       <div class="row">
         <div class="col-12">
@@ -38,7 +39,7 @@
           <div v-if="status === 2">
             <div class="text-success">Correct!</div>
             <div>
-              <button class="btn btn-outline-dark" @click="handleNext">Tap here for next question</button>
+              <button class="btn btn-outline-dark" @click="handleNext">Next question</button>
             </div>
           </div>
         </div>

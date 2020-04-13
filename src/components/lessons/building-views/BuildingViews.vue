@@ -209,7 +209,7 @@
         <div class="app--action text-center mt-4">
           <button v-if="!isStart" class="btn btn-outline-success" @click="handleStartBuilding">Start</button>
           <button v-if="isStart" class="btn btn-outline-success" @click="handleCheckBuilding">Check</button>
-          <button v-if="isStart" class="btn btn-outline-dark" @click="handleSeeAnswer">Answer</button>
+          <button v-if="isStart" class="btn btn-outline-dark" @click="handleSeeAnswer">Show answer</button>
         </div>
       </div>
     </div>
@@ -398,8 +398,8 @@ export default {
       // console.log(e.target.getAttribute('data-arrx'));
       // console.log(e.target.getAttribute('data-arry'));
       e.target.innerHTML = `<div class="
-					app--number-draggable-positioned 
-					app--number-block 
+					app--number-draggable-positioned
+					app--number-block
 					app--number-block${e.relatedTarget.innerText.trim()}">
 					${e.relatedTarget.textContent}
 				</div>`;

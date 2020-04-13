@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Print the board</h3>
+    <h3 class="lesson-subheading">Print the board</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-2"></div>
       <div class="col-8 mb-3">

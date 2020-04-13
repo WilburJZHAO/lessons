@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <h3 class="text-center text-success my-3">Demonstration</h3>
+  <div class="container  mt-4 mb-5">
+    <h3 class="lesson-subheading">Demonstration</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-6 col-lg-4">
         <div v-if="gameStatus === 0">
@@ -54,11 +55,11 @@
           <button
             class="btn btn-outline-success"
             @click="handleGroupButtons"
-          >Tap here for {{ groups > 0 ? "next" : "first" }} group</button>
+          >Show {{ groups > 0 ? "next" : "first" }} group</button>
         </div>
 
         <div class="text-center mt-3" v-if="gameStatus === 3">
-          <button class="btn btn-outline-success" @click="handleReset">Tap here to reset</button>
+          <button class="btn btn-outline-success" @click="handleReset">Reset</button>
         </div>
       </div>
       <div

@@ -1,32 +1,34 @@
 <template>
   <div>
     <div class="container mt-4" style="margin-bottom: 9rem;">
+      <h3 class="lesson-subheading">Angle estimation (5 to {{maxDegree}} degrees)</h3>
+      <hr class="subheading-separator">
       <div class="row">
         <div class="col-12 col-md-6">
           <h4 class="text-success mb-4">
-            Estimate the size of the angle(in whole degrees)
+            Estimate the size of the angle (in whole degrees)
           </h4>
           <canvas id="app-canvas"></canvas>
           <form @submit.prevent="handleCheckEstimate">
             <div class="form-group row mt-4">
-              <label 
-                for="angle-estimate" 
+              <label
+                for="angle-estimate"
                 class="col-sm-4 col-form-label">
                 Your estimate
               </label>
-              <div class="col-sm-8">                
-                <input 
-                  type="number" 
-                  class="form-control" 
+              <div class="col-sm-8">
+                <input
+                  type="number"
+                  class="form-control"
                   id="angle-estimate"
                   required
-                  v-model="estimateDegree" 
+                  v-model="estimateDegree"
                   min="5"
                   :max="this.maxDegree">
-              </div>              
+              </div>
             </div>
             <div class="app--lesson-action">
-              <button 
+              <button
                 type="submit"
                 class="btn btn-outline-success"
                 :disabled="!estimateDegree || isChecked">Check</button>
@@ -39,7 +41,7 @@
           </form>
           <div>
             <p class="alert alert-success" v-show="isChecked">
-              Answer: {{degree}} degrees 
+              Answer: {{degree}} degrees
               <span class="text-danger" style="float: right;" v-show="isCorrect">Spot on!</span>
             </p>
           </div>

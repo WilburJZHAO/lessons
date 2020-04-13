@@ -1,5 +1,7 @@
 <template>
 	<div class="container mt-4 mb-5">
+		<h3 class="lesson-subheading">Demonstration Game</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-12 col-sm-6 app--rules">
 				<h3 class="text-center text-success mb-3">Dice Rules</h3>
@@ -18,7 +20,7 @@
 				</div>
 				<div class="form-check form-check-inline d-flex justify-content-center">
 					<input
-						class="form-check-input" 
+						class="form-check-input"
 						type="radio"
 						name="numberOfAnimals"
 						:value="2"
@@ -30,7 +32,7 @@
 						2 Animals
 					</label>
 					<input
-						class="form-check-input" 
+						class="form-check-input"
 						type="radio"
 						name="numberOfAnimals"
 						:value="3"
@@ -52,14 +54,14 @@
 					<app-dice :number="diceNumber" :index="0"></app-dice>
 				</div>
 			</div>
-			<div class="col-12 col-sm-6 app--picture">				
+			<div class="col-12 col-sm-6 app--picture">
 				<h4 class="app--picture-name font-weight-bold">
 					{{ animalDrawn[0] ? animalDrawn[0].name+'-' : ''}}{{ animalDrawn[1] ? animalDrawn[1].name+'-' : ''}}{{ animalDrawn[2] ? animalDrawn[2].name : ''}}
 				</h4>
 				<app-animal-picture :animalDrawn="animalDrawn"></app-animal-picture>
 			</div>
 		</div>
-	</div>	
+	</div>
 </template>
 
 <script>
@@ -85,7 +87,7 @@ export default {
 		return {
 			numberOfAnimals: 3,
 			status: 0,
-			diceNumber: 0, 
+			diceNumber: 0,
 			animals: {
 				giraffe: {	// Giraffe
 					head: { name:'Gir', src: giraffeHead },
@@ -101,38 +103,38 @@ export default {
 					head: { name:'D', src: duckHead },
 					body: { name:'u', src: duckBody },
 					leg: { name:'ck', src: duckLeg },
-				} 
+				}
 			},
 			steps: [
-				"Tap here to throw dice for the animal head",
-				"Tap here to draw the head",
-				"Tap here to throw dice for the animal body",
-				"Tap here to draw the body",
-				"Tap here to throw dice for the animal legs",
-				"Tap here to draw the legs",
-				"Tap here to reset"
+				"Throw dice for the animal head",
+				"Draw the head",
+				"Throw dice for the animal body",
+				"Draw the body",
+				"Throw dice for the animal legs",
+				"Draw the legs",
+				"Reset"
 			],
 			stepIndex: 0,
 			animalDrawn: []
 		}
 	},
 	computed: {
-		rules() {			
+		rules() {
 			if(this.numberOfAnimals === 2) {
 				return [
-					this.animals.giraffe, 
-					this.animals.giraffe, 
-					this.animals.giraffe, 
-					this.animals.horse, 
-					this.animals.horse, 
-					this.animals.horse, 
+					this.animals.giraffe,
+					this.animals.giraffe,
+					this.animals.giraffe,
+					this.animals.horse,
+					this.animals.horse,
+					this.animals.horse,
 				];
 			} else if(this.numberOfAnimals === 3) {
 				return [
-					this.animals.giraffe, 
-					this.animals.giraffe, 
-					this.animals.horse, 
-					this.animals.horse, 
+					this.animals.giraffe,
+					this.animals.giraffe,
+					this.animals.horse,
+					this.animals.horse,
 					this.animals.duck,
 					this.animals.duck
 				];
@@ -153,8 +155,8 @@ export default {
 			}
 		}
 	},
-	methods: { 
-		handleClick() { 
+	methods: {
+		handleClick() {
 			if(this.stepIndex === 6) {
 				this.animalDrawn = [];
 				this.stepIndex = 0;
@@ -177,5 +179,5 @@ export default {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}  
+}
 </style>

@@ -49,7 +49,7 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'Truth Tiles 1 puzzle' },
+                    { id: 1, title: 'Play the puzzle' },
                     { id: 2, title: 'Place and try' },
                     { id: 3, title: 'Testing all combinations'}
                 ],

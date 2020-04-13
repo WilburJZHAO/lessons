@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3 container">
-    <h3 class="text-center text-success">Enter your number</h3>
+    <h3 class="lesson-subheading">Enter your number</h3>
+    <hr class="subheading-separator">
     <div class="row mt-3">
       <div class="col-md-5 text-center mb-3">
         <div class="d-flex align-items-center">
@@ -19,12 +20,12 @@
             class="btn btn-outline-success"
             @click="handleAddition"
             v-if="demoAutoOption==='0'"
-          >Tap here for the {{ additionNumber === 0 ? 'first' : 'next'}} addition</button>
+          >Calculate {{ additionNumber === 0 ? 'first' : 'next'}} addition</button>
           <button
             class="btn btn-outline-success"
             @click="handleToggleTimer"
             v-if="demoAutoOption==='1'"
-          >{{ additionNumber === 0 ? 'Tap here to begin' : (timer ? 'Tap here to pause' : 'Tap here to resume') }}</button>
+          >{{ additionNumber === 0 ? 'Start' : (timer ? 'Pause' : 'Resume') }}</button>
           <app-demo-auto-option
             @changeOption="demoAutoOption = $event"
             :option="demoAutoOption"
@@ -33,7 +34,7 @@
         </div>
 
         <div class="text-center mt-3" v-if="gameStatus===2">
-          <button class="btn btn-outline-success" @click="handleReset">Tap here to reset</button>
+          <button class="btn btn-outline-success" @click="handleReset">Reset</button>
         </div>
         <p class="text-center text-danger mt-2">{{ message }}</p>
         <app-addition :additionNumber="additionNumber"></app-addition>

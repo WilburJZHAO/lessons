@@ -1,9 +1,9 @@
 <template>
-	<div class="container mt-4 mb-5"> 
+	<div class="container mt-4 mb-5">
 		<h4 class="text text-success text-center mb-4">
 			{{ numberOfScoops }} scoops, {{ numberOfFlavours }} flavours,
 			{{ allowRepeat ? "" : "no"}} repeats allowed
-		</h4> 
+		</h4>
 		<div class="row">
 			<div class="col-12 col-md-8 mb-4">
 				<div class="app--ice-cream">
@@ -11,11 +11,11 @@
 
 					<div class="app--img-flavours">
 						<div
-							class="mb-3" 
-							v-for="(flavour, index) in flavoursAvailable" 
+							class="mb-3"
+							v-for="(flavour, index) in flavoursAvailable"
 							:key="index">
 							<span class="badge badge-danger">{{ flavour.imgIndex }} </span>
-							<img 
+							<img
 								:src="flavour.imgSrc"
 								:data-imgIndex="flavour.imgIndex"
 								:data-index="flavour.index"
@@ -32,18 +32,18 @@
 							:key="index"
 							:style="{zIndex: 100-index*10, transform: 'translateY(' + (35-index*6) + '%)' } "   >
 							<img class="mr-1"
-								:src="flavour.imgSrc" 
+								:src="flavour.imgSrc"
 							/>
 							<span class="badge badge-danger">{{ flavour.imgIndex }}</span>
 						</div>
-						
+
 						<img src="@/assets/cup.jpg" width="82" />
 					</div>
 
 				</div>
 				<div class="app--ice-cream-combination">
 					<div
-						class="text text-danger" 
+						class="text text-danger"
 						v-if="iceCreamExist">
 						This ice cream has already been made
 					</div>
@@ -61,19 +61,19 @@
 					</div>
 				</div>
 				<div class="app--action mt-3 mb-3">
-					<button 
-						class="btn btn-outline-success btn-lg mb-3" 
+					<button
+						class="btn btn-outline-success btn-lg mb-3"
 						v-if="demoAutoOption==='0'"
 						@click="handleNext"
 					>
-						Click for next ice cream
+						Show next ice cream
 					</button>
-					<button 
-						class="btn btn-outline-success btn-lg mb-3" 
+					<button
+						class="btn btn-outline-success btn-lg mb-3"
 						v-if="demoAutoOption==='1'"
 						@click="handleToggleTimer"
 					>
-					{{ timer ? "Click to Pause" : "Click to Start" }}
+					{{ timer ? "Pause" : "Start" }}
 					</button>
 					<div>
 						<div class="form-check form-check-inline">
@@ -88,15 +88,15 @@
 
 			<div class="col-12 col-md-4 app--ice-cream-number">
 				<h6 class="text text-success">Enter the number of possible flavours</h6>
-				<div v-for="(num, index) in numberOfPossibleFlavours" :key="index"  
-					class="form-group row"> 
+				<div v-for="(num, index) in numberOfPossibleFlavours" :key="index"
+					class="form-group row">
 					<div class="col-10 col-md-8">
-						<input 
-							type="number" 
-							class="form-control" 
+						<input
+							type="number"
+							class="form-control"
 							v-model="numberOfPossibleFlavoursInput[index]"
-							:disabled="answerSaw || 
-								(numberOfPossibleFlavoursInputCheck[index] && 	
+							:disabled="answerSaw ||
+								(numberOfPossibleFlavoursInputCheck[index] &&
 								numberOfPossibleFlavours[index] == numberOfPossibleFlavoursInput[index])"
 								@focus="() => {
 									numberOfPossibleFlavoursInputCheck = numberOfPossibleFlavoursInputCheck.map((el, idx) => {
@@ -109,15 +109,15 @@
 								}">
 					</div>
 					<div class="col-2 col-md-4" style="display: flex; align-items: center">
-						<i 
-							class="fas fa-check text-success" 
-							v-if="!answerSaw && numberOfPossibleFlavoursInputCheck[index] && 
-								numberOfPossibleFlavoursInput[index] && 
+						<i
+							class="fas fa-check text-success"
+							v-if="!answerSaw && numberOfPossibleFlavoursInputCheck[index] &&
+								numberOfPossibleFlavoursInput[index] &&
 								numberOfPossibleFlavours[index] == numberOfPossibleFlavoursInput[index]" ></i>
-						<i 
+						<i
 							class="fas fa-times text-danger"
-							v-if="!answerSaw && numberOfPossibleFlavoursInputCheck[index] && 
-								numberOfPossibleFlavoursInput[index] && 
+							v-if="!answerSaw && numberOfPossibleFlavoursInputCheck[index] &&
+								numberOfPossibleFlavoursInput[index] &&
 								numberOfPossibleFlavours[index] != numberOfPossibleFlavoursInput[index]" ></i>
 					</div>
 				</div>
@@ -131,36 +131,36 @@
 						Calculate the number of possible ice creams
 					</h6>
 					<div class="col-10 col-md-8">
-						<input 
-							type="number" 
-							class="form-control" 
+						<input
+							type="number"
+							class="form-control"
 							v-model="totalNumberOfIceCreamInput"
-							:disabled="answerSaw || (totalNumberOfIceCreamInputCheck && totalNumberOfIceCream == totalNumberOfIceCreamInput)"							
+							:disabled="answerSaw || (totalNumberOfIceCreamInputCheck && totalNumberOfIceCream == totalNumberOfIceCreamInput)"
 							@focus="() => { totalNumberOfIceCreamInputCheck = false; }">
 					</div>
-					
+
 					<div class="col-2 col-md-4" style="display: flex; align-items: center">
-						<i 
+						<i
 							class="fas fa-check text-success"
-							v-if="!answerSaw && totalNumberOfIceCreamInputCheck && 
-								totalNumberOfIceCreamInput && 
+							v-if="!answerSaw && totalNumberOfIceCreamInputCheck &&
+								totalNumberOfIceCreamInput &&
 								totalNumberOfIceCream == totalNumberOfIceCreamInput"
 						></i>
-						<i 
+						<i
 							class="fas fa-times text-danger"
-							v-if="!answerSaw && totalNumberOfIceCreamInputCheck && 
-								totalNumberOfIceCreamInput && 
+							v-if="!answerSaw && totalNumberOfIceCreamInputCheck &&
+								totalNumberOfIceCreamInput &&
 								totalNumberOfIceCream != totalNumberOfIceCreamInput"
 						></i>
 					</div>
 					<div class="col-12 text-center mt-3" style="display: flex; justify-content: space-around">
-						<button 
-							class="btn btn-outline-success" 
-							@click="handleCheckInput"							
+						<button
+							class="btn btn-outline-success"
+							@click="handleCheckInput"
 							:disabled="answerSaw">Check</button>
-						<button 
-							class="btn btn-outline-danger" 
-							@click="handleSeeAnswer"							
+						<button
+							class="btn btn-outline-danger"
+							@click="handleSeeAnswer"
 							:disabled="answerSaw">Answer</button>
 					</div>
 				</div>
@@ -178,7 +178,7 @@ export default {
 		return {
 			flavoursAvailable: [],	// All available flavours array
 			flavoursSelected: [],		// Flavours selected array
-			iceCreamMade: [],		// Made ice cream array	
+			iceCreamMade: [],		// Made ice cream array
 			combinationsList: [],		// All combinations made array
 			totalNumberOfIceCream: 0,	// Total number of ice creams
 			totalNumberOfIceCreamInput: null,		// User's input for total number of ice creams
@@ -191,7 +191,7 @@ export default {
 			iceCreamExist: false,	// If one ice cream(combination) already exists
 			foundOne: false,		// Right after an ice cream is found, set it to true, when clicking clear, set it to false
 			demoAutoOption: "0",		// demoAutOption = "0" - Demo, demoAutoOption = "1" - Auto
-			combinationCtr: null,		// A combination creator generated by Combinatorics 
+			combinationCtr: null,		// A combination creator generated by Combinatorics
 			timer: null
 		}
 	},
@@ -212,16 +212,16 @@ export default {
 				imgSrc: require(`../../../assets/flavour-${index}.jpg`)
 			}
 		},
-		setFlavoursAvailable() {  
+		setFlavoursAvailable() {
 			this.flavoursAvailable.splice(0, this.flavoursAvailable.length);
 			for(let i = 1; i <= Number(this.numberOfFlavours); i++) {
 				const flavourObj = this.createFlavourObj(i);
-				this.flavoursAvailable.push(flavourObj); 
-			} 
+				this.flavoursAvailable.push(flavourObj);
+			}
 		},
 		setFlavoursSelected() {
-			for(let i = this.flavoursSelected.length-1, k=0; i>=0; i--, k++) {   
-				this.flavoursSelected[i].zIndex = k*10; 
+			for(let i = this.flavoursSelected.length-1, k=0; i>=0; i--, k++) {
+				this.flavoursSelected[i].zIndex = k*10;
 				this.flavoursSelected[i].transformY = k*15 + 5;	// Calculate each image's z-index and transformY property
 			}
 		},
@@ -242,15 +242,15 @@ export default {
 					}
 				}
 			}
-		}, 
+		},
 		setTotalNumberOfIceCream() {	// Calculate the total number of possibilities
 			let totalNumber = 1;
 			if(this.numberOfPossibleFlavours || this.numberOfPossibleFlavours.length === 0) {
 				this.totalNumberOfIceCream = 1;
-			} 
+			}
 			for(let i=0; i<this.numberOfPossibleFlavours.length; i++) {
 				if(this.numberOfPossibleFlavours[i] > 0) {
-					totalNumber *= this.numberOfPossibleFlavours[i]; 
+					totalNumber *= this.numberOfPossibleFlavours[i];
 				}
 			}
 			this.totalNumberOfIceCream = totalNumber;
@@ -276,21 +276,21 @@ export default {
 			const combinationStr = this.getCurrentCombination(flavoursSelected);
 			this.combinationsList = [...this.combinationsList, combinationStr ];
 		},
-		handleCheckInput() { 
+		handleCheckInput() {
 			this.setNumberOfPossibleFlavoursInputCheck();
-			this.totalNumberOfIceCreamInputCheck = true; 
+			this.totalNumberOfIceCreamInputCheck = true;
 		},
-		handleSeeAnswer() { 
+		handleSeeAnswer() {
 			this.numberOfPossibleFlavoursInput = this.numberOfPossibleFlavours;
-			this.totalNumberOfIceCreamInput = this.totalNumberOfIceCream; 
+			this.totalNumberOfIceCreamInput = this.totalNumberOfIceCream;
 			this.answerSaw = true;
 		},
 
-		handleSelectFlavour(e) { 
+		handleSelectFlavour(e) {
 			if(this.iceCreamAllFound) return;
 			if(this.foundOne) return;
 			const imgIndex = e.target.getAttribute('data-imgIndex');
-			const index =Number(e.target.getAttribute('data-index')); 
+			const index =Number(e.target.getAttribute('data-index'));
 
 			if(!this.allowRepeat) {
 				this.flavoursAvailable = this.flavoursAvailable.filter((flavour) => {
@@ -298,7 +298,7 @@ export default {
 				});
 			}
 
-			this.flavoursSelected.unshift( this.createFlavourObj(index) ); 
+			this.flavoursSelected.unshift( this.createFlavourObj(index) );
 			this.setFlavoursSelected();
 
 			if(this.flavoursAvailable.length === 0 || this.flavoursSelected.length === Number(this.numberOfScoops)) {
@@ -309,9 +309,9 @@ export default {
 					return;
 				}
 				this.iceCreamExist = false;
-				this.setCombinationsList(this.flavoursSelected); 
+				this.setCombinationsList(this.flavoursSelected);
 			}
-			
+
 			if(this.totalNumberOfIceCream === this.combinationsList.length) {
 				this.iceCreamAllFound = true;
 			}
@@ -326,21 +326,21 @@ export default {
 			}
 		},
 
-		setNextFlavours() { 
+		setNextFlavours() {
 			let nextFlavoursSelected, nextCombination;
 			do {
-				nextFlavoursSelected = this.combinationCtr.next();  
+				nextFlavoursSelected = this.combinationCtr.next();
 				if(!nextFlavoursSelected) break;	// 如果到达最后一个元素，则停止
 				// 如果还有接下来的元素 则先检查是否已经在combinationsList里
 				nextCombination = this.getCurrentCombination(nextFlavoursSelected);
 			} while(nextFlavoursSelected && this.combinationsList.indexOf(nextCombination) !== -1 )
-			
+
 			if(nextFlavoursSelected) {
 				nextFlavoursSelected.forEach((value, index) => {
 					this.flavoursSelected[index] = value;
 				});
-				// this.flavoursSelected = nextFlavoursSelected;  
-				this.setFlavoursSelected(); 
+				// this.flavoursSelected = nextFlavoursSelected;
+				this.setFlavoursSelected();
 				this.setCombinationsList(this.flavoursSelected);
 				this.foundOne = true;
 			} else {
@@ -351,8 +351,8 @@ export default {
 		handleNext() {
 			if(this.iceCreamAllFound) return;
 			// console.log(this.flavoursAvailable, this.numberOfScoops, this.allowRepeat);
-			// console.log(this.combinationsList); 
-			// console.log(iceCream); 
+			// console.log(this.combinationsList);
+			// console.log(iceCream);
 			// this.setFlavoursAvailable();
 			this.handleClear();
 			this.setNextFlavours();
@@ -361,7 +361,7 @@ export default {
 			this.setFlavoursAvailable();
 			if(this.timer) {
 				clearInterval(this.timer);
-				this.timer = null; 
+				this.timer = null;
 			} else {
 				this.timer = setInterval(this.setNextFlavours, 700);
 			}
@@ -372,7 +372,7 @@ export default {
 		this.setFlavoursAvailable();
 		this.setNumberOfPossibleFlavours();
 		this.setTotalNumberOfIceCream();
-		this.setNumberOfPossibleFlavoursInputCheck();  
+		this.setNumberOfPossibleFlavoursInputCheck();
 		if(this.allowRepeat) {
 			this.combinationCtr = Combinatorics.baseN(this.flavoursAvailable, this.numberOfScoops);
 		} else if (this.numberOfScoops > this.numberOfFlavours) {

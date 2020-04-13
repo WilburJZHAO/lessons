@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3">
-    <h3 class="text-success text-center">Comparing strategies</h3>
+    <h3 class="lesson-subheading">Comparing strategies</h3>
+    <hr class="subheading-separator">
     <div v-if="status === 0" class="container">
       <div class="row">
         <div class="col-sm-6">
@@ -41,8 +42,8 @@
           >
             {{
             status === 1
-            ? "Tap here for first game"
-            : "Tap here for next game"
+            ? "Run first game"
+            : "Run next game"
             }}
           </button>
           <button
@@ -52,23 +53,23 @@
           >
             {{
             timer
-            ? "Tap here to pause"
+            ? "Pause"
             : status === 1
-            ? "Tap here to begin"
-            : "Tap here to resume"
+            ? "Start"
+            : "Resume"
             }}
           </button>
           <button
             class="btn btn-outline-success"
             @click="handleMoreTrials"
             v-if=" numberOverflow === true"
-          >Tap here for more trials</button>
+          >Run more trials</button>
           <div class="text-center mt-2">
             <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
           </div>
         </div>
         <div v-if="status===4" class="text-center">
-          <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+          <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
           <div class="text-danger text-center">Finished</div>
         </div>
       </div>

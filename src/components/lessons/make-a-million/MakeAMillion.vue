@@ -5,16 +5,16 @@
 				<div class="col-12 col-md-7">
 					<div class="app--counting-table-container mb-5">
 						<div class="app--counting-label">
-							<div class="app--counting-label-line1"> 
-								<div>1,000,000s</div> 
-								<div style="transform: translateX(-30%);">10,000s</div> 
-								<div style="transform: translateX(-80%);">100s</div> 
-								<div style="transform: translateX(-50%);">1s</div> 
+							<div class="app--counting-label-line1">
+								<div>1,000,000s</div>
+								<div style="transform: translateX(-30%);">10,000s</div>
+								<div style="transform: translateX(-80%);">100s</div>
+								<div style="transform: translateX(-50%);">1s</div>
 							</div>
 							<div class="app--counting-label-line2">
-								<div>100,000s</div> 
-								<div style="transform: translateX(-30%);">1,000s</div> 
-								<div>10s</div> 
+								<div>100,000s</div>
+								<div style="transform: translateX(-30%);">1,000s</div>
+								<div>10s</div>
 							</div>
 						</div>
 						<div class="app--counting-table">
@@ -27,17 +27,17 @@
 											backgroundColor: j===1 ? 'red' : ''
 											}">
 									</div>
-									<div v-if="i===11" class="app--counting-table-colnum" 
+									<div v-if="i===11" class="app--counting-table-colnum"
 										v-bind:style="{
-											visibility: j===1 ? 'hidden' : 'visible', 
+											visibility: j===1 ? 'hidden' : 'visible',
 										}" >
 										{{ countArr[j-2] }}
 									</div>
-								</div>								
-								<div 
+								</div>
+								<div
 									v-bind:style="{
-										visibility: i===11 ? 'hidden' : 'visible', 
-									}" 
+										visibility: i===11 ? 'hidden' : 'visible',
+									}"
 									class="app--counting-table-rownum">
 									{{ 10-i }}
 								</div>
@@ -49,7 +49,7 @@
 							</div>
 						</div> -->
 					</div>
-					
+
 				</div>
 				<div class="col-12 col-md-5">
 					<div class="app--calculator-container">	<!-- Counting calculator -->
@@ -108,7 +108,7 @@
 											0
 										</div>
 										<div class="app--calculator-button" style="visibility: hidden;">
-											
+
 										</div>
 										<div class="app--calculator-button">
 											=
@@ -127,8 +127,8 @@
 							<label for="counting-style" class="form-check-label">USA style of counting</label>
 						</div>
 						<div class="form-check">
-							<input 
-								type="radio" 
+							<input
+								type="radio"
 								class="form-check-input"
 								id="counting-speed-1"
 								name="counting-speed"
@@ -138,9 +138,9 @@
 								One count per second
 							</label>
 						</div>
-						<div class="form-check">							
-							<input 
-								type="radio" 
+						<div class="form-check">
+							<input
+								type="radio"
 								class="form-check-input"
 								id="counting-speed-2"
 								name="counting-speed"
@@ -152,16 +152,16 @@
 						</div>
 					</div>
 					<div class="app--action mt-3">
-						<button class="btn btn-outline-success" 
-							v-if="demoAutoOption==0" 
+						<button class="btn btn-outline-success"
+							v-if="demoAutoOption==0"
 							@click="()=> { if(!this.isStart) this.isStart=true; this.count++;}">
-							{{ isStart ? "Tap here for next counter" : "Tap here to start"  }}
+							{{ isStart ? "Next counter" : "Start"  }}
 						</button>
-						<button class="btn btn-outline-success" 
+						<button class="btn btn-outline-success"
 							v-if="demoAutoOption==1"
 							@click="handleToggleTimer"
 						>
-							{{ isStart ? ( timer ? "Tap here to pause" : "Tap here to resume" ) : "Tap here to begin" }}
+							{{ isStart ? ( timer ? "Pause" : "Resume" ) : "Start" }}
 						</button>
 						<div class="app--demo-auto-option mt-2">
 							<div class="form-check form-check-inline">
@@ -198,14 +198,14 @@ export default {
 					return 1000;
 				case '2':
 					return 200;
-				default: 
+				default:
 					return null;
 			}
 		},
 		countWords() {
 			let words = converter.toWords(this.count);
 			if(this.isUsaStyle) {
-				return words; 
+				return words;
 			}
 			return words.replace('hundred', 'hundred and');
 		},
@@ -253,7 +253,7 @@ export default {
 }
 </script>
 
-<style scoped> 
+<style scoped>
 	.app--action {
 		display: flex;
 		flex-direction: column;
@@ -323,13 +323,13 @@ export default {
 
 	/* .app--counting-table-container {
 	} */
-	.app--counting-label-line1 { 
+	.app--counting-label-line1 {
 		width: 80%;
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 	}
-	.app--counting-label-line2 { 
+	.app--counting-label-line2 {
 		width: 52%;
 		margin: 0 auto;
 		display: flex;

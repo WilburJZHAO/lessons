@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Is each group equally likely?</h3>
+    <h3 class="lesson-subheading">Is each group equally likely?</h3>
+    <hr class="subheading-separator">
     <app-is-equal-group-app v-if="trialNumber" :settings="settings" :trialNumber="trialNumber"></app-is-equal-group-app>
     <app-enter-trials-number v-else @acceptTrialNumber="trialNumber=$event"></app-enter-trials-number>
   </div>

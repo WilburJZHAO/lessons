@@ -54,19 +54,19 @@
               </div>
               <div id="inputData4" style="visibility: hidden;">
                 <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="clickDrawLine">
-                  {{ isStart ? "Tap here for next line" : "Tap here for first line" }}
+                  {{ isStart ? "Draw next line" : "Draw first line" }}
                 </button>
                 <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                   {{
                   !isAutoStart
-                  ? "Tap here to begin"
+                  ? "Start"
                   : timer
-                  ? "Tap here to pause"
-                  : "Tap here to resume"
+                  ? "Pause"
+                  : "Resume"
                   }}
                 </button>
                 <button class="btn btn-outline-dark" v-if="finished" @click="clickReSet()">
-                  Click here to reset
+                  Reset
                 </button>&nbsp;&nbsp;&nbsp;
                 <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
               </div>

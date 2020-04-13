@@ -1,6 +1,7 @@
 <template>
   <div class="app--container mt-4 mb-5">
-    <h3 class="text-success text-center">Play a match</h3>
+    <h3 class="lesson-subheading">Play a match</h3>
+    <hr class="subheading-separator">
     <h5 class="text-dark text-center">{{ matchSetting.wicketTaker }} takes a wicket</h5>
     <div class="row app--score-table mt-3">
       <div class="col-lg-6">
@@ -25,26 +26,26 @@
         v-if="showStartMessage"
         class="app--prompt alert alert-primary"
         style="margin-bottom: 80px;"
-      >Coin has been tossed. Team {{ whoseTurn === 0 ? 'A' : 'B' }} to bowl first over</div>
+      >{{ whoseTurn === 0 ? matchSetting.teamAName : matchSetting.teamBName }} has won the toss and elected to bat the first over.</div>
       <div
         v-if="result"
         class="app--prompt alert alert-danger"
-      >Match over. Team {{ result }} is the winner!</div>
+      >Match over. {{ result === 'A' ? matchSetting.teamAName : matchSetting.teamBName }} is the winner!</div>
       <button
         v-if="!result && demoAutoOption=='0'"
         class="btn btn-outline-success"
         @click="handlePlayMatch"
       >
-        {{ !isStart ? "Tap here for first game" :
-        ( step===0 ? "Tap here to bowl" : "Tap here to tally") }}
+        {{ !isStart ? "Start the game" :
+        ( step===0 ? "Play the next ball" : "Tally score") }}
       </button>
       <button
         v-if="!result && demoAutoOption=='1'"
         class="btn btn-outline-success"
         @click="handleToggleTimer"
       >
-        {{ !isStart ? "Tap here for first game" :
-        ( timer ? "Tap here to pause" : "Tap here to resume" ) }}
+        {{ !isStart ? "Start" :
+        ( timer ? "Pause" : "Resume" ) }}
       </button>
       <button v-if="result" class="btn btn-outline-dark" @click="handleReset">Reset</button>
     </div>

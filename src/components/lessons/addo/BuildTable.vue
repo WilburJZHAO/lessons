@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Build an addition table</h3>
+    <h3 class="lesson-subheading">Build an addition table</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-9">
         <div class="app--table-line">
@@ -53,13 +54,13 @@
         class="btn btn-outline-success"
         v-if="gameStatus===0"
         @click="handleBegin"
-      >Tap here to begin</button>
+      >Start</button>
       <div class="alert alert-danger" v-if="gameStatus===1">There are {{ cellNumbers }} cells</div>
       <button
         class="btn btn-outline-success"
         v-if="gameStatus===2"
         @click="handleNextQuestion"
-      >Correct! Spacebar for next question</button>
+      >Correct! Next question</button>
       <div class="alert alert-danger" v-if="gameStatus===3">Finished!</div>
     </div>
   </div>

@@ -77,18 +77,18 @@
         class="btn btn-outline-success"
         v-if="selectedStrategy.id !== 0 && (gameStatus===0 || gameStatus===-1)"
         @click="handleStart"
-      >Change numbers then tap to set</button>
+      >Proceed to game</button>
       <div v-if="gameStatus === 1 || gameStatus === 2">
         <button
           class="btn btn-outline-success"
           v-if="demoAutoOption==='0'"
           @click="handlePlayOneGame"
-        >{{ gameStatus === 1 ? "Tap here for first game" : "Tap here for next game" }}</button>
+        >{{ gameStatus === 1 ? "Run first game" : "Run next game" }}</button>
         <button
           class="btn btn-outline-success"
           v-if="demoAutoOption==='1'"
           @click="handleToggleTimer"
-        >{{ gameStatus === 1 ? "Tap here to begin" : (timer ? "Tap here to pause" : "Tap here to resume") }}</button>
+        >{{ gameStatus === 1 ? "Start" : (timer ? "Pause" : "Resume") }}</button>
         <div class="text-center mt-1">
           <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>
         </div>
@@ -97,7 +97,7 @@
         class="btn btn-outline-dark"
         v-if="gameStatus===3"
         @click="handleReset"
-      >Tap here to reset</button>
+      >Reset</button>
     </div>
   </div>
 </template>

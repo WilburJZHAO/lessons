@@ -1,6 +1,7 @@
 <template>
   <div class="app--container container mt-4 mb-5">
-    <h3 class="text-success text-center">Which animal is most likely?</h3>
+    <h3 class="lesson-subheading">Which animal is most likely?</h3>
+    <hr class="subheading-separator">
     <div class="form-check form-check-inline d-flex justify-content-center">
       <input
         class="form-check-input"
@@ -47,14 +48,14 @@
         v-if="demoAutoOption=='0' && !isFinish"
         class="btn btn-outline-success"
         @click="handleNextAnimal"
-      >Tap here for {{ isStart ? 'next' : 'first'}} animal</button>
+      >Make {{ isStart ? 'next' : 'first'}} animal</button>
       <button
         v-if="demoAutoOption=='1' && !isFinish"
         class="btn btn-outline-success"
         @click="handleToggle"
       >
-        {{ !isStart ? "Tap here to begin auto" :
-        ( timer ? "Tap here to pause" : "Tap here to resume" ) }}
+        {{ !isStart ? "Start" :
+        ( timer ? "Pause" : "Resume" ) }}
       </button>
       <button v-if="isFinish" class="btn btn-outline-dark" @click="handleReset">Reset</button>
     </div>

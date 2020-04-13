@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success mb-3">Table of number partitions</h3>
+    <h3 class="lesson-subheading">Table of number partitions</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-5">
         <div  id="solutionsField" style="height: 500px; overflow: auto;">
@@ -34,8 +35,8 @@
           >
             {{
             gameStatus === 0
-            ? "Tap here for first number"
-            : "Tap here for next number"
+            ? "First number"
+            : "Next number"
             }}
           </button>
           <button
@@ -45,10 +46,10 @@
           >
             {{
             timer
-            ? "Tap here to pause"
+            ? "Pause"
             : gameStatus === 0
-            ? "Tap here to begin"
-            : "Tap here to resume"
+            ? "Start"
+            : "Resume"
             }}
           </button>
           <button class="btn btn-outline-dark" v-if="gameStatus === 2" @click="handleReset">Reset</button>

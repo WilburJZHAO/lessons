@@ -14,7 +14,9 @@
             <th>Payout</th>
           </tr>
           <tr v-for="(item, index) in trialData" :key="index">
-            <td>{{ item.prize }}</td>
+            <td>
+              {{ item.prize % 1 > 0 ? item.prize.toFixed(2) : item.prize }}
+            </td>
             <td>
               <span v-if="status > 0">{{ item.winners }}</span>
             </td>
@@ -51,17 +53,17 @@
           class="btn btn-outline-success"
           @click="handleOneTrial"
           v-if="(status===0 || status === 1)&&demoAutoOption==0"
-        >Tap here for next trial</button>
+        >Next trial</button>
         <button
           class="btn btn-outline-success"
           @click="handleToggleTimer"
           v-if="(status===0 || status === 1)&&demoAutoOption==1"
-        >{{ status===0 ? "Tap here to begin" : timer ? "Tap here to pause" : "Tap here to resume" }}</button>
+        >{{ status===0 ? "Start" : timer ? "Pause" : "Resume" }}</button>
         <button
           class="btn btn-outline-dark"
           v-if="status===2"
           @click="handleReset"
-        >Tap here to reset</button>
+        >Reset</button>
       </div>
       <div class="text-center mt-1">
         <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>

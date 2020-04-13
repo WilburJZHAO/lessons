@@ -32,7 +32,7 @@ export default {
   },
   data: function() {
     return {
-      options: [{ id: 1, title: "Start Cracked Tiles" }],
+      options: [{ id: 1, title: "Cracked Tiles" }],
       selectedOption: -1
     };
   }

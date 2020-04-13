@@ -50,22 +50,22 @@
             class="btn btn-outline-success mb-2"
             @click="handleDrawLine"
             v-if="demoAutoOption==='0'"
-          >Tap here to draw a line</button>
+          >Draw a line</button>
           <button
             class="btn btn-outline-success mb-2"
             v-if="demoAutoOption==='1'"
             @click="handleToggleTimer"
-          >Tap here to start auto</button>
+          >Start auto</button>
           <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
         </div>
         <div class="mt-3 text-center" v-if="gameStatus === 3">
-          <button class="btn btn-outline-dark" @click="handleRestart">Tap here for new start</button>
+          <button class="btn btn-outline-dark" @click="handleRestart">Reset</button>
         </div>
         <div class="text-center mt-3">
           <button
             class="btn btn-outline-dark"
             @click="showCircle = !showCircle"
-          >{{ showCircle ? 'Hide Circle' : 'Show Circle'}}</button>
+          >{{ showCircle ? 'Hide circle' : 'Show circle'}}</button>
         </div>
       </div>
       <div class="col-lg-8 mt-4">

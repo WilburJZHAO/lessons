@@ -1,18 +1,17 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success mb-4">
-			Computer Counts
-		</h3>
+		<h3 class="lesson-subheading">Computer counts</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-md-6 pb-4">
-				<app-plugboard 
+				<app-plugboard
 					@setDigit="totalDigit=$event"
 					:plugboardNumber="countingSet ? countingSet.startingNumber: null"
 					:isRadioDisable="countingSet ? true : false"
 					:isDisable="true"
 					:countingSet="countingSet"
 				/>
-				<app-plugboard-input 
+				<app-plugboard-input
 					:totalDigit="totalDigit"
 					:inputNumber="countingSet ? countingSet.startingNumber : null"
 					:isDisable="true"
@@ -26,15 +25,15 @@
 						:isDisable="true"
 						:countingSet="countingSet"
 					></app-calculator>
-					<div v-if="countingSet===null" >		
-						<app-count-form 
+					<div v-if="countingSet===null" >
+						<app-count-form
 							@setCounting="countingSet=$event"
 							:totalDigit="totalDigit"
 							:countingSet="countingSet"
 						></app-count-form>
 					</div>
-					<div v-else class="pl-3" >	
-						<div>							
+					<div v-else class="pl-3" >
+						<div>
 							Started counting from {{ appStartingNumber }}
 							<br>
 							Counting by {{countingSet.countingBy }}s
@@ -43,8 +42,8 @@
 						<div class="text-center mt-3">
 							<p>Write speed per second</p>
 							<div class="form-check">
-								<input 
-									type="radio" 
+								<input
+									type="radio"
 									class="form-check-input"
 									v-model="speed"
 									id="speed-1"
@@ -54,8 +53,8 @@
 							</div>
 
 							<div class="form-check">
-								<input 
-									type="radio" 
+								<input
+									type="radio"
 									class="form-check-input"
 									v-model="speed"
 									id="speed-2"
@@ -64,8 +63,8 @@
 								<label for="speed-2" class="form-check-label"> 2 </label>
 							</div>
 							<div class="form-check">
-								<input 
-									type="radio" 
+								<input
+									type="radio"
 									class="form-check-input"
 									v-model="speed"
 									id="speed-5"
@@ -74,8 +73,8 @@
 								<label for="speed-5" class="form-check-label"> 5 </label>
 							</div>
 							<div class="form-check">
-								<input 
-									type="radio" 
+								<input
+									type="radio"
 									class="form-check-input"
 									v-model="speed"
 									id="speed-10"
@@ -85,27 +84,27 @@
 							</div>
 						</div>
 						<div class="text-center mt-3 app--action">
-							<button 
-								v-if="!isFinish && demoAutoOption == '0'" 
-								class="btn btn-outline-success" 
+							<button
+								v-if="!isFinish && demoAutoOption == '0'"
+								class="btn btn-outline-success"
 								@click="handleNextNumber">
-								{{ isStart ? "Tap here for next number" : "Tap here to start" }}
+								{{ isStart ? "Next number" : "Start" }}
 							</button>
-							<button 
-								v-if="!isFinish && demoAutoOption == '1'" 
-								class="btn btn-outline-success" 
+							<button
+								v-if="!isFinish && demoAutoOption == '1'"
+								class="btn btn-outline-success"
 								@click="handleToggleTimer">
-								{{ !isStart ? "Tap here to begin" : 
-									( timer ? "Tap here to pause" : "Tap here to resume")
+								{{ !isStart ? "Start" :
+									( timer ? "Pause" : "Resume")
 								}}
 							</button>
 							<button v-if="isFinish" class="btn btn-outline-dark" @click="handleStartAgain">Reset</button>
-						</div>	
+						</div>
 						<div class="mt-1 mb-3 text-center">
-							<app-demo-auto-option 
+							<app-demo-auto-option
 								:option="demoAutoOption"
 								@changeOption="demoAutoOption=$event">
-							</app-demo-auto-option>		
+							</app-demo-auto-option>
 						</div>
 						<div class="text-center">
 							<button class="btn btn-outline-dark ml-3" @click="handleStartAgain">Start again</button>
@@ -157,7 +156,7 @@ export default {
 			return Math.pow(10, this.totalDigit)-1;
 		},
 	},
-	watch: { 
+	watch: {
 		countingSet(value, prevValue) {
 			if(!prevValue && value) {
 				this.appStartingNumber = this.countingSet.startingNumber;

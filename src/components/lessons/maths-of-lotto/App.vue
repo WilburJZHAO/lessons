@@ -1,7 +1,7 @@
 <template>
   <div>
     <div v-if="selectedOption === -1">
-      <app-title-static>Maths Of Lotto</app-title-static>
+      <app-title-static>Maths of Lotto</app-title-static>
       <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
         <app-options :options="options" @selectOption="selectedOption = $event"></app-options>
       </transition>

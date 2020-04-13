@@ -49,7 +49,7 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'How many columns' },
+                    { id: 1, title: 'How many rows and columns?' },
                     { id: 2, title: 'Show the fraction' },
                     { id: 3, title: 'Adding fractions'},
                 ],

@@ -1,5 +1,7 @@
 <template>
   <div class="container mt-3">
+    <h3 class="lesson-subheading">Stem and leaf plot of 100 trial batches</h3>
+    <hr class="subheading-separator">
     <app-input
       @setCookie="($event) => {this.cookieSet=$event; this.gameStatus = 0;}"
       v-if="gameStatus===-1"
@@ -35,12 +37,12 @@
           class="btn btn-outline-success"
           @click="handleNext"
           v-if="demoAutoOption==='0'"
-        >Tap here for {{ batchNumber === 0 ? 'first' : 'next' }} batch</button>
+        >Show {{ batchNumber === 0 ? 'first' : 'next' }} batch</button>
         <button
           class="btn btn-outline-success"
           @click="handleToggleTimer"
           v-if="demoAutoOption==='1'"
-        >{{ batchNumber === 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+        >{{ batchNumber === 0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
         <app-demo-auto-option
           @changeOption="demoAutoOption = $event"
           :option="demoAutoOption"

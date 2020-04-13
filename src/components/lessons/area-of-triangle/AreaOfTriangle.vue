@@ -114,9 +114,9 @@
                 class="btn btn-outline-dark"
                 @click="handleNext"
                 :disabled="!isChecked"
-              >Next</button>
+              >Next challenge</button>
             </div>
-            <div class="alert alert-danger mt-3" v-if="isChecked">
+            <div :class="buttonClass"  v-if="isChecked">
               Your area is {{yourArea.toFixed(1)}}.
               {{checkResult}}
             </div>
@@ -161,7 +161,8 @@ export default {
       isDragging: false,
       startDragging: false,
       allowDragging: true,
-      isChecked: false
+      isChecked: false,
+      buttonClass: 'alert alert-danger mt-3'
     };
   },
   computed: {
@@ -172,13 +173,21 @@ export default {
       return ((this.yourArea - this.areaUnits) / this.areaUnits) * 100;
     },
     checkResult: function() {
-      if (this.areaDiff === 0) return "Correct!";
+      if (this.areaDiff === 0) {
+        this.buttonClass = 'alert alert-success mt-3';
+        console.log(this.buttonClass);
+         return "Correct!";
+      }
+      else {
+        this.buttonClass = 'alert alert-danger mt-3';
+      }
       if (this.areaDiff < 0) return `Down by ${-this.areaDiff.toFixed(0)}%`;
       if (this.areaDiff > 0) return `Up by ${this.areaDiff.toFixed(0)}%`;
       return null;
     }
   },
   watch: {
+
     // isDragging(value) {
     // 	if(value===true) {
     // 		document.querySelector('body').setAttribute('style', 'overflow: hidden');

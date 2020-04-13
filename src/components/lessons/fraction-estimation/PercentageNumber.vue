@@ -1,7 +1,8 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Percentage Number</h3>
-    <div class="row">
+      <h3 class="lesson-subheading">Percentage number</h3>
+      <hr class="subheading-separator">
+      <div class="row">
       <div class="col-md-3">
         <app-number-input
           :numberType="NUMBER_TYPE"

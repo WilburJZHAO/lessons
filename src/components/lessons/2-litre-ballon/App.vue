@@ -42,7 +42,7 @@ export default {
   data: function() {
     return {
       options: [
-        { id: 1, title: "Enter Diameter, Radius, Circumference or Volume" },
+        { id: 1, title: "Enter diameter, radius, circumference or volume" },
         { id: 2, title: "Gathering and displaying balloon data" }
       ],
       selectedOption: -1

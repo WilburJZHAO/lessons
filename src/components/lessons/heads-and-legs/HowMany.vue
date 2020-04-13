@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-success text-center mb-4">How many pigs and chickens in the field</h3>
+    <h3 class="lesson-subheading">How many pigs and chickens in the field?</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-6 mb-3">
         <h6>There are {{ problem.heads }} animals with {{ problem.legs }} legs.</h6>
@@ -68,7 +69,7 @@
           <button
             class="btn btn-outline-success"
             @click="handleNewProblem"
-          >Tap here for a new problem</button>
+          >Next challenge</button>
         </div>
       </div>
       <div class="col-md-6">
@@ -242,7 +243,7 @@ export default {
       // eslint-disable-next-line no-console
       // console.log(e.relatedTarget);
       e.target.innerHTML += `
-          <img src=${e.relatedTarget.src} style="width: 80px; touch-action: none; " 
+          <img src=${e.relatedTarget.src} style="width: 80px; touch-action: none; "
             class="app--image-draggable-positioned" data-animal=${animal}
           />
         `;

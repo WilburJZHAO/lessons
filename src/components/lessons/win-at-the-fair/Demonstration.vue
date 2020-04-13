@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Demonstration Game</h3>
+    <h3 class="lesson-subheading">Demonstration game</h3>
+    <hr class="subheading-separator">
     <div id="board-container" class="app--canvas-container"></div>
     <div class="row">
       <div class="col-sm-4"></div>
@@ -22,14 +23,14 @@
         class="btn btn-outline-success"
         v-if="status===0"
         @click="handleThrowDice"
-      >Tap here to throw dice</button>
+      >Roll dice</button>
       <button
         class="btn btn-outline-success"
         v-if="status===1"
         @click="handleMoveCounter"
-      >Tap here to move counter</button>
+      >Move counter</button>
 
-      <button class="btn btn-outline-dark" v-if="status===2" @click="handleReset">Tap here to reset</button>
+      <button class="btn btn-outline-dark" v-if="status===2" @click="handleReset">Reset</button>
     </div>
   </div>
 </template>

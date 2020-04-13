@@ -42,8 +42,8 @@
         data: function() {
             return {
                 options: [
-                    {id: 1, title: 'Play Doctor Dart'},
-                    {id: 2, title: 'Design your own Doctor Dart'}
+                    {id: 1, title: 'Play one game'},
+                    {id: 2, title: 'Design your own'}
                 ],
                 selectedOption: -1
             }

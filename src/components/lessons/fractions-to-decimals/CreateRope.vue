@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-center text-success mb-4">Create a decimal rope</h3>
+    <h3 class="lesson-subheading">Create a decimal rope</h3>
+    <hr class="subheading-separator">
     <div id="ropeContainer" class="canvasContainer"></div>
     <!-- <div class="mb-5"></div>
     <div id="tagContainer" class="canvasContainer"></div>-->
@@ -11,7 +12,7 @@
         v-if="status===1"
         class="btn btn-outline-dark"
         @click="handleReset"
-      >Tap here for another rope length</button>
+      >New rope length</button>
     </div>
     <div
       class="alert alert-danger text-center app--alert"

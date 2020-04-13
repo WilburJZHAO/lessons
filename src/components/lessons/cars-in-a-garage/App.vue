@@ -2,7 +2,7 @@
     <div>
         <div v-if="selectedOption === -1">
             <app-title-static>
-                Cars In A Garage
+                Cars in a Garage
             </app-title-static>
             <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
                 <app-options :options="options" @selectOption="selectedOption=$event"></app-options>
@@ -11,7 +11,7 @@
 
         <div class="container-fluid" v-else>
             <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-                <app-top-nav @backToMenu="selectedOption = $event">Cars In A Garage</app-top-nav>
+                <app-top-nav @backToMenu="selectedOption = $event">Cars in a Garage</app-top-nav>
             </transition>
 
             <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
@@ -46,8 +46,8 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'How Many Ways' },
-                    { id: 2, title: 'Parking Challenges' },
+                    { id: 1, title: 'How many ways?' },
+                    { id: 2, title: 'Parking challenges' },
                 ],
                 selectedOption: -1,
             }

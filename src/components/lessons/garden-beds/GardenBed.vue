@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Demonstration</h2>
+		<h3 class="lesson-subheading mt-4">Demonstration</h3>
+		<hr class="subheading-separator">
 		<div class="container mt-4 mb-5">
 			<div class="row">
 				<div class="col-6">
@@ -12,10 +13,10 @@
 							<div class="form-group row">
 								<label for="numTilesInput" class="col-sm-9 col-form-label"><b>Current</b> number of tiles:</label>
 								<div class="col-sm-3">
-									<input type="number" 
+									<input type="number"
 										v-model="numTiles"
 										class="form-control"
-										:disabled="isDisabled" 
+										:disabled="isDisabled"
 										id="numTilesInput">
 								</div>
 							</div>
@@ -24,7 +25,7 @@
 					<div class="row">
 						<div class="form-action">
 							<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-							<button type="button" class="btn btn-outline-success mr-3 btn-lg" @click="addTile" :disabled="isFinished">Add Tile</button>
+							<button type="button" class="btn btn-outline-success mr-3 btn-lg" @click="addTile" :disabled="isFinished">Add tile</button>
 						</div>
 					</div>
 					<div class="row p-3 justify-content-center">
@@ -59,7 +60,7 @@
 
 <script>
 	/* eslint-disable */
-	import { 
+	import {
 		// getRandomNum
 		addNextTile,
 		drawNextCanvas
@@ -104,7 +105,7 @@
 				addNextTile("yellow", canvas, this);
 			},
 
-			//This function resets the plant to a new value and removes all the tiles from the canvas. 
+			//This function resets the plant to a new value and removes all the tiles from the canvas.
 			reset(){
 				//store the value in the table
 				if (this.numTiles != 0){

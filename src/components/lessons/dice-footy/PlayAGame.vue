@@ -1,11 +1,13 @@
 <template>
 	<div>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
+			<h3 class="lesson-subheading">Play a game of football</h3>
+			<hr class="subheading-separator">
 			<div class="row">
 				<div class="col-12 col-md-6">
 					<div class="form-group">
 						<label for="team-name-a">Enter team name</label>
-						<input 
+						<input
 							type="text"
 							class="form-control"
 							id="team-name-a"
@@ -36,7 +38,7 @@
 							</tr>
 							<tr>
 								<th class="table-warning">Total</th>
-								<td class="table-warning" 
+								<td class="table-warning"
 									v-for="(number, indexBall) in teamANumberInEachBall"
 									:key="indexBall">
 									{{ number }}
@@ -54,7 +56,7 @@
 				<div class="col-12 col-md-6">
 					<div class="form-group">
 						<label for="team-name-b">Enter team name</label>
-						<input 
+						<input
 							type="text"
 							class="form-control"
 							id="team-name-b"
@@ -65,7 +67,7 @@
 						<div class="badge badge-danger"
 							:style="{visibility: teamBWinsTime > 0 ? 'visible' : 'hidden'}"
 						>Wins: {{ teamBWinsTime }}</div>
-					</div>	
+					</div>
 					<div class="app--scroetable">
 						<table class="table">
 							<tr>
@@ -85,7 +87,7 @@
 							</tr>
 							<tr>
 								<th class="table-warning">Total</th>
-								<td class="table-warning" 
+								<td class="table-warning"
 									v-for="(number, indexBall) in teamBNumberInEachBall"
 									:key="indexBall">
 									{{ number }}
@@ -101,8 +103,8 @@
 					</div>
 				</div>
 				<div class="col-12 app--action text-center mt-3">
-					<button 
-						class="btn btn-outline-success" 
+					<button
+						class="btn btn-outline-success"
 						v-if="!isStart"
 						@click="() => { this.isStart = true; }"
 					>OK</button>
@@ -111,21 +113,21 @@
 						v-if="isStart && !isEnd && demoAutoOption==='0'"
 						@click="handleRollDice"
 					>
-						{{ isChangeRule ? "Tap here to roll both dice" : "Tap here to roll first dice for goals"}}
+						{{ isChangeRule ? "Roll both dice" : "Roll first dice for goals"}}
 					</button>
-					<button 
+					<button
 						class="btn btn-outline-success"
 						v-if="isStart && !isEnd && demoAutoOption === '1'"
 						@click="handleToggleTimer"
 					>
-						{{ !isAutoStart ? "Tap here to begin" : (timer ? "Tap here to pause" : "Tap here to resume") }}
+						{{ !isAutoStart ? "Start" : (timer ? "Pause" : "Resume") }}
 					</button>
 					<button
 						class="btn btn-outline-success"
 						v-if="isStart && isEnd"
 						@click="handleReset"
 					>Reset</button>
-					<app-demo-auto-option class="mt-1" v-if="!isEnd" @changeOption="demoAutoOption=$event"></app-demo-auto-option>	
+					<app-demo-auto-option class="mt-1" v-if="!isEnd" @changeOption="demoAutoOption=$event"></app-demo-auto-option>
 				</div>
 				<div class="col-12 text-danger text-center mt-2">
 					<p v-if="isStart && !isEnd">{{ whoseTurn === 1 ? teamNameB+"'s turn"  : teamNameA+"'s turn" }}</p>
@@ -205,7 +207,7 @@ export default {
 		teamBNumberInEachBall() {	// Team B's total number of balls in one quarter
 			return fillArray(this.teamBNumberInEachBallArr, 2);
 		},
-		teamATotalScore() {	// 
+		teamATotalScore() {	//
 			return sumArray(this.teamAScoreInQuarterArr);
 		},
 		teamBTotalScore() {
@@ -229,25 +231,25 @@ export default {
 	},
 	watch: {
 		demoAutoOption(value) {
-			if(value === '0' && this.timer) {				
+			if(value === '0' && this.timer) {
 				clearInterval(this.timer);
-				this.timer = null; 
+				this.timer = null;
 			}
 		},
 		isEnd(value) {
 			if(value=== true && this.timer) {
 				clearInterval(this.timer);
-				this.timer = null; 
+				this.timer = null;
 			}
 		}
 	},
 	methods: {
 		changeTurn() {		// Change turn
-			if(this.whoseTurn === 0) { 
+			if(this.whoseTurn === 0) {
 				this.whoseTurn = 1;
 				return;
 			}
-			if(this.whoseTurn === 1) { 
+			if(this.whoseTurn === 1) {
 				this.whoseTurn = 0;
 				return;
 			}
@@ -264,19 +266,19 @@ export default {
 			}
 			if(this.teamATotalScore > this.teamBTotalScore) {
 				this.teamAWinsTime++;
-			} 
+			}
 			if(this.teamBTotalScore > this.teamATotalScore) {
 				this.teamBWinsTime++;
 			}
 		},
 		calculateScoreInQuarter() {	// Calculate score in each quarter
 			if(this.whoseTurn == 0) {
-				const scoreInQuarter = 
+				const scoreInQuarter =
 					6*this.teamADiceArr[0] + this.teamADiceArr[1];
 					this.teamAScoreInQuarterArr.push(scoreInQuarter);
 			}
 			if(this.whoseTurn == 1) {
-				const scoreInQuarter = 
+				const scoreInQuarter =
 					6*this.teamBDiceArr[0] + this.teamBDiceArr[1];
 					this.teamBScoreInQuarterArr.push(scoreInQuarter);
 			}
@@ -385,9 +387,9 @@ export default {
 			}
 		},
 		handleReset() {
-			this.isEnd = false;  
-			this.whoseTurn = 0; 
-			this.demoAutoOption = "0"; 
+			this.isEnd = false;
+			this.whoseTurn = 0;
+			this.demoAutoOption = "0";
 			this.teamAScoreArr = [];
 			this.teamBScoreArr = [];
 			this.teamAScoreInQuarterArr = [];

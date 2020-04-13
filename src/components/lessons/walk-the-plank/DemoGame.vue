@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-3">Demonstration game: Plank length five each way</h3>
+    <h3 class="lesson-subheading">Demonstration game: Plank length five each way</h3>
+    <hr class="subheading-separator">
     <app-game-table
       :plankLength="plankLength"
       :turns="turns"
@@ -74,23 +75,23 @@
         class="btn btn-outline-success"
         @click="handleRollDirection"
         v-if="step===0 && !result"
-      >Tap here to roll for direction</button>
+      >Roll dice for direction</button>
       <button
         class="btn btn-outline-success"
         @click="handleRollWalk"
         v-if="step===1 && !result"
-      >Tap here to roll the walk</button>
+      >Roll dice for the walk</button>
       <button
         class="btn btn-outline-success"
         @click="handleWalkPlank"
         :disabled="isWalking"
         v-if="step===2 && !result"
-      >Tap here to walk the plank</button>
+      >Walk the plank</button>
       <button
         class="btn btn-outline-success"
         @click="handleNextTurn"
         v-if="step===3 && !result"
-      >Tap here for next turn</button>
+      >Go to next turn</button>
       <button class="btn btn-outline-dark" @click="handleReset" v-if="result">Reset</button>
     </div>
   </div>

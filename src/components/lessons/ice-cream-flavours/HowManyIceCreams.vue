@@ -1,9 +1,8 @@
 <template>
 	<div class="container mt-4 mb-5">
+		<h3 class="lesson-subheading">How many ice creams can be made?</h3>
+		<hr class="subheading-separator">
 		<div class="app--form-title" v-if="!finishInput">
-			<h4 class="text-success text-center mb-4">
-				Ice Cream Flavours
-			</h4>
 			<form @submit.prevent="handleNumberInput">
 				<div class="form-group row">
 					<label for="flavour-input" class="col-sm-6">
@@ -18,7 +17,7 @@
 							min="2"
 							max="6"
 						>
-						<div class="badge badge-danger mt-2" 
+						<div class="badge badge-danger mt-2"
 							v-bind:style="{visibility: isValidNumberOfFlavours ? 'hidden' : 'visible' }">
 							Invalid input
 						</div>
@@ -38,7 +37,7 @@
 							min="2"
 							max="6"
 						>
-						<div class="badge badge-danger mt-2" 
+						<div class="badge badge-danger mt-2"
 							v-bind:style="{visibility: isValidNumberOfScoops ? 'hidden' : 'visible' }">
 							Invalid input
 						</div>
@@ -47,7 +46,7 @@
 
 				<div class="form-group form-check">
 					<input type="checkbox" class="form-check-input" id="allowRepeat" v-model="allowRepeat">
-					<label for="allowRepeat" class="form-check-label">Repeat allowed</label>
+					<label for="allowRepeat" class="form-check-label">Repeats allowed</label>
 				</div>
 
 				<div class="form-action text-center">
@@ -83,26 +82,26 @@ export default {
 	},
 	watch: {
 		numberOfFlavours: function(value) {	// Validate numberOfFlavours
-			let numberToTest = Number(value); 
-			if(!value || 
-				(Number.isInteger(numberToTest) && 
+			let numberToTest = Number(value);
+			if(!value ||
+				(Number.isInteger(numberToTest) &&
 				numberToTest >= 2 &&
 				numberToTest <= 6) ) {
 					return this.isValidNumberOfFlavours = true;
 				} else {
 					return this.isValidNumberOfFlavours = false;
-				}			
+				}
 		},
 		numberOfScoops: function(value) {	// Validate numberOfScoops
 			let numberToTest = Number(value);
-			if(!value || 
-				(Number.isInteger(numberToTest) && 
+			if(!value ||
+				(Number.isInteger(numberToTest) &&
 				numberToTest >= 2 &&
 				numberToTest <= 6) ) {
 					return this.isValidNumberOfScoops = true;
 				} else {
 					return this.isValidNumberOfScoops = false;
-				}	
+				}
 		}
 	},
 	methods: {

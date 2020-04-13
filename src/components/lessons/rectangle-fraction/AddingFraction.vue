@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Adding Fractions</h3>
+    <h3 class="lesson-subheading">Adding fractions</h3>
+    <hr class="subheading-separator">
 
     <div style="display: flex; flex-direction: row; margin-left: 10%">
       <div>
@@ -22,7 +23,7 @@
                 class="btn btn-outline-success"
                 id="resetBt"
               >
-                Tap here for new question
+                New question
               </button>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </td>
@@ -108,7 +109,7 @@
               v-if="isFinal2&&!finished"
               class="btn btn-outline-success"
             >
-              reset
+              Reset
             </button>
             <div style="margin-top: 5%"></div>
 

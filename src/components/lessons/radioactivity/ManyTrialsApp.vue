@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Many trials</h2>
 		<div class="container mt-4 mb-5">
 			<div class="row justify-content-center" id="canvas-container-graph">
 				<canvas id="app-canvas-graph"></canvas>
@@ -8,23 +7,23 @@
 			<div class="row p-3 m-auto">
 				<div class="col-sm-6 app--action">
 					<div v-if="showStart">
-						<button v-if="isAuto" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to begin</button>
-						<button v-else id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here for Year 1</button>
+						<button v-if="isAuto" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
+						<button v-else id="startButton" type="button" class="btn btn-outline-success" @click="start">Go to year 1</button>
 					</div>
 					<div v-if="!showStart">
 						<div v-if="!isFinished">
 							<div v-if="isAuto">
 								<div v-if="showHalfWay">
-									<button type="button" class="btn btn-outline-success" @click="showHalfWay=!showHalfWay">Just over half-way. Tap here to continue</button>
+									<button type="button" class="btn btn-outline-success" @click="showHalfWay=!showHalfWay">Just over half-way, continue</button>
 								</div>
 								<div v-else>
-									<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Tap here to pause</button>
-									<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Tap here to resume</button>
+									<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Pause</button>
+									<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Resume</button>
 								</div>
 							</div>
 							<div v-else>
-								<button type="button" class="btn btn-outline-success" @click="showHalfWay=!showHalfWay" v-if="showHalfWay">Just over half-way. Tap here to continue</button>
-								<button type="button" class="btn btn-outline-success" @click="nextStage" v-else>Tap here for next game</button>
+								<button type="button" class="btn btn-outline-success" @click="showHalfWay=!showHalfWay" v-if="showHalfWay">Just over half-way, continue</button>
+								<button type="button" class="btn btn-outline-success" @click="nextStage" v-else>Proceed one year</button>
 							</div>
 						</div>
 						<div v-else>
@@ -41,7 +40,7 @@
 						<p class="alert alert-info mt-1">Finished</p>
 					</div>
 				</div>
-				
+
 				<div class="col-sm-6 table-container">
 					<table class="table">
 						<tr>
@@ -74,7 +73,7 @@
 <script>
 /* eslint-disable */
 import Dice from './Dice.vue';
-import { 
+import {
 	drawInitialGraph,
 	rerollAtoms,
 	getRandomNumber,
@@ -251,10 +250,10 @@ export default {
 		nextStage(){
 			//update variables for current round/year
 			this.currentYear += 1;
-			
+
 			//generate the random values for the atoms
 			rerollAtoms(this);
-			
+
 			//generating the dice roll
 			this.diceRoll = getRandomNumber(0,this.trialInputs.probDecay);
 
@@ -262,7 +261,7 @@ export default {
 			const canvasGraph = document.querySelector('#app-canvas-graph');
 			removeDecayedAtoms(canvasGraph, this);
 		},
-		//This function initialises random numbers for all the 100 
+		//This function initialises random numbers for all the 100
 		start(){
 			//remove the Start button
 			this.showStart = false;

@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-4">Run some trials</h3>
+    <h3 class="lesson-subheading">Run some trials</h3>
+    <hr class="subheading-separator">
     <app-run-trials-app
       v-if="trialNumber"
       :trialNumber="trialNumber"

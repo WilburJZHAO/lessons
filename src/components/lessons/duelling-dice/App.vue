@@ -50,8 +50,8 @@
             return {
                 options: [
                     { id: 1, title: 'Demonstration' },
-                    { id: 2, title: 'Many Trials' },
-                    { id: 3, title: 'Change the Dice Faces' },
+                    { id: 2, title: 'Many trials' },
+                    { id: 3, title: 'Change the dice faces' },
                 ],
                 selectedOption: -1,
                 gameRule: {

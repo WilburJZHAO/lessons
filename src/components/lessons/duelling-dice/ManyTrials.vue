@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="text-center text-success mb-4">Many trials</h3>
+        <h3 class="lesson-subheading">Many trials</h3>
+        <hr class="subheading-separator">
         <div v-if="!isSet" class="container">
             <div class="text-center">
                 <div class="row">
@@ -14,7 +15,7 @@
             </div>
             <div style="height: 20px"></div>
             <div style="margin-left: 10%">
-                <label for="description" class="col-sm-4" id="description">Select your dice(2, 3, or 4): </label>
+                <label for="description" class="col-sm-4" id="description">Select your dice (2, 3, or 4): </label>
             </div>
             <div style="margin-left: 12%">
                 <div class="col-sm-12">
@@ -33,7 +34,7 @@
                     <input type="checkbox" @click="diceChoose('black')">&nbsp;
                     <label class="theBlack">Black</label>
                 </div>
-                <button class="btn btn-outline-success" style="margin-top:10px" @click="startGame()">Start Game</button>
+                <button class="btn btn-outline-success" style="margin-top:10px" @click="startGame()">Start game</button>
                 <label id="outOfRange" style="color: red; margin-left: 10px"></label>
             </div>
         </div>
@@ -97,19 +98,19 @@
         </div>
         <div class="text-center" v-if="isSet">
             <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="startManually">
-                {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                {{ isStart ? "Next game" : "First game" }}
             </button>
             <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                 {{
                 !isAutoStart
-                ? "Tap here to begin"
+                ? "Start"
                 : timer
-                ? "Tap here to pause"
-                : "Tap here to resume"
+                ? "Pause"
+                : "Resume"
                 }}
             </button>
             <button class="btn btn-outline-dark" v-if="finished" @click="reset()">
-                Click here to reset
+                Reset
             </button>
             <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
         </div>

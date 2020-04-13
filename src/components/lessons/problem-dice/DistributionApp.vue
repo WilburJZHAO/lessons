@@ -3,7 +3,7 @@
 		<div class="app--graph mb-3">
 			<div class="app--dice-graph"></div>
 			<div class="app--diff-graph">
-				<app-diff-graph 
+				<app-diff-graph
 					:diceDiffArr="diceDiffArr"
 					:trialNumber="trialNumber"
 				></app-diff-graph>
@@ -55,28 +55,28 @@
 					<!-- {{ playAWinsNumber }}&nbsp;&nbsp;{{ playAWinsPercent + '%' }}<br>
 					{{ playBWinsNumber }}&nbsp;&nbsp;{{ playBWinsPercent + '%' }} -->
 				</div>
-				
+
 			</div>
 		</div>
 
 		<div class="app--action">
-			<button 
+			<button
 				class="btn btn-outline-success"
 				v-if="demoAutoOption === '1' && isEnd === false"
 				@click="handleToggleTimer"
 			>
 				{{isStart ? (
 					timer ? "Tap here to pause" : "Tap here to resume"
-				)  :"Tap here to begin auto" }}
+				)  :"Start auto" }}
 			</button>
-			<button 
+			<button
 				class="btn btn-outline-success"
 				v-if="demoAutoOption === '0' && isEnd === false"
 				@click="handleNextMove"
 			>
-				Tap here for next move
+				Next move
 			</button>
-			<button 
+			<button
 				class="btn btn-outline-dark"
 				v-if="isEnd===true"
 				@click="handleReset"
@@ -84,8 +84,8 @@
 				Reset
 			</button>
 			<app-demo-auto-option
-				class="mt-1" 
-				@changeOption="demoAutoOption=$event" 
+				class="mt-1"
+				@changeOption="demoAutoOption=$event"
 				:option="demoAutoOption">
 			</app-demo-auto-option>
 		</div>
@@ -117,7 +117,7 @@ export default {
 	},
 	computed: {
 		timerInterval() {
-			if(!this.trialNumber) return 600; 
+			if(!this.trialNumber) return 600;
 			if(this.trialNumber <= 100) {
 				return 300
 			} else if(this.trialNumber <= 1000) {
@@ -167,7 +167,7 @@ export default {
 			this.diceDiffArr = [0, 0, 0, 0, 0, 0];
 			this.triedNumber = 0;
 			this.dice1 = null;
-			this.dice2 = null; 
+			this.dice2 = null;
 			this.isStart = false;
 			this.isEnd = false;
 		}
@@ -191,7 +191,7 @@ export default {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-} 
+}
 .app--dice-diff-label, .app--player-label, .app--game-label {
 	flex: 1;
 	text-align: right;
@@ -201,7 +201,7 @@ export default {
 	flex: 3;
 	display: flex;
 	justify-content: space-between;
-} 
+}
 .app--game-data-winning {
 	flex: 1;
 	padding: 0 15px;
@@ -219,7 +219,7 @@ export default {
 	padding-right: 10px;
 }
 .app--player-data-single {
-	border: 1px solid #333; 
+	border: 1px solid #333;
 }
 .app--player-set {
 	cursor: pointer;
@@ -234,6 +234,6 @@ export default {
 @media only screen and (max-width: 425px)  {
 	.app--hide-wording {
 		display: none;
-	}	
+	}
 }
 </style>

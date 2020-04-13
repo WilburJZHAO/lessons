@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-3 mb-5">
-        <h3 class="text-center text-success mb-4">Enter your number and search range</h3>
+      <h3 class="lesson-subheading">Enter your number and search range</h3>
+      <hr class="subheading-separator">
 
         <div style="display: flex; flex-direction: row">
             <div>
@@ -50,19 +51,19 @@
                 <div v-if="pressOK" id="controller" style="display:flex; flex-direction: row; margin-left: 20px; margin-top: 5px;">
                     <div style="margin-left: 25%">
                         <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="startManually">
-                            {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                            {{ isStart ? "Next game" : "First game" }}
                         </button>
                         <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                             {{
                             !isAutoStart
-                            ? "Tap here to begin"
+                            ? "Start"
                             : timer
-                            ? "Tap here to pause"
-                            : "Tap here to resume"
+                            ? "Pause"
+                            : "Resume"
                             }}
                         </button>
                         <button class="btn btn-outline-dark" v-if="finished" @click="reset()">
-                            Click here to reset
+                            Reset
                         </button>
                         <app-demo-auto-option class="mt-1" @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
                     </div>

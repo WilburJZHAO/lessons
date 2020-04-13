@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Make a beetle</h3>
+    <h3 class="lesson-subheading">Make a beetle</h3>
+    <hr class="subheading-separator">
     <div style="height: 10px"></div>
 
     <div class="row">
@@ -96,7 +97,7 @@
               @click="rollDice"
             >
               {{
-                isStart ? "Tap here for next game" : "Tap here for first game"
+                isStart ? "Roll dice" : "Roll dice"
               }}
             </button>
             <button
@@ -106,10 +107,10 @@
             >
               {{
                 !isAutoStart
-                  ? "Tap here to begin"
+                  ? "Start"
                   : timer
-                  ? "Tap here to pause"
-                  : "Tap here to resume"
+                  ? "Pause"
+                  : "Resume"
               }}
             </button>
             <button
@@ -117,7 +118,7 @@
               v-if="finished"
               @click="reset()"
             >
-              Click here to reset</button
+              Reset</button
             >&nbsp;&nbsp;&nbsp;
             <app-demo-auto-option
               class="mt-1"

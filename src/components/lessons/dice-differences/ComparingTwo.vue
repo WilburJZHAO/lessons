@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div class="mt-3">
+        <h3 class="lesson-subheading">Comparing two strategies</h3>
+        <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="top">
                 <div class="row justify-content-end">
@@ -160,7 +162,7 @@
             </div>
             <div v-else class="top" style="margin-top: 20px; border: none">
                 <div class="row justify-content-center" style="margin-top: 20px;">
-                    <button  class="btn btn-outline-success" @click="Reset">Finished! Tap here to reset</button>
+                    <button  class="btn btn-outline-success" @click="Reset">Finished! Reset</button>
                 </div>
             </div>
         </div>

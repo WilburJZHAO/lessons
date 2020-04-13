@@ -1,6 +1,7 @@
 <template>
   <div class="mt-3">
-    <h3 class="text-success text-center mb-4">Testing theories</h3>
+    <h3 class="lesson-subheading">Testing theories</h3>
+    <hr class="subheading-separator">
 
     <div v-if="status === 0" class="container">
       <div class="row">
@@ -37,8 +38,8 @@
           >
             {{
             status === 1
-            ? "Tap here for first game"
-            : "Tap here for next game"
+            ? "Run first game"
+            : "Run next game"
             }}
           </button>
           <button
@@ -48,17 +49,17 @@
           >
             {{
             timer
-            ? "Tap here to pause"
+            ? "Pause"
             : status === 1
-            ? "Tap here to begin"
-            : "Tap here to resume"
+            ? "Start"
+            : "Resume"
             }}
           </button>
           <button
             class="btn btn-outline-success"
             @click="handleMoreTrials"
             v-if=" numberOverflow === true"
-          >Tap here for more trials</button>
+          >Run more trials</button>
           <div class="text-center mt-2">
             <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
           </div>

@@ -2,6 +2,8 @@
     <div>
         <transition appear appear-class="app-appear" appear-active-class="app-appear-active">
             <div class="container mt-4 mb5">
+                <h3 class="lesson-subheading">Chances of a random pick given a middle number</h3>
+                <hr class="subheading-separator">
                 <div class="row">
                     <!-- Left part -->
                     <div class="col-12 col-md-6 app--lesson-left">
@@ -9,7 +11,7 @@
                             <h5 class="text-success">
                                 Drag number tiles to the middle to test.
                             </h5>
-                            <h5 class="text-success">{{SolutionsSentence}}:{{countOfZero}} in {{countOfFoundChange}} picks({{percentage}}%)
+                            <h5 class="text-success">{{SolutionsSentence}}: {{countOfZero}} in {{countOfFoundChange}} picks ({{percentage}}%)
                             </h5>
 
                             <table>
@@ -189,7 +191,7 @@
 
                 setRes : new Set(),
 
-                SolutionsSentence:"No Solution found yet",
+                SolutionsSentence:"No solution found yet",
 
                 percentage: 0,
 

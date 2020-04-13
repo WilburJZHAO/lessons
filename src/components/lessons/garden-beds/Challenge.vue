@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Challenge</h2>
+		<h3 class="lesson-subheading mt-4">Challenge</h3>
+		<hr class="subheading-separator">
 		<div class="container mt-4 mb-5">
 			<div class="row">
 				<div class="app--action mt-3 col-6">
@@ -12,7 +13,7 @@
 							<div class="form-group row">
 								<label for="numTilesInput" class="col-sm-9 col-form-label"><b>Guess</b> final number of tiles:</label>
 								<div class="col-sm-3">
-									<input type="number" 
+									<input type="number"
 										v-model="numTilesInput"
 										class="form-control"
 										id="numTilesInput"
@@ -22,10 +23,10 @@
 						</form>
 					</div>
 
-					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to start</button>
+					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 					<div class="row" v-if="!showStart">
 						<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-						<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="submitInput" :disabled="isSubmitted">Submit Guess</button>
+						<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="submitInput" :disabled="isSubmitted">Submit guess</button>
 					</div>
 					<div class="row p-3 justify-content-center">
 						<p v-bind:class="{'alert mr-3':true, 'alert-success':(isCorrect), 'alert-danger':(!isCorrect)}" v-if="isFinished"><b>{{guessRes}}</b></p>
@@ -62,7 +63,7 @@
 
 <script>
 /* eslint-disable */
-import { 
+import {
 	// getRandomNum
 	addNextTile,
 	drawNextCanvas,
@@ -164,7 +165,7 @@ export default {
 			addNextTile(colour, canvas, this);
 		},
 
-		//This function resets the plant to a new value and removes all the tiles from the canvas. 
+		//This function resets the plant to a new value and removes all the tiles from the canvas.
 		start(){
 			scrollToRecent();
 			//reset the variables

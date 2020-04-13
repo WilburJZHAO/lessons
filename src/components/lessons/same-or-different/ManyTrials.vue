@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Many trials</h2>
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3 mb-5">
+			<h3 class="lesson-subheading">Many trials</h3>
+			<hr class="subheading-separator">
 			<div v-if="showInputs" class="row justify-content-center">
 				<form>
 					<div class="app--enter-number form-group row mt-5">
@@ -17,11 +18,11 @@
 							Enter number of red blocks(1-{{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
-							<input type="number" 
+							<input type="number"
 								v-model="numRedBlocks"
 								class="form-control"
 								min="1"
-								max="100" 
+								max="100"
 								id="numRedBlocks">
 						</div>
 					</div>
@@ -30,17 +31,17 @@
 							Enter number of blue blocks(1-{{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
-							<input type="number" 
+							<input type="number"
 								v-model="numBlueBlocks"
 								class="form-control"
 								min="1"
-								max="100" 
+								max="100"
 								id="numBlueBlocks">
 						</div>
 					</div>
 					<p v-if="showInputError" class="alert mt-3 alert-danger">Please enter a whole number between {{minBlockInput}} to {{maxBlockInput}} for number of blocks and {{minBlockInput}} to {{maxTrialInput}} for number of trials.</p>
 					<div class="form-action col-6 offset-sm-8 offset-4 mt-3">
-						<button 
+						<button
 							class="btn btn-outline-success btn-lg"
 							@click="checkInputs"
 						>OK</button>
@@ -81,13 +82,13 @@
 
 					<div class="app--action mt-4">
 						<div v-if="!trialComplete">
-							<button v-if="!isAuto" type="button" class="btn btn-outline-success" @click="start">Tap here for next game</button>
+							<button v-if="!isAuto" type="button" class="btn btn-outline-success" @click="start">Next game</button>
 							<div v-if="isAuto">
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Tap here to pause</button>
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Tap here to resume</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Pause</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Resume</button>
 							</div>
 						</div>
-						<button type="button" class="btn btn-outline-dark mr-3" @click="resetTrial" v-if="trialComplete">Tap here to reset</button>
+						<button type="button" class="btn btn-outline-dark mr-3" @click="resetTrial" v-if="trialComplete">Reset</button>
 						<div class="app--demo-auto-option mt-2">
 							<div class="form-check form-check-inline">
 								<input type="radio" class="form-check-input" id="demo" name="demoOption" value= "demo" v-model="mode">
@@ -110,7 +111,7 @@
 
 <script>
 /* eslint-disable */
-import { 
+import {
 	drawNextTwoBlocks,
 	drawNextCanvas
 } from './utils';
@@ -257,7 +258,7 @@ export default {
 			}
 		},
 
-		//This function resets the plant to a new value and removes all the tiles from the canvas. 
+		//This function resets the plant to a new value and removes all the tiles from the canvas.
 		start(){
 			if (this.blocks.length == 0){
 				const canvas = document.querySelector('#app-canvas');
@@ -266,7 +267,7 @@ export default {
 
 			//draw two blocks
 			drawNextTwoBlocks(this);
-			
+
 			//update the stats when finished the round
 			if (this.takenBlocks[0].colour === this.takenBlocks[1].colour)
 				this.numSame += 1;

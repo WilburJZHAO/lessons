@@ -1,18 +1,17 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success mb-4">
-			Select your dice face rules
-		</h3>
+		<h3 class="lesson-subheading">Change the rules</h3>
+		<hr class="subheading-separator">
 		<form @submit="handleSetRule">
-		<div class="app--set-rules"> 
+		<div class="app--set-rules">
 			<div class="form-group row">
 				<label class="col-md-6" for="number-dice-faces">
 					Enter the number of dice faces (2-12)
 				</label>
 				<div class="col-md-6">
-					<input 
-						type="number" 
-						id="number-dice-faces" 
+					<input
+						type="number"
+						id="number-dice-faces"
 						class="form-control"
 						v-model="gameRule.diceFaces"
 						min="2"
@@ -24,7 +23,7 @@
 					Enter the number of boxes (2-5)
 				</label>
 				<div class="col-md-6">
-					<input 
+					<input
 						type="number"
 						id="number-boxes"
 						class="form-control"
@@ -32,22 +31,22 @@
 						min="2"
 						max="5" >
 				</div>
-			</div> 
+			</div>
 		</div>
 		<div class="app--select-dice-rules" v-if="numberOfBoxes >= 2 && numberOfBoxes <= 5">
 			<div v-for="box in numberOfBoxes" :key="box" class="row p-1">
 				<div class="col-sm-2 app--rule-number text-info font-weight-bold"> {{ gameRule.rule[box] && sortedRule[box].join(',') }} </div>
 				<div class="col-sm-10 app--select-one-dice-rule">
 					<div class="badge badge-danger mr-3">{{ boxNames[box-1] }}</div>
-					<div 
-						v-for="dice in numberOfDiceFaces" 
-						:key="dice" 
+					<div
+						v-for="dice in numberOfDiceFaces"
+						:key="dice"
 						class="form-check app--form-check mr-3">
 						<label :for="box + '-' + dice">
-							<input 
-								type="radio" 
-								:ref="box + '-' + dice" 
-								:id="box + '-' + dice" 
+							<input
+								type="radio"
+								:ref="box + '-' + dice"
+								:id="box + '-' + dice"
 								:name="'dice'+dice"
 								class="form-check-input"
 								:value="box"
@@ -55,17 +54,17 @@
 								:data-box="box"
 								:checked="gameRule.rule[box] && gameRule.rule[box].indexOf(dice)>=0"
 								@change="handleCheckBox">
-							{{ dice }}		
-						</label> 
+							{{ dice }}
+						</label>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 		<div class="text-center">
 			<div :style="{ visibility: validation.isValid ? 'hidden':'visible'}" class="badge badge-danger">
 				{{ validation.text }}
-			</div> 
+			</div>
 		</div>
 		<div class="app--actions p-3">
 			<button class="btn btn-outline-success" type="submit">OK</button>
@@ -136,7 +135,7 @@ export default {
 				}
 			}
 		},
-		numberOfBoxes(value) {	
+		numberOfBoxes(value) {
 			// 如果number of boxes的值增加， 则gameRule.rule对象要相应地增加一条新数组。
 			// 相反，如果number of boxex的值减少，则gameRule.rule对象要相应将末尾的数组删除。
 			// console.log(value, prevValue);
@@ -165,7 +164,7 @@ export default {
 					delete this.gameRule.rule[ruleLength-i+1];
 					this.gameRule.rule = {...this.gameRule.rule};
 				}
-			} 
+			}
 		}
 	},
 	methods: {
@@ -174,7 +173,7 @@ export default {
 		//			1: [1],
 		//			2: [2, 3],
 		//			3: [4, 5, 6]
-		//		}; 
+		//		};
 		// getRuleLength() will return 3.
 			const keys = Object.keys(this.gameRule.rule);
 			// console.log(keys);
@@ -212,7 +211,7 @@ export default {
 			e.preventDefault();
 			// for(let i=1; i<=this.numberOfDiceFaces; i++) {
 				// console.log(i);
-				// console.log(e.target['dice'+i].value); 
+				// console.log(e.target['dice'+i].value);
 			// }
 			if(!this.checkRule()) {
 				return;
@@ -286,7 +285,7 @@ export default {
 .app--select-one-dice-rule {
 	display: flex;
 	align-items: center;
-} 
+}
 .app--form-check {
 	transform: translateY(15%);
 }

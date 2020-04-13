@@ -54,7 +54,7 @@
           <button class="btn btn-outline-dark" @click="handlePrintGraph" v-if="hasPrint">Print</button>-->
         </div>
         <div v-if="status === 1" class="text-center">
-          <button class="btn btn-outline-dark" @click="handleNewCities">Tap here for new cities</button>
+          <button class="btn btn-outline-dark" @click="handleNewCities">New cities</button>
         </div>
       </div>
     </div>

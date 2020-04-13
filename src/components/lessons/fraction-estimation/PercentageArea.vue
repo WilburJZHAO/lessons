@@ -1,7 +1,8 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-success text-center mb-4">Percentage Area</h3>
-    <div class="row">
+    <h3 class="lesson-subheading">Percentage area</h3>
+    <hr class="subheading-separator">
+      <div class="row">
       <div class="col-md-3">
         <app-number-display
           v-if="percentageData"

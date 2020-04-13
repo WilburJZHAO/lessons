@@ -6,6 +6,8 @@
       appear-active-class="app-appear-active"
     >
       <div class="container mt-4 mb5">
+        <h3 class="lesson-subheading">Addition</h3>
+        <hr class="subheading-separator">
         <div class="row" style="max-width: 100%">
           <!-- Left part -->
           <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
@@ -138,7 +140,7 @@
                   class="btn btn-outline-success"
                   style="margin: auto; width: 110px"
                 >
-                  New Game
+                  New game
                 </button>
               </div>
             </div>

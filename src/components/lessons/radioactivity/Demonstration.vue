@@ -1,7 +1,8 @@
 <template>
 	<div>
-		<h2 class="text-success text-center">Demonstration</h2>
 		<div class="container mt-4 mb-5">
+			<h3 class="lesson-subheading">Demonstration</h3>
+			<hr class="subheading-separator">
 			<div class="row justify-content-center" id="canvas-container-atoms">
 				<canvas id="app-canvas-atoms"></canvas>
 			</div>
@@ -15,19 +16,19 @@
 					<p class="alert alert-danger" v-else>There are {{atomLeft}} atoms</p>
 				</div>
 				<div class="col-sm-3 app--action">
-					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Tap here to start</button>
+					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 					<div v-if="!showStart">
 						<div v-if="!isFinished">
 							<div v-if="isAuto">
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Tap here to pause</button>
-								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Tap here to resume</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="showPause">Pause</button>
+								<button type="button" class="btn btn-outline-success mr-3" @click="showPause=!showPause" v-if="!showPause">Resume</button>
 							</div>
 							<div v-else>
-								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-if="stage==1">Tap here to throw dice</button>
-								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-else>Tap here to continue</button>
+								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-if="stage==1">Roll dice</button>
+								<button type="button" class="btn btn-outline-success" @click="nextStage" :disabled="disableButton" v-else>Continue</button>
 							</div>
 						</div>
-						<div v-else><button type="button" class="btn btn-outline-dark" @click="reset" v-if="isFinished">Tap here to reset</button></div>
+						<div v-else><button type="button" class="btn btn-outline-dark" @click="reset" v-if="isFinished">Reset</button></div>
 					</div>
 					<div class="form-check form-check-inline">
 						<input type="radio" class="form-check-input" id="demo" name="demoOption" value= "demo" v-model="mode">
@@ -48,7 +49,7 @@
 <script>
 /* eslint-disable */
 import Dice from './Dice.vue';
-import { 
+import {
 	drawGrid,
 	drawGraph,
 	generateRandomValues,
@@ -178,7 +179,7 @@ export default {
 		nextStage(){
 			const canvasAtoms = document.querySelector('#app-canvas-atoms');
 			const canvasGraph = document.querySelector('#app-canvas-graph');
-			//there are 4 different stages for each year, 
+			//there are 4 different stages for each year,
 			//stage 0 for generating rand number for atoms
 			if (this.stage == 0){
 				//generate the random values for the atoms
@@ -206,11 +207,11 @@ export default {
 				this.currentYear += 1;
 			}
 		},
-		//This function initialises random numbers for all the 100 
+		//This function initialises random numbers for all the 100
 		start(){
 			//remove the Start button
 			this.showStart = false;
-			
+
 			//generate the random values for the atoms
 			const canvasAtoms = document.querySelector('#app-canvas-atoms');
 			const canvasGraph = document.querySelector('#app-canvas-graph');
@@ -226,7 +227,7 @@ export default {
 			this.showStart = true;
 			this.currentYear = 0;
 			this.showPause = false;
-			
+
 			//reset the variables
 			this.atoms.splice(0,this.atoms.length);
 

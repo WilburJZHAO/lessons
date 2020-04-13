@@ -1,14 +1,14 @@
 <template>
   <div>
     <div v-if="selectedOption === -1">
-      <app-title-static>Hunting For Stars</app-title-static>
+      <app-title-static>Hunting for Stars</app-title-static>
       <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
         <app-options :options="options" @selectOption="selectedOption = $event"></app-options>
       </transition>
     </div>
     <div class="container-fluid" v-else>
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-        <app-top-nav @backToMenu="selectedOption = $event">Hunting For Stars</app-top-nav>
+        <app-top-nav @backToMenu="selectedOption = $event">Hunting for Stars</app-top-nav>
       </transition>
 
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
@@ -33,7 +33,7 @@ export default {
   },
   data: function() {
     return {
-      options: [{ id: 1, title: "Start Hunting for Stars" }],
+      options: [{ id: 1, title: "Hunting for Stars" }],
       selectedOption: -1
     };
   }

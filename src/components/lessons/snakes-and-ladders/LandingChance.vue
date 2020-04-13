@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">What is the chance of landing on any square?</h3>
+    <h3 class="lesson-subheading">What is the chance of landing on any square?</h3>
+    <hr class="subheading-separator">
     <app-enter-trials-number v-if="trialNumber===null" @acceptTrialNumber="trialNumber=$event"></app-enter-trials-number>
     <div v-else>
       <div class="row">
@@ -33,12 +34,12 @@
                 v-if="demoAutoOption==='0' && !finished"
                 class="btn btn-outline-success"
                 @click="handlePlayOneGame"
-              >Tap here for one game</button>
+              >Play one game</button>
               <button
                 v-if="demoAutoOption==='1' && !finished"
                 class="btn btn-outline-success"
                 @click="handleToggleTimer"
-              >{{ timer ? 'Tap here to pause' : playedGames ===0 ? 'Tap here to begin' : 'Tap here to resume'}}</button>
+              >{{ timer ? 'Pause' : playedGames ===0 ? 'Start' : 'Resume'}}</button>
               <button v-if="finished" class="btn btn-outline-dark" @click="handleReset">Reset</button>
             </div>
             <div v-if="finished" class="text-danger text-center">Finished</div>

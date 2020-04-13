@@ -8,7 +8,7 @@
 		</app-lesson-title>
 		<div class="row mb-5">
 			<div class="col-12 col-md-3 col-sm-4 app--tally-table-container">
-				<app-tally-table 
+				<app-tally-table
 					:tallyTable="tallyTable"
 					:title="{col1: 'Goal', col2: 'Freq'}"
 				>
@@ -25,10 +25,10 @@
 		<div class="app--action text-center">
 			<h5 class="text-danger text-center" :style="{visibility: isEnd ? 'visible' : 'hidden' }">Finished</h5>
 			<button class="btn btn-outline-success" v-if="!isEnd && demoAutoOption==='0'" @click="handleSetNextGame">
-				{{ isStart ? "Tap here for next game" : "Tap here for first game"}}
+				{{ isStart ? "Play next game" : "Play first game"}}
 			</button>
 			<button class="btn btn-outline-success" v-if="!isEnd && demoAutoOption==='1'" @click="handleToggleTimer">
-				{{ !isAutoStart ? "Tap here to begin" : (timer ? "Tap here to pause" : "Tap here to resume") }}
+				{{ !isAutoStart ? "Start" : (timer ? "Pause" : "Resume") }}
 			</button>
 			<button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>
 			<app-demo-auto-option class="mt-1" @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>

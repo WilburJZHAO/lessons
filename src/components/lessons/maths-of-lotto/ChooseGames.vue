@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Choose other games</h3>
+    <h3 class="lesson-subheading">Choose other games</h3>
+    <hr class="subheading-separator">
     <div class="mt-3">
       <div>
         <app-selection-panel

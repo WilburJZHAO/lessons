@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Australian capital cities</h3>
+    <h3 class="lesson-subheading">Australian capital cities</h3>
+    <hr class="subheading-separator">
     <app-graph :selectedCities="auCapitalCities" :temperatureType="'fahren'"></app-graph>
 
     <div

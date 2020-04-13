@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-success text-center mb-4">Percentage Area</h3>
+    <h3 class="lesson-subheading">Decimal area</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-3">
         <app-number-display

@@ -1,8 +1,7 @@
 <template>
 	<div class="container mt-3 mb-5">
-		<h3 class="text-center text-success mb-4">
-			Cover the shape
-		</h3>
+		<h3 class="lesson-subheading">Cover the shape</h3>
+		<hr class="subheading-separator">
 		<div class="row">
 			<div class="col-sm-6 text-center mb-4">
 				<h5>Select Shape</h5>
@@ -33,14 +32,14 @@
 					</label>
 				</div>
 				<div class="text-center mt-4">
-					<button 
+					<button
 						class="btn btn-outline-success"
 						v-if="!shapeSelected"
 						@click="handleStartCreateNewShape">
-						Tap to create a new shape
+						Create a new shape
 					</button>
-					<button 
-						class="btn btn-outline-dark" 
+					<button
+						class="btn btn-outline-dark"
 						v-if="shapeSelected"
 						@click="handleClear">
 						Clear
@@ -48,19 +47,19 @@
 				</div>
 			</div>
 			<div class="col-sm-6 app--shape">
-				<div class="app--available-shape"> 
+				<div class="app--available-shape">
 					<app-square class="shape-to-move" v-if="shape==0" :id="1" :hasStyle="true" :display="1"></app-square>
 					<app-triangle class="shape-to-move" v-if="shape==1" :hasStyle="true" :type="'up'" :display="1"></app-triangle>
 					<app-triangle class="shape-to-move" v-if="shape==1" :hasStyle="true" :type="'down'" :display="1"></app-triangle>
 				</div>
 				<div class="app--cover-shape-container">
-					<app-shape-by-triangle 
-						v-if="shape=='1' && shapeSelected===true" 
-						:shapeData="shapeData.shape" 
+					<app-shape-by-triangle
+						v-if="shape=='1' && shapeSelected===true"
+						:shapeData="shapeData.shape"
 						@setTilesUsed="tilesUsed=$event"
 					></app-shape-by-triangle>
-					<app-shape-by-square 
-						v-if="shape=='0' && shapeSelected===true" 
+					<app-shape-by-square
+						v-if="shape=='0' && shapeSelected===true"
 						:shapeData="shapeData.shape"
 						@setTilesUsed="tilesUsed=$event" >
 					</app-shape-by-square>
@@ -71,16 +70,16 @@
 				</div>
 				<div v-if="shapeSelected && tilesUsed > 0 && tilesUsed < shapeData.totalTiles" class="alert alert-danger">
 					{{tilesUsed}} tile{{tilesUsed > 1 ? 's' : ''}} used
-				</div>	
+				</div>
 				<div v-if="shapeSelected && tilesUsed >0 && tilesUsed === shapeData.totalTiles" class="text-center">
 					<div class="alert alert-danger">
 						Correct! {{ shapeData.totalTiles }} tiles needed to cover the shape
 					</div>
 					<button class="btn btn-outline-success" @click="handleCreateNewShape">
-						Tap to create a new shape
+						Create a new shape
 					</button>
 				</div>
-			</div>			
+			</div>
 		</div>
 	</div>
 </template>
@@ -88,7 +87,7 @@
 <script>
 import interact from 'interactjs';
 import Square from './Square.vue';
-import Triangle from './Triangle.vue'; 
+import Triangle from './Triangle.vue';
 import ShapeByTriangle from './ShapeByTriangle.vue';
 import ShapeBySquare from './ShapeBySquare.vue';
 import squareData from './data/square';
@@ -98,7 +97,7 @@ import { pickRandomNumber } from './utils';
 export default {
 	components: {
 		appSquare: Square,
-		appTriangle: Triangle, 
+		appTriangle: Triangle,
 		appShapeByTriangle: ShapeByTriangle,
 		appShapeBySquare: ShapeBySquare
 	},
@@ -107,11 +106,11 @@ export default {
 			shape: 0,	// Shape slected, 0 - square, 1 - triangle
 			row: 3,
 			shapeSelected: false,
-			shapeData: null, 
+			shapeData: null,
 			tilesUsed: 0
 		}
 	},
-	computed: { 
+	computed: {
 	},
 	methods: {
 		setDraggable() {
@@ -127,7 +126,7 @@ export default {
 				onstart: this.handleOnDragStart,
 				onmove: this.handleOnDragMove,
 				onend: this.handleOnDragEnd
-			}); 
+			});
 		},
 		unsetDraggable() {
 			interact('.shape-to-move').unset();
@@ -153,7 +152,7 @@ export default {
 			target.setAttribute('data-x', x);
 			target.setAttribute('data-y', y);
 		},
-		handleOnDragEnd(e) {			
+		handleOnDragEnd(e) {
 			e.target.classList.remove('app--shape-selected');
 			e.target.style.webkitTransform =
 				e.target.style.transform =
@@ -161,35 +160,35 @@ export default {
 				e.target.removeAttribute('data-x');
 				e.target.removeAttribute('data-y');
 		},
-		handleClear() { 
-			this.shapeSelected = false; 
+		handleClear() {
+			this.shapeSelected = false;
 			this.unsetDraggable();
 			this.shapeData = {};
 			this.tileUsed = 0;
 			// this.shapeData.totalTiles = 0;
-		},		
+		},
 
 		handleStartCreateNewShape() {
 			this.createShape();
 			this.shapeSelected = true;
-			this.setDraggable(); 
+			this.setDraggable();
 		},
-		handleCreateNewShape() { 
+		handleCreateNewShape() {
 			this.createShape();
 			this.shapeSelected = true;
 			// this.tilesUsed = 0;
 		},
 		createShape() {
-			let randomNumber; 
+			let randomNumber;
 			if(this.shape === 0) {
 				randomNumber = pickRandomNumber(0, squareData.length);
 				this.shapeData = squareData[randomNumber];
-			} 
+			}
 			if(this.shape === 1) {
 				randomNumber = pickRandomNumber(0, triangleData.length);
 				// console.log(randomNumber);
 				this.shapeData = triangleData[randomNumber];
-			} 
+			}
 		}
 	},
 	mounted() {
@@ -216,7 +215,7 @@ export default {
 @media only screen and (max-width: 576px) {
 	.app--available-shape {
 		justify-content: center;
-	}	
+	}
 	.app--cover-shape-container {
 		justify-content: center;
 	}

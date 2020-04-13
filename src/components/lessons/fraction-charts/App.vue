@@ -46,8 +46,8 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'Two by Two Grid' },
-                    { id: 2, title: 'Three by Three Grid' },
+                    { id: 1, title: 'Two by two grid' },
+                    { id: 2, title: 'Three by three grid' },
                 ],
                 selectedOption: -1,
             }

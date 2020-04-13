@@ -1,8 +1,8 @@
 <template>
   <div class="mt-4 mb-5">
+    <h3 class="lesson-subheading">Play many matches</h3>
+    <hr class="subheading-separator">
     <h3 class="text-success text-center mb-4">
-      Play many games
-      <br />
       <small>{{ gameNumber * 2 }} innings</small>
     </h3>
     <div class="row">
@@ -93,14 +93,14 @@
         v-if="!isFinish && demoAutoOption=='0'"
         class="btn btn-outline-success"
         @click="handleNextGame"
-      >Tap here for next game</button>
+      >Play next game</button>
       <button
         v-if="!isFinish && demoAutoOption=='1'"
         class="btn btn-outline-success"
         @click="handleToggleTimer"
       >
-        {{ !isStart ? "Tap here to begin" :
-        ( timer ? 'Tap here to pause' : 'Tap here to resume' )
+        {{ !isStart ? "Start" :
+        ( timer ? 'Pause' : 'Resume' )
         }}
       </button>
       <button v-if="isFinish" class="btn btn-outline-dark" @click="handleReset">Reset</button>

@@ -47,7 +47,7 @@
             return {
                 options: [
                     { id: 1, title: 'Demonstration' },
-                    { id: 2, title: 'Fast Game' },
+                    { id: 2, title: 'Fast game' },
                 ],
                 selectedOption: -1,
             }

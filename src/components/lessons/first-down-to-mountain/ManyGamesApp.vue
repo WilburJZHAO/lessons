@@ -14,12 +14,12 @@
         class="btn btn-outline-success"
         v-if="status<2 && demoAutoOption==='0'"
         @click="handlePlayOneGame"
-      >{{ status === 0 ? 'Tap here for first game ' : 'Tap here for next game'}}</button>
+      >{{ status === 0 ? 'First game ' : 'Next game'}}</button>
       <button
         class="btn btn-outline-success"
         v-if="status<2 && demoAutoOption==='1'"
         @click="handleToggleTimer"
-      >{{ status===0 ? 'Tap here to begin' : (timer ? "Tap here to pause" :"Tap here to resume") }}</button>
+      >{{ status===0 ? 'Start' : (timer ? "Pause" :"Resume") }}</button>
       <button class="btn btn-outline-dark" v-if="status===2" @click="handleReset">Reset</button>
       <app-demo-auto-option
         v-if="status<2"

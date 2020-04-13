@@ -1,6 +1,7 @@
 <template>
 	<div class="container app--container mt-3 mb-5">
-		<h3 class="text-center text-success">What is the rule</h3>
+		<h3 class="lesson-subheading">What is the rule?</h3>
+		<hr class="subheading-separator">
 		<div class="app--form mt-3">
 			<div class="form-group row">
 				<label for="how-many-animals" class="col-12 col-sm-4">How many animals</label>
@@ -26,27 +27,27 @@
 			<div class="text-center alert alert-success" v-if="checkResult === true">Yes, you are right. Can you write down the rule?</div>
 			<div class="text-center alert alert-danger" v-if="checkResult === false && !showAnswer">Incorrect. Try again or click for an answer</div>
 			<div class="app--action" v-if="!isChecked">
-				<button 
-					class="btn btn-outline-success" 
+				<button
+					class="btn btn-outline-success"
 					:disabled="!isValidInput || !isValidPredict"
 					@click="handleClickOK">
 					OK
 				</button>
-				<button 
-					class="btn btn-outline-dark" 
+				<button
+					class="btn btn-outline-dark"
 					:disabled="!isValidInput"
 					@click="handleClickAnswer">
-					Answer
+					Show answer
 				</button>
 			</div>
 			<div class="app--action" v-if="isChecked">
-				<button 
+				<button
 					class="btn btn-outline-success"
 					@click="handleAgain"
-				>Tap here to go again</button>
+				>Play again</button>
 			</div>
 		</div>
-	</div>	
+	</div>
 </template>
 
 <script>
@@ -63,7 +64,7 @@ export default {
 	},
 	computed: {
 		isValidInput() {
-			return this.numberOfAnimals >= 1 && 
+			return this.numberOfAnimals >= 1 &&
 				this.numberOfAnimals <= 9 &&
 				this.numberOfParts >= 1 &&
 				this.numberOfParts <= 9
@@ -81,7 +82,7 @@ export default {
 	methods: {
 		handleClickOK() {
 			this.checkResult = this.answer == this.predictNumber ? true : false ;
-			if(this.checkResult === true) {				
+			if(this.checkResult === true) {
 				this.isChecked = true;
 			}
 		},
@@ -98,7 +99,7 @@ export default {
 			this.numberOfParts = null;
 		}
 	}
-	
+
 }
 </script>
 

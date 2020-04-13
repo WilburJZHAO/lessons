@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div class="mt-3">
+        <h3 class="lesson-subheading">Simulate Game</h3>
+        <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="row justify-content-md-center">
                 <div class="col-4"><input disabled class="zone1 noborder" value="Cell:"></div>
@@ -109,7 +111,7 @@
                 playAutoGame:true,
                 next: false,
                 PlayAutoWord:"Play Auto",
-                RemoveWord:"Tap here to remove prisoner",
+                RemoveWord:"Remove prisoner",
                 strategy: 1,
                 diceOne:"",
                 diceTwo:"",
@@ -130,7 +132,7 @@
                     this.stop = true;
                     this.playDemoGame = false;
                     this.playAutoGame = false;
-                    this.RemoveWord = "All released, Tap here to reset";
+                    this.RemoveWord = "All released, reset";
                 }
             }
         },
@@ -234,7 +236,7 @@
                     this.difference = null
                     this.remove = false
                     this.PlayAutoWord = "Play Auto"
-                    this.RemoveWord = "Tap here to remove prisoner"
+                    this.RemoveWord = "Remove prisoner"
                     this.diceOne = ""
                     this.diceTwo = ""
                     this.playAutoGame = true;

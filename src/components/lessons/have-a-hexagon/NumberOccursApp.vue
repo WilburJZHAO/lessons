@@ -1,8 +1,9 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3
-      class="text-success text-center"
-    >The number of times each product occurs - {{ trialNumber }} trials</h3>
+    <h3 class="lesson-subheading">
+      The number of times each product occurs - {{ trialNumber }} trials
+    </h3>
+    <hr class="subheading-separator">
     <h5 class="text-center">Trial {{ numberOfTrials }}</h5>
     <div class="app--table">
       <div
@@ -30,14 +31,14 @@
         class="btn btn-outline-success"
         v-if="demoAutoOption=='0' && !isEnd"
         @click="handlePlayOneGame"
-      >{{ isStart ? "Tap here for next game" : "Tap here for first game" }}</button>
+      >{{ isStart ? "Next game" : "First game" }}</button>
       <button
         class="btn btn-outline-success"
         v-if="demoAutoOption=='1' && !isEnd"
         @click="handleToggleTimer"
       >
-        {{ !isStart ? 'Tap here to begin' :
-        ( timer ? "Tap here to pause" : "Tap here to resume")
+        {{ !isStart ? 'Start' :
+        ( timer ? "Pause" : "Resume")
         }}
       </button>
       <button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>

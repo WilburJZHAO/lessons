@@ -1,5 +1,7 @@
 <template>
-    <div>
+    <div class="mt-3">
+        <h3 class="lesson-subheading">Experimental distribution of dice differences</h3>
+        <hr class="subheading-separator">
         <div v-if="!next" class="container mt-4 mb-5">
             <div class="top">
                 <div class="row justify-content-end">
@@ -55,7 +57,7 @@
                         <button class="btn btn-outline-success"  style="margin-right: 30px" @click="playAuto" v-if="playAutoGame">{{PlayAutoWord}}</button>
                     </div>
                     <div v-else>
-                        <button class="btn btn-outline-success"  style="margin-right: 30px" @click="Reset" >Finished! Tap here to reset</button>
+                        <button class="btn btn-outline-success"  style="margin-right: 30px" @click="Reset" >Finished! Reset</button>
                     </div>
                 </div>
             </div>

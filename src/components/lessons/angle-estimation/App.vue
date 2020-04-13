@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="selectedOption === -1">				
+    <div v-if="selectedOption === -1">
 			<app-title-static>
 				Angle Estimation
 			</app-title-static>
@@ -11,18 +11,18 @@
 
     <div class="container-fluid" v-else>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-top-nav @backToMenu="selectedOption = $event">Angle Estimation</app-top-nav> 
-			</transition> 
-				
+				<app-top-nav @backToMenu="selectedOption = $event">Angle Estimation</app-top-nav>
+			</transition>
+
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-angle-est-5-to-90 v-if="selectedOption === 1"></app-angle-est-5-to-90> 
-        <app-angle-est-5-to-360 v-if="selectedOption === 2"></app-angle-est-5-to-360> 
-        <app-draw-angle-5-to-90 v-if="selectedOption === 3"></app-draw-angle-5-to-90> 
-        <app-draw-angle-5-to-360 v-if="selectedOption === 4"></app-draw-angle-5-to-360> 
-			</transition> 
-		</div> 
+				<app-angle-est-5-to-90 v-if="selectedOption === 1"></app-angle-est-5-to-90>
+        <app-angle-est-5-to-360 v-if="selectedOption === 2"></app-angle-est-5-to-360>
+        <app-draw-angle-5-to-90 v-if="selectedOption === 3"></app-draw-angle-5-to-90>
+        <app-draw-angle-5-to-360 v-if="selectedOption === 4"></app-draw-angle-5-to-360>
+			</transition>
+		</div>
     <!-- <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
-			<app-bottom-nav></app-bottom-nav> 
+			<app-bottom-nav></app-bottom-nav>
 		</transition> -->
   </div>
 </template>
@@ -54,10 +54,10 @@ export default {
   data: function() {
     return {
       options: [
-        {id: 1, title: 'Angle estimation(5 to 90 degrees)'},
-        {id: 2, title: 'Angle estimation(5 to 360 degrees)'},
-        {id: 3, title: 'Draw an angle(5 to 90 degrees)'},
-        {id: 4, title: 'Draw an angle(5 to 360 degrees)'}
+        {id: 1, title: 'Angle estimation (5 to 90 degrees)'},
+        {id: 2, title: 'Angle estimation (5 to 360 degrees)'},
+        {id: 3, title: 'Draw an angle (5 to 90 degrees)'},
+        {id: 4, title: 'Draw an angle (5 to 360 degrees)'}
       ],
       selectedOption: -1
     }

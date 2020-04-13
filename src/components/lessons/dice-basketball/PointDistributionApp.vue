@@ -2,8 +2,8 @@
   <div>
     <div class="container mt-3 mb-5">
       <div class="app--title mb-3">
-        <h4 class="text-success">Poinit Distribution - {{ trialNumber }} games</h4>
-        <h4 class="text-success">Game {{ numberTried }}</h4>
+        <h4 class="text-success">Total games: {{ trialNumber }}</h4>
+        <h4 class="text-success">Games played: {{ numberTried }}</h4>
       </div>
       <div class="row mb-5">
         <div class="col-12 col-md-3 col-sm-4 app--tally-table">
@@ -57,12 +57,12 @@
           class="btn btn-outline-success"
           v-if="!isEnd && demoAutoOption==='0'"
           @click="handleSetNextGame"
-        >{{ isStart ? "Tap here for next game" : "Tap here for first game"}}</button>
+        >{{ isStart ? "Play next game" : "Play first game"}}</button>
         <button
           class="btn btn-outline-success"
           v-if="!isEnd && demoAutoOption==='1'"
           @click="handleToggleTimer"
-        >{{ !isAutoStart ? "Tap here to begin" : (timer ? "Tap here to pause" : "Tap here to resume") }}</button>
+        >{{ !isAutoStart ? "Start" : (timer ? "Pause" : "Resume") }}</button>
         <button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>
         <app-demo-auto-option
           class="mt-1"

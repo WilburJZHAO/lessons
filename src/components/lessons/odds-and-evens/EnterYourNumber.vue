@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">Enter your number</h3>
+    <h3 class="lesson-subheading">Enter your number</h3>
+    <hr class="subheading-separator">
 
     <div style="height: 10px"></div>
 
@@ -147,7 +148,7 @@
             v-if="!finished && demoAutoOption === '0'"
             @click="execute"
           >
-            {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+            {{ isStart ? "Next game" : "First game" }}
           </button>
           <button
             class="btn btn-outline-success"
@@ -156,14 +157,14 @@
           >
             {{
               !isAutoStart
-                ? "Tap here to begin"
+                ? "Start"
                 : timer
-                ? "Tap here to pause"
-                : "Tap here to resume"
+                ? "Pause"
+                : "Resume"
             }}
           </button>
           <button class="btn btn-outline-dark" v-if="finished" @click="reset()">
-            Click here to reset</button
+            Reset</button
           >&nbsp;&nbsp;&nbsp;
           <app-demo-auto-option
             class="mt-1"

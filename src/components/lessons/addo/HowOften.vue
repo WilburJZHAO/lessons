@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="text-center text-success mb-4">How often does each total occur</h3>
+    <h3 class="lesson-subheading">How often does each total occur?</h3>
+    <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-9">
         <div class="app--table-line">

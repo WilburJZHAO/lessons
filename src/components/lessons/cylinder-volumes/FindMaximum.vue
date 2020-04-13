@@ -1,5 +1,7 @@
 <template>
   <div class="container mt-3">
+    <h3 class="lesson-subheading">Finding the maximum volume</h3>
+    <hr class="subheading-separator">
     <app-input-panel v-if="!paperSize" @setPaperSize="paperSize=$event"></app-input-panel>
     <div v-if="paperSize">
       <h5

@@ -1,15 +1,16 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Demonstration game</h3>
+    <h3 class="lesson-subheading">Demonstration game</h3>
+    <hr class="subheading-separator">
     <div class="row mt-3">
       <div class="col-2">
-        <p class="text-right font-weight-bold">Game</p>
+        <p class="text-right font-weight-bold">Round</p>
       </div>
       <div class="col-8">
         <p class="text-primary text-center">
-          You can get the first two rolls for free, after that a
+          After the first two "safe" rolls each round, a
           <span class="text-danger font-weight-bold">{{ killerDice }}</span>
-          makes your score zero
+          makes your score zero for the round
         </p>
       </div>
       <div class="col-2">
@@ -59,35 +60,42 @@
         v-if="status === 0"
         @click="handleBeginGame"
       >
-        Tap here to begin
+        Start game
       </button>
       <button
         class="btn btn-outline-success"
         v-if="status === 1"
         @click="handleNextGame"
       >
-        Tap here for next game
+        Start next round
       </button>
       <button
         class="btn btn-outline-success"
         v-if="status === 2"
         @click="handleNextRoll"
       >
-        Tap here for next roll or q for next game
+        Roll a single dice
+      </button> &nbsp
+      <button
+        class="btn btn-outline-success"
+        v-if="status === 2"
+        @click="handleNextRoundRequest"
+      >
+        End round
       </button>
       <button
         class="btn btn-outline-success"
         v-if="status === 3"
         @click="handleEnterScore"
       >
-        Tap here to enter score
+        Tally score
       </button>
       <button
         class="btn btn-outline-success"
         v-if="status === 4"
         @click="handleReset"
       >
-        Tap here to reset
+        Reset
       </button>
     </div>
   </div>
@@ -116,8 +124,8 @@ export default {
       initGame,
       totalGames: 5,
       status: 0,
-      // 0 - ready to play first game, roll two dices
-      // 1 - ready to play next game, roll two dices
+      // 0 - ready to play first game, roll two dice
+      // 1 - ready to play next game, roll two dice
       // 2 - ready to roll one dice
       // 3 - Enter score
       // 4 - game finish
@@ -146,6 +154,11 @@ export default {
       this.game[this.gameIndex].dices.push(this.dice1);
       this.status = 3;
     },
+    handleNextRoundRequest() {
+      this.status = this.gameIndex < this.totalGames - 1 ? 1 : 4;
+      this.dice1 = 0;
+      this.dice2 = 0;
+    },
     handleEnterScore() {
       if (this.dice1 === this.killerDice) {
         this.game[this.gameIndex].score = 0;
@@ -168,15 +181,6 @@ export default {
   created() {
     this.game = _.cloneDeep(this.initGame);
   },
-  mounted() {
-    document.addEventListener("keypress", e => {
-      if (e.key === "q" && this.status === 2) {
-        this.status = this.gameIndex < this.totalGames - 1 ? 1 : 4;
-        this.dice1 = 0;
-        this.dice2 = 0;
-      }
-    });
-  }
 };
 </script>
 

@@ -1,8 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3
-      class="text-center text-success mb-3"
-    >Many games fast: change the plank length - {{ gameSetting.trialNumber}} games</h3>
+    <h3 class="lesson-subheading">Many games fast: change the plank length - {{ gameSetting.trialNumber}} games</h3>
+    <hr class="subheading-separator">
     <app-game-table-max
       :plankLength="plankLength"
       :maximum="maximumTurns"
@@ -14,14 +13,14 @@
         class="btn btn-outline-success"
         v-if="demoAutoOption=='0' && !isEnd"
         @click="handlePlayOneGame"
-      >Tap here for next game</button>
+      >Play next game</button>
       <button
         class="btn btn-outline-success"
         v-if="demoAutoOption=='1' && !isEnd"
         @click="handleToggleTimer"
       >
-        {{ !isStart ? "Tap here to begin" :
-        ( timer ? "Tap here to pause" : "Tap here to resume")
+        {{ !isStart ? "Start" :
+        ( timer ? "Pause" : "Resume")
         }}
       </button>
       <button class="btn btn-outline-dark" v-if="isEnd" @click="handleReset">Reset</button>

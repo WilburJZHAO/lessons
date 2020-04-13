@@ -46,8 +46,8 @@
         data: function() {
             return {
                 options: [
-                    { id: 1, title: 'Make a Beetle' },
-                    { id: 2, title: 'Make Many Beetles' },
+                    { id: 1, title: 'Make a beetle' },
+                    { id: 2, title: 'Make many beetles' },
                 ],
                 selectedOption: -1,
             }

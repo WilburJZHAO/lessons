@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Change the killer dice</h3>
+    <h3 class="lesson-subheading">Change the killer dice</h3>
+    <hr class="subheading-separator">
     <div
       class="d-flex justify-content-center mt-5"
       :style="{ visibility: myKillerDice>=1 && myKillerDice <=6 ? 'visible' : 'hidden' }"
@@ -17,7 +18,7 @@
         @keypress="handleCheckInput"
       />
     </div>
-    <div class="text-center text-danger my-3">Enter the killer dice number(1-6)</div>
+    <div class="text-center text-danger my-3">Enter the killer dice number (1-6)</div>
     <div class="text-center">
       <button class="btn btn-outline-success" @click="handleSetKiller" :disabled="!validDice">OK</button>
     </div>

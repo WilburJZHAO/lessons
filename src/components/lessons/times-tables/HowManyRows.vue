@@ -1,10 +1,12 @@
 <template>
 	<div>
 		<transition appear appear-class="app-appear" appear-active-class="app-appear-active">
-		<div class="container mt-4 mb-5">
+		<div class="container mt-3">
+			<h3 class="lesson-subheading">How many rows?</h3>
+			<hr class="subheading-separator">
 			<div class="row">
 				<!-- Left part -->
-				<div class="col-12 col-md-6 app--lesson-left">	
+				<div class="col-12 col-md-6 app--lesson-left">
 					<form @submit.prevent="handleCheckAnswer">
 						<h4 class="text-success">Fill out a number to make the sentence true.</h4>
 						<div class="form-group container">
@@ -28,19 +30,19 @@
 							<label for="check-see-count">Do you want to see the count grow?</label>
 						</div>
 						<div class="app--lesson-action">
-							<button 
-								type="submit" 
+							<button
+								type="submit"
 								class="btn btn-outline-success btn-lg"
 								:disabled="finishAnswer">Answer</button>
-							<button 
-								type="button" 
-								class="btn btn-outline-dark btn-lg" 
+							<button
+								type="button"
+								class="btn btn-outline-dark btn-lg"
 								@click="createQuestion(level)">Next</button>
 						</div>
-						
+
 						<div class="tt-prompt">
 							<p v-show="answerResult.prompt"
-								class="alert" 
+								class="alert"
 								:class="{'alert-danger': !answerResult.isRight ,'alert-success': answerResult.isRight}">
 									{{ answerResult.prompt }}
 								</p>
@@ -49,7 +51,7 @@
 				</div>
 
 				<!-- Right part -->
-				<div class="col-12 col-md-6 app--lesson-right">	
+				<div class="col-12 col-md-6 app--lesson-right">
 					<div class="tt--right-box" v-show="answer && answer>=1 && answer<=10">
 						<div class="tt--right-row" v-for="val in answerArr" :key="val">
 							<div class="tt--right-circle col-10" style="display: flex">
@@ -61,7 +63,7 @@
 								<div class="tt--right-count col-2" v-show="seeCountGrow">{{ val*number2 }}</div>
 							</transition>
 						</div>
-					</div> 
+					</div>
 				</div>
 			</div>
 		</div>
@@ -69,7 +71,7 @@
 	</div>
 </template>
 
-<script> 
+<script>
 import Circle from './Circle.vue';
 import { pickRandomNumber } from './utils';
 
@@ -104,12 +106,12 @@ export default {
 			this.finishAnswer = false;
 			this.answerResult.isRight = false;
 			this.answerResult.prompt = '';
-			this.number1 = pickRandomNumber(1, 10); 
+			this.number1 = pickRandomNumber(1, 10);
 			if(parseInt(level) === 1) {
 				this.number2 = pickRandomNumber(1, 5);
-			} else { 
+			} else {
 				this.number2 = pickRandomNumber(6, 10);
-			} 
+			}
 			this.result = this.number1 * this.number2;
 		},
 
@@ -125,14 +127,14 @@ export default {
 			} else {
 				this.finishAnswer = false;
 				this.answerResult.isRight = false;
-				if(answer < this.number1) { 
-					this.answerResult.prompt = 'Your answer is too small.';				 
-				} else if(answer > this.number1 ) { 
+				if(answer < this.number1) {
+					this.answerResult.prompt = 'Your answer is too small.';
+				} else if(answer > this.number1 ) {
 					this.answerResult.prompt = 'Your answer is too big.';
-				} else { 
+				} else {
 					this.answerResult.prompt = 'Your answer is invalid.';
 				}
-			} 
+			}
 		}
 	},
 	created() {
@@ -144,7 +146,7 @@ export default {
 		});
 	},
 	watch: {
-		level: function(levelVal) { 
+		level: function(levelVal) {
 			this.createQuestion(levelVal);
 		}
 	},

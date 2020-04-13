@@ -1,5 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container mt-3 mb-4">
+    <h3 class="lesson-subheading">Point distribution</h3>
+    <hr class="subheading-separator">
     <app-point-distribution-app v-if="trialNumber" :trialNumber="trialNumber"></app-point-distribution-app>
     <app-enter-trials-number @acceptTrialNumber="trialNumber=$event" v-else></app-enter-trials-number>
   </div>
@@ -20,6 +22,6 @@ export default {
   }
 };
 </script>
- 
+
 <style scoped>
 </style>
