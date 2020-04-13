@@ -27,7 +27,7 @@
 							</div>
 						</div>
 						<div v-else>
-							<button type="button" class="btn btn-outline-dark" @click="reset">Tap here to reset</button>
+							<button type="button" class="btn btn-outline-dark" @click="reset">Reset</button>
 						</div>
 					</div>
 					<div class="form-check form-check-inline">

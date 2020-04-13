@@ -51,7 +51,7 @@
       </div>
       <div class="text-center" v-if="gameStatus===1">
         <div class="alert alert-danger">Finished 100 batches</div>
-        <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+        <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
       </div>
     </div>
   </div>

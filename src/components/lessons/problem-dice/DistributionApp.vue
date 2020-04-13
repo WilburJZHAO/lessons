@@ -66,7 +66,7 @@
 				@click="handleToggleTimer"
 			>
 				{{isStart ? (
-					timer ? "Tap here to pause" : "Tap here to resume"
+					timer ? "Pause" : "Resume"
 				)  :"Start auto" }}
 			</button>
 			<button

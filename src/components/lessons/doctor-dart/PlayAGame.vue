@@ -160,7 +160,7 @@
                     return "The tally is too small. Click on the reset button for a new attempt."
                 }else{
                     this.Reached = true;
-                    return "Target reached !  Tap here for new target ";
+                    return "Target reached !  New target ";
                 }
             },
         },
