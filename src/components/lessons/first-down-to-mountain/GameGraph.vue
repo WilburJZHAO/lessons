@@ -81,7 +81,7 @@ export default {
 
 <style scoped>
 .app--game-graph {
-  height: 70vh;
+  min-height: 50vh;
   overflow: auto;
   border: 1px solid #ccc;
   padding-top: 10px;
