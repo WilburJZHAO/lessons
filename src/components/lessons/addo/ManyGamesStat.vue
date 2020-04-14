@@ -48,14 +48,14 @@ export default {
       if (!this.gameNumber) {
         return 0;
       }
-      return Number((this.totalCardNumbers / this.gameNumber).toFixed(3));
+      return String((this.totalCardNumbers / this.gameNumber).toFixed(2));
     },
     winPercent0() {
       if (!this.gameNumber) {
         return 0;
       }
       return (
-        Number(((this.winStats[0] / this.gameNumber) * 100).toFixed(3)) + "%"
+        String(((this.winStats[0] / this.gameNumber) * 100).toFixed(2)) + "%"
       );
     },
     winPercent1() {
@@ -63,7 +63,7 @@ export default {
         return 0;
       }
       return (
-        Number(((this.winStats[1] / this.gameNumber) * 100).toFixed(3)) + "%"
+        String(((this.winStats[1] / this.gameNumber) * 100).toFixed(2)) + "%"
       );
     },
     winPercent2() {
@@ -71,7 +71,7 @@ export default {
         return 0;
       }
       return (
-        Number(((this.winStats[2] / this.gameNumber) * 100).toFixed(3)) + "%"
+        String(((this.winStats[2] / this.gameNumber) * 100).toFixed(2)) + "%"
       );
     }
   }

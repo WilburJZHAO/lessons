@@ -245,6 +245,7 @@ export default {
       this.message = "";
       this.demoAutoOption = "1";
       this.additionList = [];
+      this.totalCardNumbers = 0;
     }
   }
 };

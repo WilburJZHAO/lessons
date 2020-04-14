@@ -251,6 +251,7 @@ export default {
       this.message = "";
       this.demoAutoOption = "1";
       this.multiplicationList = [];
+      this.totalCardNumbers = 0;
     }
   }
 };
