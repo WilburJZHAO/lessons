@@ -43,7 +43,8 @@
 </template>
 
 <script>
-import { partition, integerPartition, separateNumber, sumArray } from "./utils";
+import { partition, integerPartition, sumArray } from "./utils";
+import { legify } from "../../common/utils.js";
 export default {
   data: function() {
     return {
@@ -54,6 +55,7 @@ export default {
     };
   },
   methods: {
+    legify,
     handleCheckNumber(e) {
       let { charCode } = e;
       if (!(charCode >= 48 && charCode <= 57)) {
@@ -66,9 +68,7 @@ export default {
     handleOk() {
       this.gameStatus = 1;
       this.partitions.push([this.numberToPartition]); // add the first partition
-      this.partitionsNumber = separateNumber(
-        integerPartition(this.numberToPartition)
-      );
+      this.partitionsNumber = legify(integerPartition(this.numberToPartition));
 
       // let tableContainer = document.getElementById("app--table-container");
       partition(this.numberToPartition, p => {

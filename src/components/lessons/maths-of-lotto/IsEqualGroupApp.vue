@@ -3,8 +3,8 @@
     <h5
       class="text-center"
     >Draw {{ settings.numbersToDraw }} numbers from {{ settings.totalNumbers }} numbers</h5>
-    <p class="text-center" v-if="triedNumber===0">Play {{ trialNumber }} games</p>
-    <p class="text-center" v-else>Played {{ triedNumber }} of {{ trialNumber}} games</p>
+    <p class="text-center" v-if="triedNumber===0">Play {{ legify(trialNumber) }} games</p>
+    <p class="text-center" v-else>Played {{ legify(triedNumber) }} of {{ legify(trialNumber) }} games</p>
 
     <div style="width: 80%; margin: 0 auto; height: auto; max-height: 500px; overflow-y: scroll;">
       <table class="table table-bordered text-center">
@@ -19,10 +19,10 @@
           <tr v-for="(el, index) in cmbArr" :key="index">
             <td>{{el.cmb.join(',')}}</td>
             <td>
-              <span v-if="el.win>0">{{ el.win }}</span>
+              <span v-if="el.win>0">{{ legify(el.win) }}</span>
             </td>
             <td>
-              <span v-if="el.win>0">{{ Number(((el.win / triedNumber)*100).toFixed(1)) }} %</span>
+              <span v-if="el.win>0">{{ ((el.win / triedNumber)*100).toFixed(1) }} %</span>
             </td>
           </tr>
         </tbody>
@@ -54,7 +54,7 @@
 <script>
 import Combinatorics from "js-combinatorics";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
-import { pickNumber, calculateTimerInterval } from "../../common/utils";
+import { pickNumber, calculateTimerInterval, legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -94,6 +94,7 @@ export default {
     }
   },
   methods: {
+    legify,
     setNumbersToDraw(total) {
       const numbersToDraw = [];
       for (let i = 1; i <= total; i++) {

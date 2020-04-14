@@ -2,8 +2,8 @@
   <div class="container mt-3">
     <!-- <h3 class="text-success text-center mb-4">multiple {{trialNumber}}</h3> -->
     <app-selection-panel :lottoNumbers="lottoNumbers" @selectNumber="handleSelectNumber"></app-selection-panel>
-    <h6 class="text-center mt-3" v-if="status===0 || status===1 ">Play {{ trialNumber }} games</h6>
-    <h6 class="text-center mt-3" v-else>Played {{ triedGames }} of {{ trialNumber }} games</h6>
+    <h6 class="text-center mt-3" v-if="status===0 || status===1 ">Play {{ legify(trialNumber) }} games</h6>
+    <h6 class="text-center mt-3" v-else>Played {{ legify(triedGames) }} of {{ legify(trialNumber) }} games</h6>
 
     <app-drawn-panel :drawnNumbers="drawnNumbers" :settings="settings" :status="status"></app-drawn-panel>
 
@@ -33,19 +33,19 @@
     <div v-if="status === 2 || status === 3" class="mt-3">
       <table class="table table-bordered text-center" style="table-layout: fixed">
         <tr>
-          <td v-if="winGames > 0">1 win in {{ Number((triedGames / winGames).toFixed(2)) }} games</td>
+          <td v-if="winGames > 0">1 win in {{ (triedGames / winGames).toFixed(2) }} games</td>
           <td v-else>0 wins</td>
           <td>
-            <span v-if="winGames > 0">{{ winGames }} win{{winGames > 1 ? 's' : ''}}</span>
+            <span v-if="winGames > 0">{{ legify(winGames) }} win{{winGames > 1 ? 's' : ''}}</span>
           </td>
         </tr>
         <tr>
           <td>
-            <span v-if="winGames > 0">{{ winPercent }} wins every 100 games</span>
+            <span v-if="winGames > 0">{{ winPercent.toFixed(2) }} wins every 100 games</span>
             <span v-else style="visibility: hidden;">1</span>
           </td>
           <td>
-            <span v-if="winGames > 0">{{ winPercent }}%</span>
+            <span v-if="winGames > 0">{{ winPercent.toFixed(2) }}%</span>
           </td>
         </tr>
       </table>
@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { pickNumber, calculateTimerInterval } from "../../common/utils";
+import { pickNumber, calculateTimerInterval, legify } from "../../common/utils.js";
 import {
   // lottoNumbers,
   initLottoNumbers,
@@ -131,6 +131,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleSelectNumber($e) {
       if (!(this.status === 0 || this.status === 1 || this.status === 3)) {
         return;

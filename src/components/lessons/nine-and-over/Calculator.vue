@@ -7,7 +7,7 @@
       <div class="app--cal-input">
         <div class="app--cal-input-operator">{{ operator }}</div>
         <div class="app--cal-input-number">
-          {{ numberCal }}
+          {{ legify(numberCal) }}
           <i
             v-if="numberToCheck && numberToCheck==numberCal"
             class="fas fa-check text-success"
@@ -76,6 +76,8 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
+
 export default {
   props: [
     "calNumber",
@@ -124,6 +126,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleReset() {
       if (this.isDisable) return;
       this.operator = null;

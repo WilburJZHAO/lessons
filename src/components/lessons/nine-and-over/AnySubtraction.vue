@@ -37,9 +37,9 @@
             </div>
             <div v-else>
               <h6>
-                Starting number is {{ numberSet.startingNumber }}
+                Starting number is {{ legify(numberSet.startingNumber) }}
                 <br />
-                Target number is {{ numberSet.targetNumber }}
+                Target number is {{ legify(numberSet.targetNumber) }}
               </h6>
               <div class="app--dice text-center mt-4" v-if="diceNumber1 || diceNumber2">
                 <app-dice :index="1" :number="diceNumber1" class="m-1"></app-dice>
@@ -96,6 +96,7 @@ import SpellingBoard from "./SpellingBoard.vue";
 import AddSubForm from "./AddSubForm.vue";
 import Dice from "../../common/Dice.vue";
 import { throwDiceOnce } from "./utils";
+import { legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -140,6 +141,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleSetNumber($event) {
       // In the beginning of a game, set starting number and target number
       // console.log($event);

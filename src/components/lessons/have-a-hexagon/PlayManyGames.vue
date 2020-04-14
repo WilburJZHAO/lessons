@@ -65,7 +65,7 @@
         <label
           for="trial-numbers"
           class="col-form-label col-sm-6"
-        >Enter the number of trials (1 to 10000):</label>
+        >Enter the number of trials (1 to {{legify(10000)}}):</label>
         <div class="col-sm-6">
           <input type="number" class="form-control" v-model="trialNumber" required />
         </div>
@@ -100,7 +100,7 @@
         <tr v-if="selectedHex.length > 1">
           <td>% Wins</td>
           <td v-for="(percent, index) in resultPercent" :key="index">
-            <span v-if="percent > 0">{{percent}}%</span>
+            <span v-if="percent > 0">{{percent.toFixed(2)}}%</span>
             &nbsp;
           </td>
         </tr>
@@ -114,17 +114,17 @@
         <tr v-if="selectedHex.length > 1">
           <td># Wins</td>
           <td v-for="(item, index) in result" :key="index">
-            <span v-if="item > 0">{{ item }}</span>
+            <span v-if="item > 0">{{ legify(item) }}</span>
             &nbsp;
           </td>
         </tr>
         <tr>
           <td>Trial</td>
           <td>
-            <span v-if="numberOfTried > 0" class="text-primary">{{ numberOfTried}}&nbsp;</span>
+            <span v-if="numberOfTried > 0" class="text-primary">{{ legify(numberOfTried) }}&nbsp;</span>
           </td>
           <td></td>
-          <td class="text-danger" v-if="trialNumber">{{trialNumber}} trials</td>
+          <td class="text-danger" v-if="trialNumber">{{legify(trialNumber)}} trials</td>
         </tr>
       </table>
       <div class="text-center mt-3">
@@ -158,7 +158,7 @@
 import Hexagon from "./Hexagon.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { throwDiceOnce } from "./utils";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   components: {
@@ -208,6 +208,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handlePlayOneGame() {
       if (!this.isStart) this.isStart = true;
       this.numberOfTried++;
@@ -318,9 +319,7 @@ export default {
       }
       const resultPercentArr = [];
       for (let i = 0; i < this.result.length; i++) {
-        let percent = Number(
-          ((this.result[i] / this.numberOfTried) * 100).toFixed(1)
-        );
+        let percent = ((this.result[i] / this.numberOfTried) * 100);
         resultPercentArr.push(percent);
       }
       return resultPercentArr;

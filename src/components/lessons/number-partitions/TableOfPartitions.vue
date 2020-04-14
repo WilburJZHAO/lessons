@@ -14,7 +14,7 @@
             <tbody>
               <tr v-for="(item, index) in dataSetDisplay" :key="index">
                 <td>{{ item.n }}</td>
-                <td class="text-center">{{ separateNumber(item.pn) }}</td>
+                <td class="text-center">{{ legify(item.pn) }}</td>
                 <td v-if="showRatio" class="text-center">{{ item.ratio }}</td>
               </tr>
             </tbody>
@@ -66,7 +66,7 @@
         <canvas id="dataChart" width="400" height="400"></canvas>
         <h6 class="text-center mt-3" v-if="dataSetDisplay.length > 0">
           P({{ dataSetDisplay[dataSetDisplay.length - 1].n }}) =
-          {{ separateNumber(dataSetDisplay[dataSetDisplay.length - 1].pn) }}
+          {{ legify(dataSetDisplay[dataSetDisplay.length - 1].pn) }}
         </h6>
       </div>
     </div>
@@ -75,8 +75,9 @@
 
 <script>
 import Chart from "chart.js";
-import { integerPartition, separateNumber } from "./utils";
+import { integerPartition } from "./utils";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
+import { legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -97,7 +98,6 @@ export default {
       chart: null,
       chartLabel: [],
       chartData: [],
-      separateNumber
     };
   },
   computed: {
@@ -129,6 +129,7 @@ export default {
     }
   },
   methods: {
+    legify,
     clearTimer() {
       if (this.timer) {
         clearInterval(this.timer);

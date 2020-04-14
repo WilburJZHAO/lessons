@@ -16,7 +16,7 @@
                 ? 'visible'
                 : 'hidden'
             }"
-      >Game {{gameNumber}} of {{trialNumber}}</h5>
+      >Game {{legify(gameNumber)}} of {{legify(trialNumber)}}</h5>
     </div>
     <div>
       <h6 class="ml-2">Wins</h6>
@@ -35,7 +35,11 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
 export default {
+  methods: {
+    legify,
+  },
   props: [
     "totalCardNumbers",
     "gameNumber",
@@ -48,14 +52,14 @@ export default {
       if (!this.gameNumber) {
         return 0;
       }
-      return String((this.totalCardNumbers / this.gameNumber).toFixed(2));
+      return (this.totalCardNumbers / this.gameNumber).toFixed(2);
     },
     winPercent0() {
       if (!this.gameNumber) {
         return 0;
       }
       return (
-        String(((this.winStats[0] / this.gameNumber) * 100).toFixed(2)) + "%"
+        ((this.winStats[0] / this.gameNumber) * 100).toFixed(2) + "%"
       );
     },
     winPercent1() {
@@ -63,7 +67,7 @@ export default {
         return 0;
       }
       return (
-        String(((this.winStats[1] / this.gameNumber) * 100).toFixed(2)) + "%"
+        ((this.winStats[1] / this.gameNumber) * 100).toFixed(2) + "%"
       );
     },
     winPercent2() {
@@ -71,7 +75,7 @@ export default {
         return 0;
       }
       return (
-        String(((this.winStats[2] / this.gameNumber) * 100).toFixed(2)) + "%"
+        ((this.winStats[2] / this.gameNumber) * 100).toFixed(2) + "%"
       );
     }
   }

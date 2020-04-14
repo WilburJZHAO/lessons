@@ -34,7 +34,7 @@
 					</div>
 					<div v-else class="pl-3" >
 						<div>
-							Started counting from {{ appStartingNumber }}
+							Started counting from {{ legify(appStartingNumber) }}
 							<br>
 							Counting by {{countingSet.countingBy }}s
 						</div>
@@ -129,6 +129,8 @@ import Calculator from './Calculator.vue';
 import SpellingBoard from './SpellingBoard.vue';
 import CountForm from './CountForm.vue';
 import DemoAutoOption from '../../common/DemoAutoOption.vue';
+import { legify } from "../../common/utils.js";
+
 export default {
 	components: {
 		appPlugboard: Plugboard,
@@ -182,6 +184,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		handleNextNumber() {
 			if(!this.isStart) {
 				this.isStart = true;
