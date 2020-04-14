@@ -1,7 +1,7 @@
 <template>
   <div class="mt-3">
     <h3 class="lesson-subheading">Comparing strategies</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <div v-if="status === 0" class="container">
       <div class="row">
         <div class="col-sm-6">
@@ -129,14 +129,14 @@ export default {
     validInput1() {
       if (
         this.strategy1.type === "rolls" &&
-        this.strategy1.value > 0 &&
+        this.strategy1.value > 1 &&
         this.strategy1.value <= 15
       ) {
         return true;
       }
       if (
         this.strategy1.type === "points" &&
-        this.strategy1.value > 0 &&
+        this.strategy1.value > 1 &&
         this.strategy1.value <= 99
       ) {
         return true;
@@ -146,14 +146,14 @@ export default {
     validInput2() {
       if (
         this.strategy2.type === "rolls" &&
-        this.strategy2.value > 0 &&
+        this.strategy2.value > 1 &&
         this.strategy2.value <= 15
       ) {
         return true;
       }
       if (
         this.strategy2.type === "points" &&
-        this.strategy2.value > 0 &&
+        this.strategy2.value > 1 &&
         this.strategy2.value <= 99
       ) {
         return true;

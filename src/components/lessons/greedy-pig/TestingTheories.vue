@@ -1,7 +1,7 @@
 <template>
   <div class="mt-3">
     <h3 class="lesson-subheading">Testing theories</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
 
     <div v-if="status === 0" class="container">
       <div class="row">
@@ -118,14 +118,14 @@ export default {
     validInput() {
       if (
         this.strategy1.type === "rolls" &&
-        this.strategy1.value > 0 &&
+        this.strategy1.value > 1 &&
         this.strategy1.value <= 15
       ) {
         return true;
       }
       if (
         this.strategy1.type === "points" &&
-        this.strategy1.value > 0 &&
+        this.strategy1.value > 1 &&
         this.strategy1.value <= 99
       ) {
         return true;
