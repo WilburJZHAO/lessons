@@ -62,7 +62,7 @@ export const fractionSelection = [
   },
   {
     number: 8,
-    words: "eights",
+    words: "eighths",
     selected: true
   },
   {
@@ -102,7 +102,7 @@ export const fractionSelection = [
   },
   {
     number: 50,
-    words: "fiftieth",
+    words: "fiftieths",
     selected: false
   },
   {
