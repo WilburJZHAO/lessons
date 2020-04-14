@@ -86,8 +86,8 @@ export default {
         { name: "Protons & Anti-Protons", link: "/protons" },
         { name: "Game of 31", link: "/game-of-31" },
         { name: "Win at the Fair", link: "/win-at-the-fair" },
-        { name: "Temperature Graphs", link: "/temperature-graphs" },
-        { name: "Greedy Pig", link: "/greedy-pig" },
+        // { name: "Temperature Graphs", link: "/temperature-graphs" },
+        // { name: "Greedy Pig", link: "/greedy-pig" },
         { name: "Snakes and Ladders", link: "/snakes-and-ladders" },
         { name: "Square Pairs", link: "/square-pairs" }
       ]
