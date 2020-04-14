@@ -63,7 +63,7 @@ export default {
         { name: "Bob's Buttons", link: "/bobs-button" },
         { name: "Duelling Dice", link: "/duelling-dice" },
         { name: "Fraction Charts", link: "/fraction-charts" },
-        { name: "LCM: Natalie's Task", link: "/lcm" },
+        { name: "Natalie's LCM Task", link: "/lcm" },
         { name: "Hunting for Stars", link: "/hunting-stars" },
         { name: "Cracked Tiles", link: "/cracked-tiles" },
         { name: "Billiard Ball Bounces", link: "/billard-ball" },

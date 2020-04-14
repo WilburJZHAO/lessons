@@ -1,41 +1,20 @@
 <template>
   <div>
     <div v-if="selectedOption === -1">
-      <app-title-static>LCM: Natalie's Task</app-title-static>
-      <transition
-        appear
-        appear-class="options-appear"
-        appear-active-class="options-appear-active"
-      >
-        <app-options
-          :options="options"
-          @selectOption="selectedOption = $event"
-        ></app-options>
+      <app-title-static>Natalie's LCM Task</app-title-static>
+      <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
+        <app-options :options="options" @selectOption="selectedOption = $event"></app-options>
       </transition>
     </div>
     <div class="container-fluid" v-else>
-      <transition
-        appear
-        appear-class="lesson-appear"
-        appear-active-class="lesson-appear-active"
-      >
-        <app-top-nav @backToMenu="selectedOption = $event"
-          >LCM: Natalie's Task</app-top-nav
-        >
+      <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
+        <app-top-nav @backToMenu="selectedOption = $event">Natalie's LCM Task</app-top-nav>
       </transition>
 
-      <transition
-        appear
-        appear-class="lesson-appear"
-        appear-active-class="lesson-appear-active"
-      >
+      <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
         <app-find-pairs v-if="selectedOption === 1"></app-find-pairs>
       </transition>
-      <transition
-        appear
-        appear-class="lesson-appear"
-        appear-active-class="lesson-appear-active"
-      >
+      <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
         <app-find-lcm v-if="selectedOption === 2"></app-find-lcm>
       </transition>
     </div>
