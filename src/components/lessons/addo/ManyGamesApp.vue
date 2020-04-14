@@ -177,7 +177,7 @@ export default {
         checkCanAddo(this.selectedStrategy.strategyData[1]) ||
         checkCanAddo(this.selectedStrategy.strategyData[2])
       ) {
-        console.log(checkCanAddo(this.selectedStrategy.strategyData[0]));
+        //console.log(checkCanAddo(this.selectedStrategy.strategyData[0]));
         this.gameNumber = 0;
         this.gameStatus = 1;
         this.winStats = [0, 0, 0];

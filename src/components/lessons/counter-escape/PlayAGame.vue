@@ -1,5 +1,9 @@
-<template> 
-	<app-play-game :gameRule="gameRule" :numberOfGames="1"></app-play-game>
+<template>
+	<div class="mt-3">
+		<h3 class="lesson-subheading">Which arrangement is the best?</h3>
+		<hr class="subheading-separator">
+		<app-play-game :gameRule="gameRule" :numberOfGames="1"></app-play-game>
+	</div>
 </template>
 
 <script>
@@ -12,5 +16,5 @@ export default {
 }
 </script>
 
-<style scoped> 
+<style scoped>
 </style>

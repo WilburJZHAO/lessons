@@ -16,14 +16,14 @@
                 ? 'visible'
                 : 'hidden'
             }"
-      >Game {{gameNumber}} of {{trialNumber}}</h5>
+      >Game {{ legify(gameNumber) }} of {{ legify(trialNumber) }}</h5>
     </div>
     <div>
       <h6 class="ml-2">Wins</h6>
       <div class="flex-grow-1 d-flex flex-row justify-content-around">
-        <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ winStats[0] }}</div>
-        <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ winStats[1] }}</div>
-        <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ winStats[2] }}</div>
+        <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ legify(winStats[0]) }}</div>
+        <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ legify(winStats[1]) }}</div>
+        <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ legify(winStats[2]) }}</div>
       </div>
       <div class="flex-grow-1 d-flex flex-row justify-content-around">
         <div class="border flex-grow-1 mx-4 my-1 text-right pr-2">{{ winPercent0 }}</div>
@@ -35,7 +35,11 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
 export default {
+  methods: {
+    legify
+  },
   props: [
     "totalCardNumbers",
     "gameNumber",
@@ -48,31 +52,25 @@ export default {
       if (!this.gameNumber) {
         return 0;
       }
-      return String((this.totalCardNumbers / this.gameNumber).toFixed(2));
+      return legify( (this.totalCardNumbers / this.gameNumber), 2 );
     },
     winPercent0() {
       if (!this.gameNumber) {
         return 0;
       }
-      return (
-        String(((this.winStats[0] / this.gameNumber) * 100).toFixed(2)) + "%"
-      );
+      return legify( (this.winStats[0] / this.gameNumber) * 100, 2 ) + "%";
     },
     winPercent1() {
       if (!this.gameNumber) {
         return 0;
       }
-      return (
-        String(((this.winStats[1] / this.gameNumber) * 100).toFixed(2)) + "%"
-      );
+      return legify( (this.winStats[1] / this.gameNumber) * 100, 2 ) + "%";
     },
     winPercent2() {
       if (!this.gameNumber) {
         return 0;
       }
-      return (
-        String(((this.winStats[2] / this.gameNumber) * 100).toFixed(2)) + "%"
-      );
+      return legify( (this.winStats[2] / this.gameNumber) * 100, 2 ) + "%";
     }
   }
 };

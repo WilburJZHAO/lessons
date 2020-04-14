@@ -1,5 +1,7 @@
 <template>
-  <div class="container">
+  <div class="container mt-3">
+    <h3 class="lesson-subheading">All possible arrangements</h3>
+    <hr class="subheading-separator">
     <app-all-arrangements-app
       v-if="trialNumber && gameRule.boxes == 3"
       :numberOfGames="trialNumber"
