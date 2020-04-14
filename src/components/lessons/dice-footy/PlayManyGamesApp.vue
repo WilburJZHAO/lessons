@@ -17,16 +17,16 @@
         </thead>
         <tbody>
           <tr>
-            <th>Total</th>
+            <th>This game</th>
             <td>{{ goals > 0 && demoAutoOption==='0' ? goals : '' }}</td>
             <td>{{ behinds > 0 && demoAutoOption==='0' ? behinds : '' }}</td>
             <td>{{ points > 0 && demoAutoOption==='0' ? points : '' }}</td>
           </tr>
           <tr>
             <th>Average</th>
-            <td>{{ averageGoals > 0 ? averageGoals : '' }}</td>
-            <td>{{ averageBehinds > 0 ? averageBehinds : '' }}</td>
-            <td>{{ averagePoints > 0 ? averagePoints : ''}}</td>
+            <td>{{ averageGoals > 0 ? averageGoals.toFixed(2) : '' }}</td>
+            <td>{{ averageBehinds > 0 ? averageBehinds.toFixed(2) : '' }}</td>
+            <td>{{ averagePoints > 0 ? averagePoints.toFixed(2) : ''}}</td>
           </tr>
         </tbody>
       </table>
@@ -64,7 +64,7 @@ import LessonTitle from "./LessonTitle.vue";
 import ChangeRule from "./ChangeRule.vue";
 import DemoAutoOption from "./DemoAutoOption.vue";
 import { throwDiceOnce, throwDiceTwo } from "./utils.js";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   props: ["trialNumber"],
@@ -135,6 +135,7 @@ export default {
     }
   },
   methods: {
+    legify,
     playOneGame() {
       if (this.isChangeRule) {
         // If rule is changed

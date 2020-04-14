@@ -1,7 +1,5 @@
 <template>
-  <div class="app--container container mt-4 mb-5">
-    <h3 class="lesson-subheading">Which animal is most likely?</h3>
-    <hr class="subheading-separator">
+  <div class="app--container container">
     <div class="form-check form-check-inline d-flex justify-content-center">
       <input
         class="form-check-input"
@@ -27,12 +25,12 @@
     <div class="app--animals-table mt-3">
       <h5
         class="text-success text-center"
-      >{{ trialNumber }} trials in total - {{ triedNumber }} tried</h5>
+      >{{ legify(trialNumber) }} trials in total - {{ legify(triedNumber) }} tried</h5>
       <div class="app--animal-list">
         <div class="app--animal-item" v-for="(item, index) in allAnimals" :key="index">
           <h4>
             {{ item.animal }}
-            <span class="badge badge-danger">{{ item.count }}</span>
+            <span class="badge badge-danger">{{ legify(item.count) }}</span>
           </h4>
         </div>
       </div>
@@ -68,7 +66,7 @@
 
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 import {
   throwDiceOnce,
   generateAnimalsParts,
@@ -122,6 +120,7 @@ export default {
     }
   },
   methods: {
+    legify,
     generateAnimals() {
       // Generate all animals with different combinations
       this.allAnimals = [];

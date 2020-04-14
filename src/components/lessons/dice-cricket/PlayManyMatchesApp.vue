@@ -1,9 +1,7 @@
 <template>
-  <div class="mt-4 mb-5">
-    <h3 class="lesson-subheading">Play many matches</h3>
-    <hr class="subheading-separator">
+  <div class="container">
     <h3 class="text-success text-center mb-4">
-      <small>{{ gameNumber * 2 }} innings</small>
+      <small>{{ legify(gameNumber * 2) }} innings</small>
     </h3>
     <div class="row">
       <div class="col-md-6">
@@ -116,7 +114,7 @@ import ManyMatchesTable from "./ManyMatchesTable.vue";
 import ManyMatchesGraph from "./ManyMatchesGraph.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { throwDiceOnce } from "./utils";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   props: ["trialNumber"],
@@ -176,6 +174,7 @@ export default {
     }
   },
   methods: {
+    legify,
     playOne() {
       let score = 0;
       let wicket = 0;

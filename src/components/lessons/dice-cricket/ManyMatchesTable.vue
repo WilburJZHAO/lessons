@@ -86,7 +86,7 @@ export default {
       for (let i = 0; i < this.gameData.length; i++) {
         total += this.gameData[i];
       }
-      return Number((total / this.gameData.length).toFixed(1));
+      return (total / this.gameData.length).toFixed(1);
     },
     meanOvers() {
       return (this.overCounts / 6 / (this.gamePlayedNumber * 2)).toFixed(2);
@@ -95,10 +95,10 @@ export default {
       let middle = this.gameData.length / 2;
       let inMiddle = this.gameData.length % 2;
       return inMiddle === 0
-        ? Number(
+        ?
             ((this.gameData[middle - 1] + this.gameData[middle]) / 2).toFixed(1)
-          )
-        : Number(this.gameData[Math.floor(middle)].toFixed(1));
+
+        : this.gameData[Math.floor(middle)].toFixed(1);
     },
     tiesPercent() {
       return Number(((this.ties / this.gamePlayedNumber) * 100).toFixed(2));

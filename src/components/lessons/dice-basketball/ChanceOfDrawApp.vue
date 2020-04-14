@@ -3,10 +3,10 @@
 		<div class="container mt-3 mb-5">
 			<div class="app--title mb-3">
 				<h4 class="text-success">
-					Total games: {{ trialNumber }}
+					Total games: {{ legify(trialNumber) }}
 				</h4>
 				<h4 class="text-success">
-					Games played: {{ numberTried }}
+					{{ legify(numberTried) }} games played
 				</h4>
 			</div>
 			<div class="row mb-2">
@@ -128,7 +128,7 @@
 import ChangeRule from './ChangeRule.vue';
 import DemoAutoOption from './DemoAutoOption.vue';
 import { throwDiceOnce, throwDiceThree } from './utils';
-import { calculateTimerInterval } from '../../common/utils';
+import { calculateTimerInterval, legify } from '../../common/utils';
 export default {
 	props: ['trialNumber'],
 	components: {
@@ -225,6 +225,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		initTallyTable() {
 			for(let i = 0; i<=120; i++) {
 				// i - the difference between team A and team B's points

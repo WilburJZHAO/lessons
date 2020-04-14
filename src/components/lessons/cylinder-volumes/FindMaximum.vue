@@ -15,19 +15,19 @@
                 Area (cm
                 <sup>2</sup>)
               </th>
-              <td>{{ area }}</td>
+              <td>{{ legify(area) }}</td>
             </tr>
             <tr>
               <th>Paper height (cm)</th>
-              <td>{{ height }}</td>
+              <td>{{ legify(height) }}</td>
             </tr>
             <tr>
               <th>Paper width (cm)</th>
-              <td>{{ width }}</td>
+              <td>{{ legify(width) }}</td>
             </tr>
             <tr>
               <th>Current height (cm)</th>
-              <td>{{ currentHeight }}</td>
+              <td>{{ legify(Math.round(currentHeight * 100) / 100) }}</td>
             </tr>
             <tr>
               <th></th>
@@ -88,9 +88,9 @@
               :key="index"
               :class="{'table-primary': index===maxIndex }"
             >
-              <td>{{ data.height }}</td>
-              <td>{{ data.radius }}</td>
-              <td>{{ data.volume }}</td>
+              <td>{{ legify(Math.round(data.height * 100) / 100) }}</td>
+              <td>{{ legify(data.radius, 2) }}</td>
+              <td>{{ legify(data.volume, 2) }}</td>
             </tr>
           </table>
         </div>
@@ -102,6 +102,7 @@
 <script>
 import InputPanel from "./InputPanel.vue";
 import { calculateRadius, calculateArea, calculateVolume } from "./utils";
+import { legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -124,8 +125,8 @@ export default {
         const [height, radius, volume] = this.calculate(this.currentHeight);
         this.resultArr.push({
           height,
-          radius: Number(radius.toFixed(6)),
-          volume: Number(volume.toFixed(6))
+          radius: radius,
+          volume: volume
         });
       } else {
         this.currentHeight = 0;
@@ -161,6 +162,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleOK() {
       if (!this.isValidInput) {
         return;
@@ -172,16 +174,14 @@ export default {
         const [height, radius, volume] = this.calculate(this.currentHeight);
         this.resultArr.push({
           height: height,
-          radius: Number(radius.toFixed(2)),
-          volume: Number(volume.toFixed(2))
+          radius: radius,
+          volume: volume
         });
         count++;
         if (count >= 11) {
           break;
         }
-        let nextCurrentHeight = Number(
-          (this.currentHeight + this.incDec * this.increment).toFixed(10)
-        );
+        let nextCurrentHeight = (this.currentHeight + this.incDec * this.increment);
         if (nextCurrentHeight <= 0) {
           break;
         }

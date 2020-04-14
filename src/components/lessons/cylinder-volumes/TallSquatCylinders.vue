@@ -17,18 +17,18 @@
             <tbody>
               <tr>
                 <th>Height (cm)</th>
-                <td>{{ leftHeight }}</td>
-                <td>{{ rightHeight }}</td>
+                <td>{{ legify(leftHeight) }}</td>
+                <td>{{ legify(rightHeight) }}</td>
               </tr>
               <tr>
                 <th>Radius (cm)</th>
-                <td>{{ leftRadius }}</td>
-                <td>{{ rightRadius }}</td>
+                <td>{{ legify(leftRadius, 6) }}</td>
+                <td>{{ legify(rightRadius, 6) }}</td>
               </tr>
               <tr>
                 <th>Volume (L)</th>
-                <td>{{ currentLeftVol }}</td>
-                <td>{{ currentRightVol }}</td>
+                <td>{{ legify(currentLeftVol, 4) }}</td>
+                <td>{{ legify(currentRightVol, 4) }}</td>
               </tr>
             </tbody>
           </table>
@@ -74,6 +74,7 @@
 <script>
 import InputPanel from "./InputPanel.vue";
 import { calculateRadius, calculateArea, calculateVolume } from "./utils";
+import { legify } from "../../common/utils.js";
 export default {
   components: {
     appInputPanel: InputPanel
@@ -130,16 +131,16 @@ export default {
     },
     currentLeftVol() {
       let currentVol = Number(
-        (((this.leftIncrease / this.rate) * this.leftArea) / 1000).toFixed(4)
+        (((this.leftIncrease / this.rate) * this.leftArea) / 1000)
       );
-      let maxLeftVol = Number((this.leftVol / 1000).toFixed(4));
+      let maxLeftVol = Number((this.leftVol / 1000));
       return currentVol <= maxLeftVol ? currentVol : maxLeftVol;
     },
     currentRightVol() {
       let currentVol = Number(
-        (((this.rightIncrease / this.rate) * this.rightArea) / 1000).toFixed(4)
+        (((this.rightIncrease / this.rate) * this.rightArea) / 1000)
       );
-      let maxRightVol = Number((this.rightVol / 1000).toFixed(4));
+      let maxRightVol = Number((this.rightVol / 1000));
       return currentVol <= maxRightVol ? currentVol : maxRightVol;
     },
     showCylindars() {
@@ -201,6 +202,8 @@ export default {
     }
   },
   methods: {
+    legify,
+
     /** Calculate cylinder's radius, volume */
     initData() {
       if (this.paperSize.length >= this.paperSize.width) {

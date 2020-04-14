@@ -2,8 +2,8 @@
   <div>
     <div class="mt-3 mb-5">
       <div class="app--title mb-3">
-        <h4 class="text-success">Total games: {{ trialNumber }}</h4>
-        <h4 class="text-success">Games played: {{ numberTried }}</h4>
+        <h4 class="text-success">Total games: {{ legify(trialNumber) }}</h4>
+        <h4 class="text-success">{{ legify(numberTried) }} games played</h4>
       </div>
       <div class="app--score-table">
         <table class="table">
@@ -19,26 +19,26 @@
           <tbody>
             <tr>
               <th class="text-danger">Average number</th>
-              <td>{{ averageNumberFor3Point ? averageNumberFor3Point : '' }}</td>
-              <td>{{ averageNumberFor2Point ? averageNumberFor2Point : '' }}</td>
-              <td>{{ averageNumberFor1Point ? averageNumberFor1Point : '' }}</td>
+              <td>{{ averageNumberFor3Point ? averageNumberFor3Point.toFixed(2) : '' }}</td>
+              <td>{{ averageNumberFor2Point ? averageNumberFor2Point.toFixed(2) : '' }}</td>
+              <td>{{ averageNumberFor1Point ? averageNumberFor1Point.toFixed(2) : '' }}</td>
               <td></td>
             </tr>
             <tr>
               <th class="text-danger">Total</th>
-              <td>{{ totalNumberFor3Point ? separateNumber(totalNumberFor3Point * 3) : '' }}</td>
-              <td>{{ totalNumberFor2Point ? separateNumber(totalNumberFor2Point * 2) : '' }}</td>
-              <td>{{ totalNumberFor1Point ? separateNumber(totalNumberFor1Point * 1) : '' }}</td>
+              <td>{{ totalNumberFor3Point ? legify(totalNumberFor3Point * 3) : '' }}</td>
+              <td>{{ totalNumberFor2Point ? legify(totalNumberFor2Point * 2) : '' }}</td>
+              <td>{{ totalNumberFor1Point ? legify(totalNumberFor1Point * 1) : '' }}</td>
               <td
                 class="text-primary"
-              >{{ totalNumberForAll ? separateNumber(totalNumberForAll) : '' }}</td>
+              >{{ totalNumberForAll ? legify(totalNumberForAll) : '' }}</td>
             </tr>
             <tr>
               <th class="text-danger">Average Points</th>
-              <td>{{ averagePointsFor3Point ? averagePointsFor3Point : '' }}</td>
-              <td>{{ averagePointsFor2Point ? averagePointsFor2Point : '' }}</td>
-              <td>{{ averagePointsFor1Point ? averagePointsFor1Point : '' }}</td>
-              <td class="text-primary">{{ averagePointsForAll ? averagePointsForAll : '' }}</td>
+              <td>{{ averagePointsFor3Point ? averagePointsFor3Point.toFixed(2) : '' }}</td>
+              <td>{{ averagePointsFor2Point ? averagePointsFor2Point.toFixed(2) : '' }}</td>
+              <td>{{ averagePointsFor1Point ? averagePointsFor1Point.toFixed(2) : '' }}</td>
+              <td class="text-primary">{{ averagePointsForAll ? averagePointsForAll.toFixed(2) : '' }}</td>
             </tr>
           </tbody>
         </table>
@@ -76,7 +76,7 @@
 import ChangeRule from "./ChangeRule.vue";
 import DemoAutoOption from "./DemoAutoOption.vue";
 import { throwDiceOnce, throwDiceThree } from "./utils.js";
-import { calculateTimerInterval, separateNumber } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 export default {
   props: ["trialNumber"],
   components: {
@@ -99,8 +99,7 @@ export default {
       totalNumberFor1Point: 0,
       averageNumberFor3Point: 0,
       averageNumberFor2Point: 0,
-      averageNumberFor1Point: 0,
-      separateNumber
+      averageNumberFor1Point: 0
     };
   },
   computed: {
@@ -160,6 +159,7 @@ export default {
     }
   },
   methods: {
+    legify,
     playOneGame() {
       if (this.isChangeRule) {
         // If rule is changed

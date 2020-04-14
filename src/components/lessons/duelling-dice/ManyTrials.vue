@@ -6,7 +6,7 @@
             <div class="text-center">
                 <div class="row">
                     <label class="col-form-label col-sm-6">
-                        Enter the number of trials(100 - 10000):
+                        Enter the number of trials (100 to {{legify(10000)}}):
                     </label>
                     <div class="col-sm-6">
                         <input type="number" class="form-control" v-model="trialNum" required> <label id="input" style="color: red; margin-left: 10px"></label>
@@ -89,8 +89,8 @@
                         <td v-for="i in gameRule.diceFaces">{{gameRule.blackDiceFace[i]}}</td>
                     </tr>
                     <tr>
-                        <td :colspan="gameRule.diceFaces/2">Game {{count}}</td>
-                        <td :colspan="gameRule.diceFaces/2">Trials {{trialNum}}</td>
+                        <td :colspan="gameRule.diceFaces/2">Game {{legify(count)}}</td>
+                        <td :colspan="gameRule.diceFaces/2">Trials {{legify(trialNum)}}</td>
                     </tr>
 
                 </table>
@@ -121,6 +121,7 @@
 
 <script>
     import DemoAutoOption from "./DemoAutoOption.vue";
+    import { legify } from "../../common/utils.js";
     export default {
         components: {
             appDemoAutoOption: DemoAutoOption
@@ -217,6 +218,7 @@
         mounted: function() {},
         updated: function() {},
         methods: {
+            legify,
             diceChoose(dice) {
                 if (dice === "red") {
                     this.isRed = !this.isRed;
@@ -243,7 +245,7 @@
                 if (!this.isValidInput) {
                     document.getElementById("outOfRange").innerHTML = "Number of trials out of range!";
                 } else if (this.activatedDices.length < 2) {
-                    document.getElementById("outOfRange").innerHTML = "Please select more than 2 dices!";
+                    document.getElementById("outOfRange").innerHTML = "Please select at least 2 dice!";
                 } else {
                     document.getElementById("outOfRange").innerHTML = "";
                     this.isSet = true;

@@ -50,7 +50,7 @@
                     <div v-if="IsOk===false">
                         <form @submit.prevent="handleInput">
                             <div class="form-group">
-                                <label for="length-input" class="col" style="font-size: 25px; margin-bottom: 20px">Enter target score(1-99)</label>
+                                <label for="length-input" class="col" style="font-size: 25px; margin-bottom: 20px">Enter target score (1 to 99)</label>
                                 <div class="col-sm-7">
                                     <input
                                             type="number"
