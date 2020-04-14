@@ -57,3 +57,58 @@ export const separateNumber = number => {
   }
   return arr.join(",");
 };
+
+
+/**
+ * Convert a number into a clean 'legible' format for students
+ * that matches modern maths textbooks.
+ * Integers separated by 'thin spaces' every 3 digits right to left
+ * Decimals separated by 'thin spaces' every 3 digits left to right
+ * Takes optional parameter for fixing number of decimal places
+ * to stop jitter in trials.
+ * e.g. 1234.56789, 4 => 1 234.567 8
+ * (thin spaces appear to be regular in monospace fonts)
+ * Performance note:
+ * Tested with console.time() and runs surprisingly fast.
+ * Function can run roughly 300 times / ms so shouldn't affect
+ * frames in trials that update every 17 ms
+ * @param {Number} number
+ * @param {Number) fixedDec
+ * @return {String}
+ */
+export function legify(number, fixedDec = -1) {
+	let spacer = '\u2009'; // thin space
+  let numberString = fixedDec < 0 ? number.toString() : Number(number).toFixed(fixedDec);
+	// break into integer and decimal parts
+  let decIndex = numberString.indexOf('.');
+  let intString;
+  let decString;
+  if (decIndex === -1) {
+    intString = numberString;
+  }
+  else if (decIndex > 0) {
+    intString = numberString.slice(0, decIndex);
+    decString = numberString.slice(decIndex + 1, numberString.length);
+  }
+  else { // '.' as zeroeth char
+    intString = '0';
+    decString = numberString.slice(1, numberString.length);
+  }
+
+  // insert spaces for integer part
+  let newIntString = '';
+  for (let i = 0; i < intString.length; i++) {
+    let lenToEnd = intString.length - (i + 1);
+    newIntString = lenToEnd % 3 === 0 && lenToEnd !== 0 ? newIntString + intString[i] + spacer : newIntString + intString[i];
+  }
+
+	// insert spaces for decimal part
+  let newDecString = '';
+  if (decIndex > -1) {
+    for (let i = 0; i < decString.length; i++) {
+      newDecString = (i + 1) % 3 === 0 && (i + 1) !== decString.length ? newDecString + decString[i] + spacer : newDecString + decString[i];
+    }
+  }
+
+  return decIndex === -1 ? newIntString : newIntString + '.' + newDecString;
+}
