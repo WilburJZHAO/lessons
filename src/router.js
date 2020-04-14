@@ -433,17 +433,17 @@ const WinAtTheFair = resolve => {
   });
 };
 
-// const TemperatureGraphs = resolve => {
-//   require.ensure("./components/lessons/temperature-graphs/App.vue", () => {
-//     resolve(require("./components/lessons/temperature-graphs/App.vue"));
-//   });
-// };
+const TemperatureGraphs = resolve => {
+  require.ensure("./components/lessons/temperature-graphs/App.vue", () => {
+    resolve(require("./components/lessons/temperature-graphs/App.vue"));
+  });
+};
 
-// const GreedyPig = resolve => {
-//   require.ensure("./components/lessons/greedy-pig/App.vue", () => {
-//     resolve(require("./components/lessons/greedy-pig/App.vue"));
-//   });
-// };
+const GreedyPig = resolve => {
+  require.ensure("./components/lessons/greedy-pig/App.vue", () => {
+    resolve(require("./components/lessons/greedy-pig/App.vue"));
+  });
+};
 
 const SnakesAndLadders = resolve => {
   require.ensure("./components/lessons/snakes-and-ladders/App.vue", () => {
@@ -832,16 +832,16 @@ const routes = [
     component: WinAtTheFair,
     name: "Win At The Fair"
   },
-  {
-    path: "/temperature-graphs",
-    component: TemperatureGraphs,
-    name: "Temperature Graphs"
-  },
-  {
-    path: "/greedy-pig",
-    component: GreedyPig,
-    name: "Greedy Pig"
-  },
+  // {
+  //   path: "/temperature-graphs",
+  //   component: TemperatureGraphs,
+  //   name: "Temperature Graphs"
+  // },
+  // {
+  //   path: "/greedy-pig",
+  //   component: GreedyPig,
+  //   name: "Greedy Pig"
+  // },
   {
     path: "/snakes-and-ladders",
     component: SnakesAndLadders,
