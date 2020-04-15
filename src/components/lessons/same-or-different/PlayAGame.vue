@@ -7,7 +7,7 @@
 				<form>
 					<div class="app--enter-number form-group row mt-3">
 						<label for="numPlantsInput" class="col-sm-9 col-form-label" style="color: red">
-							Enter number of red blocks(1-{{maxBlockInput}}):
+							Enter number of red blocks (1 to {{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
 							<input type="number"
@@ -20,7 +20,7 @@
 					</div>
 					<div class="app--enter-number form-group row mt-3">
 						<label for="numTilesInput" class="col-sm-9 col-form-label" style="color: blue">
-							Enter number of blue blocks(1-{{maxBlockInput}}):
+							Enter number of blue blocks (1 to {{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
 							<input type="number"

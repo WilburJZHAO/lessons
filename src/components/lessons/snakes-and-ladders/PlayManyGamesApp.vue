@@ -6,11 +6,11 @@
       </div>
       <div class="col-md-4">
         <div style="position: sticky; top:0;">
-          <h5 class="text-center">Play {{ trialNumber}} games</h5>
+          <h5 class="text-center">Play {{ legify(trialNumber)}} games</h5>
           <table class="table table-bordered" style="table-layout: fixed">
             <tr>
               <th>Game</th>
-              <td>{{ playedGames }}</td>
+              <td>{{ legify(playedGames) }}</td>
             </tr>
             <tr>
               <th>Average</th>
@@ -55,7 +55,7 @@
 <script>
 import Board from "./Board.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
-import { pickNumber, calculateTimerInterval } from "../../common/utils";
+import { pickNumber, calculateTimerInterval, legify } from "../../common/utils.js";
 export default {
   props: ["boardSettings", "trialNumber"],
   components: {
@@ -98,10 +98,11 @@ export default {
       if (this.playedGames === 0) {
         return 0;
       }
-      return Number((this.sum / this.playedGames).toFixed(2));
+      return (this.sum / this.playedGames).toFixed(2);
     }
   },
   methods: {
+    legify,
     throwDice() {
       return pickNumber(1, 6);
     },

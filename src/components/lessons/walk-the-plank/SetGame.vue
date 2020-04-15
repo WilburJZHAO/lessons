@@ -2,7 +2,7 @@
 	<div>
 		<div class="app--enter-number form-group row mt-5">
 			<label for="trial-numbers" class="col-form-label col-sm-6">
-				Enter the number of trials (1 to 10000):
+				Enter the number of trials (1 to {{legify(10000)}}):
 			</label>
 			<div class="col-sm-6">
 				<input type="number" class="form-control" v-model="trialNumber" required>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+	import { legify } from '../../common/utils.js';
 	export default {
 		data: function() {
 			return {
@@ -52,6 +53,7 @@
 			}
 		},
 		methods: {
+			legify,
 			handleSetGame() {
 				this.$emit(
 					'acceptGameSetting',

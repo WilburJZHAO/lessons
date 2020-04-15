@@ -2,7 +2,7 @@
 	<div>
 		<div class="app--enter-number form-group row mt-5">
 			<label for="trial-numbers" class="col-form-label col-sm-6">
-				<span style="color: darkred">Enter the number of atoms</span> (10 to 10,000):
+				<span style="color: darkred">Enter the number of atoms</span> (10 to {{legify(10000)}}):
 			</label>
 			<div class="col-sm-6">
 				<input type="number" class="form-control" v-model="numAtoms" required>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+	import { legify } from '../../common/utils.js';
 	export default {
 		data: function() {
 			return {
@@ -51,6 +52,7 @@
 			}
 		},
 		methods: {
+			legify,
 			handleAcceptTrialInputs() {
 				this.$emit('acceptTrialInputs', this.trialInputs);
 			}

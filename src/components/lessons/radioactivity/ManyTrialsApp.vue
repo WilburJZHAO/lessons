@@ -45,7 +45,7 @@
 					<table class="table">
 						<tr>
 							<td class="entryDesc">Initial number of atoms:</td>
-							<td class="entryData">{{trialInputs.numAtoms}}</td>
+							<td class="entryData">{{legify(trialInputs.numAtoms)}}</td>
 						</tr>
 						<tr>
 							<td class="entryDesc">Prob of decay is 1 in {{trialInputs.probDecay}}</td>
@@ -57,7 +57,7 @@
 						</tr>
 						<tr>
 							<td class="entryDesc">Atoms left:</td>
-							<td class="entryData">{{atomLeft}}</td>
+							<td class="entryData">{{legify(atomLeft)}}</td>
 						</tr>
 						<tr>
 							<td class="entryDesc">Percentage left:</td>
@@ -73,6 +73,8 @@
 <script>
 /* eslint-disable */
 import Dice from './Dice.vue';
+import { legify } from '../../common/utils.js';
+
 import {
 	drawInitialGraph,
 	rerollAtoms,
@@ -227,6 +229,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		//function used to run the auto mode
 		autoMode(){
 			if (this.isAuto && !this.showStart){

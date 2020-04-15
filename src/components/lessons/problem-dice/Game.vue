@@ -50,23 +50,23 @@
             style="table-layout:fixed;"
           >
             <tr>
-              <th>{{ playAWinsNumber }}</th>
-              <th>{{ playAWinsPercent + '%' }}</th>
+              <th>{{ legify(playAWinsNumber) }}</th>
+              <th>{{ playAWinsPercent.toFixed(2) + '%' }}</th>
               <th>
                 <span
                   v-if="trialNumber > 0"
                   class="app--game-data-tried font-weight-bold"
-                >{{ trialNumber }} trials</span>
+                >{{ legify(trialNumber) }} trials</span>
               </th>
             </tr>
             <tr>
-              <th>{{ playBWinsNumber }}</th>
-              <th>{{ playBWinsPercent + '%' }}</th>
+              <th>{{ legify(playBWinsNumber) }}</th>
+              <th>{{ playBWinsPercent.toFixed(2) + '%' }}</th>
               <th>
                 <span
                   v-if="triedNumber > 0"
                   class="app--game-data-tried font-weight-bold"
-                >Trial {{ triedNumber }}</span>
+                >Trial {{ legify(triedNumber) }}</span>
               </th>
             </tr>
           </table>
@@ -119,6 +119,7 @@ import DiffGraph from "./DiffGraph.vue";
 import DiceGraph from "./DiceGraph.vue";
 import DemoAutoOption from "./DemoAutoOption.vue";
 import { throwDice } from "./utils";
+import {legify} from '../../common/utils.js';
 
 export default {
   props: ["gameType", "trialNumber"], // gameType: 1 - Demonstration game, 2- Play many games
@@ -149,15 +150,11 @@ export default {
   computed: {
     playerAWinsPercent() {
       if (!this.triedNumber) return 0;
-      return Number(
-        ((this.playAWinsNumber / this.triedNumber) * 100).toFixed(2)
-      );
+      return (this.playAWinsNumber / this.triedNumber) * 100;
     },
     playerBWinsPercent() {
       if (!this.triedNumber) return 0;
-      return Number(
-        ((this.playAWinsNumber / this.triedNumber) * 100).toFixed(2)
-      );
+      return (this.playAWinsNumber / this.triedNumber) * 100;
     },
     timerInterval() {
       if (!this.trialNumber) return 50;
@@ -199,6 +196,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleTogglePlayer(index) {
       if (!this.isSet) {
         let toggledPlayer = this.playerSet[index] === 0 ? 1 : 0;

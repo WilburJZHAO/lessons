@@ -13,7 +13,7 @@
                                 <h5 class="text-success" >
                                     Enter the number of trials:<input v-model="numberOfTiles" placeholder="number" class="input-group" v-bind:disabled="disableInput">
                                 </h5>
-                                    <h6 class="text-success">Range is 1 to 16000</h6>
+                                    <h6 class="text-success">Range is 1 to {{legify(16000)}}</h6>
                                     <div v-if="appear">
                                         <button class="btn btn-outline-success" style="margin-right: 30px" @click="oneTrial" v-if="playDemoGame">Play Demo</button>
 
@@ -160,10 +160,10 @@
                                     </td>
                                 </tr>
                                 <tr v-if="appear">
-                                    <td class="originalTB">{{numberOfTiles}} trials</td>
+                                    <td class="originalTB">{{legify(numberOfTiles)}} trials</td>
 
                                     <td><div class="changedTwo">Total</div></td>
-                                    <td><div class="changedTB">{{totalCount}}</div></td>
+                                    <td><div class="changedTB">{{legify(totalCount)}}</div></td>
                                 </tr>
 
                                 </tbody>
@@ -183,6 +183,7 @@
 <script>
     import global from "./EnterTeams"
     import pickedGlobal from "./PercentageAdvantage"
+    import { legify } from '../../common/utils.js';
     export default {
         name: "PlayManyFinals",
         data:function () {
@@ -191,7 +192,7 @@
                 disappear: true,
                 numberOfTiles:"",
                 alert : false,
-                alertWords:"Please enter the number of trials(1 to 16000)",
+                alertWords:`Please enter the number of trials (1 to ${legify(16000)})`,
                 playAutoGame:true,
                 playDemoGame : true,
 
@@ -262,6 +263,7 @@
 
         },
         methods:{
+            legify,
             submitTrials: function () {
                 if(isNaN(this.numberOfTiles)==true){
                     this.alert = true
@@ -309,7 +311,7 @@
                 this.disappear= true;
                 this.numberOfTiles = "";
                 this.alert = false;
-                this.alertWords= "Please enter the number of trials(1 to 16000)";
+                this.alertWords= `Please enter the number of trials (1 to ${legify(16000)})`;
                 this.playAutoGame= true;
                 this.playDemoGame = true;
                 this.team1= "";

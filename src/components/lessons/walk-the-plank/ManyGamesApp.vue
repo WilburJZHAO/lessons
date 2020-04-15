@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="lesson-subheading">Many games fast: change the plank length - {{ gameSetting.trialNumber}} games</h3>
+    <h3 class="lesson-subheading">Many games fast: change the plank length - {{ legify(gameSetting.trialNumber)}} games</h3>
     <hr class="subheading-separator">
     <app-game-table-max
       :plankLength="plankLength"
@@ -44,7 +44,7 @@ import GameTableMax from "./GameTableMax.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import GameFrequencyGraph from "./GameFrequencyGraph.vue";
 import Plank from "./Plank";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -83,7 +83,7 @@ export default {
       if (this.numberOfGames <= 1) {
         return 0;
       }
-      return Number((this.totalTurns / (this.numberOfGames - 1)).toFixed(2));
+      return (this.totalTurns / (this.numberOfGames - 1)).toFixed(2);
     },
     timerInterval() {
       let { trialNumber } = this.gameSetting;
@@ -119,6 +119,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handlePlayOneGame() {
       if (!this.isStart) this.isStart = true;
       this.turns = this.plank.playOneGameAndGetTurns();

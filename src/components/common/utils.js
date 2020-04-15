@@ -77,6 +77,7 @@ export const separateNumber = number => {
  * @return {String}
  */
 export function legify(number, fixedDec = -1) {
+  if (!number && number !== 0) {return ""} // handle undefined
 	let spacer = '\u2009'; // thin space
   let numberString = fixedDec < 0 ? number.toString() : Number(number).toFixed(fixedDec);
 	// break into integer and decimal parts
