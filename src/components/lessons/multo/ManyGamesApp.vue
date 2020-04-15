@@ -16,6 +16,7 @@
           v-if="gameStatus >= 0"
           :totalCardNumbers="totalCardNumbers"
           :gameNumber="gameNumber"
+          :draws="draws"
           :winStats="winStats"
           :gameStatus="gameStatus"
           :trialNumber="trialNumber"
@@ -109,7 +110,7 @@ import Strategies from "./Strategies.vue";
 import ManyGamesStat from "./ManyGamesStat.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { BLANK_STRATEGY } from "./utils/settings";
-import { pickNumber, checkMulto, checkCanMulto } from "./utils/utils";
+import { checkMulto, checkCanMulto, newShuffledDeck } from "./utils/utils";
 import { calculateTimerInterval } from "../../common/utils";
 
 export default {
@@ -136,7 +137,9 @@ export default {
       gameNumber: 0,
       winStats: [0, 0, 0],
       multiplicationList: [],
-      timer: null
+      timer: null,
+      cards: newShuffledDeck(),
+      draws: 0,
     };
   },
   computed: {
@@ -160,8 +163,9 @@ export default {
     }
   },
   methods: {
-    generateNewMultiplication() {
-      return pickNumber(0, 9) * pickNumber(0, 9);
+    fetchNextMultiplication() {
+      let card = this.cards.pop();
+      return card[0] * card[1];
     },
 
     handleSelectStrategy($event) {
@@ -175,14 +179,16 @@ export default {
         checkCanMulto(this.selectedStrategy.strategyData[2])
       ) {
         this.gameNumber = 0;
+        this.draws = 0;
         this.gameStatus = 1;
         this.winStats = [0, 0, 0];
       } else {
-        this.message = "Impossible to win multo";
+        this.message = "Impossible to win Multo!";
       }
     },
 
     handlePlayOneGame() {
+      this.cards = newShuffledDeck();
       let cardNumbers = 0;
       let grid1Multo = false;
       let grid2Multo = false;
@@ -190,8 +196,8 @@ export default {
       this.multiplicationList = [];
       this.gameStatus = 2;
 
-      while (!grid1Multo && !grid2Multo && !grid3Multo) {
-        let multiNumber = this.generateNewMultiplication();
+      while (!grid1Multo && !grid2Multo && !grid3Multo && this.cards.length > 0) {
+        let multiNumber = this.fetchNextMultiplication();
         cardNumbers++;
         if (this.multiplicationList.indexOf(multiNumber) === -1) {
           this.multiplicationList.push(multiNumber);
@@ -234,6 +240,15 @@ export default {
         this.winStats = [...this.winStats];
         this.totalCardNumbers += cardNumbers;
         this.gameNumber++;
+      } else {
+        // handle draw
+        this.draws++;
+        if (this.draws >= 3000) {
+          this.message = "Too many draws!";
+          this.gameStatus = 3;
+          clearInterval(this.timer);
+          this.timer = null;
+        }
       }
     },
 
@@ -247,6 +262,7 @@ export default {
     },
 
     handleReset() {
+      this.draws = 0;
       this.gameStatus = 0;
       this.message = "";
       this.demoAutoOption = "1";

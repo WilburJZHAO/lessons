@@ -166,3 +166,27 @@ export const checkCanAddo = gridData => {
   }
   return false;
 };
+
+/**
+ * Produce an array of cards [[0, 0]... [10, 10]]
+ * shuffled and ready for a game of Addo
+ * This aids in avoiding repeating cards during the game
+ * @return {Array}
+ */
+export function newShuffledDeck() {
+  let cards = [];
+  // make the deck of cards
+  for (let i = 0; i <= 10; i++) {
+    for (let j = 0; j <= 10; j++) {
+      cards.push([i, j]);
+    }
+  }
+  // shuffle the deck of cards
+  for(let i = cards.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = cards[i];
+    cards[i] = cards[j];
+    cards[j] = temp;
+  }
+  return cards;
+}
