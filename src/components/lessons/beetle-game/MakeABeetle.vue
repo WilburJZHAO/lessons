@@ -372,7 +372,8 @@ export default {
       finished: false,
       timer: null,
       isStart: false,
-      isAutoStart: false
+      isAutoStart: false,
+      phase: 1
     };
   },
   computed: {},
@@ -411,119 +412,72 @@ export default {
       this.p = this.generateRandom(3);
       this.randomNum = this.generateRandom(6);
       this.rollsNum++;
+      this.updateBeetle();
       this.drawBeetle();
     },
-    drawBeetle() {
-      if (this.randomNum === 6) {
-        document.getElementById("beetleBody").style.display = "block";
-        if (this.body === 0) {
+
+    updateBeetle() {
+      if (this.phase === 1) {
+        if (this.randomNum === 6) {
+          this.body++;
           this.partsNum++;
-          this.body = 1;
-        }
-      } else if (this.randomNum === 5 || this.randomNum === 1) {
-        if (this.randomNum === 5) {
-          if (this.body === 1) {
-            document.getElementById("beetleHead").style.display = "block";
-            if (this.head === 0) {
-              this.partsNum++;
-            }
-            this.head = 1;
-          } else {
-            return;
-          }
-        }
-        if (this.randomNum === 1) {
-          if (this.body === 1) {
-            if (this.legs === 0) {
-              document.getElementById("beetleLeg1").style.display = "block";
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 1) {
-              document.getElementById("beetleLeg2").style.display = "block";
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 2) {
-              document.getElementById("beetleLeg3").style.display = "block";
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 3) {
-              document.getElementById("beetleLeg4").style.display = "block";
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 4) {
-              document.getElementById("beetleLeg5").style.display = "block";
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 5) {
-              document.getElementById("beetleLeg6").style.display = "block";
-              this.partsNum++;
-              this.legs++;
-            } else {
-              return;
-            }
-          } else {
-            return;
-          }
-        }
-      } else if (
-        this.randomNum === 2 ||
-        this.randomNum === 3 ||
-        this.randomNum === 4
-      ) {
-        if (this.randomNum === 4) {
-          if (this.head === 1) {
-            document.getElementById("beetleMouth").style.display = "block";
-            if (this.mouth === 0) {
-              this.partsNum++;
-            }
-            this.mouth = 1;
-          } else {
-            return;
-          }
-        }
-        if (this.randomNum === 3) {
-          if (this.head === 1) {
-            if (this.feelers === 0) {
-              document.getElementById("beetleFeeler1").style.display = "block";
-              this.partsNum++;
-              this.feelers += 1;
-            } else if (this.feelers === 1) {
-              document.getElementById("beetleFeeler2").style.display = "block";
-              this.partsNum++;
-              this.feelers += 1;
-            } else {
-              return;
-            }
-          }
-        }
-        if (this.randomNum === 2) {
-          if (this.head === 1) {
-            if (this.eyes === 0) {
-              document.getElementById("beetleEye1").style.display = "block";
-              this.partsNum++;
-              this.eyes += 1;
-            } else if (this.eyes === 1) {
-              document.getElementById("beetleEye2").style.display = "block";
-              this.partsNum++;
-              this.eyes += 1;
-            } else {
-              return;
-            }
-          }
+          this.phase++;
         }
       }
-      if (
-        this.body === 1 &&
-        this.head === 1 &&
-        this.eyes === 2 &&
-        this.legs === 6 &&
-        this.feelers === 2 &&
-        this.mouth === 1
-      ) {
+      else if (this.phase === 2) {
+        if (this.randomNum === 1 && this.legs < 6) {
+          this.legs++;
+          this.partsNum++;
+        }
+        else if (this.randomNum === 5 && this.head < 1) {
+          this.head++;
+          this.partsNum++;
+        }
+        // progression check
+        if (this.legs === 6 && this.head === 1) {
+          this.phase++;
+        }
+      }
+      else if (this.phase === 3) {
+        if (this.randomNum === 2 && this.eyes < 2) {
+          this.eyes++;
+          this.partsNum++;
+        }
+        else if (this.randomNum === 3 && this.feelers < 2) {
+          this.feelers++;
+          this.partsNum++;
+        }
+        else if (this.randomNum === 4 && this.mouth < 1) {
+          this.mouth++;
+          this.partsNum++;
+        }
+        // progression check
+        if (this.eyes === 2 && this.feelers === 2 && this.mouth === 1) {
+          this.phase++;
+        }
+      }
+      // run check regardless of previous code
+      if (this.phase === 4) {
         this.count++;
         this.freshData();
         this.finished = true;
       }
+    },
+
+    drawBeetle() {
+      document.getElementById("beetleBody").style.display = this.body < 1 ? "none" : "block";
+      document.getElementById("beetleHead").style.display = this.head < 1 ? "none" : "block";
+      document.getElementById("beetleMouth").style.display = this.mouth < 1 ? "none" : "block";
+      document.getElementById("beetleFeeler1").style.display = this.feelers < 1 ? "none" : "block";
+      document.getElementById("beetleFeeler2").style.display = this.feelers < 2 ? "none" : "block";
+      document.getElementById("beetleEye1").style.display = this.eyes < 1 ? "none": "block";
+      document.getElementById("beetleEye2").style.display = this.eyes < 2 ? "none" : "block";
+      document.getElementById("beetleLeg1").style.display = this.legs < 1 ? "none" : "block";
+      document.getElementById("beetleLeg2").style.display = this.legs < 2 ? "none" : "block";
+      document.getElementById("beetleLeg3").style.display = this.legs < 3 ? "none" : "block";
+      document.getElementById("beetleLeg4").style.display = this.legs < 4 ? "none" : "block";
+      document.getElementById("beetleLeg5").style.display = this.legs < 5 ? "none" : "block";
+      document.getElementById("beetleLeg6").style.display = this.legs < 6 ? "none" : "block";
     },
     freshData() {
       this.allGameResults.push(this.rollsNum);
@@ -561,19 +515,8 @@ export default {
       this.timer = null;
       this.isStart = false;
       this.isAutoStart = false;
-      document.getElementById("beetleBody").style.display = "none";
-      document.getElementById("beetleHead").style.display = "none";
-      document.getElementById("beetleMouth").style.display = "none";
-      document.getElementById("beetleFeeler1").style.display = "none";
-      document.getElementById("beetleFeeler2").style.display = "none";
-      document.getElementById("beetleEye1").style.display = "none";
-      document.getElementById("beetleEye2").style.display = "none";
-      document.getElementById("beetleLeg1").style.display = "none";
-      document.getElementById("beetleLeg2").style.display = "none";
-      document.getElementById("beetleLeg3").style.display = "none";
-      document.getElementById("beetleLeg4").style.display = "none";
-      document.getElementById("beetleLeg5").style.display = "none";
-      document.getElementById("beetleLeg6").style.display = "none";
+      this.phase = 1;
+      this.drawBeetle(); // must be after legs, eyes etc are reset
     }
   },
   destroyed() {
