@@ -73,7 +73,7 @@ export const separateNumber = number => {
  * Function can run roughly 300 times / ms so shouldn't affect
  * frames in trials that update every 17 ms
  * @param {Number} number
- * @param {Number) fixedDec
+ * @param {Number} [fixedDec]
  * @return {String}
  */
 export function legify(number, fixedDec = -1) {
