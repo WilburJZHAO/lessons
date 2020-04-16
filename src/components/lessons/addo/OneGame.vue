@@ -111,7 +111,7 @@
         v-if="gameStatus===2"
         class="btn btn-outline-success"
         @click="handleDrawTwoNumbers"
-      >Draw two numbers</button>
+      >Draw a card</button>
       <button
         v-if="gameStatus===3"
         class="btn btn-outline-dark"
@@ -128,7 +128,7 @@ import Grid from "./Grid.vue";
 import Strategies from "./Strategies.vue";
 import GameStat from "./GameStat.vue";
 import { BLANK_STRATEGY } from "./utils/settings";
-import { pickNumber, checkAddo } from "./utils/utils";
+import { checkAddo, newShuffledDeck } from "./utils/utils";
 
 export default {
   props: ["strategies"],
@@ -142,6 +142,7 @@ export default {
       selectedStrategy: BLANK_STRATEGY,
       duplicateNumber: null,
       message: "",
+      cards: newShuffledDeck(),
       gameStatus: -1,
       // -1 - initial state
       // 0 - game ready for start,
@@ -160,10 +161,17 @@ export default {
   },
   computed: {},
   methods: {
-    generateNewAddition() {
-      this.add1 = pickNumber(0, 10);
-      this.add2 = pickNumber(0, 10);
-      this.addition = this.add1 + this.add2;
+    drawNextAdditionCard() {
+      if (this.cards.length > 0) {
+        let card = this.cards.pop();
+        this.add1 = card[0];
+        this.add2 = card[1];
+        this.addition = this.add1 + this.add2;
+        return true;
+      }
+      else {
+        return false;
+      }
     },
 
     handleSelectStrategy($event) {
@@ -174,7 +182,7 @@ export default {
       this.gameStatus = 1;
       this.cardNumber = 1;
       this.gameNumber++;
-      this.generateNewAddition();
+      this.drawNextAdditionCard();
       setTimeout(() => {
         this.$refs.inputAnswer.focus();
       }, 50);
@@ -239,12 +247,18 @@ export default {
       this.message = "";
       this.answer = null;
       this.cardNumber++;
-      this.generateNewAddition();
-      setTimeout(() => {
-        this.$refs.inputAnswer.focus();
-      }, 50);
+      let cardsLeft = this.drawNextAdditionCard();
+      if (cardsLeft) {
+        setTimeout(() => {
+          this.$refs.inputAnswer.focus();
+        }, 50);
+      } else {
+        this.gameStatus = 3;
+        this.message = "Run out of cards. The game is a draw!";
+      }
     },
     handleReset() {
+      this.cards = newShuffledDeck();
       this.gameStatus = 0;
       this.message = "";
       this.add1 = null;

@@ -18,8 +18,11 @@
             }"
       >Game {{gameNumber}} of {{trialNumber}}</h5>
     </div>
+    <div class="d-flex justify-content-around my-2">
+      <h6 class="ml-2">Wins listed below:</h6>
+      <h6 class="ml-2">Draws (re-played): {{legify(draws)}}</h6>
+    </div>
     <div>
-      <h6 class="ml-2">Wins</h6>
       <div class="flex-grow-1 d-flex flex-row justify-content-around">
         <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ winStats[0] }}</div>
         <div class="border flex-fill mx-4 my-1 text-right pr-2">{{ winStats[1] }}</div>
@@ -41,7 +44,8 @@ export default {
     "gameNumber",
     "winStats",
     "gameStatus",
-    "trialNumber"
+    "trialNumber",
+    "draws"
   ],
   computed: {
     averageCardNumber() {

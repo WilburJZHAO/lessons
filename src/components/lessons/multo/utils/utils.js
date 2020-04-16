@@ -336,3 +336,27 @@ export const getOccur = number => {
     return 0;
   }
 };
+
+/**
+ * Produce an array of cards [[0, 0]... [9, 9]]
+ * shuffled and ready for a game of Multo
+ * This aids in avoiding repeating cards during the game
+ * @return {Array}
+ */
+export function newShuffledDeck() {
+  let cards = [];
+  // make the deck of cards
+  for (let i = 0; i <= 9; i++) {
+    for (let j = 0; j <= 9; j++) {
+      cards.push([i, j]);
+    }
+  }
+  // shuffle the deck of cards
+  for(let i = cards.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = cards[i];
+    cards[i] = cards[j];
+    cards[j] = temp;
+  }
+  return cards;
+}

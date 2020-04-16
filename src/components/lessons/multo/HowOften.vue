@@ -40,7 +40,9 @@
             class="flex-grow-1 app--color-cell"
             style="background-color: #000"
             @click="currentNumber = 5"
-          ></div>
+          >
+            <span style="position: absolute; color: White">once</span>
+          </div>
           <div class="flex-grow-1 app--color-cell">
             <span class="app--color-number" v-if="currentNumber===5 || currentNumber===100">5</span>
           </div>
@@ -51,7 +53,9 @@
             class="flex-grow-1 app--color-cell"
             style="background-color: #007405"
             @click="currentNumber = 44"
-          ></div>
+          >
+            <span style="position: absolute; color: White">twice</span>
+          </div>
           <div class="flex-grow-1 app--color-cell">
             <span class="app--color-number" v-if="currentNumber===44 || currentNumber===100">44</span>
           </div>
@@ -62,7 +66,9 @@
             class="flex-grow-1 app--color-cell"
             style="background-color: #b81513"
             @click="currentNumber = 12"
-          ></div>
+          >
+            <span style="position: absolute; color: White">3 times</span>
+          </div>
           <div class="flex-grow-1 app--color-cell">
             <span class="app--color-number" v-if="currentNumber===12 || currentNumber===100">12</span>
           </div>
@@ -73,7 +79,9 @@
             class="flex-grow-1 app--color-cell"
             style="background-color: #ea8d1f"
             @click="currentNumber = 20"
-          ></div>
+          >
+            <span style="position: absolute; color: White">4 times</span>
+          </div>
           <div class="flex-grow-1 app--color-cell">
             <span class="app--color-number" v-if="currentNumber===20 || currentNumber===100">20</span>
           </div>
@@ -84,7 +92,9 @@
             class="flex-grow-1 app--color-cell"
             style="background-color: #001cc6"
             @click="currentNumber = 19"
-          ></div>
+          >
+            <span style="position: absolute; color: White">5+ times</span>
+          </div>
           <div class="flex-grow-1 app--color-cell">
             <span class="app--color-number" v-if="currentNumber===19 || currentNumber===100">19</span>
           </div>
@@ -96,7 +106,7 @@
             style="background-color: #4ed5d7; position: relative;"
             @click="currentNumber = 100"
           >
-            <span style="position: absolute; ">Total</span>
+            <span style="position: absolute; font-weight: 700">Any</span>
           </div>
           <div class="flex-fill app--color-cell">
             <span class="app--color-number" v-if="currentNumber===100">100</span>

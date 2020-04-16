@@ -42,7 +42,9 @@
                 class="flex-grow-1 app--color-cell"
                 style="background-color: #808000"
                 @click="() => {this.currentNumber = 0}"
-              ></div>
+              >
+                <span style="position: absolute; color: White">once</span>
+              </div>
               <div class="flex-grow-1 app--color-cell">
                 <span class="app--color-number" v-if="currentNumber===0 || currentNumber===11">2</span>
               </div>
@@ -52,7 +54,9 @@
                 class="flex-fill app--color-cell"
                 style="background-color: #666666"
                 @click="() => {this.currentNumber = 1}"
-              ></div>
+              >
+                <span style="position: absolute; color: White">2x</span>
+              </div>
               <div class="flex-fill app--color-cell">
                 <span class="app--color-number" v-if="currentNumber===1 || currentNumber===11">4</span>
               </div>
@@ -62,7 +66,9 @@
                 class="flex-fill app--color-cell"
                 style="background-color: #00FF00"
                 @click="() => {this.currentNumber = 2}"
-              ></div>
+              >
+                <span style="position: absolute; color: White">3x</span>
+              </div>
               <div class="flex-fill app--color-cell">
                 <span class="app--color-number" v-if="currentNumber===2 || currentNumber===11">6</span>
               </div>
@@ -72,7 +78,9 @@
                 class="flex-fill app--color-cell"
                 style="background-color: #804000"
                 @click="() => {this.currentNumber = 3}"
-              ></div>
+              >
+                <span style="position: absolute; color: White">4x</span>
+              </div>
               <div class="flex-fill app--color-cell">
                 <span class="app--color-number" v-if="currentNumber===3 || currentNumber===11">8</span>
               </div>
@@ -82,7 +90,9 @@
                 class="flex-fill app--color-cell"
                 style="background-color: #0080FF"
                 @click="() => {this.currentNumber = 4}"
-              ></div>
+              >
+                <span style="position: absolute; color: White">5x</span>
+              </div>
               <div class="flex-fill app--color-cell">
                 <span class="app--color-number" v-if="currentNumber===4 || currentNumber===11">10</span>
               </div>
@@ -96,7 +106,9 @@
                   class="flex-fill app--color-cell"
                   style="background-color: #FF0080"
                   @click="() => {this.currentNumber = 5}"
-                ></div>
+                >
+                  <span style="position: absolute; color: White">6x</span>
+                </div>
                 <div class="flex-fill app--color-cell">
                   <span class="app--color-number" v-if="currentNumber===5 || currentNumber===11">12</span>
                 </div>
@@ -108,7 +120,9 @@
                   class="flex-fill app--color-cell"
                   style="background-color: #007405"
                   @click="() => {this.currentNumber = 6}"
-                ></div>
+                >
+                  <span style="position: absolute; color: White">7x</span>
+                </div>
                 <div class="flex-fill app--color-cell">
                   <span class="app--color-number" v-if="currentNumber===6 || currentNumber===11">14</span>
                 </div>
@@ -120,7 +134,9 @@
                   class="flex-fill app--color-cell"
                   style="background-color: #B81513"
                   @click="() => {this.currentNumber =7}"
-                ></div>
+                >
+                  <span style="position: absolute; color: White">8x</span>
+                </div>
                 <div class="flex-fill app--color-cell">
                   <span class="app--color-number" v-if="currentNumber===7 || currentNumber===11">16</span>
                 </div>
@@ -132,7 +148,9 @@
                   class="flex-fill app--color-cell"
                   style="background-color: #EA8D1F"
                   @click="() => {this.currentNumber = 8}"
-                ></div>
+                >
+                  <span style="position: absolute; color: White">9x</span>
+                </div>
                 <div class="flex-fill app--color-cell">
                   <span class="app--color-number" v-if="currentNumber===8 || currentNumber===11">18</span>
                 </div>
@@ -144,7 +162,9 @@
                   class="flex-fill app--color-cell"
                   style="background-color: #001CC6"
                   @click="() => {this.currentNumber = 9}"
-                ></div>
+                >
+                  <span style="position: absolute; color: White">10x</span>
+                </div>
                 <div class="flex-fill app--color-cell">
                   <span class="app--color-number" v-if="currentNumber===9 || currentNumber===11">20</span>
                 </div>
@@ -156,7 +176,9 @@
                   class="flex-fill app--color-cell"
                   style="background-color: #000000"
                   @click="() => {this.currentNumber = 10}"
-                ></div>
+                >
+                  <span style="position: absolute; color: White">11x</span>
+                </div>
                 <div class="flex-fill app--color-cell">
                   <span class="app--color-number" v-if="currentNumber===10 || currentNumber===11">11</span>
                 </div>
@@ -170,7 +192,7 @@
             style="background: #4ED5D7; position: relative;"
             @click="() => {this.currentNumber = 11}"
           >
-            <span style="position: absolute; ">Total</span>
+            <span style="position: absolute; font-weight: 700">Any</span>
           </div>
           <div class="flex-fill app--color-cell">
             <span class="app--color-number" v-if="currentNumber===11">121</span>

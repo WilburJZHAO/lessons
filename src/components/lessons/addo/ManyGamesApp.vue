@@ -16,6 +16,7 @@
           v-if="gameStatus >= 0"
           :totalCardNumbers="totalCardNumbers"
           :gameNumber="gameNumber"
+          :draws="draws"
           :winStats="winStats"
           :gameStatus="gameStatus"
           :trialNumber="trialNumber"
@@ -110,7 +111,7 @@ import Strategies from "./Strategies.vue";
 import ManyGamesStat from "./ManyGamesStat.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { BLANK_STRATEGY } from "./utils/settings";
-import { pickNumber, checkAddo, checkCanAddo } from "./utils/utils";
+import { checkAddo, checkCanAddo, newShuffledDeck } from "./utils/utils";
 import { calculateTimerInterval } from "../../common/utils";
 
 export default {
@@ -138,7 +139,9 @@ export default {
       gameNumber: 0,
       winStats: [0, 0, 0],
       additionList: [],
-      timer: null
+      timer: null,
+      cards: newShuffledDeck(),
+      draws: 0,
     };
   },
   computed: {
@@ -162,8 +165,9 @@ export default {
     }
   },
   methods: {
-    generateNewAddition() {
-      return pickNumber(0, 10) + pickNumber(0, 10);
+    fetchNextAddition() {
+      let card = this.cards.pop();
+      return card[0] + card[1];
     },
 
     handleSelectStrategy($event) {
@@ -179,14 +183,16 @@ export default {
       ) {
         console.log(checkCanAddo(this.selectedStrategy.strategyData[0]));
         this.gameNumber = 0;
+        this.draws = 0;
         this.gameStatus = 1;
         this.winStats = [0, 0, 0];
       } else {
-        this.message = "Impossible to win addo";
+        this.message = "Impossible to win Addo!";
       }
     },
 
     handlePlayOneGame() {
+      this.cards = newShuffledDeck();
       let cardNumbers = 0;
       let grid1Addo = false;
       let grid2Addo = false;
@@ -194,8 +200,8 @@ export default {
       this.additionList = [];
       this.gameStatus = 2;
 
-      while (!grid1Addo && !grid2Addo && !grid3Addo) {
-        let additionNumber = this.generateNewAddition();
+      while (!grid1Addo && !grid2Addo && !grid3Addo && this.cards.length > 0) {
+        let additionNumber = this.fetchNextAddition();
         cardNumbers++;
         if (this.additionList.indexOf(additionNumber) === -1) {
           this.additionList.push(additionNumber);
@@ -228,6 +234,15 @@ export default {
         this.winStats = [...this.winStats];
         this.totalCardNumbers += cardNumbers;
         this.gameNumber++;
+      } else {
+        // handle draw
+        this.draws++;
+        if (this.draws >= 5000) {
+          this.message = "Too many draws!";
+          this.gameStatus = 3;
+          clearInterval(this.timer);
+          this.timer = null;
+        }
       }
     },
 
@@ -241,6 +256,7 @@ export default {
     },
 
     handleReset() {
+      this.draws = 0;
       this.gameStatus = 0;
       this.message = "";
       this.demoAutoOption = "1";
