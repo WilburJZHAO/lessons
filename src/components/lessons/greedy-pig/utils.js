@@ -25,13 +25,12 @@ export const playOneGame = (strategy, killerDice) => {
   if (type === "rolls") {
     let total = 0; // total points for one complete game
     let points = 0; // points for one set
-    let rolls = 1; // rolls for one set
+    let rolls = 0; // rolls for one set
     for (let i = 1; i <= 5; i++) {
       // Play five times
-      points = 0;
-      rolls = 1;
       let dice = 0;
-      points += pickNumber(1, 6) + pickNumber(1, 6); // The first roll
+      points = pickNumber(1, 6) + pickNumber(1, 6);  // The first two rolls
+      rolls = 2;                                     // The first two rolls
       while (rolls < value && dice != killerDice) {
         dice = pickNumber(1, 6);
         rolls++;
