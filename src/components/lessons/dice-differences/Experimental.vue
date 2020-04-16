@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-end">
-                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 10000</label>
+                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to {{legify(10000)}}</label>
                 </div>
             </div>
             <div class="top" style="margin-top: 10px; border: none">
@@ -26,8 +26,8 @@
         <div :style="{visibility: !next ? 'hidden' : 'visible' }" class="container mt-4 mb-5">
             <div class="top" style="border: none">
                 <div class="row justify-content-center">
-                    <label class="col-sm-5 label1" >Number of trials: {{numberoftrials}}</label>
-                    <label class="col-sm-5 label1" >{{trails}} trials</label>
+                    <label class="col-sm-5 label1" >Trials completed: {{legify(numberoftrials)}}</label>
+                    <label class="col-sm-5 label1" >Total trials: {{legify(trails)}}</label>
                 </div>
             </div>
             <div class="top" style="border: none;margin-top: 20px; min-height: 500px">
@@ -43,7 +43,7 @@
                     <div class="label2" :style="{left: positionLeft - 148 + 'px',top: positionTop + 'px'}">Tally: </div>
                     <div class="label2" :style="{left: positionLeft - 148 + 'px',top: positionTop + 50 + 'px'}">Dice Difference: </div>
                     <div v-for="i in 6" :key="i">
-                        <div class="axis" :style="{left: positionLeft - 100 + 100*i + 'px', top: positionTop + 'px'}">{{nums[i-1]}}</div>
+                        <div class="axis" :style="{left: positionLeft - 100 + 100*i + 'px', top: positionTop + 'px'}">{{legify(nums[i-1])}}</div>
                     </div>
                     <div v-for="j in 6" :key="j+6">
                         <div class="axis1" :style="{left: positionLeft - 100 + 100*j + 'px',top: positionTop + 50 + 'px'}" v-text="j-1"></div>
@@ -67,6 +67,7 @@
 
 <script>
     import BarChart from 'pure-vue-chart';
+    import { legify } from "../../common/utils.js";
     export default {
         data() {
             return {
@@ -116,6 +117,7 @@
             // window.removeEventListener("resize");
         },
         methods:{
+            legify,
             CheckError(){
               if (this.trails > 0) this.next = true;
               else this.error = true;

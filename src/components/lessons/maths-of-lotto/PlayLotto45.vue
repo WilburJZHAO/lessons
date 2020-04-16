@@ -98,12 +98,12 @@
         <div v-if="showRule">
           <p>45:6 Lotto is played every Saturday night</p>
           <p>There are five prizes</p>
-          <p>Div 1: 6 numbers ($752,604.40)</p>
-          <p>Div 2: 5 numbers plus 1 supplementary number ($14111.30)</p>
-          <p>Div 3: 5 numbers ($1,440.80)</p>
-          <p>Div 4: 4 numbers ($49.80)</p>
-          <p>Div 5: 3 numbers plus 1 supplementary number($32.60)</p>
-          <p>The cost of each game is $0.60</p>
+          <p>Div 1: 6 numbers (${{legify(752604.40, 2)}})</p>
+          <p>Div 2: 5 numbers plus 1 supplementary number (${{legify(14111.30, 2)}})</p>
+          <p>Div 3: 5 numbers (${{legify(1440.80, 2)}})</p>
+          <p>Div 4: 4 numbers (${{legify(49.80, 2)}})</p>
+          <p>Div 5: 3 numbers plus 1 supplementary number(${{legify(32.60, 2)}})</p>
+          <p>The cost of each game is ${{legify(0.60, 2)}}</p>
           <p>Prize amounts approximate average payouts.</p>
         </div>
         <div v-if="status === 2">
@@ -120,12 +120,12 @@
             <tbody>
               <tr v-for="(item, index) in divisionTable" :key="index">
                 <td>{{ item.div }}</td>
-                <td>&dollar; {{ separateFloating(item.prize) }}</td>
+                <td>&dollar; {{ legify(item.prize, 2) }}</td>
                 <td>
                   <span v-if="item.wins>0">{{ item.wins }}</span>
                 </td>
                 <td>
-                  <span v-if="item.amount>0">&dollar; {{ separateFloating(item.amount) }}</span>
+                  <span v-if="item.amount>0">&dollar; {{ legify(item.amount, 2) }}</span>
                 </td>
               </tr>
             </tbody>
@@ -144,17 +144,13 @@
               <th class="text-danger">Cost:</th>
               <td>
                 &dollar;
-                {{
-                separateFloating(
-                Number((gamesPlayed * COST_PER_GAME).toFixed(2))
-                )
-                }}
+                {{ legify(gamesPlayed * COST_PER_GAME, 2) }}
               </td>
             </tr>
             <tr>
               <th class="text-primary">Winnings:</th>
               <td>
-                <span v-if="totalWinningMoney > 0">&dollar; {{ separateFloating(totalWinningMoney) }}</span>
+                <span v-if="totalWinningMoney > 0">&dollar; {{ legify(totalWinningMoney, 2) }}</span>
               </td>
             </tr>
           </table>
@@ -220,7 +216,7 @@ import moment from "moment";
 import Combinatorics from "js-combinatorics";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { initLottoNumbers } from "./utils";
-import { pickNumber, separateNumber } from "../../common/utils";
+import { pickNumber, legify } from "../../common/utils";
 
 export default {
   components: {
@@ -294,6 +290,7 @@ export default {
     }
   },
   methods: {
+    legify,
     /** Select a number from 45 numbers */
     handleSelectNumber($e) {
       if (this.status === 2) return;
@@ -542,16 +539,6 @@ export default {
 
     handleToggleShowRule() {
       this.showRule = !this.showRule;
-    },
-
-    separateFloating(number) {
-      let strNumber = String(number);
-      let strNumberArr = strNumber.split(".");
-      let integerPart = strNumberArr[0];
-      let decimalPart = strNumberArr[1];
-      return decimalPart
-        ? separateNumber(integerPart) + "." + decimalPart
-        : separateNumber(integerPart);
     }
   },
   created() {

@@ -38,7 +38,7 @@
 							<th></th>
 							<th>
 								<span v-if="trialNumber > 0" class="app--game-data-tried font-weight-bold">
-									{{ trialNumber }} trials
+									{{ legify(trialNumber) }} trials
 								</span>
 							</th>
 						</tr>
@@ -47,7 +47,7 @@
 							<th></th>
 							<th>
 								<span v-if="triedNumber > 0" class="app--game-data-tried font-weight-bold">
-									Trial {{ triedNumber }}
+									Trial {{ legify(triedNumber) }}
 								</span>
 							</th>
 						</tr>
@@ -66,7 +66,7 @@
 				@click="handleToggleTimer"
 			>
 				{{isStart ? (
-					timer ? "Tap here to pause" : "Tap here to resume"
+					timer ? "Pause" : "Resume"
 				)  :"Start auto" }}
 			</button>
 			<button
@@ -96,6 +96,7 @@
 import DiffGraph from './DiffGraph.vue';
 import DemoAutoOption from './DemoAutoOption.vue';
 import { throwDice } from './utils';
+import {legify} from '../../common/utils.js';
 
 export default {
 	props: ['trialNumber'],
@@ -145,6 +146,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		handleNextMove() {
 			if(!this.isStart) this.isStart = true;
 			this.dice1 = throwDice();

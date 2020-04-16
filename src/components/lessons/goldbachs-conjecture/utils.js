@@ -1,10 +1,11 @@
+import { legify } from "../../common/utils.js";
 
 export const getPrimes = (n) => {
 	var sieve = [],
 		primes = [];
 	for (let i = 2; i <= n; ++i) {
 		if (!sieve[i]) {
-			primes.push(i);
+			primes.push(legify(i));
 			for (let j = i << 1; j <= n; j += i) {
 				sieve[j] = true;
 			}

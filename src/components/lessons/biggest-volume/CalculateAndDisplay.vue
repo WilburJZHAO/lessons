@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12">
           <div>
-            <h3 class="lesson-subheading">Calculate and display a range of up to 11 volumes</h3>
+            <h3 class="lesson-subheading">Calculate and display a range of up to eleven volumes</h3>
             <hr class="subheading-separator">
             <h4 class="text text-center mb-4">Paper size</h4>
             <div class="row">

@@ -31,7 +31,7 @@
             <tbody v-if="isSet">
               <tr v-for="(item, index) in dataArray" :key="index">
                 <td class="text-center">{{ item.getValue(unit) }}</td>
-                <td class="text-center">{{ item.getValue(unit2) }}</td>
+                <td class="text-center">{{ legify(item.getValue(unit2), 6) }}</td>
               </tr>
             </tbody>
           </table>
@@ -106,6 +106,7 @@
 import Chart from "chart.js";
 import Ballon from "./Ballon";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
+import { legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -254,6 +255,7 @@ export default {
     }
   },
   methods: {
+    legify,
     /** Validate input and set data if validation is passed */
     handleStart() {
       if ((!this.min || !this.max) && (this.min !== 0)) { // handle case where Javascript treats 0 as 'falsy'

@@ -1,10 +1,10 @@
 <template>
   <div class="container mt-3 mb-5">
     <h3 class="lesson-subheading">
-      The number of times each product occurs - {{ trialNumber }} trials
+      The number of times each product occurs - {{ legify(trialNumber) }} trials
     </h3>
     <hr class="subheading-separator">
-    <h5 class="text-center">Trial {{ numberOfTrials }}</h5>
+    <h5 class="text-center">Trial {{ legify(numberOfTrials) }}</h5>
     <div class="app--table">
       <div
         class="app--table-row"
@@ -54,7 +54,7 @@
 <script>
 import DemoAutoOption from "../../common/DemoAutoOption";
 import { throwDiceOnce } from "./utils";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   components: {
@@ -104,6 +104,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handlePlayOneGame() {
       if (!this.isStart) this.isStart = true;
       let product = throwDiceOnce() * throwDiceOnce();

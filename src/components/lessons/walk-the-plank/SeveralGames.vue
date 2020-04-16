@@ -91,8 +91,8 @@
     </div>
     <div class="app--action text-center" v-if="demoAutoOption=='1'">
       <button class="btn btn-outline-success" @click="handleToggleTimer">
-        {{ !isStart ? "Tap here to begin" :
-        ( timer ? "Tap here to pause" : "Tap here to resume") }}
+        {{ !isStart ? "Start" :
+        ( timer ? "Pause" : "Resume") }}
       </button>
     </div>
     <div class="text-center mt-1 mb-3">

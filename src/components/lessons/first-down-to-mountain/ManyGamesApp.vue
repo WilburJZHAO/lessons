@@ -1,8 +1,8 @@
 <template>
   <div class="container mt-3">
     <div class="d-flex justify-content-around">
-      <h5>{{ trialNumber}} trials</h5>
-      <h5>Trial {{ tried }}</h5>
+      <h5>{{ legify(trialNumber)}} trials</h5>
+      <h5>Trial {{ legify(tried) }}</h5>
     </div>
 
     <div class="app--game-graph-container">
@@ -37,7 +37,7 @@ import _ from "lodash";
 import { demoGame } from "./game";
 import GameGraph from "./GameGraph.vue";
 import DemoAutoOption from "../../common/DemoAutoOption";
-import { throwDiceOnce, calculateTimerInterval } from "../../common/utils";
+import { throwDiceOnce, calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   components: {
@@ -66,6 +66,7 @@ export default {
     }
   },
   methods: {
+    legify,
     initGame() {
       this.demoGame = _.cloneDeep(demoGame);
     },

@@ -72,15 +72,15 @@
                 <div id="controller" style="margin-left: 20%; margin-top: 20px;">
                     <div>
                         <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '0'" @click="executeManually">
-                            {{ isStart ? "Tap here for next game" : "Tap here for first game" }}
+                            {{ isStart ? "Next game" : "First game" }}
                         </button>
                         <button class="btn btn-outline-success" v-if="!finished && demoAutoOption === '1'" @click="startGameAuto">
                             {{
                             !isAutoStart
-                            ? "Tap here to begin"
+                            ? "Start"
                             : timer
-                            ? "Tap here to pause"
-                            : "Tap here to resume"
+                            ? "Pause"
+                            : "Resume"
                             }}
                         </button>
                         <button class="btn btn-outline-dark" v-if="finished" @click="resetII()">

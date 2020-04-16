@@ -65,7 +65,7 @@
           </div>
         </div>
         <div v-if="status === 4" class="text-center">
-          <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+          <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
           <div class="text-danger text-center">Finished</div>
         </div>
       </div>

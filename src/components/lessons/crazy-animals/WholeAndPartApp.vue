@@ -1,7 +1,5 @@
 <template>
-  <div class="container mt-4 mb-5">
-    <h3 class="lesson-subheading">Whole and part animals</h3>
-    <hr class="subheading-separator">
+  <div class="container">
     <div class="form-check form-check-inline d-flex justify-content-center">
       <input
         class="form-check-input"
@@ -42,8 +40,8 @@
           <td>{{ item[1][0] }}</td>
         </tr>
       </table>
-      <h5 class="text-center">{{ trialNumber }} with {{ numberOfAnimals }} animals</h5>
-      <h5 class="text-center">{{ count }} so far</h5>
+      <h5 class="text-center">{{ legify(trialNumber) }} with {{ numberOfAnimals }} animals</h5>
+      <h5 class="text-center">{{ legify(count) }} so far</h5>
     </div>
 
     <div class="app--action text-center">
@@ -76,7 +74,7 @@
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
 import { throwDiceOnce, getAnimalsPart } from "./utils";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 export default {
   components: {
     appDemoAutoOption: DemoAutoOption
@@ -120,6 +118,7 @@ export default {
     }
   },
   methods: {
+    legify, 
     handleNextAnimal() {
       if (!this.isStart) this.isStart = true;
       let head = getAnimalsPart(throwDiceOnce(), this.numberOfAnimals);

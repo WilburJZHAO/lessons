@@ -72,6 +72,8 @@ import Calculator from './Calculator.vue';
 import SpellingBoard from './SpellingBoard.vue';
 import SpellingHelp from './SpellingHelp.vue';
 import { pickRandomNumber } from './utils';
+import { legify } from "../../common/utils.js";
+
 
 export default {
 	components: {
@@ -106,6 +108,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		init() {
 			this.plugboardNumber = null;
 			this.inputNumber = null;

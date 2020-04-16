@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-end">
-                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to 10000</label>
+                    <label class="col-sm-4" style="font-weight: bold">Range is 1 to {{ legify(10000) }}</label>
                 </div>
             </div>
             <div class="top" style="margin-top: 10px;">
@@ -49,8 +49,8 @@
         <div v-else class="container mt-4 mb-5">
             <div class="top" style="border: none">
                 <div class="row justify-content-center">
-                    <label class="col-sm-5 label1" >Number of trials: {{numberoftrials}}</label>
-                    <label class="col-sm-5 label1" >{{trails}} trials</label>
+                    <label class="col-sm-5 label1" >Trials completed: {{ legify(numberoftrials)}}</label>
+                    <label class="col-sm-5 label1" >Total trials: {{legify(trails)}}</label>
                 </div>
             </div>
             <div class="top">
@@ -117,6 +117,7 @@
 </template>
 
 <script>
+    import { legify } from "../../common/utils.js";
     export default {
         data() {
             return {
@@ -171,6 +172,7 @@
             },
         },
         methods:{
+            legify,
             CheckError(){
                 this.inputPrompt = false;
                 let sum = Number.parseInt(this.num1)+ Number.parseInt(this.num2) + Number.parseInt(this.num3) + Number.parseInt(this.num4) + Number.parseInt(this.num5) + Number.parseInt(this.num6);

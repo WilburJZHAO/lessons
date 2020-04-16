@@ -1,6 +1,6 @@
 <template>
   <div class="mt-3 mb-5">
-    <h3 class="text-success text-center">{{ numberOfGames }} trials for each arrangement</h3>
+    <h5 class="text-success text-center">{{ numberOfGames }} trials for each arrangement</h5>
     <div class="app--arrangement-table">
       <table class="table table-bordered" style="table-layout: fixed">
         <thead>
@@ -15,7 +15,7 @@
             <td
               class="text-center"
               :class="{ 'smallest-count': smallestAverageCounts === arrangementAverageCounts[index] }"
-            >{{ arrangementAverageCounts[index] ? Number(arrangementAverageCounts[index].toFixed(2)) : '' }}</td>
+            >{{ arrangementAverageCounts[index] ? arrangementAverageCounts[index].toFixed(2) : '' }}</td>
           </tr>
         </tbody>
       </table>

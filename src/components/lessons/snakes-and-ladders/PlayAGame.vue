@@ -95,7 +95,7 @@
                 class="btn btn-outline-dark"
                 v-if="(status===3 || status ===4 || status === 2) && demoAutoOption==='1' && timer"
                 @click="handleToggleTimer"
-              >Tap here to pause</button>
+              >Pause</button>
               <button class="btn btn-outline-dark" v-if="status===5" @click="handleReset">Reset</button>
             </div>
             <div class="text-center mt-2" v-if="status>=2">

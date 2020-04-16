@@ -52,7 +52,7 @@
               colspan="2"
               style="text-align: center; color: #001cc6; font-weight: bold"
             >
-              {{ trialNum }} games
+              {{ legify(trialNum) }} games
             </td>
           </tr>
           <tr>
@@ -60,7 +60,7 @@
               colspan="2"
               style="text-align: center; color: #001cc6; font-weight: bold"
             >
-              Game {{ count }}
+              Game {{ legify(count) }}
             </td>
           </tr>
           <tr>
@@ -211,6 +211,7 @@
 
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
+import { legify } from "../../common/utils.js";
 
 export default {
   props: ["trialNum"],
@@ -282,6 +283,7 @@ export default {
   },
   mounted: function() {},
   methods: {
+    legify,
     generateRandom(num) {
       //from 0 - num
       return Math.round(Math.random() * (num - 1)) + 1;

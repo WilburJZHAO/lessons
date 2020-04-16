@@ -46,8 +46,10 @@
 <script>
 import {
   integerPartition,
-  separateNumber /*, bigIntegerPartition*/
+   /* bigIntegerPartition*/
 } from "./utils";
+import { legify } from "../../common/utils.js";
+
 export default {
   data: function() {
     return {
@@ -57,6 +59,7 @@ export default {
     };
   },
   methods: {
+  legify,
     handleCheckNumber(e) {
       let { charCode } = e;
       if (!(charCode >= 48 && charCode <= 57)) {
@@ -76,7 +79,7 @@ export default {
       //   // let temp = bigIntegerPartition[this.numberToPartition - 300 - 1];
       //   // return temp;
       // }
-      this.partitionsNumber = separateNumber(
+      this.partitionsNumber = legify(
         integerPartition(this.numberToPartition)
       );
       this.numberToPartitionResult = this.numberToPartition;

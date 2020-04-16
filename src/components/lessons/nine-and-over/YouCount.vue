@@ -35,7 +35,7 @@
 					</div>
 					<div v-else class="pl-3" >
 						<div>
-							Started counting from {{ appStartingNumber }}
+							Started counting from {{ legify(appStartingNumber) }}
 							<br>
 							Counting by {{countingSet.countingBy }}s
 						</div>
@@ -65,6 +65,8 @@ import Calculator from './Calculator.vue';
 import SpellingBoard from './SpellingBoard.vue';
 import CountForm from './CountForm.vue';
 import correctChoiceSound from '@/assets/correct-choice.wav';
+import { legify } from "../../common/utils.js";
+
 
 export default {
 	components: {
@@ -97,6 +99,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		handleSettingNumber($event) {
 			const { direction, countingBy, startingNumber } = this.countingSet;
 			if(startingNumber + direction*countingBy === $event) {

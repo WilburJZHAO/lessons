@@ -2,8 +2,8 @@
   <div>
     <div class="container mt-3 mb-5">
       <div class="app--title mb-3">
-        <h4 class="text-success">Total games: {{ trialNumber }}</h4>
-        <h4 class="text-success">Games played: {{ numberTried }}</h4>
+        <h4 class="text-success">Total games: {{ legify(trialNumber) }}</h4>
+        <h4 class="text-success">{{ legify(numberTried) }} games played</h4>
       </div>
       <div class="row mb-5">
         <div class="col-12 col-md-3 col-sm-4 app--tally-table">
@@ -81,7 +81,7 @@
 import ChangeRule from "./ChangeRule.vue";
 import DemoAutoOption from "./DemoAutoOption.vue";
 import { throwDiceOnce, throwDiceThree } from "./utils.js";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 export default {
   props: ["trialNumber"],
   components: {
@@ -155,6 +155,7 @@ export default {
     }
   },
   methods: {
+    legify,
     calculatePointsInOneGame() {
       if (this.isChangeRule) {
         // If rule is changed

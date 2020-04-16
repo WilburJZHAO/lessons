@@ -6,15 +6,15 @@
 					<div class="app--counting-table-container mb-5">
 						<div class="app--counting-label">
 							<div class="app--counting-label-line1">
-								<div>1,000,000s</div>
-								<div style="transform: translateX(-30%);">10,000s</div>
-								<div style="transform: translateX(-80%);">100s</div>
-								<div style="transform: translateX(-50%);">1s</div>
+								<div>{{legify(1000000)}}s</div>
+								<div style="transform: translateX(-30%);">{{legify(10000)}}s</div>
+								<div style="transform: translateX(-80%);">{{legify(100)}}s</div>
+								<div style="transform: translateX(-50%);">{{legify(1)}}s</div>
 							</div>
 							<div class="app--counting-label-line2">
-								<div>100,000s</div>
-								<div style="transform: translateX(-30%);">1,000s</div>
-								<div>10s</div>
+								<div>{{legify(100000)}}s</div>
+								<div style="transform: translateX(-30%);">{{legify(1000)}}s</div>
+								<div>{{legify(10)}}s</div>
 							</div>
 						</div>
 						<div class="app--counting-table">
@@ -56,7 +56,7 @@
 						<div class="app--calculator">
 							<div class="app--calculator-inner">
 								<div class="app--calculator-input">
-									{{ count }}
+									{{ legify(count) }}
 								</div>
 								<div class="app--calculator-panel">
 									<div class="app--calculator-row">
@@ -180,6 +180,8 @@
 
 <script>
 import converter from 'number-to-words';
+import { legify } from "../../common/utils.js";
+
 export default {
 	data: function() {
 		return {
@@ -233,6 +235,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		handleToggleTimer() {
 			if(!this.isStart) {
 				this.isStart = true;

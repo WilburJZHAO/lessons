@@ -3,7 +3,7 @@
     <div class="col-4">
       <h5 style="visibility: hidden;">{{ tableData2 && tableData2.count }}</h5>
       <h5 class="text-danger" v-if="tableData2">{{ tableData2.max }}</h5>
-      <h5 class="text-danger" v-if="tableData2">{{ tableData2.mean }}</h5>
+      <h5 class="text-danger" v-if="tableData2">{{ tableData2.mean.toFixed(2) }}</h5>
       <h5 class="text-danger" v-if="tableData2 && tableData2.count >= 5">
         {{ tableData2.median }}
       </h5>
@@ -17,7 +17,7 @@
     <div class="col-4">
       <h5>{{ tableData1.count }}</h5>
       <h5 class="text-primary">{{ tableData1.max }}</h5>
-      <h5 class="text-primary">{{ tableData1.mean }}</h5>
+      <h5 class="text-primary">{{ tableData1.mean.toFixed(2) }}</h5>
       <h5 class="text-primary" v-if="tableData1.count >= 5">
         {{ tableData1.median }}
       </h5>

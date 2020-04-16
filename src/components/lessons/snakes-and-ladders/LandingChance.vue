@@ -14,11 +14,11 @@
         </div>
         <div class="col-md-4">
           <div style="position: sticky; top: 0;">
-            <h5 class="text-center">Play {{ trialNumber }} games</h5>
+            <h5 class="text-center">Play {{ legify(trialNumber) }} games</h5>
             <table class="table table-bordered" style="table-layout: fixed">
               <tr>
                 <th>Game</th>
-                <td>{{ playedGames }}</td>
+                <td>{{ legify(playedGames) }}</td>
               </tr>
               <tr>
                 <th>Average</th>
@@ -26,7 +26,7 @@
               </tr>
               <tr>
                 <th>Total moves</th>
-                <td>{{ separateNumber(totalMoves) }}</td>
+                <td>{{ legify(totalMoves) }}</td>
               </tr>
             </table>
             <div class="text-center mb-2">
@@ -59,10 +59,10 @@ import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import ChanceBoard from "./ChanceBoard.vue";
 
 import {
-  separateNumber,
+  legify,
   calculateTimerInterval,
   pickNumber
-} from "../../common/utils";
+} from "../../common/utils.js";
 export default {
   props: ["boardSettings"],
   components: {
@@ -77,8 +77,7 @@ export default {
       playedGames: 0,
       totalMoves: 0,
       timer: null,
-      gamesChanceData: {},
-      separateNumber
+      gamesChanceData: {}
     };
   },
   computed: {
@@ -86,7 +85,7 @@ export default {
       if (this.playedGames === 0) {
         return null;
       }
-      return Number((this.totalMoves / this.playedGames).toFixed(2));
+      return (this.totalMoves / this.playedGames).toFixed(2);
     },
     timerInterval() {
       return calculateTimerInterval(this.trialNumber);
@@ -110,6 +109,7 @@ export default {
     }
   },
   methods: {
+    legify,
     throwDice() {
       return pickNumber(1, 6);
     },

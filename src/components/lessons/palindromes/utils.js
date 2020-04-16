@@ -1,5 +1,7 @@
+import { legify } from "../../common/utils.js";
+
 export const MESSAGE = {
-  INPUT_PROMPT: "Enter a number to find its palindrome(1-99999999999999)",
+  INPUT_PROMPT: `Enter a number (1 to ${legify(99999999999999)})`,
   CONFIRM_PALINDROME: "The number entered is a palindrome",
   PALINDROME_FOUND: number => {
     return `Palindrome found in ${number} addition${number > 1 ? "s" : ""}`;

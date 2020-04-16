@@ -1,7 +1,6 @@
 <template>
 	<div class="container mt-4 mb-5">
-		<h3 class="text-success text-center">
-			Which arrangement is the best?<br>
+		<h3 class="text-center">
 			<span v-if="numberOfGames != 1" class="small">{{ numberOfGames }} trials</span>
 		</h3>
 		<p class="text-dark text-center">

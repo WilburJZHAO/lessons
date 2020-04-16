@@ -24,11 +24,11 @@
       </div>
       <div class="app--graph-statistic d-flex flex-grow-1">
         <div v-for="(item, index) in game" :key="index" class="app--graph-col app--graph-stat-col">
-          <div class="text-primary app--graph-block">{{ item.wins }}</div>
+          <div class="text-primary app--graph-block">{{ legify(item.wins) }}</div>
           <div
             class="app--graph-block"
             :style="{visibility: tried >0?'visible': 'hidden' }"
-          >{{ tried > 0 ? Number((item.wins/tried*100).toFixed(2))+'%' : '0' }}</div>
+          > {{ tried > 0 ? (item.wins / tried*100).toFixed(2) + '%' : '0' }} </div>
           <div class="text-danger app--graph-block">{{ item.diceSums }}</div>
           <div class="app--graph-block">{{ item.spaces }}</div>
         </div>
@@ -39,7 +39,11 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
 export default {
+  methods: {
+    legify,
+  },
   props: ["game", "tried", "trialNumber", "gameType"],
   data: function() {
     return {};

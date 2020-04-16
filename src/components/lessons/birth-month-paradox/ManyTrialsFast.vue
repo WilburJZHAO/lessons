@@ -6,7 +6,7 @@
         <div class="container mt-4 mb-5" v-if="!isSet" style="width: 60%">
             <div class="form-group row">
                 <label class="col-sm-6">
-                    Enter the number of trials (1 to 10000)
+                    Enter the number of trials (1 to {{ legify(10000) }})
                 </label>
                 <div class="col-sm-6">
                     <input type="number"
@@ -54,7 +54,7 @@
                     <tr>
                         <td style="width: 40%; text-align: left">Trial</td>
                         <td><input style="text-align: right; width:100%" class="inputNumber" disabled type="text" id="inputTrial" v-model="trials" /></td>
-                        <td style="text-align: right">{{displayTrial}} trails</td>
+                        <td style="text-align: right">{{ legify(displayTrial) }} trails</td>
                     </tr>
                     <tr>
                         <td style="width: 40%; text-align: left">Matched</td>
@@ -99,6 +99,7 @@
     import {
         isMatch
     } from "./utils";
+    import { legify } from "../../common/utils.js";
 
     export default {
         components: {
@@ -170,6 +171,8 @@
         },
         mounted: function() {},
         methods: {
+            legify,
+
             okBtn() {
                 this.isChecked1 = true;
                 this.isChecked2 = true;

@@ -115,14 +115,14 @@ export const generateWords = rule => {
   }
   return `To find the Out number,
 								multiply the In number by ${rule.multiply},
-								then ${operation} ${Math.abs(rule.addition)} `;
+								then ${operation} ${Math.abs(rule.addition)}.`;
 };
 
 /**
  * Remove the blanks within a string, replace '1x' with 'x' and convert to lower string
  * @param {string} str
  */
-export const converStr = str => {
+export const convertStr = str => {
   let strNoBlank = "";
   for (let i = 0; i < str.length; i++) {
     if (str[i] !== " ") {

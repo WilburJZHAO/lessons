@@ -25,7 +25,7 @@
           {{ game.ruleLeft.join('') === '135' ?
           "O for Odd, E for Even numbers" :
           `Move left for ${game.ruleLeft.join()}`
-          }} - {{ trialNumber }} trials
+          }} - {{ legify(trialNumber) }} trials
         </span>
         <span v-else></span>
       </h4>
@@ -33,25 +33,25 @@
         <tr>
           <th>Mouse</th>
           <td>
-            <span v-if="total > 0">{{ mouseWins }}</span>
+            <span v-if="total > 0">{{ legify(mouseWins) }}</span>
           </td>
           <td>
-            <span v-if="total > 0">{{ mouseWinsPercent }}%</span>
+            <span v-if="total > 0">{{ mouseWinsPercent.toFixed(2) }}%</span>
           </td>
         </tr>
         <tr>
           <th>Cat</th>
           <td>
-            <span v-if="total > 0">{{ catWins }}</span>
+            <span v-if="total > 0">{{ legify(catWins) }}</span>
           </td>
           <td>
-            <span v-if="total > 0">{{ catWinsPercent }}%</span>
+            <span v-if="total > 0">{{ catWinsPercent.toFixed(2) }}%</span>
           </td>
         </tr>
         <tr>
           <th>Total</th>
           <td>
-            <span v-if="total > 0">{{ total }}</span>
+            <span v-if="total > 0">{{ legify(total) }}</span>
           </td>
           <td>
             <span v-if="isStart && game.ruleType==='decimal'">{{ randomNumber }}</span>
@@ -97,7 +97,7 @@ import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import Gameboard from "./Gameboard.vue";
 import mouse from "@/assets/cat-and-mouse/mouse.jpg";
 import Game from "./game/Game";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   components: {
@@ -153,6 +153,7 @@ export default {
     }
   },
   methods: {
+    legify,
     initGame() {
       this.isStart = false;
       this.isFinish = false;

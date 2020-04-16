@@ -8,18 +8,18 @@
 		</div>
 		<div class="container-fluid" v-else>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-top-nav @backToMenu="selectedOption = $event">Biggest Volume</app-top-nav> 
-			</transition> 
-				
+				<app-top-nav @backToMenu="selectedOption = $event">Biggest Volume</app-top-nav>
+			</transition>
+
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-cut-out-squares v-if="selectedOption === 1"></app-cut-out-squares>
-			</transition> 
+			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
 				<app-calculate-and-display v-if="selectedOption === 2"></app-calculate-and-display>
-			</transition> 
-		</div> 
+			</transition>
+		</div>
     <!-- <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
-			<app-bottom-nav></app-bottom-nav> 
+			<app-bottom-nav></app-bottom-nav>
 		</transition> -->
 	</div>
 </template>
@@ -46,7 +46,7 @@ export default {
 		return {
 			options: [
 				{id: 1, title: 'Cut out squares'},
-				{id: 2, title: 'Calculate and display a range of up to 11 volumes'}
+				{id: 2, title: 'Calculate and display a range of up to eleven volumes'}
 			],
 			selectedOption: -1
 		}

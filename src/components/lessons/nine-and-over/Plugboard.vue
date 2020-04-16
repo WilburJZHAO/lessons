@@ -39,8 +39,8 @@
         </div>
 
         <!-- <div class="app--plugboard-number mt-2">
-					<input 
-						class="app--plugboard-number-input" 
+					<input
+						class="app--plugboard-number-input"
 						type="number" :min="0" :max="9"
 						v-model="digital[i-1]"
 						:disabled="(6-i) > totalDigit"
@@ -59,6 +59,7 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
 export default {
   props: [
     "plugboardNumber",
@@ -74,11 +75,11 @@ export default {
     return {
       totalDigit: 3,
       digitalLabel: [
-        { id: 1, digit: "10,000" },
-        { id: 2, digit: "1,000" },
-        { id: 3, digit: "100" },
-        { id: 4, digit: "10" },
-        { id: 5, digit: "1" }
+        { id: 1, digit: legify(10000) + 's' },
+        { id: 2, digit: legify(1000) + 's' },
+        { id: 3, digit: legify(100) + 's' },
+        { id: 4, digit: legify(10) + 's' },
+        { id: 5, digit: legify(1) + 's' }
       ],
       // isDisable: false,	// If the board is disabled
       // isRadioDisable: false,	// If radio button is disabled

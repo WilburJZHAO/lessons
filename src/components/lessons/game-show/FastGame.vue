@@ -14,12 +14,12 @@
           <td
             style="width: 30%; font-size:25px;color: green;text-align: center;"
           >
-            {{ wins }}
+            {{ legify(wins) }}
           </td>
           <td
             style="width: 30%; font-size:25px;color: green;text-align: center;"
           >
-            {{ winsPersentage }}%
+            {{ winsPercentage.toFixed(2) }}%
           </td>
         </tr>
         <tr>
@@ -29,12 +29,12 @@
           <td
             style="font-size:25px;color: green;text-align: center; width: 100%"
           >
-            {{ losses }}
+            {{ legify(losses) }}
           </td>
           <td
             style="font-size:25px;color: green;text-align: center; width: 100%"
           >
-            {{ lossesPersentage }}%
+            {{ lossesPersentage.toFixed(2) }}%
           </td>
         </tr>
         <tr>
@@ -44,7 +44,7 @@
             >
           </td>
           <td style="font-size:25px;text-align: center; width: 100%">
-            {{ counter }}
+            {{ legify(counter) }}
           </td>
           <td></td>
         </tr>
@@ -55,7 +55,7 @@
             >
           </td>
           <td style="font-size:25px;text-align: center; width: 100%">
-            {{ trialNum }}
+            {{ legify(trialNum) }}
           </td>
           <td></td>
         </tr>
@@ -133,6 +133,7 @@
 
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
+import { legify } from "../../common/utils.js";
 export default {
   props: ["trialNum"],
   components: {
@@ -147,7 +148,7 @@ export default {
       finalNum: -1,
       wins: 0,
       losses: 0,
-      winsPersentage: 0,
+      winsPercentage: 0,
       lossesPersentage: 0,
       counter: 0,
       timer: null,
@@ -204,6 +205,7 @@ export default {
   },
   mounted: function() {},
   methods: {
+    legify,
     btnYes() {
       this.ifChange = true;
     },
@@ -291,27 +293,22 @@ export default {
     },
     updatePersentage() {
       if (this.ifChange) {
-        this.lossesPersentage = this.calculatePrecentage(this.wins, this.counter);
-        this.winsPersentage = this.calculatePrecentage(
+        this.lossesPersentage = this.calculatePercentage(this.wins, this.counter);
+        this.winsPercentage = this.calculatePercentage(
                 this.losses,
                 this.counter
         );
       }else{
-        this.winsPersentage = this.calculatePrecentage(this.wins, this.counter);
-        this.lossesPersentage = this.calculatePrecentage(
+        this.winsPercentage = this.calculatePercentage(this.wins, this.counter);
+        this.lossesPersentage = this.calculatePercentage(
                 this.losses,
                 this.counter
         );
       }
     },
 
-    calculatePrecentage(Numerator, denominator) {
-      let temp = (Numerator * 100) / denominator;
-      if (Math.round(temp) == temp) {
-        return temp;
-      } else {
-        return temp.toFixed(2);
-      }
+    calculatePercentage(num, total) {
+      return (num / total * 100);
     },
     reset() {
       this.arr = new Array(3);
@@ -321,7 +318,7 @@ export default {
       this.finalNum = -1;
       this.wins = 0;
       this.losses = 0;
-      this.winsPersentage = 0;
+      this.winsPercentage = 0;
       this.lossesPersentage = 0;
       this.counter = 0;
       this.checkGroup = true;

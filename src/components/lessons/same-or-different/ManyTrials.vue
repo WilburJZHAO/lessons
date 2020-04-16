@@ -7,7 +7,7 @@
 				<form>
 					<div class="app--enter-number form-group row mt-5">
 						<label for="trial-numbers" class="col-form-label col-sm-8" style="color: darkred">
-							Enter the number of trials(1 - {{maxTrialInput}}):
+							Enter the number of trials (1 to {{legify(maxTrialInput)}}):
 						</label>
 						<div class="col-sm-4">
 							<input type="number" class="form-control" v-model="trialNumber" required>
@@ -15,7 +15,7 @@
 					</div>
 					<div class="app--enter-number form-group row mt-3">
 						<label for="numPlantsInput" class="col-sm-8 col-form-label" style="color: red">
-							Enter number of red blocks(1-{{maxBlockInput}}):
+							Enter number of red blocks (1 to {{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
 							<input type="number"
@@ -28,7 +28,7 @@
 					</div>
 					<div class="app--enter-number form-group row mt-3">
 						<label for="numTilesInput" class="col-sm-8 col-form-label" style="color: blue">
-							Enter number of blue blocks(1-{{maxBlockInput}}):
+							Enter number of blue blocks (1 to {{maxBlockInput}}):
 						</label>
 						<div class="col-sm-3">
 							<input type="number"
@@ -65,9 +65,9 @@
 							</tr>
 							<tr>
 								<td><h5 class="statLabel">Number of wins:</h5></td>
-								<td><h4 class="stat">{{numSame}}</h4></td>
-								<td><h4 class="stat">{{numDiff}}</h4></td>
-								<td><h4 class="stat">{{numTotal}}</h4></td>
+								<td><h4 class="stat">{{legify(numSame)}}</h4></td>
+								<td><h4 class="stat">{{legify(numDiff)}}</h4></td>
+								<td><h4 class="stat">{{legify(numTotal)}}</h4></td>
 							</tr>
 							<tr>
 								<td><h4 class="statLabel"></h4></td>
@@ -77,7 +77,7 @@
 						</table>
 					</div>
 					<div class="pb-5">
-						<h5 id="trialNum">{{trialNumber}} trials</h5>
+						<h5 id="trialNum">{{legify(trialNumber)}} trials</h5>
 					</div>
 
 					<div class="app--action mt-4">
@@ -115,6 +115,7 @@ import {
 	drawNextTwoBlocks,
 	drawNextCanvas
 } from './utils';
+import { legify } from '../../common/utils.js';
 
 export default {
 	data: function() {
@@ -190,13 +191,13 @@ export default {
 		statSame: function(){
 			if (this.numTotal == 0)
 				return 0 + '%';
-			var res = parseFloat(((this.numSame/this.numTotal)*100).toFixed(2));
+			var res = ((this.numSame/this.numTotal)*100).toFixed(2);
 			return res + '%';
 		},
 		statDiff: function(){
 			if (this.numTotal == 0)
 				return 0 + '%';
-			var res = parseFloat(((this.numDiff/this.numTotal)*100).toFixed(2));
+			var res = ((this.numDiff/this.numTotal)*100).toFixed(2);
 			return  res + '%';
 		}
 	},
@@ -215,6 +216,7 @@ export default {
 		}
 	},
 	methods: {
+		legify,
 		//this function reset all the statistics
 		resetTrial(){
 			this.numDiff = 0;

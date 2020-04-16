@@ -10,7 +10,7 @@
         <div>
           <div>
             <label id="instructionLabel" class="instructionLabel"
-              >Enter a start number (1-999999999):
+              >Enter a start number (1 to {{legify(999999999)}}):
             </label>
           </div>
           <div style="margin-top: 5px; display:flex; flex-direction: row;">
@@ -135,8 +135,8 @@
                 :style="{ background: j - 1 === idx ? '#f4ffec' : '' }"
                 @click="change(j)"
               >
-                <td>{{ isSet1 ? display[j - 1][0] : "" }}</td>
-                <td>{{ isSet1 ? display[j - 1][1] : "" }}</td>
+                <td>{{ isSet1 ? legify(display[j - 1][0]) : "" }}</td>
+                <td>{{ isSet1 ? legify(display[j - 1][1]) : "" }}</td>
               </tr>
             </thead>
             <tbody></tbody>
@@ -152,7 +152,7 @@
             :style="{
               visibility: isSet ? 'visible' : isSet2 ? 'visible' : 'hidden'
             }"
-            >Chain for {{ useNum }}</label
+            >Chain for {{ legify(useNum) }}</label
           >
         </div>
         <div
@@ -222,6 +222,7 @@
 
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
+import { legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -296,17 +297,18 @@ export default {
     this.start();
   },
   methods: {
+    legify,
     checkInput1() {
       document.getElementById("instructionLabel").innerHTML =
-        "Enter a start number (1-999999999):";
+        "Enter a start number (1 to " + legify(999999999) + "):";
     },
     checkInput2() {
       if (this.enterNum !== "") {
         document.getElementById("instructionLabel").innerHTML =
           "Enter a finish number (" +
-          this.enterNum +
-          "-" +
-          (parseInt(this.enterNum) + 100) +
+          legify(this.enterNum) +
+          " to " +
+          legify(parseInt(this.enterNum) + 100) +
           ")";
       }
     },
@@ -406,7 +408,7 @@ export default {
       this.chainLength++;
       object.chainLength = this.chainLength;
       if (this.firstChain) {
-        object.chain[object.chain.length - 1] += this.number1;
+        object.chain[object.chain.length - 1] += legify(this.number1);
         this.firstChain = false;
       } else {
         if (this.number1 % 2 === 0) {
@@ -419,10 +421,10 @@ export default {
             this.number1.toString().length <
           85
         )
-          object.chain[object.chain.length - 1] += "->" + this.number1;
+          object.chain[object.chain.length - 1] += "->" + legify(this.number1);
         else {
           object.chain.push("");
-          object.chain[object.chain.length - 1] += this.number1;
+          object.chain[object.chain.length - 1] += legify(this.number1);
         }
         if (this.numberArr[0].chain.length > 6) {
           this.row = this.numberArr[0].chain.length;
@@ -438,7 +440,7 @@ export default {
       this.chainLength++;
       object.chainLength = this.chainLength;
       if (this.firstChain) {
-        object.chain[object.chain.length - 1] += this.number;
+        object.chain[object.chain.length - 1] += legify(this.number);
         this.firstChain = false;
       } else {
         if (this.number % 2 === 0) {
@@ -451,10 +453,10 @@ export default {
             this.number.toString().length <
           85
         )
-          object.chain[object.chain.length - 1] += "->" + this.number;
+          object.chain[object.chain.length - 1] += "->" + legify(this.number);
         else {
           object.chain.push("");
-          object.chain[object.chain.length - 1] += this.number;
+          object.chain[object.chain.length - 1] += legify(this.number);
         }
         if (this.numberArr[0].chain.length > 6) {
           this.row = this.numberArr[0].chain.length;

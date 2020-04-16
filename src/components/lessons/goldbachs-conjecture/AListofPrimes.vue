@@ -21,7 +21,7 @@
                                     id="controlBtn"
                                     v-if="!isSet"
                             >
-                                Show the first 15,000 prime numbers
+                                Show the first {{legify(15000)}} prime numbers
                             </button>
                         </td>
                     </tr>
@@ -45,9 +45,9 @@
 </template>
 
 <script>
-    import {
-        getPrimes,
-    } from "./utils";
+    import { getPrimes } from "./utils";
+    import { legify } from "../../common/utils.js";
+
     export default {
         data: function() {
             return {
@@ -69,7 +69,7 @@
             },
         },
         methods: {
-
+            legify,
             onShowPrimeClicked () {
                 document.getElementById("error").innerHTML = "Please wait.....";
                 var start = new Date().getTime();
@@ -77,7 +77,7 @@
                 let count = 1;
                 while (primes.length >= 200){ //To make faster.....
                     let a = document.getElementById("mainTable").innerHTML + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + count + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(count) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -89,7 +89,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+10) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+10)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -101,7 +101,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+20) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+20)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -113,7 +113,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+30) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+30)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -125,7 +125,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+40) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+40)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -137,7 +137,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+50) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+50)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -149,7 +149,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+60) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+60)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -161,7 +161,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+70) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+70)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -173,7 +173,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+80) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+80)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -185,7 +185,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+90) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+90)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -197,7 +197,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+100) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+100)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -209,7 +209,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+110) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+110)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -221,7 +221,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+120) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+120)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -233,7 +233,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+130) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+130)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -245,7 +245,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+140) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+140)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -257,7 +257,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+150) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+150)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -269,7 +269,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+160) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+160)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -281,7 +281,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+170) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+170)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -293,7 +293,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+180) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+180)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
@@ -305,7 +305,7 @@
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '</tr>' + '<tr>'
-                        + '<td style = "text-align: right; color: red" >' + parseInt(count+190) + '</td>'
+                        + '<td style = "text-align: right; color: red" >' + legify(parseInt(count+190)) + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'
                         + '<td style = "text-align: right;">' + primes.shift() + '</td>'

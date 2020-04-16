@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
 export default {
   props: ["tableData", "selectedIndex"],
   watch: {
@@ -71,6 +72,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleEmitData(index) {
       this.$emit("selectData", index);
     }

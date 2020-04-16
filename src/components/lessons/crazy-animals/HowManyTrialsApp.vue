@@ -1,7 +1,5 @@
 <template>
-  <div class="container mt-4 mb-5">
-    <h3 class="lesson-subheading">How many trials to make our favourite animal?</h3>
-    <hr class="subheading-separator">
+  <div class="container">
     <div class="row">
       <div class="col-12 col-sm-6">
         <app-animal-picture :animalDrawn="animalDrawn"></app-animal-picture>
@@ -12,12 +10,12 @@
         <div class="app--stat">
           <table class="table" style="table-layout:fixed;">
             <tr class="text-center">
-              <td class="table-danger">{{ trialNumber }}</td>
+              <td class="table-danger">{{ legify(trialNumber) }}</td>
               <td class="table-primary">trials</td>
             </tr>
             <tr class="text-center">
               <td class="table-danger">
-                <span v-if="isStart">{{ count }}</span>
+                <span v-if="isStart">{{ legify(count) }}</span>
               </td>
               <td class="table-primary">count</td>
             </tr>
@@ -29,7 +27,7 @@
             </tr>
             <tr class="text-center">
               <td class="table-danger">
-                <span v-if="isStart">{{ matched ? soFar : '--' }}</span>
+                <span v-if="isStart">{{ matched ? soFar.toFixed(2) : '--' }}</span>
               </td>
               <td class="table-primary">{{demoAutoOption == '0' ? "so far" : "average"}}</td>
             </tr>
@@ -81,7 +79,7 @@ import {
   getAnimalsPart,
   throwDiceOnce
 } from "./utils";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 import duckBody from "@/assets/duck-body.jpg";
 import duckHead from "@/assets/duck-head.jpg";
@@ -159,6 +157,7 @@ export default {
     }
   },
   methods: {
+    legify,
     getAnimalDrawn() {
       const combinationArr = this.selectedAnimalData.selectedAnimal.split(",");
       const head = {

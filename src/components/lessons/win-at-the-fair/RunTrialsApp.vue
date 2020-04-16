@@ -4,7 +4,7 @@
       <table class="table table-bordered">
         <thead>
           <tr class="text-center">
-            <th colspan="3">{{ trialNumber }} trials</th>
+            <th colspan="3">{{ legify(trialNumber) }} trials</th>
           </tr>
         </thead>
         <tbody class="text-center">
@@ -18,10 +18,10 @@
               {{ item.prize % 1 > 0 ? item.prize.toFixed(2) : item.prize }}
             </td>
             <td>
-              <span v-if="status > 0">{{ item.winners }}</span>
+              <span v-if="status > 0">{{ legify(item.winners) }}</span>
             </td>
             <td>
-              <span v-if="status > 0">{{ (item.winners * item.prize).toFixed(2) }}</span>
+              <span v-if="status > 0">{{ legify((item.winners * item.prize), 2) }}</span>
             </td>
           </tr>
         </tbody>
@@ -29,16 +29,16 @@
           <tr>
             <th>Total</th>
             <td>
-              <span v-if="status > 0">{{ triedNumber }}</span>
+              <span v-if="status > 0">{{ legify(triedNumber) }}</span>
             </td>
             <td>
-              <span v-if="status > 0">{{ totalPayout.toFixed(2) }}</span>
+              <span v-if="status > 0">{{ '$' + legify(totalPayout, 2) }}</span>
             </td>
           </tr>
           <tr>
             <th>Average payout</th>
             <td colspan="2">
-              <span v-if="status > 0">{{ (totalPayout / triedNumber).toFixed(2) }}</span>
+              <span v-if="status > 0">{{ '$' + (totalPayout / triedNumber).toFixed(2) }}</span>
             </td>
           </tr>
         </tfoot>
@@ -76,7 +76,7 @@
 import RuleMap from "./RuleMap.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { createMap, convertValuesId } from "./utils";
-import { pickNumber, calculateTimerInterval } from "../../common/utils";
+import { pickNumber, calculateTimerInterval, legify } from "../../common/utils.js";
 
 export default {
   props: ["rules", "values", "trialNumber"],
@@ -121,6 +121,7 @@ export default {
     }
   },
   methods: {
+    legify,
     initTrialData() {
       let trialData = [];
       for (let i = 0; i < this.values.length; i++) {
