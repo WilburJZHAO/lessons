@@ -239,7 +239,8 @@ export default {
       timer1: null,
       isStart: false,
       isAutoStart: false,
-      manualFinished: false
+      manualFinished: false,
+      phase: 1,
     };
   },
   computed: {
@@ -286,6 +287,7 @@ export default {
       return Math.round(Math.random() * (num - 1)) + 1;
     },
     startGameAuto() {
+      console.log("trying to start game")
       this.isAutoStart = true;
       if (this.timer) {
         clearInterval(this.timer);
@@ -314,95 +316,50 @@ export default {
       this.p = this.generateRandom(3);
       this.randomNum = this.generateRandom(6);
       this.rollsNum++;
-      this.drawBeetle();
+      this.updateBeetle();
     },
-    drawBeetle() {
-      if (this.randomNum === 6) {
-        if (this.body === 0) {
+    updateBeetle() {
+      if (this.phase === 1) {
+        if (this.randomNum === 6) {
+          this.body++;
           this.partsNum++;
-          this.body = 1;
-        }
-      } else if (this.randomNum === 5 || this.randomNum === 1) {
-        if (this.randomNum === 5) {
-          if (this.body === 1) {
-            if (this.head === 0) {
-              this.partsNum++;
-            }
-            this.head = 1;
-          } else {
-            return;
-          }
-        }
-        if (this.randomNum === 1) {
-          if (this.body === 1) {
-            if (this.legs === 0) {
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 1) {
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 2) {
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 3) {
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 4) {
-              this.partsNum++;
-              this.legs++;
-            } else if (this.legs === 5) {
-              this.partsNum++;
-              this.legs++;
-            } else {
-              return;
-            }
-          } else {
-            return;
-          }
-        }
-      } else if (
-        this.randomNum === 2 ||
-        this.randomNum === 3 ||
-        this.randomNum === 4
-      ) {
-        if (this.randomNum === 4) {
-          if (this.head === 1) {
-            if (this.mouth === 0) {
-              this.partsNum++;
-            }
-            this.mouth = 1;
-          } else {
-            return;
-          }
-        }
-        if (this.randomNum === 3) {
-          if (this.head === 1) {
-            if (this.feelers === 0) {
-              this.partsNum++;
-              this.feelers += 1;
-            } else if (this.feelers === 1) {
-              this.partsNum++;
-              this.feelers += 1;
-            } else {
-              return;
-            }
-          }
-        }
-        if (this.randomNum === 2) {
-          if (this.head === 1) {
-            if (this.eyes === 0) {
-              this.partsNum++;
-              this.eyes += 1;
-            } else if (this.eyes === 1) {
-              this.partsNum++;
-              this.eyes += 1;
-            } else {
-              return;
-            }
-          }
+          this.phase++;
         }
       }
-      if (this.partsNum === 13) {
+      else if (this.phase === 2) {
+        if (this.randomNum === 1 && this.legs < 6) {
+          this.legs++;
+          this.partsNum++;
+        }
+        else if (this.randomNum === 5 && this.head < 1) {
+          this.head++;
+          this.partsNum++;
+        }
+        // progression check
+        if (this.legs === 6 && this.head === 1) {
+          this.phase++;
+        }
+      }
+      else if (this.phase === 3) {
+        if (this.randomNum === 2 && this.eyes < 2) {
+          this.eyes++;
+          this.partsNum++;
+        }
+        else if (this.randomNum === 3 && this.feelers < 2) {
+          this.feelers++;
+          this.partsNum++;
+        }
+        else if (this.randomNum === 4 && this.mouth < 1) {
+          this.mouth++;
+          this.partsNum++;
+        }
+        // progression check
+        if (this.eyes === 2 && this.feelers === 2 && this.mouth === 1) {
+          this.phase++;
+        }
+      }
+      // run check regardless of previous code
+      if (this.phase === 4) {
         this.count++;
         this.freshData();
         this.partsNum = 0;
@@ -414,8 +371,13 @@ export default {
         this.legs = 0;
         this.feelers = 0;
         this.mouth = 0;
+        this.phase = 1;
         this.manualFinished = true;
       }
+
+
+
+
     },
     freshData() {
       this.allGameResults.push(this.rollsNum);
