@@ -604,8 +604,8 @@
                 interact(selector).dropzone({
                     // only accept elements matching this CSS selector
                     accept: '#y1,#y2,#y3,#y4,#y5,#y6,#y7,#y8,#y9,.dropzone-drop',
-                    // Require a 50% element overlap for a drop to be possible
-                    overlap: 0.5,
+                    // Require a 45% element overlap for a drop to be possible
+                    overlap: 0.45,
 
                     // listen for drop related events:
 

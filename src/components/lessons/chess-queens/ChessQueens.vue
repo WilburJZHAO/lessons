@@ -107,9 +107,9 @@
                             <h5 class="text-success">
                             To place the minimum number of queens so that all squares are covered.
                         </h5>
-                        <p> <span style="font-size: 115%;" class="badge badge-dark">{{queenNum}}</span>Number of queens</p>
-                        <p> <span style="font-size: 115%;" class="badge badge-dark">{{square}}</span>Squares covered</p>
-                            <p><span style="font-size: 115%;" class="badge badge-dark">{{squareUncovered}}</span>Squares uncovered </p>
+                        <p> <span style="font-size: 115%; margin-right: 10px;" class="badge badge-dark">{{queenNum}}</span>Number of queens</p>
+                        <p> <span style="font-size: 115%; margin-right: 10px;" class="badge badge-dark">{{square}}</span>Squares covered</p>
+                            <p><span style="font-size: 115%; margin-right: 10px;" class="badge badge-dark">{{squareUncovered}}</span>Squares uncovered </p>
 
 
 
@@ -563,8 +563,8 @@
                 interact(selector).dropzone({
                     // only accept elements matching this CSS selector
                     accept: '.startDrop,#drag2,#drag3,#drag4,#drag5,#drag6,.addImg',
-                    // Require a 75% element overlap for a drop to be possible
-                    overlap: 0.75,
+                    // Require a 55% element overlap for a drop to be possible
+                    overlap: 0.55,
 
                     // listen for drop related events:
 
