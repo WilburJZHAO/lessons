@@ -1,17 +1,17 @@
 <template>
-	<div class="app--cover-shape mt-3">			
+	<div class="app--cover-shape mt-3">
 		<div class="app--cover-shape-row" v-for="(row, index) in shapeData" :key="index">
-			<app-square 
-				v-for="(data, index) in row" 
-				:display="data>0" 
-				:key="index" 
+			<app-square
+				v-for="(data, index) in row"
+				:display="data>0"
+				:key="index"
 				:id="data"
-				:data-id="data" 
-				:hasStyle="hasStyle[data] ? hasStyle[data] : false" 
+				:data-id="data"
+				:hasStyle="hasStyle[data] ? hasStyle[data] : false"
 				ref="shapeEl"
 				:class="{'app--square-drop': data>0}"
 			></app-square>
-		</div> 
+		</div>
 	</div>
 </template>
 
@@ -20,16 +20,16 @@ import interact from 'interactjs';
 import Square from './Square.vue';
 
 export default {
-	props: ['shapeData', 'hasStyleIndex'], 
+	props: ['shapeData', 'hasStyleIndex'],
 	components: {
-		appSquare: Square, 
+		appSquare: Square,
 	},
 	data: function() {
 		return {
 			tilesUsed: 0,
 			hasStyle: []
 		}
-	}, 
+	},
 	watch: {
 		shapeData(value, oldValue) {
 			if(value !== oldValue) {
@@ -52,17 +52,17 @@ export default {
 		setDropZone() {
 			interact('.app--square-drop').dropzone({
 				accept: '.app--shape-selected',
-				overlap: 0.7,
+				overlap: 0.6,
 				ondropactivate: this.handleOnDropActivate,
 				ondragenter: this.handleOnDragEnter,
 				ondragleave: this.handleOnDragLeave,
-				ondrop: this.handleOnDrop,	
+				ondrop: this.handleOnDrop,
 				ondropdeactivate: this.handleOndropdeactivate
 			})
-		}, 
+		},
 		handleOnDrop(e) {
 			// console.log('handleOnDrop');
-			// let dropped = e.target; 
+			// let dropped = e.target;
 			let targetId = e.target.getAttribute('data-id');
 			// console.log(targetId);
 			// console.log(this.$refs.shapeEl);
@@ -77,7 +77,7 @@ export default {
 				this.$emit('setTilesUsed', this.tilesUsed)
 			}
 			// console.log(droppedEl);
-		}, 
+		},
 		unsetDropZone() {
 			interact('.app--square-drop').unset();
 		},

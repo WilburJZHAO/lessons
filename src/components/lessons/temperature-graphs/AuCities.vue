@@ -7,7 +7,7 @@
     <div
       class="text-success text-center"
       v-if="showMessage"
-    >To print, press Control+P(Windows) or Command+P(Macintosh)</div>
+    >To print, press Control+P (Windows & Chromebooks) or Command+P (Macintosh)</div>
   </div>
 </template>
 

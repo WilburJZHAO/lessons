@@ -222,13 +222,13 @@ export default {
     setDropzone() {
       interact(".app--proton-btn").dropzone({
         accept: ".app--anti-btn",
-        overlap: 0.6,
+        overlap: 0.55,
         ondrop: this.handleOnDrop,
         ondropdeactivate: this.handleOndropdeactivate
       });
       interact(".app--anti-btn").dropzone({
         accept: ".app--proton-btn",
-        overlap: 0.6,
+        overlap: 0.55,
         ondrop: this.handleOnDrop,
         ondragenter: this.handleOnDragEnter,
         ondragleave: this.handleOnDragLeave,

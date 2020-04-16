@@ -305,20 +305,20 @@ export default {
     setDropzone() {
       interact(".app--proton-btn").dropzone({
         accept: ".app--anti-btn",
-        overlap: 0.6,
+        overlap: 0.55,
         ondrop: this.handleOnDrop,
         ondragenter: this.handleOnEnter
       });
       interact(".app--anti-btn").dropzone({
         accept: ".app--proton-btn",
-        overlap: 0.6,
+        overlap: 0.55,
         ondrop: this.handleOnDrop,
         ondragenter: this.handleOnEnter
       });
 
       interact(".app--board").dropzone({
         accept: ".app--btn-draggable",
-        overlap: 0.6,
+        overlap: 0.55,
         ondragenter: this.handleProtonEnter,
         ondragleave: this.handleProtonLeave,
         ondrop: this.handleProtonDrop,

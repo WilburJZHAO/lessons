@@ -1,5 +1,5 @@
 <template>
-	<div class="app--cover-shape mt-3">	
+	<div class="app--cover-shape mt-3">
 		<div class="app--cover-shape-row"
 			v-for="(row, rowIndex) in shapeData" :key="rowIndex"
 		>
@@ -16,7 +16,7 @@
 				:class="{'app--triangle-drop': data.id>0}"
 				class="app--square-drop"
 			></app-triangle>
-		</div>		
+		</div>
 	</div>
 </template>
 
@@ -56,7 +56,7 @@ export default {
 		setDropZone() {
 			interact('.app--square-drop').dropzone({
 				accept:'.app--shape-selected',
-				overlap: 0.7,
+				overlap: 0.6,
 				ondrop: this.handleOnDrop
 			})
 		},
@@ -92,7 +92,7 @@ export default {
 			interact('.app--square-drop').unset();
 		},
 
-	},	
+	},
 	created() {
 		this.tilesUsed = 0;
 		this.$emit('setTilesUsed', this.tilesUsed);
