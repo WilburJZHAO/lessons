@@ -133,7 +133,10 @@ export default {
       } else {
         // If estimate is not correct
         this.estimateArr.push(this.decimalInput);
-        if (this.decimalInput > this.decimalData) {
+        if (this.decimalInput > 1 || this.decimalInput < 0) {
+          this.checkMessage = `You must enter a number between 0 and 1!`;
+        }
+        else if (this.decimalInput > this.decimalData) {
           this.checkMessage = `${this.decimalInput} is too big - try again`;
         } else if (this.decimalInput < this.decimalData) {
           this.checkMessage = `${this.decimalInput} is too small - try again`;

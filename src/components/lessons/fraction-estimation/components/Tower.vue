@@ -123,7 +123,7 @@ export default {
         this.rectPartHeight = partHeight;
         partRect = new Konva.Rect({
           x: this.canvasConstant.START_X,
-          y: this.canvasConstant.START_Y,
+          y: this.canvasConstant.START_Y + (this.rectHeight - this.rectPartHeight),
           width: this.canvasConstant.TOWER_WIDTH,
           height: this.rectPartHeight,
           fill: "green",
@@ -140,7 +140,7 @@ export default {
           return;
         }
         const mousePos = this.stage.getPointerPosition();
-        this.rectPartHeight = mousePos.y - this.canvasConstant.START_Y;
+        this.rectPartHeight = this.canvasConstant.START_Y + this.rectHeight - mousePos.y;
         this.drawTower(this.rectHeight, this.rectPartHeight);
         this.shouldDrag = true;
         this.$emit("updateStatus", 1);
@@ -151,7 +151,7 @@ export default {
         }
         if (this.shouldDrag && this.validHeight) {
           const mousePos = this.stage.getPointerPosition();
-          this.rectPartHeight = mousePos.y - this.canvasConstant.START_Y;
+          this.rectPartHeight = this.canvasConstant.START_Y + this.rectHeight - mousePos.y;
           this.drawTower(this.rectHeight, this.rectPartHeight);
         }
       });
@@ -210,9 +210,9 @@ export default {
           let dividedLine = new Konva.Line({
             points: [
               canvasConstant.START_X,
-              canvasConstant.START_Y + this.rectDiviedHeight * i,
+              canvasConstant.START_Y + this.rectHeight - this.rectDiviedHeight * i,
               canvasConstant.START_X + canvasConstant.TOWER_WIDTH,
-              canvasConstant.START_Y + this.rectDiviedHeight * i
+              canvasConstant.START_Y + this.rectHeight - this.rectDiviedHeight * i,
             ],
             stroke: i <= this.fractionData.numerator ? "red" : "white",
             strokeWidth: 2
@@ -225,9 +225,9 @@ export default {
         let dividedLine = new Konva.Line({
           points: [
             canvasConstant.START_X,
-            canvasConstant.START_Y + this.rectDiviedHeight,
+            canvasConstant.START_Y + this.rectHeight - this.rectDiviedHeight,
             canvasConstant.START_X + canvasConstant.TOWER_WIDTH,
-            canvasConstant.START_Y + this.rectDiviedHeight
+            canvasConstant.START_Y + this.rectHeight - this.rectDiviedHeight,
           ],
           stroke: "red",
           strokeWidth: 2
