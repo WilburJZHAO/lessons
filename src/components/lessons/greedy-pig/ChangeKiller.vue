@@ -48,13 +48,12 @@ export default {
   },
   methods: {
     handleCheckInput(e) {
-      if (e.charCode < 49 || e.charCode > 54) {
-        e.preventDefault();
+      e.preventDefault();
+      if (e.charCode >= 49 && e.charCode <= 54) {
+        // replace the input field with the new input
+        e.target.value = e.key;
+        this.myKillerDice = Number(e.key);
       }
-      if (e.target.value.length > 1) {
-        e.preventDefault();
-      }
-      this.myKillerDice = e.target.value;
     },
     handleSetKiller() {
       this.$emit("setKiller", this.myKillerDice);
