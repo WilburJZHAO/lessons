@@ -14,14 +14,15 @@
         <div class="app--data-row mx-2" v-for="(data, index) in gameData" :key="index">
           <div
             class="text-center"
+            style="font-size: 0.8rem"
           >{{ data.paired ? '-' : data.pairs.filter(el => el.paired===false).length }}</div>
-          <div class="text-danger font-weight-bold text-center">{{ data.number }}</div>
+          <div class="text-danger font-weight-bold text-center" style="font-size:1.2rem">{{ data.number }}</div>
           <div
             v-for="(pair, index) in data.pairs"
             :key="`p${index}`"
             class="text-center font-weight-bold"
             :class="pair.paired ? 'text-warning' : 'text-primary'"
-            style="cursor: pointer;"
+            style="cursor: pointer; font-size:1.1rem"
             @click="handleChoosePair([data.number, pair.number, pair.paired])"
           >{{ pair.number }}</div>
         </div>
@@ -153,7 +154,8 @@ export default {
           }
         });
       }
-      this.pairsList[this.pairsList.length - 1].push(`${num1}, ${num2}`);
+      let newPair = num1 < num2 ? `${num1}, ${num2}` : `${num2}, ${num1}`
+      this.pairsList[this.pairsList.length - 1].push(newPair);
     },
     handleReset() {
       this.status = 0;
