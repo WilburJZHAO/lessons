@@ -107,7 +107,7 @@ export default {
       points: [],
       demoAutoOption: "0",
       timer: null,
-      numberOverflow: false
+      numberOverflow: false,
     };
   },
   computed: {
@@ -156,7 +156,7 @@ export default {
         clearInterval(this.timer);
         this.timer = null;
       } else {
-        this.timer = setInterval(this.handlePlayOneGame, 200);
+        this.timer = setInterval(this.handlePlayOneGame, this.status === 3 ? 50 : 200);
       }
     },
     handleOverflow($event) {
@@ -177,7 +177,7 @@ export default {
       this.status = 3;
       this.numberOverflow = false;
       if (this.demoAutoOption === "1") {
-        this.timer = setInterval(this.handlePlayOneGame, 200);
+        this.timer = setInterval(this.handlePlayOneGame, 50);
       }
     },
     handleReset() {
