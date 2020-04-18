@@ -35,6 +35,22 @@ export const pickNumber = (min, max) => {
 };
 
 /**
+ * Shuffle an array using the Fisher-Yates algorithm
+ * Shuffles the array provided by reference
+ * returns a reference to the array
+ * @param {Array} arr
+ */
+export const shuffleArray = (arr) => {
+  for(let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+  return arr;
+};
+
+/**
  * Separate number digits by commas.
  * e.g. 12345678 => 12,345,678
  * @param {number} number

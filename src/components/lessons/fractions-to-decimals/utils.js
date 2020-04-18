@@ -1,4 +1,4 @@
-import { pickNumber } from "../../common/utils";
+import { pickNumber, shuffleArray } from "../../common/utils.js";
 
 export const APP_CONST = {
   MIN_ROPE_WIDTH: 300,
@@ -12,21 +12,9 @@ export const APP_CONST = {
   TAG_TEXT_HEIGHT: 10
 };
 
-/** Generate an array with elements of 0, 0.1, 0.2 ... 0.9 and ordered randomly  */
+/** Generate an shuffled array, 0 to 1 in 0.1 increments  */
 export const generateTagArr = () => {
-  const tagArr = [];
-  for (let i = 0; i <= 10; i++) {
-    let token = Math.random();
-
-    // if the random number < 0.5, add the element to array's end,
-    // otherwise add it to array's top so that the elements can be ordered randomly
-    if (token < 0.5) {
-      tagArr.push(i / 10);
-    } else {
-      tagArr.unshift(i / 10);
-    }
-  }
-  return tagArr;
+  return shuffleArray([0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1]);
 };
 
 export const fractionSelection = [

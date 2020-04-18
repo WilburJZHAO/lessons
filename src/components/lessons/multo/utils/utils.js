@@ -1,3 +1,5 @@
+import {shuffleArray} from "../../../common/utils.js";
+
 /**
  * Generate an integer randomly between min(inclusive) and max(inclusive)
  * @param {Number} min
@@ -351,12 +353,7 @@ export function newShuffledDeck() {
       cards.push([i, j]);
     }
   }
-  // shuffle the deck of cards
-  for(let i = cards.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = cards[i];
-    cards[i] = cards[j];
-    cards[j] = temp;
-  }
+  // shuffle and return
+  cards = shuffleArray(cards);
   return cards;
 }
