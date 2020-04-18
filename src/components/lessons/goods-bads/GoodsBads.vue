@@ -1,6 +1,12 @@
 <template>
   <div class="container">
-    <h5>Week {{ weekNumber}}</h5>
+    <h5 class="text-dark text-center mt-2 mb-4">
+      Here are the events of running a small shop.
+      Tell the story to yourself, working out the <span class="text-success">goods</span> and
+      <span class="text-primary">bads</span> for each day,
+      and find the final result for each week.
+    </h5>
+    <h4 class="text-success mb-3">Week {{ weekNumber}}</h4>
     <div class="row mb-4" v-for="(dayData, row) in data" :key="row">
       <div class="col-lg-7 d-flex">
         <div class="row mb-3">
@@ -147,6 +153,9 @@
         <button class="btn btn-outline-success" v-if="!isWeekFinish" @click="handleCheck">Check</button>
         <button class="btn btn-outline-dark" v-if="isWeekFinish" @click="handleReset">Reset</button>
       </div>
+    </div>
+    <div class="text-dark text-center mt-4">
+      To print as a worksheet, press Control+P (Windows & Chromebooks) or Command+P (Macintosh)
     </div>
   </div>
 </template>
