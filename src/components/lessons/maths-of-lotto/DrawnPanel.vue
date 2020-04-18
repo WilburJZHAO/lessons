@@ -9,6 +9,7 @@
         v-for="num in settings.numbersToDraw"
         :key="num"
         class="app--drawn-number mx-2 d-flex justify-content-center align-items-center"
+        style="font-size: 2rem"
       >{{ drawnNumbers[num - 1] }}</div>
     </div>
   </div>

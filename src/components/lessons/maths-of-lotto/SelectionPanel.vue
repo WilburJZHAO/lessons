@@ -8,6 +8,7 @@
         v-for="(item, index) in lottoNumbers"
         :key="index"
         class="app--number-card flex-grow-1 mx-2 d-flex justify-content-center align-items-center"
+        style="font-size: 2rem"
         :class="{ 'app--number-card-selected': item.selected }"
         @click="handleClickNumber(item.number)"
       >

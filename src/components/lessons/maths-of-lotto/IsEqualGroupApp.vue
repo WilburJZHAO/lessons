@@ -17,7 +17,7 @@
         </thead>
         <tbody>
           <tr v-for="(el, index) in cmbArr" :key="index">
-            <td>{{el.cmb.join(',')}}</td>
+            <td>{{el.cmb.join(', ')}}</td>
             <td>
               <span v-if="el.win>0">{{ legify(el.win) }}</span>
             </td>
