@@ -35,7 +35,7 @@
 					</div>
 					<div class="app--action mt-3">
 						<div v-if="showStart">
-							<p v-bind:class="{'alert mr-3':true, 'alert-info':(!showInputError), 'alert-danger':(showInputError)}">Please enter an whole number between {{minBedLength}} to {{maxBedLength}}.</p>
+							<p v-bind:class="{'alert mr-3':true, 'alert-info':(!showInputError), 'alert-danger':(showInputError)}">Please enter a whole number between {{minBedLength}} and {{maxBedLength}}.</p>
 						</div>
 						<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 						<div v-if="!showStart">
