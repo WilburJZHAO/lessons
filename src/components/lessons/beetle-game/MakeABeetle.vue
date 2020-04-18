@@ -373,7 +373,6 @@ export default {
       timer: null,
       isStart: false,
       isAutoStart: false,
-      phase: 1
     };
   },
   computed: {},
@@ -395,7 +394,7 @@ export default {
   methods: {
     generateRandom(num) {
       //from 0 - num
-      return Math.round(Math.random() * (num - 1)) + 1;
+      return Math.ceil(Math.random() * num);
     },
     startGameAuto() {
       this.isAutoStart = true;
@@ -417,47 +416,29 @@ export default {
     },
 
     updateBeetle() {
-      if (this.phase === 1) {
-        if (this.randomNum === 6) {
-          this.body++;
-          this.partsNum++;
-          this.phase++;
-        }
-      }
-      else if (this.phase === 2) {
-        if (this.randomNum === 1 && this.legs < 6) {
-          this.legs++;
-          this.partsNum++;
-        }
-        else if (this.randomNum === 5 && this.head < 1) {
-          this.head++;
-          this.partsNum++;
-        }
-        // progression check
-        if (this.legs === 6 && this.head === 1) {
-          this.phase++;
-        }
-      }
-      else if (this.phase === 3) {
+      if (this.body === 0 && this.randomNum === 6) {
+        this.body++;
+        this.partsNum++;
+      } else if (this.body === 1 && this.legs <6 && this.randomNum === 1) {
+        this.legs++;
+        this.partsNum++;
+      } else if(this.body === 1 && this.head === 0 && this.randomNum === 5){
+        this.head++;
+        this.partsNum++;
+      } else if(this.body === 1 && this.head === 1) {
         if (this.randomNum === 2 && this.eyes < 2) {
           this.eyes++;
           this.partsNum++;
-        }
-        else if (this.randomNum === 3 && this.feelers < 2) {
+        } else if (this.randomNum === 3 && this.feelers < 2) {
           this.feelers++;
           this.partsNum++;
-        }
-        else if (this.randomNum === 4 && this.mouth < 1) {
+        } else if (this.randomNum === 4 && this.mouth < 1) {
           this.mouth++;
           this.partsNum++;
         }
-        // progression check
-        if (this.eyes === 2 && this.feelers === 2 && this.mouth === 1) {
-          this.phase++;
-        }
       }
       // run check regardless of previous code
-      if (this.phase === 4) {
+      if (this.partsNum === 13) {
         this.count++;
         this.freshData();
         this.finished = true;
@@ -515,7 +496,6 @@ export default {
       this.timer = null;
       this.isStart = false;
       this.isAutoStart = false;
-      this.phase = 1;
       this.drawBeetle(); // must be after legs, eyes etc are reset
     }
   },
