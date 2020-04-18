@@ -36,7 +36,7 @@ export default {
         responsive: true,
         title: {
           display: false
-        }
+        },
         // scales: {
         //   yAxes: [
         //     {

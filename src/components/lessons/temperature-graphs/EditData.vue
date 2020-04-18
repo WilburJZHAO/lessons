@@ -99,7 +99,7 @@
                     class="form-control text-danger"
                     style="padding-left: 2px; padding-right: 2px;"
                     v-model.number="inputData.celcius.max[index]"
-                    @focus="message = 'Enter the temperature value(50 to -30)'"
+                    @focus="message = 'Enter the temperature value (-30 to 50)'"
                   />
                 </td>
               </tr>
@@ -115,7 +115,7 @@
                     class="form-control text-primary"
                     style="padding-left: 2px; padding-right: 2px;"
                     v-model.number="inputData.celcius.min[index]"
-                    @focus="message = 'Enter the temperature value(50 to -30)'"
+                    @focus="message = 'Enter the temperature value (-30 to 50)'"
                   />
                 </td>
               </tr>
@@ -133,7 +133,7 @@
                     class="form-control text-danger"
                     style="padding-left: 2px; padding-right: 2px;"
                     v-model.number="inputData.fahren.max[index]"
-                    @focus="message = 'Enter the temperature value(122 to -22)'"
+                    @focus="message = 'Enter the temperature value (-22 to 122)'"
                   />
                 </td>
               </tr>
@@ -149,7 +149,7 @@
                     class="form-control text-primary"
                     style="padding-left: 2px; padding-right: 2px;"
                     v-model.number="inputData.fahren.min[index]"
-                    @focus="message = 'Enter the temperature value(122 to -22)'"
+                    @focus="message = 'Enter the temperature value (-22 to 122)'"
                   />
                 </td>
               </tr>

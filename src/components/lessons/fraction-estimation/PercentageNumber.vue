@@ -129,7 +129,10 @@ export default {
       } else {
         // If estimate is not correct
         this.estimateArr.push(this.percentageInput);
-        if (this.percentageInput > this.percentageData) {
+        if (this.percentageInput > 100 || this.percentageInput < 0) {
+          this.checkMessage = `You must enter a number between 0 and 100!`;
+        }
+        else if (this.percentageInput > this.percentageData) {
           this.checkMessage = `${this.percentageInput}% is too big - try again`;
         } else if (this.percentageInput < this.percentageData) {
           this.checkMessage = `${this.percentageInput}% is too small - try again`;

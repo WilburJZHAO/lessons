@@ -67,7 +67,7 @@ export default {
           this.createChart();
         } else {
           // eslint-disable-next-line no-console
-          console.log(this.estAccuracy);
+          // console.log(this.estAccuracy);
           let color;
           if (this.estAccuracy > 2) {
             color = "blue";
@@ -118,15 +118,19 @@ export default {
             yAxes: [
               {
                 ticks: {
-                  min: -100,
-                  max: 100
+                  min: -30,
+                  max: 30,
+                  fontSize: 14,
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "Under   Over"
+                  labelString: "Under / Over (%)",
+                  fontSize: 16,
+                  fontColor: '#222',
                 }
               }
             ],
+
             xAxes: [
               {
                 ticks: {

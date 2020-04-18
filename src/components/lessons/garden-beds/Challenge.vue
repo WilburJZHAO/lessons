@@ -13,8 +13,8 @@
 							<div class="form-group row">
 								<label for="numTilesInput" class="col-sm-9 col-form-label"><b>Guess</b> final number of tiles:</label>
 								<div class="col-sm-3">
-									<input type="number"
-										v-model="numTilesInput"
+									<input type="text"
+										@keypress="handleCheckInput"
 										class="form-control"
 										id="numTilesInput"
 										:disabled="isSubmitted">
@@ -26,11 +26,11 @@
 					<button v-if="showStart" id="startButton" type="button" class="btn btn-outline-success" @click="start">Start</button>
 					<div class="row" v-if="!showStart">
 						<button type="button" class="btn btn-outline-dark mr-3" @click="reset" :disabled="!isFinished">Reset</button>
-						<button type="button" class="btn btn-outline-success btn-lg mr-3" @click="submitInput" :disabled="isSubmitted">Submit guess</button>
+						<!-- <button type="button" class="btn btn-outline-success btn-lg mr-3" @click="submitInput" :disabled="isSubmitted">Submit guess</button> -->
 					</div>
 					<div class="row p-3 justify-content-center">
 						<p v-bind:class="{'alert mr-3':true, 'alert-success':(isCorrect), 'alert-danger':(!isCorrect)}" v-if="isFinished"><b>{{guessRes}}</b></p>
-						<p class="alert alert-info mr-3" v-if="isFinished">Garden bed built, click <b>Start</b> to make another.</p>
+						<p class="alert alert-info mr-3" v-if="isFinished">Garden bed built, click <b>reset</b> then <b>start</b> to make another.</p>
 					</div>
 				</div>
 				<div class="col-6">
@@ -135,7 +135,7 @@ export default {
 				return 'Correct!';
 			}
 			else {
-				return 'Wrong!';
+				return 'Not quite';
 			}
 		}
 	},
@@ -159,6 +159,19 @@ export default {
 		submitInput(){
 			this.isSubmitted = true;
 		},
+		handleCheckInput(e) {
+				e.preventDefault();
+      if (e.charCode >= 48 && e.charCode <= 57) {
+        // update numTileInput
+				this.numTilesInput = Number(String(e.target.value) + e.key);
+				e.target.value = String(this.numTilesInput);
+				// if correct, this.submitInput();
+				if (this.numPlants * 2 + 6 === this.numTilesInput) {
+						this.isSubmitted = true;
+				}
+			}
+	  },
+
 		//This function adds another tile to the canvas, going around the plants.
 		addTile(colour){
 			const canvas = document.querySelector('#app-canvas');
@@ -202,6 +215,7 @@ export default {
 			this.numPlants = 0;
 			this.numTilesInput = 0;
 			this.edgeCounter = 0;
+			document.getElementById("numTilesInput").value = '';
 
 			//clear the canvas
 			const canvas = document.querySelector('#app-canvas');

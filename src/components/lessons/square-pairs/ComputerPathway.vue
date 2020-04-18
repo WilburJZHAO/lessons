@@ -15,19 +15,19 @@
       <h5>Sequence for {{ trialNumber }}</h5>
       <div class="app---data d-flex">
         <div class="app--data-row mx-2" v-for="(data, index) in gameData" :key="index">
-          <div class="text-center">{{ data.paired ? "-" : data.pairs.length }}</div>
-          <div class="text-danger font-weight-bold text-center">{{ data.number }}</div>
+          <div class="text-center" style="font-size: 0.9rem">{{ data.paired ? "-" : data.pairs.length }}</div>
+          <div class="text-danger font-weight-bold text-center" style="font-size:1.2rem">{{ data.number }}</div>
           <div
             v-for="(pair, index) in data.pairs"
             :key="`p${index}`"
             class="text-center font-weight-bold"
             :class="pair.paired ? 'text-warning' : 'text-primary'"
-            style="cursor: pointer;"
+            style="font-size: 1.1rem"
           >{{ pair.number }}</div>
         </div>
       </div>
       <div class="mt-4">
-        <h5 class="text-center">Solution pathways for {{ trialNumber }}</h5>
+        <h5 class="text-center">Solution pathways for {{ trialNumber }}{{trialNumber > 32 ? " (will take several seconds)" : ""}}</h5>
         <div
           v-if="pathways && pathways.length === 0"
           class="text-center text-danger"
@@ -199,8 +199,8 @@ export default {
       let then = new Date();
       this.pathways = this.findPathways();
       let now = new Date();
-      console.log(now - then);
-      console.log(this.pathways);
+      //console.log(now - then);
+      //console.log(this.pathways);
       // console.log(this.pathways.next().value);
     }
   }
