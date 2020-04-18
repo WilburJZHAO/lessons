@@ -73,18 +73,18 @@
               </div>
               <table
                 id="tableAdd"
-                style="color: #0067d2; text-align: center;vertical-align: center;visibility: visible; border: #7f8c8d solid;background: white;"
+                style="color: #004488; text-align: center;vertical-align: center; visibility: visible; border: #7f8c8d solid; background: white;"
               >
                 <tr v-for="i in selected + 1">
                   <td
                     v-for="j in selected + 1"
                     :style="
                       (j === 1 && i !== 1) || (i === 1 && j !== 1)
-                        ? 'width: 6vw; height: 5vw; background: #e6ffe7'
+                        ? 'width: 6vw; height: 5vw; background: rgba(165, 220, 255, 1)'
                         : 'width: 6vw; height: 5vw;'
                     "
                   >
-                    <b v-if="i === 1 && j === 1">+</b>
+                    <b v-if="i === 1 && j === 1"><span style="color: black">+</span></b>
                     <b
                       v-else-if="
                         i === 1 &&
@@ -788,7 +788,7 @@
                         v-model="inputNum[i * 10 + j]"
                         v-on:keyup="checkNum(i, j, inputNum[i * 10 + j])"
                         type="text"
-                        style="width: 5vw; height: 5vw;background: #e6ffe7;border: 0px"
+                        style="width: 5vw; height: 5vw; background: rgba(165, 220, 255, 1); border: 0px"
                     /></b>
                     <b v-else-if="j === 1 && i !== 1"
                       ><input
@@ -796,7 +796,7 @@
                         v-model="inputNum[i * 10 + j]"
                         v-on:keyup="checkNum(i, j, inputNum[i * 10 + j])"
                         type="text"
-                        style="width: 5vw; height: 5vw;background: #e6ffe7;border: 0px"
+                        style="width: 5vw; height: 5vw; background: rgba(165, 220, 255, 1); border: 0px"
                     /></b>
                     <b v-else
                       ><input
@@ -819,7 +819,7 @@
           >
             <div>
               <div
-                style=" max-width: 15%;font-size: 1vw;color: #0f0f0f;position: relative"
+                style=" max-width: 15%; font-size: 1vw; color: #0f0f0f; position: relative"
               >
                 <br /><br /><br /><br /><br /><br /><br /><br /><br />
                 <div

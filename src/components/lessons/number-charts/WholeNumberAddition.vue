@@ -18,13 +18,13 @@
                             <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
-                            <table v-if="selected2==='add'" id="tableAdd"  style="color: #0067d2;text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table v-if="selected2==='add'" id="tableAdd"  style="color: #004488; text-align: center;visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
-                                        ? 'width: 3vw; height: 3vw; background: #e6ffe7'
+                                        ? 'width: 3vw; height: 3vw; background: rgba(165, 220, 255, 1)'
                                         : 'width: 3vw; height: 3vw;'">
-                                        <b v-if="i==1&&j==1">+</b>
+                                        <b v-if="i==1&&j==1"><span style="color: black">+</span></b>
                                         <b v-else-if="i==1&&j==c[0]+1">{{arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[0]+1&&j==c[0]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[0]+1&&j==c[1]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
@@ -46,8 +46,8 @@
                                         <b v-else-if="i==r[8]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[10]+1">{{arrSimpleTwo[i-2]+arrSimpleOne[j-2]}}</b>
-                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw;background: rgba(165, 220, 255, 1);border: 0px' /></b>
+                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw;background: rgba(165, 220, 255, 1);border: 0px' /></b>
                                         <b v-else><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" type="text" style='width: 3vw; height: 3vw; border: 0px' /></b>
                                     </td>
                                 </tr>
@@ -56,9 +56,9 @@
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j == 1 && i != 1)||(i==1&&j!=1)
-                                        ? 'width: 3vw; height: 3vw; background: #e6ffe7'
+                                        ? 'width: 3vw; height: 3vw; background: rgba(165, 220, 255, 1)'
                                         : 'width: 3vw; height: 3vw;'">
-                                        <b v-if="i==1&&j==1">x</b>
+                                        <b v-if="i==1&&j==1"><span style="color: black">x</span></b>
                                         <b v-else-if="i==1&&j==c[0]+1">{{arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[0]+1&&j==c[0]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[0]+1&&j==c[1]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
@@ -80,8 +80,8 @@
                                         <b v-else-if="i==r[8]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[9]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
                                         <b v-else-if="i==r[9]+1&&j==c[10]+1">{{arrSimpleTwo[i-2]*arrSimpleOne[j-2]}}</b>
-                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="i==1&&j!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw;background: rgba(165, 220, 255, 1);border: 0px' /></b>
+                                        <b v-else-if="j==1&&i!=1"><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw;background: rgba(165, 220, 255, 1);border: 0px' /></b>
                                         <b v-else><input :ref="(i*100+j)" v-model="inputNum[i*100+j]" v-on:input="checkNum(i, j, inputNum[i*100+j])" style='width: 3vw; height: 3vw; border: 0px' /></b>
                                     </td>
                                 </tr>
