@@ -109,12 +109,15 @@ export default {
             yAxes: [
               {
                 ticks: {
-                  min: -100,
-                  max: 100
+                  min: -30,
+                  max: 30,
+                  fontSize: 14,
                 },
                 scaleLabel: {
                   display: true,
-                  labelString: "Under   Over"
+                  labelString: "Under / Over (%)",
+                  fontSize: 16,
+                  fontColor: '#222',
                 }
               }
             ],

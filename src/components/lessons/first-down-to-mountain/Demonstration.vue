@@ -152,7 +152,7 @@ export default {
       }
       this.status = 0;
       this.trialNumber++;
-      this.demoAutoOption = "0";
+      this.clearTimer();
     }
   },
   created() {
