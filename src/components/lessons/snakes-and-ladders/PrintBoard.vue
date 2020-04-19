@@ -8,7 +8,7 @@
         <div
           v-if="!isPrinting"
           class="text-center text-success mb-3"
-        >To print, press Control+P(Windows) or Command+P(Macintosh)</div>
+        >To print, press Control+P (Windows & Chromebooks) or Command+P (Mac)</div>
         <app-board :boardSettings="boardSettings"></app-board>
       </div>
       <div class="col-2">
