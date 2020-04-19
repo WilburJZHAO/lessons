@@ -90,8 +90,8 @@
                             <label class="col-sm-2 label1" style="margin-right: 5px">Score</label>
                             <input  disabled class="col-sm-2 " style="text-align: center;font-size: 25px;" :value="(SelectedNums[0]*1 + SelectedNums[1]*2 + SelectedNums[2]*3) || null">
                         </div>
-                        <div v-if="Prompt" style="color: red; font-size: 25px; margin-top: 40px" @click="GoBack" v-text="ShowPrompt"></div>
-
+                        <div v-if="Prompt" style="color: red; font-size: 25px; margin-top: 40px" v-text="ShowPrompt"></div>
+                        <button style="margin-top: 20px; margin-left: 50px" class="btn btn-outline-success" @click="GoBack" v-if="Reached">Choose new target number</button>
                     </div>
 
                 </div>
@@ -116,6 +116,7 @@
         },
         methods:{
             Reset(){
+                this.Reached = false
                 if (this.SelectedNums.length > 0){
                     this.SelectedNums = [];
                     this.AvailableNums = [];
@@ -155,12 +156,14 @@
         computed:{
             ShowPrompt(){
                 if (this.score < this.SelectedNums[0]*1 + this.SelectedNums[1]*2 + this.SelectedNums[2]*3){
-                    return "The tally is too big. Click on the reset button for a new attempt."
-                }else if (this.score > this.SelectedNums[0]*1 + this.SelectedNums[1]*2 + this.SelectedNums[2]*3){
-                    return "The tally is too small. Click on the reset button for a new attempt."
-                }else{
+                    return "The tally is too big. Reset for a new attempt."
+                }
+                else if (this.score > this.SelectedNums[0]*1 + this.SelectedNums[1]*2 + this.SelectedNums[2]*3){
+                    return "The tally is too small. Reset for a new attempt."
+                }
+                else{
                     this.Reached = true;
-                    return "Target reached !  New target ";
+                    return "Target reached !  Congratulations! ";
                 }
             },
         },

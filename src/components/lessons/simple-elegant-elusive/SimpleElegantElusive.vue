@@ -427,7 +427,7 @@ export default {
     pointsForSmallCycle: function(angle) {
       angle = angle + 90;
       let radians = (angle / 180) * Math.PI;
-      let endX = this.smallCenterX + this.smallCycleRadius * Math.cos(radians);
+      let endX = this.smallCenterX - this.smallCycleRadius * Math.cos(radians);
       let endY = this.smallCenterY - this.smallCycleRadius * Math.sin(radians);
       endX = Math.round(endX); // reduce deviation
       endY = Math.round(endY);

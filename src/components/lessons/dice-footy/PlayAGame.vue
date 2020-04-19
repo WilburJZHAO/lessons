@@ -113,7 +113,7 @@
 						v-if="isStart && !isEnd && demoAutoOption==='0'"
 						@click="handleRollDice"
 					>
-						{{ isChangeRule ? "Roll both dice" : "Roll first dice for goals"}}
+						{{ buttonPhrase }}
 					</button>
 					<button
 						class="btn btn-outline-success"
@@ -177,6 +177,33 @@ export default {
 		}
 	},
 	computed: {
+		buttonPhrase() {
+			if (this.isChangeRule) {
+				return "Roll both dice";
+			}
+			else if (this.whoseTurn === 0) {
+				if (this.teamADiceArr.length === 0) {
+					return "Roll first dice for goals";
+				}
+				else if (this.teamADiceArr.length === 1) {
+					return "Roll second dice for behinds";
+				}
+				else {
+					return "Tally scores";
+				}
+			}
+			else if (this.whoseTurn === 1) {
+				if (this.teamBDiceArr.length === 0) {
+					return "Roll first dice for goals";
+				}
+				else if (this.teamBDiceArr.length === 1) {
+					return "Roll second dice for behinds";
+				}
+				else {
+					return "Tally scores";
+				}
+			}
+		},
 		teamAScore() {
 			const scoreArr = fillArray(this.teamAScoreArr, 8);
 			return [

@@ -344,6 +344,7 @@
 
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
+import { pickNumber, legify } from "../../common/utils.js";
 
 export default {
   components: {
@@ -392,10 +393,6 @@ export default {
   },
   mounted: function() {},
   methods: {
-    generateRandom(num) {
-      //from 0 - num
-      return Math.ceil(Math.random() * num);
-    },
     startGameAuto() {
       this.isAutoStart = true;
       if (this.timer) {
@@ -408,8 +405,8 @@ export default {
     },
     rollDice() {
       this.isStart = true;
-      this.p = this.generateRandom(3);
-      this.randomNum = this.generateRandom(6);
+      this.p = pickNumber(1, 3);
+      this.randomNum = pickNumber(1, 6);
       this.rollsNum++;
       this.updateBeetle();
       this.drawBeetle();
@@ -419,13 +416,13 @@ export default {
       if (this.body === 0 && this.randomNum === 6) {
         this.body++;
         this.partsNum++;
-      } else if (this.body === 1 && this.legs <6 && this.randomNum === 1) {
+      } else if (this.body === 1 && this.legs < 6 && this.randomNum === 1) {
         this.legs++;
         this.partsNum++;
       } else if(this.body === 1 && this.head === 0 && this.randomNum === 5){
         this.head++;
         this.partsNum++;
-      } else if(this.body === 1 && this.head === 1) {
+      } else if(this.body === 1 && this.head === 1 && this.legs === 6) {
         if (this.randomNum === 2 && this.eyes < 2) {
           this.eyes++;
           this.partsNum++;

@@ -73,17 +73,14 @@
         >{{ result === 0 ? "Cat eats mouse" : "Mouse eats cheese" }}</span>
       </div>
       <button
-        class="btn btn-outline-success"
+        class="btn btn-outline-success mb-2"
         @click="handlePlayOnce"
         v-if="!isFinish && demoAutoOption == '0'"
       >
-        {{ rollOrMove === 0 ?
-        "Roll dice" :
-        "Move the mouse"
-        }}
+        {{ buttonPhrase }}
       </button>
       <button
-        class="btn btn-outline-success"
+        class="btn btn-outline-success mb-2"
         @click="handleToggleTimer"
         v-if="!isFinish && demoAutoOption == '1'"
       >
@@ -91,12 +88,15 @@
         timer ? "Pause" : "Resume"
         }}
       </button>
-      <button class="btn btn-outline-dark" @click="handleReset" v-if="isFinish">Reset</button>
+      <button class="btn btn-outline-dark mb-2" @click="handleReset" v-if="isFinish">Reset</button>
       <app-demo-auto-option
         @changeOption="demoAutoOption=$event"
         :option="demoAutoOption"
         :disabled="isStart"
       ></app-demo-auto-option>
+    </div>
+    <div class="text-info text-center mt-4">
+      Special thanks to 4S from Milgate Primary School for designing gameboards 2, 3 and 4!
     </div>
   </div>
 </template>
@@ -136,6 +136,17 @@ export default {
     };
   },
   computed: {
+    buttonPhrase() {
+      if (this.rollOrMove === 1) {
+        return "Move the mouse";
+      }
+      else if (this.game.ruleType === 'decimal') {
+        return "New number";
+      }
+      else {
+        return "Roll dice";
+      }
+    },
     mouseWinsPercent() {
       if (this.total === 0) {
         return 0;
@@ -181,7 +192,7 @@ export default {
     rollDice() {
       this.randomNumber = this.game.createRandomNumber();
       this.rollOrMove = 1;
-      console.log(this.randomNumber);
+      //console.log(this.randomNumber);
     },
     moveMouse() {
       this.stepArr.push({
@@ -203,7 +214,7 @@ export default {
       }
 
       if (this.result !== null) {
-        console.log("result", this.result);
+        //console.log("result", this.result);
         this.total++;
         if (this.result === 0) {
           // Cat wins

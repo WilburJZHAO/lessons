@@ -8,27 +8,27 @@
 		</div>
 		<div class="container-fluid" v-else>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-top-nav @backToMenu="selectedOption = $event">Cat and Mouse</app-top-nav> 
-			</transition> 
-				
+				<app-top-nav @backToMenu="selectedOption = $event">Cat and Mouse</app-top-nav>
+			</transition>
+
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-play-a-game 
-					v-if="selectedOption === 1" 
-					:rule="currentRule" 
+				<app-play-a-game
+					v-if="selectedOption === 1"
+					:rule="currentRule"
 					:currentGameboardIndex="currentGameboardIndex"
 					@nextGameboard="currentGameboardIndex=$event"
 				></app-play-a-game>
 			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-play-many-games 
+				<app-play-many-games
 					v-if="selectedOption === 2"
-					:rule="currentRule" 
+					:rule="currentRule"
 					:currentGameboardIndex="currentGameboardIndex"
 					@nextGameboard="currentGameboardIndex=$event"
 				></app-play-many-games>
 			</transition>
 			<transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-				<app-change-rules 
+				<app-change-rules
 					v-if="selectedOption === 3"
 					:currentRule="currentRule"
 					:currentGameboardIndex="currentGameboardIndex"
@@ -37,14 +37,14 @@
 					@backToMenu="selectedOption = $event"
 				>
 				</app-change-rules>
-			</transition> 
-		</div>  
+			</transition>
+		</div>
 	</div>
 </template>
 
 <script>
-import TitleStatic from '../../layout/TitleStatic.vue'; 
-import TopNav from '../../layout/TopNav.vue'; 
+import TitleStatic from '../../layout/TitleStatic.vue';
+import TopNav from '../../layout/TopNav.vue';
 import Options from '../../layout/Options.vue';
 import PlayAGame from './PlayAGame.vue';
 import PlayManyGames from './PlayManyGames.vue';
@@ -55,7 +55,7 @@ export default {
 	components: {
 		appTitleStatic: TitleStatic,
 		appTopNav: TopNav,
-		appOptions: Options, 
+		appOptions: Options,
 		appPlayAGame: PlayAGame,
 		appPlayManyGames: PlayManyGames,
 		appChangeRules: ChangeRules
@@ -63,9 +63,9 @@ export default {
 	data: function() {
 		return {
 			options: [
-				{id: 1, title: 'Play a game'}, 
+				{id: 1, title: 'Play a game'},
 				{id: 2, title: 'Play many games'},
-				{id: 3, title: 'Change the rules'}, 
+				{id: 3, title: 'Change the rules'},
 			],
 			selectedOption: -1,
 			currentGameboardIndex: 0,
