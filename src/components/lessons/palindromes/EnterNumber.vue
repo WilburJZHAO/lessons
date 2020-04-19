@@ -156,7 +156,7 @@ export default {
     handleReset() {
       this.gameStatus = 0;
       this.startNumber = null;
-      this.additionNumber = null;
+      this.additionNumber = 0;
       this.additionTableData = [];
       this.message = MESSAGE.INPUT_PROMPT;
       this.clearTimer();
