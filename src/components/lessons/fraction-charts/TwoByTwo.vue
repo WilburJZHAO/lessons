@@ -7,20 +7,20 @@
                 <div class="row" style="max-width: 100%; padding-left: 8%;">
                     <!-- Left part -->
                     <div class="col-12 col-md-6 app--lesson-left" style="max-width: 50%">
-                        <div style="text-align: left;max-width: 70%">
+                        <div style="text-align: left; max-width: 70%;">
                             <h3>Complete the fraction chart</h3><br>
                             <br>
                             <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
 
-                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="color: #0067d2;text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="color: #004488; text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid; background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
-                                        ? 'width: 8vw; height: 8vw; background: #e6ffe7;'
+                                        ? 'width: 8vw; height: 8vw; background: rgba(165, 220, 255, 1);'
                                         : 'width: 8vw; height: 8vw;'">
-                                        <b v-if="i===1&&j===1">of</b>
+                                        <b v-if="i===1&&j===1"><span style="color: black">of</span></b>
 
                                         <b v-else-if="(i===1&&j===c[0]+1) && randomIndex ==='r' ">
                                             {{arrSimpleThree[j-2]}}
@@ -558,7 +558,7 @@
         height: 8vw;
         overflow:hidden;
         border: #7f8c8d solid;
-        font-size: 1.5rem;
+        font-size: 2.2rem;
         padding: 5px;
     }
 

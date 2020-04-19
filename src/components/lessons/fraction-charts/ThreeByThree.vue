@@ -13,13 +13,13 @@
                             <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
-                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="color: #0067d2;text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd" class="col-lg-12 col-md-10 col-sm-6" style="color: #004488; text-align: center; align-items: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
-                                        ? 'width: 8vw; height: 8vw; background: #e6ffe7;'
+                                        ? 'width: 8vw; height: 8vw; background: rgba(165, 220, 255, 1);'
                                         : 'width: 8vw; height: 8vw;'">
-                                        <b v-if="i===1&&j===1">of</b>
+                                        <b v-if="i===1&&j===1"><span style="color: black">of</span></b>
 
                                         <b v-else-if="(i===1&&j===c[0]+1) && randomIndex ==='r' ">
                                             {{arrSimpleThree[j-2]}}
@@ -566,7 +566,7 @@
         height: 8vw;
         overflow:hidden;
         border: #7f8c8d solid;
-        font-size: 28px;
+        font-size: 2.2rem;
         padding: 5px;
     }
 

@@ -35,13 +35,13 @@
                             <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>
-                            <table id="tableAdd" style="color: #0067d2; text-align: center; vertical-align: center; visibility: visible; border: #7f8c8d solid;background: white;">
+                            <table id="tableAdd" style="color: #004488; text-align: center; vertical-align: center; visibility: visible; border: #7f8c8d solid;background: white;">
                                 <tr v-for="i in selected + 1">
                                     <td v-for="j in selected + 1" :style="
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
-                                        ? 'width: 6vw; height: 5vw; background: #e6ffe7'
+                                        ? 'width: 6vw; height: 5vw; background: rgba(165, 220, 255, 1)'
                                         : 'width: 6vw; height: 5vw;'">
-                                        <b v-if="i===1&&j===1">X</b>
+                                        <b v-if="i===1&&j===1"><span style="color: black">X</span></b>
                                         <b v-else-if="(i===1&&j===c[0]+1) && randomIndex ==='r'">{{generate(i,j)}}</b>
                                         <b v-else-if="(j===1&&i===r[0]+1) && randomIndex ==='c'">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[0]+1&&j===c[0]+1">{{generate(i,j)}}</b>
@@ -55,8 +55,8 @@
                                         <b v-else-if="i===r[4]+1&&j===c[4]+1">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[4]+1&&j===c[5]+1">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[5]+1&&j===c[5]+1">{{generate(i,j)}}</b>
-                                        <b v-else-if="i===1&&j!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
-                                        <b v-else-if="j===1&&i!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw;background: #e6ffe7;border: 0px' /></b>
+                                        <b v-else-if="i===1&&j!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw;background: rgba(165, 220, 255, 1); border: 0px' /></b>
+                                        <b v-else-if="j===1&&i!==1"><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw;background: rgba(165, 220, 255, 1); border: 0px' /></b>
                                         <b v-else><input :ref="(i*10+j)" v-model="inputNum[i*10+j]" v-on:input="checkNum(i, j, re(i, j, inputNum[i*10+j]))" type="text" style='width: 6vw; height: 5vw; border: 0px' /></b>
                                     </td>
                                 </tr>

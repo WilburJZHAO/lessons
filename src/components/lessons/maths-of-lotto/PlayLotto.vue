@@ -46,7 +46,8 @@
             <h6 class="text-center">{{ selectedNumbers.join(', ')}} to win</h6>
             <ul
               class="list-group"
-              style="height: auto; max-height: 500px; overflow-y: scroll; width: 200px; margin-bottom: 100px;"
+              id="drawHistory"
+              style="height: 400px; overflow-y: auto; width: 200px; margin-bottom: 100px;"
             >
               <li
                 v-for="(el, index) in drawnNumbersHistory"
@@ -115,6 +116,12 @@ export default {
       ) {
         this.status = 0;
       }
+    },
+    drawnNumbersHistory(value) {
+      this.$nextTick( function() {
+        const drawnNumbers = document.getElementById("drawHistory");
+        drawnNumbers.scrollTop = drawnNumbers.scrollHeight;
+      });
     }
   },
   methods: {
