@@ -41,7 +41,7 @@
                                       (j === 1 && i !== 1)||(i===1&&j!==1)
                                         ? 'width: 6vw; height: 5vw; background: rgba(165, 220, 255, 1)'
                                         : 'width: 6vw; height: 5vw;'">
-                                        <b v-if="i===1&&j===1"><span style="color: black">X</span></b>
+                                        <b v-if="i===1&&j===1"><span style="color: black; font-size: 1.4rem">X</span></b>
                                         <b v-else-if="(i===1&&j===c[0]+1) && randomIndex ==='r'">{{generate(i,j)}}</b>
                                         <b v-else-if="(j===1&&i===r[0]+1) && randomIndex ==='c'">{{generate(i,j)}}</b>
                                         <b v-else-if="i===r[0]+1&&j===c[0]+1">{{generate(i,j)}}</b>
@@ -197,6 +197,12 @@
             this.selected1 = this.options1[0].value;
         },
         mounted: function() {
+          // disable spellcheck in all input boxes
+          let inputFields = document.getElementsByTagName("input");
+          for(var i = 0; i < inputFields.length; i++){
+              inputFields[i].setAttribute("spellcheck", "false");
+          }
+
             this.start();
         },
         methods: {

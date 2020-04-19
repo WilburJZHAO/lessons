@@ -237,7 +237,7 @@ export default {
       this.setGame();
     }
   },
-  created() {
+  mounted() {
     this.setGame();
   }
 };
