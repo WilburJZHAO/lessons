@@ -211,7 +211,7 @@
 
 <script>
 import DemoAutoOption from "./DemoAutoOption.vue";
-import { legify } from "../../common/utils.js";
+import { pickNumber, legify } from "../../common/utils.js";
 
 export default {
   props: ["trialNum"],
@@ -283,10 +283,6 @@ export default {
   mounted: function() {},
   methods: {
     legify,
-    generateRandom(num) {
-      //from 0 - num
-      return Math.ceil(Math.random() * num);
-    },
     startGameAuto() {
       console.log("trying to start game")
       this.isAutoStart = true;
@@ -314,7 +310,7 @@ export default {
       }
     },
     rollDice() {
-      this.randomNum = this.generateRandom(6);
+      this.randomNum = pickNumber(1, 6);
       this.rollsNum++;
       this.updateBeetle();
     },
@@ -322,13 +318,13 @@ export default {
       if (this.body === 0 && this.randomNum === 6) {
         this.body++;
         this.partsNum++;
-      } else if (this.body === 1 && this.legs <6 && this.randomNum === 1) {
+      } else if (this.body === 1 && this.legs < 6 && this.randomNum === 1) {
         this.legs++;
         this.partsNum++;
       } else if(this.body === 1 && this.head === 0 && this.randomNum === 5){
         this.head++;
         this.partsNum++;
-      } else if(this.body === 1 && this.head === 1) {
+      } else if(this.body === 1 && this.head === 1 && this.legs === 6) {
         if (this.randomNum === 2 && this.eyes < 2) {
           this.eyes++;
           this.partsNum++;

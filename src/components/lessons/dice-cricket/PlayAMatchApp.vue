@@ -8,7 +8,7 @@
           :title="matchSetting.teamAName"
           style="overflow: hidden;"
         >{{ matchSetting.teamAName }}</h5>
-        <app-score-table :data="teamAScoreData" :shouldTally="tallyTeam==='A' ? true : false"></app-score-table>
+        <app-score-table  id="table1" :data="teamAScoreData" :shouldTally="tallyTeam==='A' ? true : false"></app-score-table>
       </div>
       <div class="col-lg-6">
         <h5
@@ -16,7 +16,7 @@
           :title="matchSetting.teamBName"
           style="overflow: hidden;"
         >{{ matchSetting.teamBName }}</h5>
-        <app-score-table :data="teamBScoreData" :shouldTally="tallyTeam==='B' ? true : false"></app-score-table>
+        <app-score-table id="table2" :data="teamBScoreData" :shouldTally="tallyTeam==='B' ? true : false"></app-score-table>
       </div>
     </div>
     <div class="text-center mt-3" style="position: relative;">
@@ -28,7 +28,7 @@
       <div
         v-if="result"
         class="app--prompt alert alert-danger"
-      >Match over. {{ result === 'A' ? matchSetting.teamAName : matchSetting.teamBName }} is the winner!</div>
+      >Match completed. {{ result === 'A' ? matchSetting.teamAName : matchSetting.teamBName }} is the winner!</div>
       <button
         v-if="!result && demoAutoOption=='0'"
         class="btn btn-outline-success"
@@ -92,6 +92,10 @@ export default {
         // this.changeTurn();
         this.canChangeTurn = true;
       }
+      this.$nextTick( function() {
+        const t = document.getElementById("table1");
+        t.scrollTop = t.scrollHeight;
+      });
     },
     teamBScoreData(value) {
       if (
@@ -103,6 +107,10 @@ export default {
         // this.changeTurn();
         this.canChangeTurn = true;
       }
+      this.$nextTick( function() {
+        const t = document.getElementById("table2");
+        t.scrollTop = t.scrollHeight;
+      });
     },
     teamATally(value) {
       if (!this.matchSetting.isChange && value[0] >= this.maxWicket) {

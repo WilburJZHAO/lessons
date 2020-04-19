@@ -64,7 +64,7 @@
         <span v-if="isFinish" class="badge badge-danger">Trials complete</span>
       </div>
       <button
-        class="btn btn-outline-success"
+        class="btn btn-outline-success mb-2"
         @click="handlePlayOneGame"
         v-if="!isFinish && demoAutoOption == '0'"
       >
@@ -74,7 +74,7 @@
         }}
       </button>
       <button
-        class="btn btn-outline-success"
+        class="btn btn-outline-success mb-2"
         @click="handleToggleTimer"
         v-if="!isFinish && demoAutoOption == '1'"
       >
@@ -82,12 +82,15 @@
         timer ? "Pause" : "Resume"
         }}
       </button>
-      <button class="btn btn-outline-dark" @click="handleReset" v-if="isFinish">Reset</button>
+      <button class="btn btn-outline-dark mb-2" @click="handleReset" v-if="isFinish">Reset</button>
       <app-demo-auto-option
         @changeOption="demoAutoOption=$event"
         :option="demoAutoOption"
         :disabled="isStart"
       ></app-demo-auto-option>
+    </div>
+    <div class="text-info text-center mt-4">
+      Special thanks to 4S from Milgate Primary School for designing gameboards 2, 3 and 4!
     </div>
   </div>
 </template>

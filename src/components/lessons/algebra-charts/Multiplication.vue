@@ -31,7 +31,8 @@
                                 Reset
                             </button>
                             <br><br>
-                            <h5>Complete this addition grid</h5><br>
+                            <h5>Complete this multiplication grid</h5>
+                            <h6 class="mb-3">(type <i>x2</i> to get <i>x<sup>2</sup></i>)</h6>
                             <div v-if="alertMessage" :class="isAlert?'alert alert-success':'alert alert-danger'">
                                 {{ alertMessage }}
                             </div>

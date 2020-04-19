@@ -173,6 +173,7 @@ export default {
         // Add dataNumber to moveLeft array
         this.rule.moveLeft.push(dataNumber);
       }
+      this.rule.moveLeft.sort((a, b) => a - b);
       this.initGame();
       this.handleChangeRule();
     },
@@ -185,6 +186,7 @@ export default {
         let index = this.rule.moveLeft.indexOf(dataNumber);
         this.rule.moveLeft.splice(index, 1);
       }
+      this.rule.moveLeft.sort((a, b) => a - b);
       this.initGame();
       this.handleChangeRule();
     },

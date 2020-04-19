@@ -63,8 +63,7 @@
                 Reset
               </button>
               <br /><br />
-              <h5>Complete this addition grid</h5>
-              <br />
+              <h5 class="mb-3">Complete this addition grid</h5>
               <div
                 v-if="alertMessage"
                 :class="isAlert ? 'alert alert-success' : 'alert alert-danger'"
