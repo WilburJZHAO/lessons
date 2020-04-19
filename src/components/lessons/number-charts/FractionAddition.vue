@@ -189,6 +189,12 @@
             this.selected1 = this.options1[0].value;
         },
         mounted: function() {
+            // disable spellcheck in all input boxes
+            let inputFields = document.getElementsByTagName("input");
+            for(var i = 0; i < inputFields.length; i++){
+                inputFields[i].setAttribute("spellcheck", "false");
+            }
+
             this.start();
         },
         methods: {

@@ -71,8 +71,8 @@
 				<div v-if="shapeSelected && tilesUsed > 0 && tilesUsed < shapeData.totalTiles" class="alert alert-danger">
 					{{tilesUsed}} tile{{tilesUsed > 1 ? 's' : ''}} used
 				</div>
-				<div v-if="shapeSelected && tilesUsed >0 && tilesUsed === shapeData.totalTiles" class="text-center">
-					<div class="alert alert-danger">
+				<div v-if="shapeSelected && tilesUsed > 0 && tilesUsed === shapeData.totalTiles" class="text-center">
+					<div class="alert alert-success">
 						Correct! {{ shapeData.totalTiles }} tiles needed to cover the shape
 					</div>
 					<button class="btn btn-outline-success" @click="handleCreateNewShape">

@@ -53,6 +53,7 @@
 					:isDisable="true"
 					:countingSet="countingSet"
 				></app-spelling-board>
+				<h6 class="text-info mt-2">Make sure you have your volume turned on - but not too loud!</h6>
 			</div>
 		</div>
 	</div>

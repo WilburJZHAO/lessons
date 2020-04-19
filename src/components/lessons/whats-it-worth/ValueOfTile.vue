@@ -121,7 +121,7 @@
       <button
         class="btn btn-outline-success"
         @click="handleCoverShape"
-      >Cover the shape with tiles</button>
+      >Auto-fill tiles</button>
     </div>
     <div class="text-center" v-if="step>=3">
       <p>{{ shapeData.totalTiles}} cover the shape</p>

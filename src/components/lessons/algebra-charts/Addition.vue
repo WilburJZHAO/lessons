@@ -84,7 +84,7 @@
                         : 'width: 6vw; height: 5vw;'
                     "
                   >
-                    <b v-if="i === 1 && j === 1"><span style="color: black">+</span></b>
+                    <b v-if="i === 1 && j === 1"><span style="color: black; font-size: 2rem">+</span></b>
                     <b
                       v-else-if="
                         i === 1 &&
@@ -957,6 +957,12 @@ export default {
     this.selected1 = this.options1[0].value;
   },
   mounted: function() {
+    // disable spellcheck in all input boxes
+    let inputFields = document.getElementsByTagName("input");
+    for(var i = 0; i < inputFields.length; i++){
+        inputFields[i].setAttribute("spellcheck", "false");
+    }
+
     this.start();
   },
   methods: {
