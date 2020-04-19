@@ -157,15 +157,15 @@ export default {
       return (this.playAWinsNumber / this.triedNumber) * 100;
     },
     timerInterval() {
-      if (!this.trialNumber) return 50;
+      if (!this.trialNumber) return 1000;
       if (this.trialNumber <= 100) {
-        return 300;
+        return 30;
       } else if (this.trialNumber <= 1000) {
-        return 100;
+        return 10;
       } else if (this.trialNumber <= 5000) {
-        return 80;
+        return 5;
       } else {
-        return 50;
+        return 5;
       }
     }
   },

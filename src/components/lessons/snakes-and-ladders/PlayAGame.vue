@@ -182,8 +182,8 @@ export default {
       this.status = 3;
       if (this.demoAutoOption === "0") {
         this.dice = this.throwDice();
-        this.turnCount++;
         if (this.whoIsTurn === 1) {
+          this.turnCount++;
           this.player1Number += this.dice;
           this.boardSettings.snakes.forEach(snake => {
             if (this.player1Number === snake.from) {
@@ -246,8 +246,8 @@ export default {
     status(value) {
       if (this.demoAutoOption === "1" && value === 3) {
         this.dice = this.throwDice();
-        this.turnCount++;
         if (this.whoIsTurn === 1) {
+          this.turnCount++;
           this.player1Number += this.dice;
           this.boardSettings.snakes.forEach(snake => {
             if (this.player1Number === snake.from) {

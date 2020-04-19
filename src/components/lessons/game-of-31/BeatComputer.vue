@@ -32,7 +32,7 @@
           <span v-if="status===1 && whoseTurn ===2">{{ game.partyBName }}. Click on a card</span>
           <span v-if="status===2">Pick a lower card</span>
           <span v-if="status===3">
-            Player {{ wins }} is the winner
+                {{ winningAnnouncement }}
             <br />
             <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
           </span>
@@ -65,6 +65,14 @@ export default {
     };
   },
   computed: {
+    winningAnnouncement() {
+      if (this.wins === 'Me') {
+        return "The player wins!"
+      }
+      else {
+        return "The computer wins!"
+      }
+    },
     computerPlay() {
       if (this.status === 0 && this.game.whoseFirst === 1) {
         return true;

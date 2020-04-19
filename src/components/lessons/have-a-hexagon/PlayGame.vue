@@ -92,7 +92,7 @@
 			<div class="text-center mt-3">
 				<div
 					v-if="result"
-					class="alert alert-danger">
+					class="alert alert-success">
 					The {{ result }} hexagon is the winner!
 				</div>
 				<button

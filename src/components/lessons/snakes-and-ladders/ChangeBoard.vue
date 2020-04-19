@@ -25,7 +25,7 @@
               class="btn btn-outline-success btn-block"
               type="submit"
               :disabled="!validInputs"
-            >Save</button>
+            >Confirm size</button>
           </div>
         </form>
         <div class="text-center w-50" style="margin: 0 auto;">

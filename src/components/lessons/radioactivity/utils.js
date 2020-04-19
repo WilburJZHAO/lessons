@@ -114,7 +114,7 @@ const drawAxisLabels = (canvas, vueObjPtr, isDemo) => {
 	const context = canvas.getContext("2d");
 	const width = vueObjPtr.width;
 
-	const fontSize = 25;
+	const fontSize = 20;
 	context.font = fontSize + "px arial";
 	context.fillStyle = "black";
 
@@ -128,10 +128,10 @@ const drawAxisLabels = (canvas, vueObjPtr, isDemo) => {
 
 	//rotation is required for the text, save context for restore and perform axis translation.
 	context.save();
-	context.translate(xPosText, yPosText);
+	context.translate(xPosText + 5, yPosText);
 	context.rotate(-Math.PI/2);
 	context.textAlign = "center";
-	context.fillText("Number of Atoms", 0, fontSize/2+4);
+	context.fillText("Number of Atoms", 0, fontSize/2 - 10);
 	context.restore();
 
 	//draw the x axis label
@@ -276,7 +276,7 @@ export const decayedAtoms = (canvasAtoms, canvasGraph, vueObjPtr, highlight) => 
 				yPos = axisArea - height;
 				contextGraph.clearRect(xPos, yPos-2, vueObjPtr.width, height);
 				drawRect('cyan', contextGraph, xPos, yPos, vueObjPtr.width, height);
-				
+
 				height -= 2;
 				xLabel(canvasGraph, vueObjPtr, height/2);
 
@@ -299,7 +299,7 @@ export const decayedAtoms = (canvasAtoms, canvasGraph, vueObjPtr, highlight) => 
 			if(atoms[j].randNum === vueObjPtr.diceRoll){
 				drawRect("blue", contextAtoms, atoms[j].xPos, atoms[j].yPos, vueObjPtr.width, vueObjPtr.width);
 				//remove the atom from the arrays
-				vueObjPtr.atoms.splice( vueObjPtr.atoms.indexOf(atoms[j]), 1);	
+				vueObjPtr.atoms.splice( vueObjPtr.atoms.indexOf(atoms[j]), 1);
 			}
 			//this is also for stage 3, remove the numbers from the un-decayed atoms
 			else {
@@ -351,7 +351,7 @@ const drawAtomLeft = (canvas, vueObjPtr) => {
 	if (percentAtomLeft*100 <= 1){
 		yPos = graphHeight - graphHeight*0.01;
 		height = graphHeight*0.01;
-	}	
+	}
 	drawRect(vueObjPtr.graphColour, context, xPos, yPos, width, height);
 }
 
@@ -407,7 +407,7 @@ export const removeDecayedAtoms = (canvas, vueObjPtr) => {
 	for (var j=0; j<vueObjPtr.atomLeft; j++){
 		if(vueObjPtr.atoms[j] === vueObjPtr.diceRoll){
 			//remove the atom from the arrays
-			vueObjPtr.atoms.splice(j, 1);	
+			vueObjPtr.atoms.splice(j, 1);
 		}
 	}
 	drawAtomLeft(canvas, vueObjPtr);
