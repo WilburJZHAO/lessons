@@ -16,7 +16,7 @@
       <div class="my-2 d-flex">
         <label
           class="mr-3"
-          :class="{'text-danger': selectedAnimal==='pig'}"
+          :class="{'text-danger': headLegNum.leg > problem.legs}"
         >How many pigs do you want to swap for chickens?</label>
         <div>
           <input
@@ -31,7 +31,7 @@
       <div class="d-flex">
         <label
           class="mr-3"
-          :class="{'text-danger': selectedAnimal==='chicken'}"
+          :class="{'text-danger': headLegNum.leg < problem.legs}"
         >How many chickens do you want to swap for pigs?</label>
         <div>
           <input
