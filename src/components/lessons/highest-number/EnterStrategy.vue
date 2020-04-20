@@ -1,6 +1,7 @@
 <template>
   <div class="container-fluid mt-3">
-    <h3 class="text-success text-center mb-3">Enter a strategy for testing</h3>
+    <h3 class="lesson-subheading">Enter a strategy for testing</h3>
+    <hr class="subheading-speartor" />
 
     <div class="d-flex justify-content-center mb-3">
       <app-select-strategy :strategies="strategies" @selectStrategy="handleSelectStrategy"></app-select-strategy>

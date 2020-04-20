@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Demonstration</h3>
+    <h3 class="lesson-subheading">Demonstration</h3>
+    <hr class="subheading-speartor" />
     <div class="row">
       <div class="col-lg-2 col-md-3">
         <app-select-strategy

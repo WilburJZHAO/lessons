@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Play 2 digit game</h3>
+    <h3 class="lesson-subheading">Play 2 digit game</h3>
+    <hr class="subheading-speartor" />
     <div class="row mb-3">
       <div class="col-sm-4">
         <app-card-drawn :card="card"></app-card-drawn>

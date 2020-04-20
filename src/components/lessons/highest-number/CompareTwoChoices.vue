@@ -1,6 +1,7 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center mb-3">Comparing two choices</h3>
+    <h3 class="lesson-subheading">Comparing two choices</h3>
+    <hr class="subheading-speartor" />
     <div class="d-flex flex-column align-items-center">
       <div>
         First card is a:
