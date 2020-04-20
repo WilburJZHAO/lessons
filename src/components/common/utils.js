@@ -40,8 +40,8 @@ export const pickNumber = (min, max) => {
  * returns a reference to the array
  * @param {Array} arr
  */
-export const shuffleArray = (arr) => {
-  for(let i = arr.length - 1; i > 0; i--){
+export const shuffleArray = arr => {
+  for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     const temp = arr[i];
     arr[i] = arr[j];
@@ -50,12 +50,25 @@ export const shuffleArray = (arr) => {
   return arr;
 };
 
-/**
- * Separate number digits by commas.
- * e.g. 12345678 => 12,345,678
+/** Separate a number by commas, considering decimal number
+ * e.g. 12345678.99 => 12,345,678.99
  * @param {number} number
  */
 export const separateNumber = number => {
+  let strNum = String(number);
+  let integerPart = Number(strNum.split(".")[0]);
+  let decimalPart = strNum.split(".")[1];
+  return decimalPart
+    ? separateInteger(integerPart) + "." + decimalPart
+    : separateInteger(integerPart);
+};
+
+/**
+ * Separate an integer by commas.
+ * e.g. 12345678 => 12,345,678
+ * @param {number} number
+ */
+export const separateInteger = number => {
   let strNum = String(number);
   let arrNum = strNum.split("");
   let arr = [];
@@ -73,7 +86,6 @@ export const separateNumber = number => {
   }
   return arr.join(",");
 };
-
 
 /**
  * Convert a number into a clean 'legible' format for students
@@ -93,39 +105,47 @@ export const separateNumber = number => {
  * @return {String}
  */
 export function legify(number, fixedDec = -1) {
-  if (!number && number !== 0) {return ""} // handle undefined
-	let spacer = '\u2009'; // thin space
-  let numberString = fixedDec < 0 ? number.toString() : Number(number).toFixed(fixedDec);
-	// break into integer and decimal parts
-  let decIndex = numberString.indexOf('.');
+  if (!number && number !== 0) {
+    return "";
+  } // handle undefined
+  let spacer = "\u2009"; // thin space
+  let numberString =
+    fixedDec < 0 ? number.toString() : Number(number).toFixed(fixedDec);
+  // break into integer and decimal parts
+  let decIndex = numberString.indexOf(".");
   let intString;
   let decString;
   if (decIndex === -1) {
     intString = numberString;
-  }
-  else if (decIndex > 0) {
+  } else if (decIndex > 0) {
     intString = numberString.slice(0, decIndex);
     decString = numberString.slice(decIndex + 1, numberString.length);
-  }
-  else { // '.' as zeroeth char
-    intString = '0';
+  } else {
+    // '.' as zeroeth char
+    intString = "0";
     decString = numberString.slice(1, numberString.length);
   }
 
   // insert spaces for integer part
-  let newIntString = '';
+  let newIntString = "";
   for (let i = 0; i < intString.length; i++) {
     let lenToEnd = intString.length - (i + 1);
-    newIntString = lenToEnd % 3 === 0 && lenToEnd !== 0 ? newIntString + intString[i] + spacer : newIntString + intString[i];
+    newIntString =
+      lenToEnd % 3 === 0 && lenToEnd !== 0
+        ? newIntString + intString[i] + spacer
+        : newIntString + intString[i];
   }
 
-	// insert spaces for decimal part
-  let newDecString = '';
+  // insert spaces for decimal part
+  let newDecString = "";
   if (decIndex > -1) {
     for (let i = 0; i < decString.length; i++) {
-      newDecString = (i + 1) % 3 === 0 && (i + 1) !== decString.length ? newDecString + decString[i] + spacer : newDecString + decString[i];
+      newDecString =
+        (i + 1) % 3 === 0 && i + 1 !== decString.length
+          ? newDecString + decString[i] + spacer
+          : newDecString + decString[i];
     }
   }
 
-  return decIndex === -1 ? newIntString : newIntString + '.' + newDecString;
+  return decIndex === -1 ? newIntString : newIntString + "." + newDecString;
 }

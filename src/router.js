@@ -457,6 +457,12 @@ const SquarePairs = resolve => {
   });
 };
 
+const HighestNumber = resolve => {
+  require.ensure("./components/lessons/highest-number/App.vue", () => {
+    resolve(require("./components/lessons/highest-number/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -851,6 +857,11 @@ const routes = [
     path: "/square-pairs",
     component: SquarePairs,
     name: "Square Pairs"
+  },
+  {
+    path: "/highest-number",
+    component: HighestNumber,
+    name: "Highest Number"
   }
 ];
 

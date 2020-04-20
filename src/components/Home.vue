@@ -89,7 +89,8 @@ export default {
         { name: "Temperature Graphs", link: "/temperature-graphs" },
         { name: "Greedy Pig", link: "/greedy-pig" },
         { name: "Snakes and Ladders", link: "/snakes-and-ladders" },
-        { name: "Square Pairs", link: "/square-pairs" }
+        { name: "Square Pairs", link: "/square-pairs" },
+        { name: "Highest Number", link: "/highest-number" }
       ]
     };
   },
