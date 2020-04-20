@@ -4,9 +4,9 @@
     <hr class="subheading-separator">
     <div class="row">
       <div class="col-md-6 mb-3">
-        <h6>There are {{ problem.heads }} animals with {{ problem.legs }} legs.</h6>
-        <h6>How many pigs are there?</h6>
-        <h6>How many chickens are there?</h6>
+        <h6 class="mb-3">There are {{ problem.heads }} animals with {{ problem.legs }} legs.</h6>
+        <h6>Try to work out how many pigs there are.</h6>
+        <h6>The remaining animals will be chickens.</h6>
 
         <div v-if="status===0">
           <div class="d-flex justify-content-between">
@@ -35,7 +35,7 @@
               class="text-danger flex-grow-1 d-flex justify-content-end align-items-center mr-2"
             >Chickens</div>
             <div>
-              <input type="text" class="form-control" disabled style="background-color: white;" />
+              <input type="text" class="form-control" disabled />
             </div>
           </div>
           <div class="text-center my-2">

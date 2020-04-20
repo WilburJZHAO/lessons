@@ -10,10 +10,10 @@
             <div
               v-for="(el, index) in lottoNumbers"
               :key="index"
-              @click="handleSelectNumber(el.number)"
             >
               <div
                 class="app--selection-number"
+                @click="handleSelectNumber(el.number)"
                 :class="el.selected ? 'app--selection-number-selected' : ''"
               >{{ el.number }}</div>
               <br v-if="el.number%8===0" style="clear:both" />
