@@ -131,7 +131,7 @@ const drawAxisLabels = (canvas, vueObjPtr, isDemo) => {
 	context.translate(xPosText + 5, yPosText);
 	context.rotate(-Math.PI/2);
 	context.textAlign = "center";
-	context.fillText("Number of Atoms", 0, fontSize/2 - 10);
+	context.fillText("Number of Atoms", 0, fontSize/2 - 5);
 	context.restore();
 
 	//draw the x axis label
@@ -372,16 +372,16 @@ const drawYLabels = (canvas, vueObjPtr) => {
 	//draw the text for 5 different levels/numbers of atoms
 	const xPosText = width/2+10;
 	var yPosText = fontSize/2+5;
-	context.fillText(vueObjPtr.trialInputs.numAtoms, xPosText, yPosText, width);
+	context.fillText(Math.round(vueObjPtr.trialInputs.numAtoms), xPosText, yPosText, width);
 
 	yPosText = ySpacer;
-	context.fillText(vueObjPtr.trialInputs.numAtoms - yIncrements, xPosText, yPosText, width);
+	context.fillText(Math.round(vueObjPtr.trialInputs.numAtoms - yIncrements), xPosText, yPosText, width);
 
 	yPosText = 2*ySpacer;
-	context.fillText(vueObjPtr.trialInputs.numAtoms - 2*yIncrements, xPosText, yPosText, width);
+	context.fillText(Math.round(vueObjPtr.trialInputs.numAtoms - 2*yIncrements), xPosText, yPosText, width);
 
 	yPosText = 3*ySpacer;
-	context.fillText(vueObjPtr.trialInputs.numAtoms - 3*yIncrements, xPosText, yPosText, width);
+	context.fillText(Math.round(vueObjPtr.trialInputs.numAtoms - 3*yIncrements), xPosText, yPosText, width);
 
 	yPosText = canvas.height - fontSize -20;
 	context.fillText(0, xPosText, yPosText, width);
