@@ -101,8 +101,8 @@ export const drawGraph = (canvas, vueObjPtr) => {
 
 	//draw the initial atoms
 	const xPos = vueObjPtr.startXOffset;
-	const yPos = axisArea - vueObjPtr.atomLeft*2;
-	drawRect('cyan', context, xPos, yPos, width, vueObjPtr.atomLeft*2);
+	const yPos = axisArea - 3;
+	drawRect('cyan', context, xPos, yPos, width, -1.65 * vueObjPtr.atomLeft);
 
 	//draw the initial x axis labels
 	xLabel(canvas, vueObjPtr, vueObjPtr.atomLeft);
@@ -191,8 +191,8 @@ export const generateRandomValues = (canvasAtoms, canvasGraph, vueObjPtr) => {
 		drawNumber(canvasAtoms, vueObjPtr, randNum, "red", atoms[i].xPos, atoms[i].yPos);
 
 		//update the current height and yPos to iteratively reach the number of remaining atoms
-		yPos = axisArea - height;
-		drawRect('cyan', contextGraph, xPos, yPos, vueObjPtr.width, height);
+		yPos = axisArea - 3;
+		drawRect('cyan', contextGraph, xPos, yPos, vueObjPtr.width, -(height * (1.65/2)));
 		xLabel(canvasGraph, vueObjPtr, height/2);
 		height += 2;
 
@@ -272,12 +272,12 @@ export const decayedAtoms = (canvasAtoms, canvasGraph, vueObjPtr, highlight) => 
 				drawRect("red", contextAtoms, decayed[i].xPos, decayed[i].yPos, vueObjPtr.width, vueObjPtr.width);
 				drawNumber(canvasAtoms, vueObjPtr, decayed[i].randNum, "yellow", decayed[i].xPos, decayed[i].yPos);
 
-				//update the current height and yPos to iteratively reach the number of remaining atoms on the graph canvas
-				yPos = axisArea - height;
-				contextGraph.clearRect(xPos, yPos-2, vueObjPtr.width, height);
-				drawRect('cyan', contextGraph, xPos, yPos, vueObjPtr.width, height);
-
 				height -= 2;
+				//update the current height and yPos to iteratively reach the number of remaining atoms on the graph canvas
+				yPos = axisArea - 3;
+				contextGraph.clearRect(xPos, yPos, vueObjPtr.width, -170);
+				drawRect('cyan', contextGraph, xPos, yPos, vueObjPtr.width, -(height * (1.65/2)));
+
 				xLabel(canvasGraph, vueObjPtr, height/2);
 
 				i += 1;
