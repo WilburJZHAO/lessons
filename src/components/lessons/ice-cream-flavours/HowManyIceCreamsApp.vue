@@ -51,7 +51,7 @@
 						<p><span class="badge badge-danger">{{combinationsList.length}}</span>&nbsp;recorded</p>
 						<p class="text text-success" v-if="iceCreamAllFound" >All ice creams are found. Please explain.</p>
 					</div>
-						<ul class="list-group">
+						<ul class="list-group" id="solutions-list">
 							<li class="list-group-item"
 								v-for="(combination, index) in combinationsList"
 								:key="index">
@@ -201,6 +201,12 @@ export default {
 				clearInterval(this.timer);
 				this.timer = null;
 			}
+		},
+		combinationsList() {
+			this.$nextTick( function() {
+				const solutions = document.getElementById("solutions-list");
+				solutions.scrollTop = solutions.scrollHeight;
+			});
 		}
 	},
 	methods: {
