@@ -1,23 +1,25 @@
 <template>
   <div class="container">
     <h3 class="text-success text-center mb-4">
-      <small>{{ legify(gameNumber * 2) }} innings</small>
+      <small>{{ legify(matchNumber * 2) }} innings</small>
     </h3>
     <div class="row">
       <div class="col-md-6">
         <app-many-matches-table
-          :gamePlayedNumber="gamePlayedNumber"
-          :gameData="gameData"
-          :overCounts="overCounts"
+          :matchPlayedNumber="matchPlayedNumber"
+          :matchData="matchData"
+          :ballCount="ballCount"
+          :runCount="runCount"
           :ties="ties"
         ></app-many-matches-table>
       </div>
       <div class="col-md-6">
         <app-many-matches-graph
-          :gameData="gameData"
+          :matchData="matchData"
           :graphData="graphData"
-          :gamePlayedNumber="gamePlayedNumber"
+          :matchPlayedNumber="matchPlayedNumber"
           :heightUnit="heightUnit"
+          :runCount="runCount"
         ></app-many-matches-graph>
       </div>
     </div>
@@ -90,8 +92,8 @@
       <button
         v-if="!isFinish && demoAutoOption=='0'"
         class="btn btn-outline-success"
-        @click="handleNextGame"
-      >Play next game</button>
+        @click="handleNextMatch"
+      >Play next match</button>
       <button
         v-if="!isFinish && demoAutoOption=='1'"
         class="btn btn-outline-success"
@@ -125,9 +127,9 @@ export default {
   },
   data: function() {
     return {
-      gameNumber: null,
-      gamePlayedNumber: 0,
-      gameData: [],
+      matchNumber: null,
+      matchPlayedNumber: 0,
+      matchData: [],
       wicketTaker: 5,
       isStart: false,
       isFinish: false,
@@ -137,7 +139,8 @@ export default {
       maxWicket: 10,
       ties: 0,
       graphData: [],
-      overCounts: 0 // overCounts / 6 should be over
+      ballCount: 0, // ballCount / 6 should be over
+      runCount: 0
       // score: 0
     };
   },
@@ -175,20 +178,21 @@ export default {
   },
   methods: {
     legify,
-    playOne() {
+    playOneInnings() {
       let score = 0;
       let wicket = 0;
       // console.log(diceNumber);
-      while (wicket <= this.maxWicket) {
+      while (wicket < this.maxWicket) {
         let diceNumber = throwDiceOnce();
-        this.overCounts += 1;
+        this.ballCount += 1;
         if (diceNumber == this.wicketTaker) {
           wicket++;
         } else {
           score += diceNumber;
+          this.runCount += diceNumber;
         }
       }
-      // this.gameData.push(score);
+      // this.matchData.push(score);
       return score;
     },
     setGraphArray(score) {
@@ -204,17 +208,17 @@ export default {
         ];
       }
     },
-    playOneGame() {
-      let score1 = this.playOne();
-      let score2 = this.playOne();
-      this.gameData.push(score1);
-      this.gameData.push(score2);
+    playOneMatch() {
+      let score1 = this.playOneInnings();
+      let score2 = this.playOneInnings();
+      this.matchData.push(score1);
+      this.matchData.push(score2);
       this.setGraphArray(score1);
       this.setGraphArray(score2);
       if (score1 === score2) {
         this.ties++;
       }
-      this.gameData.sort((e1, e2) => {
+      this.matchData.sort((e1, e2) => {
         if (e1 < e2) {
           return -1;
         } else {
@@ -222,19 +226,19 @@ export default {
         }
       });
     },
-    handleNextGame() {
+    handleNextMatch() {
       if (!this.isStart) {
         this.isStart = true;
       }
-      this.playOneGame();
-      this.gamePlayedNumber++;
-      if (this.gamePlayedNumber >= this.gameNumber) {
+      this.playOneMatch();
+      this.matchPlayedNumber++;
+      if (this.matchPlayedNumber >= this.matchNumber) {
         this.isFinish = true;
       }
     },
     handleToggleTimer() {
       if (!this.timer) {
-        this.timer = setInterval(this.handleNextGame, this.timerInterval);
+        this.timer = setInterval(this.handleNextMatch, this.timerInterval);
       } else {
         clearInterval(this.timer);
         this.timer = null;
@@ -243,10 +247,11 @@ export default {
     handleReset() {
       this.isStart = false;
       this.isFinish = false;
-      this.gameData = [];
-      this.gamePlayedNumber = 0;
+      this.matchData = [];
+      this.matchPlayedNumber = 0;
       this.ties = 0;
-      this.overCounts = 0;
+      this.ballCount = 0;
+      this.runCount = 0;
       for (let i = 0; i < 50; i++) {
         // Initiazlie graphData with an array of 50 items and each item has value 0
         this.graphData[i] = 0;
@@ -255,7 +260,7 @@ export default {
     }
   },
   created() {
-    this.gameNumber = Number(this.trialNumber) + (Number(this.trialNumber) % 2);
+    this.matchNumber = Number(this.trialNumber);
     for (let i = 0; i < 50; i++) {
       // Initiazlie graphData with an array of 50 items and each item has value 0
       this.graphData[i] = 0;
