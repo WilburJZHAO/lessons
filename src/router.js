@@ -661,7 +661,7 @@ const routes = [
     name: "Dice Differences"
   },
   {
-    path: "/ballon",
+    path: "/balloon",
     component: Ballon,
     name: "2 Litre Ballon"
   },
@@ -671,7 +671,7 @@ const routes = [
     name: "Number Charts"
   },
   {
-    path: "/rectangle-fraction",
+    path: "/rectangle-fractions",
     component: RectangleFraction,
     name: "Rectangle Fraction"
   },
@@ -707,7 +707,7 @@ const routes = [
     name: "Multo"
   },
   {
-    path: "/bobs-button",
+    path: "/bobs-buttons",
     component: BobsButton,
     name: "Bobs Button"
   },
@@ -737,7 +737,7 @@ const routes = [
     name: "Cracked Tiles"
   },
   {
-    path: "/billard-ball",
+    path: "/billiard-ball",
     component: BillardBall,
     name: "Billard Ball Bounces"
   },
@@ -757,7 +757,7 @@ const routes = [
     name: "Beetle Game"
   },
   {
-    path: "/charts-strategies",
+    path: "/chart-strategies",
     component: ChartsStrategies,
     name: "Charts Strategies"
   },
@@ -787,7 +787,7 @@ const routes = [
     name: "Cylinder Volumes"
   },
   {
-    path: "/first-down-to-mountain",
+    path: "/first-down-mountain",
     component: FirstDownToMountain,
     name: "First Down To Mountain"
   },
