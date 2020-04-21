@@ -24,7 +24,7 @@
         <div
           class="app--graph-bar"
           ref="graph-bar"
-          :style="{ 
+          :style="{
 					height: item*heightUnit+'px'
 				}"
           :data-item="item"
@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  props: ["gameData", "graphData", "heightUnit", "gamePlayedNumber"],
+  props: ["matchData", "graphData", "heightUnit", "matchPlayedNumber", "runCount"],
   data: function() {
     return {
       unitWidth: 50, // 50 means Graph is divided into 50 parts evenly
@@ -79,37 +79,30 @@ export default {
   },
   computed: {
     minimum() {
-      return Math.ceil(this.gameData[0] / 10) * 10;
+      return Math.ceil(this.matchData[0] / 10) * 10;
     },
     maximum() {
-      return Math.ceil(this.gameData[this.gameData.length - 1] / 10) * 10;
+      return Math.ceil(this.matchData[this.matchData.length - 1] / 10) * 10;
     },
     mean() {
-      let total = 0;
-      for (let i = 0; i < this.gameData.length; i++) {
-        total += this.gameData[i];
-      }
-      let meanNumber = Number((total / this.gameData.length).toFixed(1));
-      return Math.ceil(meanNumber / 10) * 10;
+      let m = this.runCount / (this.matchPlayedNumber * 2);
+      return Math.ceil(m / 10) * 10;
     },
     median() {
-      let middle = this.gameData.length / 2;
-      let inMiddle = this.gameData.length % 2;
+      let middle = this.matchData.length / 2;
+      let inMiddle = this.matchData.length % 2;
       let medianNumber =
         inMiddle === 0
-          ? Number(
-              ((this.gameData[middle - 1] + this.gameData[middle]) / 2).toFixed(
-                1
-              )
-            )
-          : Number(this.gameData[Math.floor(middle)].toFixed(1));
+          ?
+              (this.matchData[middle - 1] + this.matchData[middle]) / 2
+          : this.matchData[Math.floor(middle)];
       return Math.ceil(medianNumber / 10) * 10;
     }
     // unit() {
     // 	return 10;
     // }
     // graphArray() {
-    // 	if(this.gameData.length === 0) {
+    // 	if(this.matchData.length === 0) {
     // 		let reGraphArray = new Array(this.unitWidth);
     // 		for(let i = 0; i<this.unitWidth; i++) {	// Initiazlie graphArray with an array of 50 items and each item has value 0
     // 			reGraphArray[i] = 0;
@@ -127,7 +120,7 @@ export default {
       let count = Number(e.target.getAttribute("data-item"));
       let index = Number(e.target.getAttribute("data-index"));
       // console.log(this.$refs['graph-bar']);
-      // console.log('tail number', this.gamePlayedNumber*2 );
+      // console.log('tail number', this.matchPlayedNumber*2 );
       for (let i = index + 1; i < this.graphData.length; i++) {
         count += this.graphData[i];
         // console.log(this.$refs['graph-bar'][i]);
@@ -145,7 +138,7 @@ export default {
       // }
       // console.log(count);
       this.tail = Number(
-        ((count / (this.gamePlayedNumber * 2)) * 100).toFixed(2)
+        ((count / (this.matchPlayedNumber * 2)) * 100).toFixed(2)
       );
     }
   },

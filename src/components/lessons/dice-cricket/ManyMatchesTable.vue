@@ -2,57 +2,57 @@
   <div>
     <table class="table table-bordered text-center" style="table-layout:fixed;">
       <tr>
-        <th>Game</th>
+        <th>Match</th>
         <td>
-          <span v-if="gamePlayedNumber > 0">{{ gamePlayedNumber }}</span>
+          <span v-if="matchPlayedNumber > 0">{{ legify(matchPlayedNumber) }}</span>
         </td>
       </tr>
       <tr>
         <th>Minimum</th>
         <td>
-          <span v-if="gamePlayedNumber > 0" class="text-primary">{{ minimum }}</span>
+          <span v-if="matchPlayedNumber > 0" class="text-primary">{{ minimum }}</span>
         </td>
       </tr>
       <tr>
         <th>Maximum</th>
         <td>
-          <span v-if="gamePlayedNumber > 0" class="text-primary">{{ maximum }}</span>
+          <span v-if="matchPlayedNumber > 0" class="text-primary">{{ maximum }}</span>
         </td>
       </tr>
       <tr>
         <th>Range</th>
         <td>
-          <span v-if="gamePlayedNumber > 0">{{ range }}</span>
+          <span v-if="matchPlayedNumber > 0">{{ range }}</span>
         </td>
       </tr>
       <tr>
         <th>Mean</th>
         <td>
-          <span v-if="gamePlayedNumber > 0" class="text-danger">{{ mean }}</span>
+          <span v-if="matchPlayedNumber > 0" class="text-danger">{{ mean }}</span>
         </td>
       </tr>
       <tr>
         <th>Median</th>
         <td>
-          <span v-if="gamePlayedNumber > 0" class="text-success">{{ median }}</span>
+          <span v-if="matchPlayedNumber > 0" class="text-success">{{ median }}</span>
         </td>
       </tr>
       <tr>
         <th>Mean # overs</th>
         <td>
-          <span v-if="gamePlayedNumber > 0" class="text-success">{{ meanOvers }}</span>
+          <span v-if="matchPlayedNumber > 0" class="text-success">{{ meanOvers }}</span>
         </td>
       </tr>
       <tr>
         <th>Ties</th>
         <td>
-          <span v-if="gamePlayedNumber > 0">{{ ties }}</span>
+          <span v-if="matchPlayedNumber > 0">{{ ties }}</span>
         </td>
       </tr>
       <tr>
         <th>% Ties</th>
         <td>
-          <span v-if="gamePlayedNumber > 0">{{ tiesPercent }}%</span>
+          <span v-if="matchPlayedNumber > 0">{{ tiesPercent }}%</span>
         </td>
       </tr>
     </table>
@@ -60,11 +60,15 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils.js";
 export default {
-  props: ["gamePlayedNumber", "gameData", "ties", "overCounts"],
+  props: ["matchPlayedNumber", "matchData", "ties", "ballCount", "runCount"],
+  methods: {
+    legify,
+  },
   computed: {
-    // sortedGameData() {
-    // 	return this.gameData.sort((e1, e2) => {
+    // sortedMatchData() {
+    // 	return this.matchData.sort((e1, e2) => {
     // 		if(e1 < e2) {
     // 			return -1;
     // 		} else {
@@ -73,35 +77,31 @@ export default {
     // 	})
     // },
     minimum() {
-      return this.gameData[0];
+      return this.matchData[0];
     },
     maximum() {
-      return this.gameData[this.gameData.length - 1];
+      return this.matchData[this.matchData.length - 1];
     },
     range() {
       return this.maximum - this.minimum;
     },
     mean() {
-      let total = 0;
-      for (let i = 0; i < this.gameData.length; i++) {
-        total += this.gameData[i];
-      }
-      return (total / this.gameData.length).toFixed(1);
+      return (this.runCount / (this.matchPlayedNumber * 2)).toFixed(1);
     },
     meanOvers() {
-      return (this.overCounts / 6 / (this.gamePlayedNumber * 2)).toFixed(2);
+      return (this.ballCount / 6 / (this.matchPlayedNumber * 2)).toFixed(2);
     },
     median() {
-      let middle = this.gameData.length / 2;
-      let inMiddle = this.gameData.length % 2;
+      let middle = this.matchData.length / 2;
+      let inMiddle = this.matchData.length % 2;
       return inMiddle === 0
         ?
-            ((this.gameData[middle - 1] + this.gameData[middle]) / 2).toFixed(1)
+            ((this.matchData[middle - 1] + this.matchData[middle]) / 2).toFixed(1)
 
-        : this.gameData[Math.floor(middle)].toFixed(1);
+        : this.matchData[Math.floor(middle)].toFixed(1);
     },
     tiesPercent() {
-      return Number(((this.ties / this.gamePlayedNumber) * 100).toFixed(2));
+      return Number(((this.ties / this.matchPlayedNumber) * 100).toFixed(2));
     }
   }
 };
