@@ -28,7 +28,7 @@
       <div
         v-if="result"
         class="app--prompt alert alert-danger"
-      >Match completed. {{ result === 'A' ? matchSetting.teamAName : matchSetting.teamBName }} is the winner!</div>
+      > {{ endOfMatchMessage }} </div>
       <button
         v-if="!result && demoAutoOption=='0'"
         class="btn btn-outline-success"
@@ -136,6 +136,17 @@ export default {
     }
   },
   computed: {
+    endOfMatchMessage() {
+      if (this.result === 'A') {
+        return `Match completed. ${this.matchSetting.teamAName} is the winner!`
+      }
+      else if (this.result === 'B') {
+        return `Match completed. ${this.matchSetting.teamBName} is the winner!`
+      }
+      else if (this.result === 'T') {
+        return "The match has ended in a tie!"
+      }
+    },
     teamATally() {
       let wicketTally = 0;
       let tally = 0;
@@ -218,6 +229,15 @@ export default {
           this.changeTurn();
         }
 
+        // switch if current team is all out (for middle of over all outs when leading)
+        if (
+        (this.whoseTurn === 0 && this.teamATally[0] === this.maxWicket) ||
+        (this.whoseTurn === 1 && this.teamBTally[0] === this.maxWicket)
+        ) {
+          this.canChangeTurn = true;
+          this.changeTurn();
+        }
+
         this.handleBowl();
       } else if (this.step === 1) {
         this.handleTally();
@@ -244,29 +264,27 @@ export default {
       this.result = null;
     },
     checkResult() {
-      // Get the result of a game, 'A' - team A wins, 'B' - team B wins
+      // Get the result of a game, 'A' - team A wins, 'B' - team B wins, 'T' is a tie
       let [teamAWicket, teamAScore] = this.teamATally;
       let [teamBWicket, teamBScore] = this.teamBTally;
-      let resultChecked = null;
+      let resultChecked;
       if (
         teamAWicket === this.maxWicket &&
-        teamBWicket > 0 &&
-        teamBWicket < this.maxWicket
+        teamBWicket < this.maxWicket &&
+        teamBScore > teamAScore
       ) {
         //A 队到this.maxWicket ，B队没到this.maxWicket， 但B队的分数已经超过A队，这时判B胜
-        if (teamBScore > teamAScore) {
-          resultChecked = "B";
-        }
-      } else if (
+        resultChecked = "B";
+      }
+      else if (
         teamBWicket === this.maxWicket &&
-        teamAWicket > 0 &&
-        teamAWicket < this.maxWicket
+        teamAWicket < this.maxWicket &&
+        teamAScore > teamBScore
       ) {
         //同上B 队到this.maxWicket ，A队没到this.maxWicket， 但A队的分数已经超过B队，这时判A胜
-        if (teamAScore > teamBScore) {
-          resultChecked = "A";
-        }
-      } else if (
+        resultChecked = "A";
+      }
+      else if (
         teamAWicket === this.maxWicket &&
         teamBWicket === this.maxWicket
       ) {
@@ -274,11 +292,18 @@ export default {
         if (teamAScore > teamBScore) {
           resultChecked = "A";
         }
-        if (teamBScore > teamAScore) {
+        else if (teamBScore > teamAScore) {
           resultChecked = "B";
         }
+        else {
+          resultChecked = "T";
+        }
+      }
+      else {
+          resultChecked = null;
       }
       this.result = resultChecked;
+      console.log(teamAWicket, teamBWicket);
     }
   },
   destroyed() {
