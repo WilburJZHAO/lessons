@@ -208,7 +208,8 @@
               <div>
                 <table id="displayResult">
                   <tr v-for="i in 8">
-                    <td v-for="j in 3" :ref="(i - 1) * 3 + j"></td>
+                    <td v-for="j in 3" :ref="(i - 1) * 3 + j">
+                    </td>
                   </tr>
                 </table>
               </div>
@@ -222,6 +223,7 @@
 
 <script>
 import interact from "interactjs";
+import { factorial } from "../../common/utils.js";
 export default {
   head: {
     script: [
@@ -301,7 +303,13 @@ export default {
           this.initDropArea(this.$refs.dropzonePlace4);
         }
       } else {
-        this.alertMessage = "Number of trials is outside range";
+        this.alertMessage = "Please enter 2, 3 or 4.";
+      }
+      // set up empty placeholder boxes to show students how many solutions there are
+      let solutions = factorial(Number(this.carNumber));
+      for (let i = 1; i <= solutions; i++) {
+        this.$refs[i][0].innerHTML =
+          "<div style='border: 1px solid; width: 85%; text-align: center; padding-top: 45px'></div>";
       }
     },
     checkNum: function() {
