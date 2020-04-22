@@ -129,3 +129,18 @@ export function legify(number, fixedDec = -1) {
 
   return decIndex === -1 ? newIntString : newIntString + '.' + newDecString;
 }
+
+
+/**
+ * Calculate the factorial of a given number
+ * using iteration
+ * Defined only for non-negative integer numbers
+ * @param {Number} num
+ * @return {Number}
+ */
+export function factorial(num) {
+    let returnValue = 1;
+    for (let i = 2; i <= num; i++)
+        returnValue = returnValue * i;
+    return returnValue;
+}
