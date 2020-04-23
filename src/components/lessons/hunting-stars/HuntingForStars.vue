@@ -1,6 +1,5 @@
 <template>
   <div class="container mt-3">
-    <h3 class="text-success text-center">Hunting for stars</h3>
     <div class="row">
       <div class="col-lg-4">
         <h5>How many people</h5>
@@ -146,6 +145,7 @@ export default {
         this.degrees = 360 / this.peopleNumber;
         this.showCircle = true;
       }
+      this.drawPeople();
     },
     initCanvas() {
       this.canvas1 = document.getElementById("canvas1");
@@ -167,6 +167,20 @@ export default {
       this.c.lineWidth = 3;
       this.c.closePath();
       this.c.stroke();
+    },
+    drawPeople() {
+      this.c.fillStyle = 'rgba(255, 0, 100, 0.8)';
+      if (this.peopleNumber) {
+        let personRadius = 3 + 0.03 * (100 - this.peopleNumber) // smaller dots the more there are
+        let circleFraction = Math.PI * 2 / this.peopleNumber;
+        for (let i = 0; i < this.peopleNumber; i++) {
+          let x = this.centerX + this.radius * Math.sin(i * circleFraction);
+          let y = this.centerY + this.radius * Math.cos(i * circleFraction);
+          this.c.beginPath();
+          this.c.arc(x, y, personRadius, 0, 2 * Math.PI);
+          this.c.fill();
+        }
+      }
     },
     drawLine(angle) {
       let radians = (angle / 180) * Math.PI;
@@ -217,7 +231,10 @@ export default {
       this.lines = 0;
       this.degrees = 0;
       this.counter = 1;
+      this.c.clearRect(0, 0, this.c.canvas.width, this.c.canvas.height);
+      this.drawCircle();
       this.q.clearRect(0, 0, this.q.canvas.width, this.q.canvas.height);
+
     }
   },
   mounted() {
