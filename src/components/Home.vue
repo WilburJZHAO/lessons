@@ -90,7 +90,9 @@ export default {
         { name: "Greedy Pig", link: "/greedy-pig" },
         { name: "Snakes and Ladders", link: "/snakes-and-ladders" },
         { name: "Square Pairs", link: "/square-pairs" },
-        { name: "Highest Number", link: "/highest-number" }
+        { name: "Highest Number", link: "/highest-number" },
+        { name: "Division Boxes", link: "/division-boxes" },
+        { name: "Making Selections", link: "/making-selections" }
       ]
     };
   },

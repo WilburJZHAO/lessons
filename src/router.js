@@ -3,463 +3,475 @@ import VueRouter from "vue-router";
 import Home from "./components/Home.vue";
 import store from "./store";
 
-const Login = resolve => {
+const Login = (resolve) => {
   require.ensure("./components/auth/Login.vue", () => {
     resolve(require("./components/auth/Login.vue"));
   });
 };
 
-const ValidateAccessCode = resolve => {
+const ValidateAccessCode = (resolve) => {
   require.ensure("./components/auth/ValidateAccessCode.vue", () => {
     resolve(require("./components/auth/ValidateAccessCode.vue"));
   });
 };
 
-const Radioactivity = resolve => {
+const Radioactivity = (resolve) => {
   require.ensure("./components/lessons/radioactivity/App.vue", () => {
     resolve(require("./components/lessons/radioactivity/App.vue"));
   });
 };
 
-const SameOrDifferent = resolve => {
+const SameOrDifferent = (resolve) => {
   require.ensure("./components/lessons/same-or-different/App.vue", () => {
     resolve(require("./components/lessons/same-or-different/App.vue"));
   });
 };
 
-const GardenBeds = resolve => {
+const GardenBeds = (resolve) => {
   require.ensure("./components/lessons/garden-beds/App.vue", () => {
     resolve(require("./components/lessons/garden-beds/App.vue"));
   });
 };
 
-const Trigonometry = resolve => {
+const Trigonometry = (resolve) => {
   require.ensure("./components/lessons/trigonometry/App.vue", () => {
     resolve(require("./components/lessons/trigonometry/App.vue"));
   });
 };
 
-const TimesTables = resolve => {
+const TimesTables = (resolve) => {
   require.ensure("./components/lessons/times-tables/App.vue", () => {
     resolve(require("./components/lessons/times-tables/App.vue"));
   });
 };
 
-const Truth1 = resolve => {
+const Truth1 = (resolve) => {
   require.ensure("./components/lessons/truth-tiles-1/App.vue", () => {
     resolve(require("./components/lessons/truth-tiles-1/App.vue"));
   });
 };
 
-const Truth2 = resolve => {
+const Truth2 = (resolve) => {
   require.ensure("./components/lessons/truth-tiles-2/App.vue", () => {
     resolve(require("./components/lessons/truth-tiles-2/App.vue"));
   });
 };
 
-const TakeAwayTiles = resolve => {
+const TakeAwayTiles = (resolve) => {
   require.ensure("./components/lessons/take-away-tiles/App.vue", () => {
     resolve(require("./components/lessons/take-away-tiles/App.vue"));
   });
 };
 
-const Steps = resolve => {
+const Steps = (resolve) => {
   require.ensure("./components/lessons/steps/App.vue", () => {
     resolve(require("./components/lessons/steps/App.vue"));
   });
 };
 
-const NumberTiles = resolve => {
+const NumberTiles = (resolve) => {
   require.ensure("./components/lessons/number-tiles/App.vue", () => {
     resolve(require("./components/lessons/number-tiles/App.vue"));
   });
 };
 
-const ChessQueens = resolve => {
+const ChessQueens = (resolve) => {
   require.ensure("./components/lessons/chess-queens/App.vue", () => {
     resolve(require("./components/lessons/chess-queens/App.vue"));
   });
 };
 
-const Crosses = resolve => {
+const Crosses = (resolve) => {
   require.ensure("./components/lessons/crosses/App.vue", () => {
     resolve(require("./components/lessons/crosses/App.vue"));
   });
 };
 
-const AngleEstimation = resolve => {
+const AngleEstimation = (resolve) => {
   require.ensure("./components/lessons/angle-estimation/App.vue", () => {
     resolve(require("./components/lessons/angle-estimation/App.vue"));
   });
 };
 
-const AreaOfTriangle = resolve => {
+const AreaOfTriangle = (resolve) => {
   require.ensure("./components/lessons/area-of-triangle/App.vue", () => {
     resolve(require("./components/lessons/area-of-triangle/App.vue"));
   });
 };
 
-const BiggestVolume = resolve => {
+const BiggestVolume = (resolve) => {
   require.ensure("./components/lessons/biggest-volume/App.vue", () => {
     resolve(require("./components/lessons/biggest-volume/App.vue"));
   });
 };
 
-const IceCreamFlavours = resolve => {
+const IceCreamFlavours = (resolve) => {
   require.ensure("./components/lessons/ice-cream-flavours/App.vue", () => {
     resolve(require("./components/lessons/ice-cream-flavours/App.vue"));
   });
 };
 
-const ChancesWithCrosses = resolve => {
+const ChancesWithCrosses = (resolve) => {
   require.ensure("./components/lessons/chances-with-crosses/App.vue", () => {
     resolve(require("./components/lessons/chances-with-crosses/App.vue"));
   });
 };
 
-const FaysNines = resolve => {
+const FaysNines = (resolve) => {
   require.ensure("./components/lessons/fays-nines/App.vue", () => {
     resolve(require("./components/lessons/fays-nines/App.vue"));
   });
 };
 
-const EightQueens = resolve => {
+const EightQueens = (resolve) => {
   require.ensure("./components/lessons/eight-queens/App.vue", () => {
     resolve(require("./components/lessons/eight-queens/App.vue"));
   });
 };
 
-const MagicSquares = resolve => {
+const MagicSquares = (resolve) => {
   require.ensure("./components/lessons/magic-squares/App.vue", () => {
     resolve(require("./components/lessons/magic-squares/App.vue"));
   });
 };
 
-const MakeAMillion = resolve => {
+const MakeAMillion = (resolve) => {
   require.ensure("./components/lessons/make-a-million/App.vue", () => {
     resolve(require("./components/lessons/make-a-million/App.vue"));
   });
 };
 
-const SportingFinalsAFL = resolve => {
+const SportingFinalsAFL = (resolve) => {
   require.ensure("./components/lessons/sporting-finals-AFL/App.vue", () => {
     resolve(require("./components/lessons/sporting-finals-AFL/App.vue"));
   });
 };
 
-const SportingFinalsNRL = resolve => {
+const SportingFinalsNRL = (resolve) => {
   require.ensure("./components/lessons/sporting-finals-NRL/App.vue", () => {
     resolve(require("./components/lessons/sporting-finals-NRL/App.vue"));
   });
 };
 
-const DiceBasketball = resolve => {
+const DiceBasketball = (resolve) => {
   require.ensure("./components/lessons/dice-basketball/App.vue", () => {
     resolve(require("./components/lessons/dice-basketball/App.vue"));
   });
 };
 
-const DiceFooty = resolve => {
+const DiceFooty = (resolve) => {
   require.ensure("./components/lessons/dice-footy/App.vue", () => {
     resolve(require("./components/lessons/dice-footy/App.vue"));
   });
 };
 
-const CounterEscape = resolve => {
+const CounterEscape = (resolve) => {
   require.ensure("./components/lessons/counter-escape/App.vue", () => {
     resolve(require("./components/lessons/counter-escape/App.vue"));
   });
 };
 
-const BuildingViews = resolve => {
+const BuildingViews = (resolve) => {
   require.ensure("./components/lessons/building-views/App.vue", () => {
     resolve(require("./components/lessons/building-views/App.vue"));
   });
 };
 
-const ProblemDice = resolve => {
+const ProblemDice = (resolve) => {
   require.ensure("./components/lessons/problem-dice/App.vue", () => {
     resolve(require("./components/lessons/problem-dice/App.vue"));
   });
 };
 
-const CrazyAnimals = resolve => {
+const CrazyAnimals = (resolve) => {
   require.ensure("./components/lessons/crazy-animals/App.vue", () => {
     resolve(require("./components/lessons/crazy-animals/App.vue"));
   });
 };
 
-const CatAndMouse = resolve => {
+const CatAndMouse = (resolve) => {
   require.ensure("./components/lessons/cat-and-mouse/App.vue", () => {
     resolve(require("./components/lessons/cat-and-mouse/App.vue"));
   });
 };
 
-const DiceCricket = resolve => {
+const DiceCricket = (resolve) => {
   require.ensure("./components/lessons/dice-cricket/App.vue", () => {
     resolve(require("./components/lessons/dice-cricket/App.vue"));
   });
 };
 
-const HaveAHexagon = resolve => {
+const HaveAHexagon = (resolve) => {
   require.ensure("./components/lessons/have-a-hexagon/App.vue", () => {
     resolve(require("./components/lessons/have-a-hexagon/App.vue"));
   });
 };
 
-const WalkThePlank = resolve => {
+const WalkThePlank = (resolve) => {
   require.ensure("./components/lessons/walk-the-plank/App.vue", () => {
     resolve(require("./components/lessons/walk-the-plank/App.vue"));
   });
 };
 
-const NineAndOver = resolve => {
+const NineAndOver = (resolve) => {
   require.ensure("./components/lessons/nine-and-over/App.vue", () => {
     resolve(require("./components/lessons/nine-and-over/App.vue"));
   });
 };
 
-const WhatsItWorth = resolve => {
+const WhatsItWorth = (resolve) => {
   require.ensure("./components/lessons/whats-it-worth/App.vue", () => {
     resolve(require("./components/lessons/whats-it-worth/App.vue"));
   });
 };
-const DoctorDart = resolve => {
+const DoctorDart = (resolve) => {
   require.ensure("./components/lessons/doctor-dart/App.vue", () => {
     resolve(require("./components/lessons/doctor-dart/App.vue"));
   });
 };
-const DiceDifferences = resolve => {
+const DiceDifferences = (resolve) => {
   require.ensure("./components/lessons/dice-differences/App.vue", () => {
     resolve(require("./components/lessons/dice-differences/App.vue"));
   });
 };
-const Ballon = resolve => {
+const Ballon = (resolve) => {
   require.ensure("./components/lessons/2-litre-ballon/App.vue", () => {
     resolve(require("./components/lessons/2-litre-ballon/App.vue"));
   });
 };
-const NumberCharts = resolve => {
+const NumberCharts = (resolve) => {
   require.ensure("./components/lessons/number-charts/App.vue", () => {
     resolve(require("./components/lessons/number-charts/App.vue"));
   });
 };
-const RectangleFraction = resolve => {
+const RectangleFraction = (resolve) => {
   require.ensure("./components/lessons/rectangle-fraction/App.vue", () => {
     resolve(require("./components/lessons/rectangle-fraction/App.vue"));
   });
 };
-const GameShow = resolve => {
+const GameShow = (resolve) => {
   require.ensure("./components/lessons/game-show/App.vue", () => {
     resolve(require("./components/lessons/game-show/App.vue"));
   });
 };
-const GoldbachsConjecture = resolve => {
+const GoldbachsConjecture = (resolve) => {
   require.ensure("./components/lessons/goldbachs-conjecture/App.vue", () => {
     resolve(require("./components/lessons/goldbachs-conjecture/App.vue"));
   });
 };
-const BirthMonthParadox = resolve => {
+const BirthMonthParadox = (resolve) => {
   require.ensure("./components/lessons/birth-month-paradox/App.vue", () => {
     resolve(require("./components/lessons/birth-month-paradox/App.vue"));
   });
 };
-const Addo = resolve => {
+const Addo = (resolve) => {
   require.ensure("./components/lessons/addo/App.vue", () => {
     resolve(require("./components/lessons/addo/App.vue"));
   });
 };
-const AlgebraCharts = resolve => {
+const AlgebraCharts = (resolve) => {
   require.ensure("./components/lessons/algebra-charts/App.vue", () => {
     resolve(require("./components/lessons/algebra-charts/App.vue"));
   });
 };
 
-const Multo = resolve => {
+const Multo = (resolve) => {
   require.ensure("./components/lessons/multo/App.vue", () => {
     resolve(require("./components/lessons/multo/App.vue"));
   });
 };
-const BobsButton = resolve => {
+const BobsButton = (resolve) => {
   require.ensure("./components/lessons/bobs-button/App.vue", () => {
     resolve(require("./components/lessons/bobs-button/App.vue"));
   });
 };
-const DuellingDice = resolve => {
+const DuellingDice = (resolve) => {
   require.ensure("./components/lessons/duelling-dice/App.vue", () => {
     resolve(require("./components/lessons/duelling-dice/App.vue"));
   });
 };
 
-const FractionCharts = resolve => {
+const FractionCharts = (resolve) => {
   require.ensure("./components/lessons/fraction-charts/App.vue", () => {
     resolve(require("./components/lessons/fraction-charts/App.vue"));
   });
 };
 
-const Lcm = resolve => {
+const Lcm = (resolve) => {
   require.ensure("./components/lessons/lcm/App.vue", () => {
     resolve(require("./components/lessons/lcm/App.vue"));
   });
 };
 
-const HuntingStars = resolve => {
+const HuntingStars = (resolve) => {
   require.ensure("./components/lessons/hunting-stars/App.vue", () => {
     resolve(require("./components/lessons/hunting-stars/App.vue"));
   });
 };
 
-const CrackedTiles = resolve => {
+const CrackedTiles = (resolve) => {
   require.ensure("./components/lessons/cracked-tiles/App.vue", () => {
     resolve(require("./components/lessons/cracked-tiles/App.vue"));
   });
 };
 
-const BillardBall = resolve => {
+const BillardBall = (resolve) => {
   require.ensure("./components/lessons/billard-ball/App.vue", () => {
     resolve(require("./components/lessons/billard-ball/App.vue"));
   });
 };
 
-const Palindromes = resolve => {
+const Palindromes = (resolve) => {
   require.ensure("./components/lessons/palindromes/App.vue", () => {
     resolve(require("./components/lessons/palindromes/App.vue"));
   });
 };
 
-const ChocolateChipCookies = resolve => {
+const ChocolateChipCookies = (resolve) => {
   require.ensure("./components/lessons/chip-cookies/App.vue", () => {
     resolve(require("./components/lessons/chip-cookies/App.vue"));
   });
 };
 
-const BeetleGame = resolve => {
+const BeetleGame = (resolve) => {
   require.ensure("./components/lessons/beetle-game/App.vue", () => {
     resolve(require("./components/lessons/beetle-game/App.vue"));
   });
 };
-const ChartsStrategies = resolve => {
+const ChartsStrategies = (resolve) => {
   require.ensure("./components/lessons/charts-strategies/App.vue", () => {
     resolve(require("./components/lessons/charts-strategies/App.vue"));
   });
 };
 
-const GoodsBads = resolve => {
+const GoodsBads = (resolve) => {
   require.ensure("./components/lessons/goods-bads/App.vue", () => {
     resolve(require("./components/lessons/goods-bads/App.vue"));
   });
 };
-const OddsAndEvens = resolve => {
+const OddsAndEvens = (resolve) => {
   require.ensure("./components/lessons/odds-and-evens/App.vue", () => {
     resolve(require("./components/lessons/odds-and-evens/App.vue"));
   });
 };
 
-const SimpleElegantElusive = resolve => {
+const SimpleElegantElusive = (resolve) => {
   require.ensure("./components/lessons/simple-elegant-elusive/App.vue", () => {
     resolve(require("./components/lessons/simple-elegant-elusive/App.vue"));
   });
 };
 
-const NumberPartitions = resolve => {
+const NumberPartitions = (resolve) => {
   require.ensure("./components/lessons/number-partitions/App.vue", () => {
     resolve(require("./components/lessons/number-partitions/App.vue"));
   });
 };
 
-const CylinderVolumes = resolve => {
+const CylinderVolumes = (resolve) => {
   require.ensure("./components/lessons/cylinder-volumes/App.vue", () => {
     resolve(require("./components/lessons/cylinder-volumes/App.vue"));
   });
 };
 
-const FirstDownToMountain = resolve => {
+const FirstDownToMountain = (resolve) => {
   require.ensure("./components/lessons/first-down-to-mountain/App.vue", () => {
     resolve(require("./components/lessons/first-down-to-mountain/App.vue"));
   });
 };
 
-const HeadsAndLegs = resolve => {
+const HeadsAndLegs = (resolve) => {
   require.ensure("./components/lessons/heads-and-legs/App.vue", () => {
     resolve(require("./components/lessons/heads-and-legs/App.vue"));
   });
 };
 
-const CarsInAGarage = resolve => {
+const CarsInAGarage = (resolve) => {
   require.ensure("./components/lessons/cars-in-a-garage/App.vue", () => {
     resolve(require("./components/lessons/cars-in-a-garage/App.vue"));
   });
 };
 
-const WhatsMyRule = resolve => {
+const WhatsMyRule = (resolve) => {
   require.ensure("./components/lessons/whats-my-rule/App.vue", () => {
     resolve(require("./components/lessons/whats-my-rule/App.vue"));
   });
 };
 
-const FractionEstimation = resolve => {
+const FractionEstimation = (resolve) => {
   require.ensure("./components/lessons/fraction-estimation/App.vue", () => {
     resolve(require("./components/lessons/fraction-estimation/App.vue"));
   });
 };
 
-const FractionsToDecimals = resolve => {
+const FractionsToDecimals = (resolve) => {
   require.ensure("./components/lessons/fractions-to-decimals/App.vue", () => {
     resolve(require("./components/lessons/fractions-to-decimals/App.vue"));
   });
 };
 
-const MathsOfLotto = resolve => {
+const MathsOfLotto = (resolve) => {
   require.ensure("./components/lessons/maths-of-lotto/App.vue", () => {
     resolve(require("./components/lessons/maths-of-lotto/App.vue"));
   });
 };
 
-const Protons = resolve => {
+const Protons = (resolve) => {
   require.ensure("./components/lessons/protons/App.vue", () => {
     resolve(require("./components/lessons/protons/App.vue"));
   });
 };
 
-const GameOf31 = resolve => {
+const GameOf31 = (resolve) => {
   require.ensure("./components/lessons/game-of-31/App.vue", () => {
     resolve(require("./components/lessons/game-of-31/App.vue"));
   });
 };
 
-const WinAtTheFair = resolve => {
+const WinAtTheFair = (resolve) => {
   require.ensure("./components/lessons/win-at-the-fair/App.vue", () => {
     resolve(require("./components/lessons/win-at-the-fair/App.vue"));
   });
 };
 
-const TemperatureGraphs = resolve => {
+const TemperatureGraphs = (resolve) => {
   require.ensure("./components/lessons/temperature-graphs/App.vue", () => {
     resolve(require("./components/lessons/temperature-graphs/App.vue"));
   });
 };
 
-const GreedyPig = resolve => {
+const GreedyPig = (resolve) => {
   require.ensure("./components/lessons/greedy-pig/App.vue", () => {
     resolve(require("./components/lessons/greedy-pig/App.vue"));
   });
 };
 
-const SnakesAndLadders = resolve => {
+const SnakesAndLadders = (resolve) => {
   require.ensure("./components/lessons/snakes-and-ladders/App.vue", () => {
     resolve(require("./components/lessons/snakes-and-ladders/App.vue"));
   });
 };
 
-const SquarePairs = resolve => {
+const SquarePairs = (resolve) => {
   require.ensure("./components/lessons/square-pairs/App.vue", () => {
     resolve(require("./components/lessons/square-pairs/App.vue"));
   });
 };
 
-const HighestNumber = resolve => {
+const HighestNumber = (resolve) => {
   require.ensure("./components/lessons/highest-number/App.vue", () => {
     resolve(require("./components/lessons/highest-number/App.vue"));
+  });
+};
+
+const DivisionBoxes = (resolve) => {
+  require.ensure("./components/lessons/division-boxes/App.vue", () => {
+    resolve(require("./components/lessons/division-boxes/App.vue"));
+  });
+};
+
+const MakingSelections = (resolve) => {
+  require.ensure("./components/lessons/making-selections/App.vue", () => {
+    resolve(require("./components/lessons/making-selections/App.vue"));
   });
 };
 
@@ -469,405 +481,415 @@ const routes = [
   {
     path: "/",
     component: Home,
-    name: "Home"
+    name: "Home",
   },
   {
     path: "/login",
     component: Login,
-    name: "Login"
+    name: "Login",
   },
   {
     path: "/validateAccessCode",
     component: ValidateAccessCode,
-    name: "ValidateAccessCode"
+    name: "ValidateAccessCode",
   },
   {
     path: "/radioactivity",
     component: Radioactivity,
-    name: "Radioactivity"
+    name: "Radioactivity",
   },
   {
     path: "/same-or-different",
     component: SameOrDifferent,
-    name: "Same or Different"
+    name: "Same or Different",
   },
   {
     path: "/garden-beds",
     component: GardenBeds,
-    name: "Garden Beds"
+    name: "Garden Beds",
   },
   {
     path: "/trigonometry",
     component: Trigonometry,
-    name: "Trigonometry Walking"
+    name: "Trigonometry Walking",
   },
   {
     path: "/times-tables",
     component: TimesTables,
-    name: "Tackling Times Tables"
+    name: "Tackling Times Tables",
   },
   {
     path: "/truth-tiles-1",
     component: Truth1,
-    name: "Truth tiles 1"
+    name: "Truth tiles 1",
   },
   {
     path: "/truth-tiles-2",
     component: Truth2,
-    name: "Truth tiles 2"
+    name: "Truth tiles 2",
   },
   {
     path: "/take-away-tiles",
     component: TakeAwayTiles,
-    name: "Take Away Tiles"
+    name: "Take Away Tiles",
   },
   {
     path: "/steps",
     component: Steps,
-    name: "Steps"
+    name: "Steps",
   },
   {
     path: "/number-tiles",
     component: NumberTiles,
-    name: "Number Tiles"
+    name: "Number Tiles",
   },
   {
     path: "/chess-queens",
     component: ChessQueens,
-    name: "Chess Queens"
+    name: "Chess Queens",
   },
   {
     path: "/crosses",
     component: Crosses,
-    name: "Crosses"
+    name: "Crosses",
   },
   {
     path: "/angle-estimation",
     component: AngleEstimation,
-    name: "Angle Estimation"
+    name: "Angle Estimation",
   },
   {
     path: "/area-of-triangle",
     component: AreaOfTriangle,
-    name: "Area Of Triangle"
+    name: "Area Of Triangle",
   },
   {
     path: "/biggest-volume",
     component: BiggestVolume,
-    name: "Biggest Volume"
+    name: "Biggest Volume",
   },
   {
     path: "/ice-cream-flavours",
     component: IceCreamFlavours,
-    name: "Ice Cream Flavours"
+    name: "Ice Cream Flavours",
   },
   {
     path: "/chances-with-crosses",
     component: ChancesWithCrosses,
-    name: "Chances With Crosses"
+    name: "Chances With Crosses",
   },
   {
     path: "/fays-nines",
     component: FaysNines,
-    name: "Fay's Nines"
+    name: "Fay's Nines",
   },
   {
     path: "/eight-queens",
     component: EightQueens,
-    name: "Eight Queens"
+    name: "Eight Queens",
   },
   {
     path: "/magic-squares",
     component: MagicSquares,
-    name: "Magic Squares"
+    name: "Magic Squares",
   },
   {
     path: "/make-a-million",
     component: MakeAMillion,
-    name: "Make A Million"
+    name: "Make A Million",
   },
   {
     path: "/sporting-finals-NRL",
     component: SportingFinalsNRL,
-    name: "Sporting Finals(NRL)"
+    name: "Sporting Finals(NRL)",
   },
   {
     path: "/sporting-finals-AFL",
     component: SportingFinalsAFL,
-    name: "Sporting Finals(AFL)"
+    name: "Sporting Finals(AFL)",
   },
   {
     path: "/dice-basketball",
     component: DiceBasketball,
-    name: "Dice Basketball"
+    name: "Dice Basketball",
   },
   {
     path: "/dice-footy",
     component: DiceFooty,
-    name: "Dice Footy"
+    name: "Dice Footy",
   },
   {
     path: "/counter-escape",
     component: CounterEscape,
-    name: "Counter Escape"
+    name: "Counter Escape",
   },
   {
     path: "/building-views",
     component: BuildingViews,
-    name: "Building Views"
+    name: "Building Views",
   },
   {
     path: "/problem-dice",
     component: ProblemDice,
-    name: "Problem Dice"
+    name: "Problem Dice",
   },
   {
     path: "/crazy-animals",
     component: CrazyAnimals,
-    name: "Crazy Animals"
+    name: "Crazy Animals",
   },
   {
     path: "/cat-and-mouse",
     component: CatAndMouse,
-    name: "Cat and Mouse"
+    name: "Cat and Mouse",
   },
   {
     path: "/dice-cricket",
     component: DiceCricket,
-    name: "Dice Cricket"
+    name: "Dice Cricket",
   },
   {
     path: "/have-a-hexagon",
     component: HaveAHexagon,
-    name: "Have A Hexagon"
+    name: "Have A Hexagon",
   },
   {
     path: "/walk-the-plank",
     component: WalkThePlank,
-    name: "Walk The Plank"
+    name: "Walk The Plank",
   },
   {
     path: "/nine-and-over",
     component: NineAndOver,
-    name: "Nine And Over"
+    name: "Nine And Over",
   },
   {
     path: "/whats-it-worth",
     component: WhatsItWorth,
-    name: "What's It Worth"
+    name: "What's It Worth",
   },
   {
     path: "/doctor-dart",
     component: DoctorDart,
-    name: "Doctor Dart"
+    name: "Doctor Dart",
   },
   {
     path: "/dice-differences",
     component: DiceDifferences,
-    name: "Dice Differences"
+    name: "Dice Differences",
   },
   {
     path: "/balloon",
     component: Ballon,
-    name: "2 Litre Ballon"
+    name: "2 Litre Ballon",
   },
   {
     path: "/number-charts",
     component: NumberCharts,
-    name: "Number Charts"
+    name: "Number Charts",
   },
   {
     path: "/rectangle-fractions",
     component: RectangleFraction,
-    name: "Rectangle Fraction"
+    name: "Rectangle Fraction",
   },
   {
     path: "/game-show",
     component: GameShow,
-    name: "Game Show"
+    name: "Game Show",
   },
   {
     path: "/goldbachs-conjecture",
     component: GoldbachsConjecture,
-    name: "Goldbach's Conjecture"
+    name: "Goldbach's Conjecture",
   },
   {
     path: "/addo",
     component: Addo,
-    name: "Addo"
+    name: "Addo",
   },
   {
     path: "/birth-month-paradox",
     component: BirthMonthParadox,
-    name: "Birth Month Paradox"
+    name: "Birth Month Paradox",
   },
 
   {
     path: "/algebra-charts",
     component: AlgebraCharts,
-    name: "Algebra Charts"
+    name: "Algebra Charts",
   },
   {
     path: "/multo",
     component: Multo,
-    name: "Multo"
+    name: "Multo",
   },
   {
     path: "/bobs-buttons",
     component: BobsButton,
-    name: "Bobs Button"
+    name: "Bobs Button",
   },
   {
     path: "/duelling-dice",
     component: DuellingDice,
-    name: "Duelling Dice"
+    name: "Duelling Dice",
   },
   {
     path: "/fraction-charts",
     component: FractionCharts,
-    name: "Fraction Charts"
+    name: "Fraction Charts",
   },
   {
     path: "/lcm",
     component: Lcm,
-    name: "LCM"
+    name: "LCM",
   },
   {
     path: "/hunting-stars",
     component: HuntingStars,
-    name: "Hunting For Stars"
+    name: "Hunting For Stars",
   },
   {
     path: "/cracked-tiles",
     component: CrackedTiles,
-    name: "Cracked Tiles"
+    name: "Cracked Tiles",
   },
   {
     path: "/billiard-ball",
     component: BillardBall,
-    name: "Billard Ball Bounces"
+    name: "Billard Ball Bounces",
   },
   {
     path: "/palindromes",
     component: Palindromes,
-    name: "Palindromes"
+    name: "Palindromes",
   },
   {
     path: "/chocolate-chip-cookies",
     component: ChocolateChipCookies,
-    name: "Chocolate Chip Cookies"
+    name: "Chocolate Chip Cookies",
   },
   {
     path: "/beetle-game",
     component: BeetleGame,
-    name: "Beetle Game"
+    name: "Beetle Game",
   },
   {
     path: "/chart-strategies",
     component: ChartsStrategies,
-    name: "Charts Strategies"
+    name: "Charts Strategies",
   },
   {
     path: "/goods-and-bads",
     component: GoodsBads,
-    name: "Goods And Bads"
+    name: "Goods And Bads",
   },
   {
     path: "/simple-elegant-elusive",
     component: SimpleElegantElusive,
-    name: "Simple Elegant Elusive"
+    name: "Simple Elegant Elusive",
   },
   {
     path: "/odds-and-evens",
     component: OddsAndEvens,
-    name: "Odds and Evens"
+    name: "Odds and Evens",
   },
   {
     path: "/number-partitions",
     component: NumberPartitions,
-    name: "Number Partitions"
+    name: "Number Partitions",
   },
   {
     path: "/cylinder-volumes",
     component: CylinderVolumes,
-    name: "Cylinder Volumes"
+    name: "Cylinder Volumes",
   },
   {
     path: "/first-down-mountain",
     component: FirstDownToMountain,
-    name: "First Down To Mountain"
+    name: "First Down To Mountain",
   },
   {
     path: "/heads-and-legs",
     component: HeadsAndLegs,
-    name: "Heads and Legs"
+    name: "Heads and Legs",
   },
   {
     path: "/cars-in-a-garage",
     component: CarsInAGarage,
-    name: "Cars In A Garage"
+    name: "Cars In A Garage",
   },
   { path: "/whats-my-rule", component: WhatsMyRule, name: "What's My Rule" },
   {
     path: "/fraction-estimation",
     component: FractionEstimation,
-    name: "Fraction Estimation"
+    name: "Fraction Estimation",
   },
   {
     path: "/fractions-to-decimals",
     component: FractionsToDecimals,
-    name: "Fractions To Decimals"
+    name: "Fractions To Decimals",
   },
   {
     path: "/maths-of-lotto",
     component: MathsOfLotto,
-    name: "Maths Of Lotto"
+    name: "Maths Of Lotto",
   },
   {
     path: "/protons",
     component: Protons,
-    name: "Protons"
+    name: "Protons",
   },
   {
     path: "/game-of-31",
     component: GameOf31,
-    name: "Game Of 31"
+    name: "Game Of 31",
   },
   {
     path: "/win-at-the-fair",
     component: WinAtTheFair,
-    name: "Win At The Fair"
+    name: "Win At The Fair",
   },
   {
     path: "/temperature-graphs",
     component: TemperatureGraphs,
-    name: "Temperature Graphs"
+    name: "Temperature Graphs",
   },
   {
     path: "/greedy-pig",
     component: GreedyPig,
-    name: "Greedy Pig"
+    name: "Greedy Pig",
   },
   {
     path: "/snakes-and-ladders",
     component: SnakesAndLadders,
-    name: "Snakes And Ladders"
+    name: "Snakes And Ladders",
   },
   {
     path: "/square-pairs",
     component: SquarePairs,
-    name: "Square Pairs"
+    name: "Square Pairs",
   },
   {
     path: "/highest-number",
     component: HighestNumber,
-    name: "Highest Number"
-  }
+    name: "Highest Number",
+  },
+  {
+    path: "/division-boxes",
+    component: DivisionBoxes,
+    name: "Division Boxes",
+  },
+  {
+    path: "/making-selections",
+    component: MakingSelections,
+    name: "Making Selections",
+  },
 ];
 
 const router = new VueRouter({
   mode: "history",
-  routes
+  routes,
 });
 
 // router.beforeEach((to, from, next) => {
