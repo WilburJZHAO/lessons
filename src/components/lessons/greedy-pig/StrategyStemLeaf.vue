@@ -17,11 +17,11 @@
           class="col text-danger text-right app--leaf-data"
           ref="leaf-data"
           :style="{ visibility: strategy2 ? 'visible' : 'hidden' }"
-          style="overflow: auto; padding-right: 0;"
+          style="overflow: hidden; padding-right: 0;"
         >
           <div
             v-if="status===2"
-            style="padding-right: 4px;"
+            style="margin-right: 5px; display: inline-block"
           >{{ stemLeafData2 && stemLeafData2[index].leaf.reverse().join(",") }}</div>
           <div
             v-if="status===3 || status === 4"
@@ -33,10 +33,13 @@
 
         <div
           class="col text-primary app--leaf-data"
-          style="overflow: auto; padding-left: 0;"
+          style="overflow: hidden; padding-left: 0;"
           ref="leaf-data"
         >
-          <div v-if="status===2" style="padding-left: 4px;">{{ data.leaf.join(",") }}</div>
+          <div
+            v-if="status===2"
+            style="padding-left: 4px; display: inline-block;"
+          >{{ data.leaf.join(",") }}</div>
           <div
             v-if="status===3 || status === 4"
             :style="{width: data.leaf.length*5+'px'}"
@@ -108,7 +111,7 @@ export default {
       // return element.scrollWidth > element.clientWidth;
       // console.log(element.children[0].scrollWidth);
       // console.log(element.clientWidth);
-      return element.children[0].scrollWidth >= element.clientWidth;
+      return element.children[0].scrollWidth >= element.clientWidth - 25;
     }
   }
 };
