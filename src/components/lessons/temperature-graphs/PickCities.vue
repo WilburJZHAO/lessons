@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3">
     <h3 class="lesson-subheading">Pick your own cities</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <div class="row" v-if="status === 0">
       <div class="col-md-6 mb-4">
         <div class="row">
@@ -136,6 +136,10 @@
           selectedCities = [];
         "
       ></app-graph>
+      <div
+        class="text-success text-center"
+        v-if="showMessage"
+      >To print, press Control+P (Windows & Chromebooks) or Command+P (Macintosh)</div>
     </div>
   </div>
 </template>
@@ -157,7 +161,8 @@ export default {
       temperatureType: "celcius",
       status: 0, // 0 - pick city, 1 - Enter the number of city
       selectedCities: [],
-      message: ""
+      message: "",
+      showMessage: true
     };
   },
   watch: {
@@ -222,6 +227,14 @@ export default {
     this.sortedAppData = _.cloneDeep(this.appData.data);
     this.sortedAppData.sort((a, b) => {
       return a.city.toLowerCase() < b.city.toLowerCase() ? -1 : 1;
+    });
+  },
+  mounted() {
+    window.addEventListener("beforeprint", () => {
+      this.showMessage = false;
+    });
+    window.addEventListener("afterprint", () => {
+      this.showMessage = true;
     });
   }
 };
