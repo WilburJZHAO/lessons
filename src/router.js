@@ -475,6 +475,12 @@ const MakingSelections = (resolve) => {
   });
 };
 
+const Spirolaterals = (resolve) => {
+  require.ensure("./components/lessons/spirolaterals/App.vue", () => {
+    resolve(require("./components/lessons/spirolaterals/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -884,6 +890,11 @@ const routes = [
     path: "/making-selections",
     component: MakingSelections,
     name: "Making Selections",
+  },
+  {
+    path: "/spirolaterals",
+    component: Spirolaterals,
+    name: "Spirolaterals",
   },
 ];
 

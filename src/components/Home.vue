@@ -92,7 +92,8 @@ export default {
         { name: "Square Pairs", link: "/square-pairs" },
         { name: "Highest Number", link: "/highest-number" },
         { name: "Division Boxes", link: "/division-boxes" },
-        { name: "Making Selections", link: "/making-selections" }
+        { name: "Making Selections", link: "/making-selections" },
+        { name: "Spirolaterals", link: "/spirolaterals" }
       ]
     };
   },
