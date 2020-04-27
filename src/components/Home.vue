@@ -87,7 +87,8 @@ export default {
         { name: "Game of 31", link: "/game-of-31" },
         { name: "Win at the Fair", link: "/win-at-the-fair" },
         { name: "Snakes and Ladders", link: "/snakes-and-ladders" },
-        { name: "Square Pairs", link: "/square-pairs" }
+        { name: "Square Pairs", link: "/square-pairs" },
+        { name: "Spirolaterals", link: "/spirolaterals" }
       ]
     };
   },
