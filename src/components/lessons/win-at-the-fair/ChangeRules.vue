@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3">
     <h3 class="lesson-subheading">Change prize values and rules</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <div class="row">
       <div class="col-md-9" style="position: relative;">
         <div
@@ -50,7 +50,11 @@
         <div class="text-center">
           <button class="btn btn-outline-dark" @click="handleRestore">Restore</button>
           <div class="mb-2"></div>
-          <button class="btn btn-outline-success" @click="handleOk" :disabled="!isValuesValid">OK</button>
+          <button
+            class="btn btn-outline-success"
+            @click="handleOk"
+            :disabled="!isValuesValid"
+          >Save and return</button>
         </div>
       </div>
     </div>

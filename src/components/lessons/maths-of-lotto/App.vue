@@ -21,7 +21,11 @@
         <app-is-equal-group v-if="selectedOption === 3" :settings="settings"></app-is-equal-group>
       </transition>
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
-        <app-choose-games v-if="selectedOption === 4" :settings="settings"></app-choose-games>
+        <app-choose-games
+          v-if="selectedOption === 4"
+          :settings="settings"
+          @selectOption="selectedOption = $event"
+        ></app-choose-games>
       </transition>
       <transition appear appear-class="lesson-appear" appear-active-class="lesson-appear-active">
         <app-play-lotto-45 v-if="selectedOption === 5"></app-play-lotto-45>
@@ -40,7 +44,6 @@ import IsEqualGroup from "./IsEqualGroup.vue";
 import PlayLotto45 from "./PlayLotto45.vue";
 import PlayMultipleGames from "./PlayMultipleGames.vue";
 import { settings } from "./utils";
-import "bootstrap/dist/css/bootstrap.min.css";
 export default {
   components: {
     appTitleStatic: TitleStatic,

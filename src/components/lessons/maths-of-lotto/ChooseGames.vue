@@ -1,12 +1,10 @@
 <template>
   <div class="container mt-3">
     <h3 class="lesson-subheading">Choose other games</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <div class="mt-3">
       <div>
-        <app-selection-panel
-          :totalNumbers="settings.totalNumbers"
-        ></app-selection-panel>
+        <app-selection-panel :totalNumbers="settings.totalNumbers"></app-selection-panel>
         <div class="mb-2"></div>
         <div class="app--range-container">
           <input
@@ -21,10 +19,7 @@
         </div>
       </div>
       <div class="app--range-container">
-        <app-drawn-panel
-          :settings="settings"
-          :drawnNumbers="[]"
-        ></app-drawn-panel>
+        <app-drawn-panel :settings="settings" :drawnNumbers="[]"></app-drawn-panel>
         <div class="mb-2"></div>
         <input
           type="range"
@@ -37,9 +32,11 @@
       </div>
       <div class="text-center mt-3">
         <p class="text-danger">Drag the slides to change the numbers</p>
-        <button class="btn btn-outline-dark" @click="handleReset">
-          Reset
-        </button>
+        <button
+          class="btn btn-outline-success mr-2"
+          @click="() => {this.$emit('selectOption', -1)}"
+        >Save and return</button>
+        <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
       </div>
     </div>
   </div>
