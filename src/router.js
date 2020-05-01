@@ -481,6 +481,12 @@ const Spirolaterals = (resolve) => {
   });
 };
 
+const KnightTour = (resolve) => {
+  require.ensure("./components/lessons/knight-tour/App.vue", () => {
+    resolve(require("./components/lessons/knight-tour/App.vue"));
+  });
+};
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -895,6 +901,11 @@ const routes = [
     path: "/spirolaterals",
     component: Spirolaterals,
     name: "Spirolaterals",
+  },
+  {
+    path: "/knight-tour",
+    component: KnightTour,
+    name: "KnightTour",
   },
 ];
 

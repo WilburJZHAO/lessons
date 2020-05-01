@@ -1,8 +1,18 @@
 <template>
-  <transition appear appear-class="options-appear" appear-active-class="options-appear-active">
+  <transition
+    appear
+    appear-class="options-appear"
+    appear-active-class="options-appear-active"
+  >
     <div class="container app--link-list">
-      <div class="app--link-item" v-for="lesson in sortedLessons" :key="lesson.name">
-        <router-link :to="lesson.link" class="btn btn-outline-success">{{ lesson.name }}</router-link>
+      <div
+        class="app--link-item"
+        v-for="lesson in sortedLessons"
+        :key="lesson.name"
+      >
+        <router-link :to="lesson.link" class="btn btn-outline-success">{{
+          lesson.name
+        }}</router-link>
       </div>
     </div>
   </transition>
@@ -93,8 +103,9 @@ export default {
         { name: "Highest Number", link: "/highest-number" },
         { name: "Division Boxes", link: "/division-boxes" },
         { name: "Making Selections", link: "/making-selections" },
-        { name: "Spirolaterals", link: "/spirolaterals" }
-      ]
+        { name: "Spirolaterals", link: "/spirolaterals" },
+        { name: "Knight's Tour", link: "/knight-tour" },
+      ],
     };
   },
   computed: {
@@ -105,8 +116,8 @@ export default {
         else return 1;
       });
       return sorted;
-    }
-  }
+    },
+  },
 };
 </script>
 
