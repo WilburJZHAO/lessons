@@ -84,39 +84,48 @@ export default {
 }
 .app--number-block1 {
   color: #f8ef00;
-  /* background-color: #54BFBE; */
+  /* color: black;
+  background-color: white; */
 }
 .app--number-block2 {
   color: #00aae9;
-  /* background-color: #F19C19;	 */
+  /* color: black;
+  background-color: #d33011; */
 }
 .app--number-block3 {
   color: #e993ab;
-  /* background-color: #AADAE7; */
+  /* color: #b5210e;
+  background-color: #88fa4b; */
 }
 .app--number-block4 {
   color: #d4211a;
-  /* background-color: #F3E75D;	 */
+  /* color: #60fdf8;
+  background-color: #6c1308; */
 }
 .app--number-block5 {
   color: #007cc2;
-  /* background-color: #CFBED7;	 */
+  /* color: #191905;
+  background-color: #f8fb36; */
 }
 .app--number-block6 {
   color: #35b247;
-  /* background-color: #F3A094;	 */
+  /* color: #dc2511;
+  background-color: #35881d; */
 }
 .app--number-block7 {
   color: #e8008b;
-  /* background-color: #B2D8BE;	 */
+  /* color: #000000;
+  background-color: #5efbfb; */
 }
 .app--number-block8 {
   color: #ef9f92;
-  /* background-color: #59C6EA;	 */
+  /* color: #f7f12f;
+  background-color: #153c4b; */
 }
 .app--number-block9 {
   color: #70c4cb;
-  /* background-color:#E66BA8; */
+  /* color: #fff735;
+  background-color: #0022eb; */
 }
 .app--hidden-number {
   display: flex;
