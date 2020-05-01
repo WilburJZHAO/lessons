@@ -16,7 +16,7 @@
     "decimal.js": "^10.2.0",
     "highcharts": "^7.2.1",
     "interactjs": "^1.4.12",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "js-combinatorics": "^0.5.4",
     "konva": "^4.1.2",
     "lcm": "0.0.3",
