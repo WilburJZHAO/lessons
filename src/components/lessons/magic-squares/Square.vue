@@ -2,15 +2,8 @@
   <div class="app--square">
     <div class="app--square-outer-container p-5">
       <div class="app--square-inner-container">
-        <div
-          v-for="(row, indexRow) in squareArr"
-          :key="indexRow"
-          class="app--square-row"
-        >
-          <div
-            v-if="indexRow === 0"
-            class="app--check-result app--check-result-firstrow"
-          >
+        <div v-for="(row, indexRow) in squareArr" :key="indexRow" class="app--square-row">
+          <div v-if="indexRow === 0" class="app--check-result app--check-result-firstrow">
             <div
               class="app--check-result-firstrow1"
               style="color: black;"
@@ -57,13 +50,12 @@
                   : 'hidden',
             }"
           >
-            <div><i class="fas fa-asterisk"></i></div>
+            <div>
+              <i class="fas fa-asterisk"></i>
+            </div>
           </div>
           <div v-for="(number, indexCol) in row" :key="indexCol">
-            <div
-              v-if="indexRow === 0"
-              class="app--check-result app--check-result-lastcol"
-            >
+            <div v-if="indexRow === 0" class="app--check-result app--check-result-lastcol">
               <div
                 class="app--check-result-lastcol1"
                 style="color: red; padding-bottom: 5px;"
@@ -105,9 +97,7 @@
       </div>
     </div>
     <p class="text-center text-success">Magic sum is {{ magicSum }}</p>
-    <h5 v-if="isSquareMagic" class="text-center text-danger mb-3">
-      It's a magic square!
-    </h5>
+    <h5 v-if="isSquareMagic" class="text-center text-danger mb-3">It's a magic square!</h5>
     <div class="app--action-reset pb-3">
       <button class="btn btn-secondary" @click="initSquare">Reset</button>
     </div>
@@ -118,18 +108,12 @@
 <script>
 import interact from "interactjs";
 export default {
-  props: {
-    size: String,
-    step: Number,
-    strategy: String,
-    lockRows: String | Boolean,
-    lockCols: String | Boolean,
-  },
+  props: ["size", "step", "strategy", "lockRows", "lockCols"],
   data: function() {
     return {
       squareArrInit: [],
       displayShadow: false,
-      isStart: false,
+      isStart: false
     };
   },
   computed: {
@@ -149,14 +133,14 @@ export default {
           return [
             [...this.squareArrInit.slice(0, 3)],
             [...this.squareArrInit.slice(3, 6)],
-            [...this.squareArrInit.slice(6)],
+            [...this.squareArrInit.slice(6)]
           ];
         case "4":
           return [
             [...this.squareArrInit.slice(0, 4)],
             [...this.squareArrInit.slice(4, 8)],
             [...this.squareArrInit.slice(8, 12)],
-            [...this.squareArrInit.slice(12)],
+            [...this.squareArrInit.slice(12)]
           ];
         default:
           return [];
@@ -288,7 +272,7 @@ export default {
         return isSquareMagicTemp;
       }
       return false;
-    },
+    }
   },
   methods: {
     initSquare() {
@@ -303,7 +287,7 @@ export default {
             // isSquareMagic: this.isSquareMagic,
             // isDiagnoalMagic1: this.isDiagnoalMagic1,
             // isDiagnoalMagic2: this.isDiagnoalMagic2,
-            reset: true,
+            reset: true
           });
           return;
         case "4":
@@ -323,7 +307,7 @@ export default {
             13,
             14,
             15,
-            16,
+            16
           ];
           this.$emit("watchSquare", {
             // Emit data to parent component
@@ -332,7 +316,7 @@ export default {
             // isSquareMagic: this.isSquareMagic,
             // isDiagnoalMagic1: this.isDiagnoalMagic1,
             // isDiagnoalMagic2: this.isDiagnoalMagic2,
-            reset: true,
+            reset: true
           });
           return;
         default:
@@ -377,13 +361,13 @@ export default {
           // keep the element within the area of its parent
           interact.modifiers.restrict({
             restriction: ".app--square-inner-container",
-            endOnly: true,
-          }),
+            endOnly: true
+          })
         ],
         autoScroll: true,
         onstart: this.handleOnDragStart,
         onmove: this.handleOnDragMove,
-        onend: this.handleOnDragEnd,
+        onend: this.handleOnDragEnd
       });
     },
 
@@ -460,10 +444,10 @@ export default {
         this.squareArrInit = [...this.squareArrInit];
         [
           this.squareArrInit[selectedNumberIndex],
-          this.squareArrInit[targetNumberIndex],
+          this.squareArrInit[targetNumberIndex]
         ] = [
           this.squareArrInit[targetNumberIndex],
-          this.squareArrInit[selectedNumberIndex],
+          this.squareArrInit[selectedNumberIndex]
         ];
 
         // Move the number to their correct positions
@@ -488,7 +472,7 @@ export default {
         // Emit data to parent component
         isRowMagic: this.isRowMagic,
         isColMagic: this.isColMagic,
-        reset: false,
+        reset: false
         // isSquareMagic: this.isSquareMagic,
         // isDiagnoalMagic1: this.isDiagnoalMagic1,
         // isDiagnoalMagic2: this.isDiagnoalMagic2
@@ -508,7 +492,7 @@ export default {
       y = index - x * size;
       return {
         x,
-        y,
+        y
       };
     },
 
@@ -522,17 +506,17 @@ export default {
         ondragenter: this.handleOnDragEnter,
         ondragleave: this.handleOnDragLeave,
         ondrop: this.handleOnDrop,
-        ondropdeactivate: this.handleOndropdeactivate,
+        ondropdeactivate: this.handleOndropdeactivate
       });
     },
     unsetDropzone() {
       interact(".app--square-number-container").unset();
-    },
+    }
   },
   watch: {
     size() {
       this.initSquare();
-    },
+    }
   },
   created() {
     if (this.squareArrInit.length === 0) {
@@ -547,7 +531,7 @@ export default {
   destroyed() {
     this.unsetDraggable();
     this.unsetDropzone();
-  },
+  }
 };
 </script>
 

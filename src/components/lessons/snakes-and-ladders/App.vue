@@ -85,10 +85,12 @@ export default {
         rows: 7,
         snakes: [
           { from: 46, to: 4 },
-          { from: 30, to: 12 },
-          { from: 40, to: 7 }
+          { from: 35, to: 19 }
         ],
-        ladders: [{ from: 19, to: 35 }]
+        ladders: [
+          { from: 15, to: 39 },
+          { from: 8, to: 25 }
+        ]
       }
     };
   }
