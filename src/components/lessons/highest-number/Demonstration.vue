@@ -25,14 +25,16 @@
         <div class="row">
           <div class="col-lg-2 col-sm-6">
             <div class="d-flex justify-content-center my-4 py-4" style="min-height: 195px; ">
-              <img
-                v-if="card"
-                :src="
+              <div v-if="card" style="border: 1px solid #888;">
+                <img
+                  v-if="card"
+                  :src="
                   card &&
                     require(`@/assets/highest-number/${card.suit}${card.number}.jpg`)
                 "
-                alt="card"
-              />
+                  alt="card"
+                />
+              </div>
             </div>
           </div>
           <div class="col-lg-2 col-sm-6">

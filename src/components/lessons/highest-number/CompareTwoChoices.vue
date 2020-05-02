@@ -90,14 +90,15 @@
       </div>
 
       <div class="d-flex justify-content-center my-3" style="min-height:150px;">
-        <img
-          v-if="card && demoAutoOption==='0'"
-          :src="
+        <div v-if="card && demoAutoOption==='0'" style="border: 1px solid #888;">
+          <img
+            :src="
                   card &&
                     require(`@/assets/highest-number/${card.suit}${card.number}.jpg`)
                 "
-          alt="card"
-        />
+            alt="card"
+          />
+        </div>
       </div>
       <div v-if="status===0" class="mt-5">
         <div v-if="firstNumPos>=0 && secondNum && secondNumPos.length > 0">
@@ -291,7 +292,7 @@ export default {
       if (this.secondNum) {
         return;
       }
-      console.log(e);
+      // console.log(e);
       this.firstNumPos = e;
     },
     handleOk() {
