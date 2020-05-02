@@ -28,7 +28,7 @@
           <div
             class="app--graph-block"
             :style="{visibility: tried >0?'visible': 'hidden' }"
-          > {{ tried > 0 ? (item.wins / tried*100).toFixed(2) + '%' : '0' }} </div>
+          >{{ tried > 0 ? (item.wins / tried*100).toFixed(2) + '%' : '0' }}</div>
           <div class="text-danger app--graph-block">{{ item.diceSums }}</div>
           <div class="app--graph-block">{{ item.spaces }}</div>
         </div>
@@ -42,7 +42,7 @@
 import { legify } from "../../common/utils.js";
 export default {
   methods: {
-    legify,
+    legify
   },
   props: ["game", "tried", "trialNumber", "gameType"],
   data: function() {

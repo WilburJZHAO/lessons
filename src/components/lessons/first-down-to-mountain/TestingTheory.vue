@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3">
     <h3 class="lesson-subheading">Testing theories</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <app-many-games-app
       v-if="isTheorySet"
       :trialNumber="Number(trialNumber)"

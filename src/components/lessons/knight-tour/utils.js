@@ -74,7 +74,7 @@ export class KnightTour {
       }
     }
     /**
-     * After it, this.solution woule equal to:
+     * After it, this.solution would initially equal to:
      * /**
      * [[0,0,0,0,0,0,0,0],
      *  [0,0,0,0,0,0,0,0],
