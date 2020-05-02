@@ -67,11 +67,14 @@ export default {
                 fillColor = "red";
                 break;
               case 5:
+              case 6:
                 fillColor = "#00FFFF";
                 break;
               case 7:
                 fillColor = "#FBB117";
                 break;
+              default:
+                fillColor = "#fff";
             }
           }
           const rect = new Konva.Rect({
