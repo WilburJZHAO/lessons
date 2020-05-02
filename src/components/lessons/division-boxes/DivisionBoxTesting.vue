@@ -24,7 +24,7 @@
               visibility: tested && checkResult[tile - 1] ? 'visible' : 'hidden'
             }"
           >
-            <i class="fas fa-check text-danger"></i>
+            <i class="fas fa-check text-success"></i>
           </div>
           <div class="app--box-container">
             <div class="app--box" :data-pos="tile - 1">{{ testNumberArr[tile - 1] }}</div>
@@ -150,6 +150,7 @@ export default {
       }
       this.checkResult = [...this.checkResult];
       if (
+        this.testNumberStr.length === this.numberOfTiles &&
         this.checkResult.indexOf(false) === -1 &&
         this.solutions.indexOf(this.testNumberStr) === -1
       ) {
@@ -284,8 +285,8 @@ export default {
       interact(".app--box").unset();
     },
     handleOnDrop(e) {
-      console.log(e.target);
-      console.log(e.relatedTarget);
+      // console.log(e.target);
+      // console.log(e.relatedTarget);
       this.targetPosition = Number(e.target.getAttribute("data-pos"));
       this.targetNumber = this.testNumberArr[this.targetPosition];
 
