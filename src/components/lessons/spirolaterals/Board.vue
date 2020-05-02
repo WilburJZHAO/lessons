@@ -193,7 +193,7 @@ export default {
           });
           this.spiroLayer.add(line);
           this.stage.add(this.spiroLayer);
-        }, 5);
+        }, 20);
       }
 
       if (this.endX === this.origX && this.endY === this.origY) {
