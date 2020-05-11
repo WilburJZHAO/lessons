@@ -48,7 +48,6 @@
                     <div v-bind:class="classV">
                       <label for="input2" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input2"
                           minlength="1"
@@ -76,7 +75,6 @@
                     <div v-bind:class="classV">
                       <label class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input3"
                           minlength="1"
@@ -104,7 +102,6 @@
                     <div v-bind:class="classV">
                       <label for="input4" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input4"
                           minlength="1"
@@ -132,7 +129,6 @@
                     <div v-bind:class="classV">
                       <label for="input5" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input5"
                           minlength="1"
@@ -160,7 +156,6 @@
                     <div v-bind:class="classV">
                       <label class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input6"
                           minlength="1"
@@ -188,7 +183,6 @@
                     <div v-bind:class="classV">
                       <label for="input7" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input7"
                           minlength="1"
@@ -216,7 +210,6 @@
                     <div v-bind:class="classV">
                       <label for="input8" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input8"
                           minlength="1"
@@ -250,7 +243,6 @@
                     <div v-bind:class="classV">
                       <label for="input9" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input9"
                           minlength="1"
@@ -284,7 +276,6 @@
                     <div v-bind:class="classV">
                       <label for="input10" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input10"
                           minlength="1"
@@ -318,7 +309,6 @@
                     <div v-bind:class="classV">
                       <label for="input11" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input11"
                           minlength="1"
@@ -352,7 +342,6 @@
                     <div v-bind:class="classV">
                       <label for="input12" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input12"
                           minlength="1"
@@ -386,7 +375,6 @@
                     <div v-bind:class="classV">
                       <label for="input13" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input13"
                           minlength="1"
@@ -420,7 +408,6 @@
                     <div v-bind:class="classV">
                       <label for="input14" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input14"
                           minlength="1"
@@ -454,7 +441,6 @@
                     <div v-bind:class="classV">
                       <label for="input15" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input15"
                           minlength="1"
@@ -488,7 +474,6 @@
                     <div v-bind:class="classV">
                       <label for="input16" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input16"
                           minlength="1"
@@ -522,7 +507,6 @@
                     <div v-bind:class="classV">
                       <label for="input17" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input17"
                           minlength="1"
@@ -556,7 +540,6 @@
                     <div v-bind:class="classV">
                       <label for="input18" class="inp drag-drop">
                         <input
-                          class="drag-drop"
                           type="text"
                           ref="input18"
                           minlength="1"
