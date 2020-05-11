@@ -15,13 +15,15 @@
           </tr>
           <tr v-for="(item, index) in trialData" :key="index">
             <td>
-              {{ item.prize % 1 > 0 ? item.prize.toFixed(2) : item.prize }}
+              ${{ item.prize % 1 > 0 ? item.prize.toFixed(2) : item.prize }}
             </td>
             <td>
               <span v-if="status > 0">{{ legify(item.winners) }}</span>
             </td>
             <td>
-              <span v-if="status > 0">{{ legify((item.winners * item.prize), 2) }}</span>
+              <span v-if="status > 0"
+                >${{ legify(item.winners * item.prize, 2) }}</span
+              >
             </td>
           </tr>
         </tbody>
@@ -32,13 +34,15 @@
               <span v-if="status > 0">{{ legify(triedNumber) }}</span>
             </td>
             <td>
-              <span v-if="status > 0">{{ '$' + legify(totalPayout, 2) }}</span>
+              <span v-if="status > 0">{{ "$" + legify(totalPayout, 2) }}</span>
             </td>
           </tr>
           <tr>
             <th>Average payout</th>
             <td colspan="2">
-              <span v-if="status > 0">{{ '$' + (totalPayout / triedNumber).toFixed(2) }}</span>
+              <span v-if="status > 0">{{
+                "$" + (totalPayout / triedNumber).toFixed(2)
+              }}</span>
             </td>
           </tr>
         </tfoot>
@@ -52,21 +56,30 @@
         <button
           class="btn btn-outline-success"
           @click="handleOneTrial"
-          v-if="(status===0 || status === 1)&&demoAutoOption==0"
-        >Next trial</button>
+          v-if="(status === 0 || status === 1) && demoAutoOption == 0"
+        >
+          Next trial
+        </button>
         <button
           class="btn btn-outline-success"
           @click="handleToggleTimer"
-          v-if="(status===0 || status === 1)&&demoAutoOption==1"
-        >{{ status===0 ? "Start" : timer ? "Pause" : "Resume" }}</button>
+          v-if="(status === 0 || status === 1) && demoAutoOption == 1"
+        >
+          {{ status === 0 ? "Start" : timer ? "Pause" : "Resume" }}
+        </button>
         <button
           class="btn btn-outline-dark"
-          v-if="status===2"
+          v-if="status === 2"
           @click="handleReset"
-        >Reset</button>
+        >
+          Reset
+        </button>
       </div>
       <div class="text-center mt-1">
-        <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>
+        <app-demo-auto-option
+          @changeOption="demoAutoOption = $event"
+          :option="demoAutoOption"
+        ></app-demo-auto-option>
       </div>
     </div>
   </div>
@@ -76,13 +89,17 @@
 import RuleMap from "./RuleMap.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { createMap, convertValuesId } from "./utils";
-import { pickNumber, calculateTimerInterval, legify } from "../../common/utils.js";
+import {
+  pickNumber,
+  calculateTimerInterval,
+  legify,
+} from "../../common/utils.js";
 
 export default {
   props: ["rules", "values", "trialNumber"],
   components: {
     appRuleMap: RuleMap,
-    appDemoAutoOption: DemoAutoOption
+    appDemoAutoOption: DemoAutoOption,
   },
   data: function() {
     return {
@@ -91,7 +108,7 @@ export default {
       trialData: [],
       timer: null,
       gameMap: null,
-      triedNumber: 0
+      triedNumber: 0,
     };
   },
   computed: {
@@ -104,7 +121,7 @@ export default {
     },
     timerInterval() {
       return calculateTimerInterval(this.trialNumber);
-    }
+    },
   },
   watch: {
     demoAutoOption(value) {
@@ -118,7 +135,7 @@ export default {
         clearInterval(this.timer);
         this.timer = null;
       }
-    }
+    },
   },
   methods: {
     legify,
@@ -127,7 +144,7 @@ export default {
       for (let i = 0; i < this.values.length; i++) {
         trialData.push({
           prize: this.values[i],
-          winners: 0
+          winners: 0,
         });
       }
       return trialData;
@@ -136,7 +153,7 @@ export default {
       return pickNumber(1, 6) + pickNumber(1, 6);
     },
     getDirection(dice) {
-      return this.rules.find(item => item.dice === dice).next;
+      return this.rules.find((item) => item.dice === dice).next;
     },
     handleOneTrial() {
       if (this.status === 0) {
@@ -178,12 +195,12 @@ export default {
       this.trialData = this.initTrialData();
       this.triedNumber = 0;
       this.status = 0;
-    }
+    },
   },
   created() {
     this.trialData = this.initTrialData();
     this.gameMap = createMap(500, this.values);
-  }
+  },
 };
 </script>
 
