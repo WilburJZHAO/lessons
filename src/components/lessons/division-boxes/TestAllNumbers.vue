@@ -14,7 +14,9 @@
               "
               v-for="(number, index) in digitList"
               :key="`list1-${index}`"
-            >{{ number }}</li>
+            >
+              {{ number }}
+            </li>
           </ul>
           <div class="text-center">
             <div class="badge badge-dark">{{ digitList.length }}</div>
@@ -30,7 +32,9 @@
               "
               v-for="(number, index) in combineWith"
               :key="`list2-${index}`"
-            >{{ number }}</li>
+            >
+              {{ number }}
+            </li>
           </ul>
           <div class="text-center">
             <div class="badge badge-primary">{{ combineWith.length }}</div>
@@ -49,10 +53,14 @@
                 :key="`list3-${index}`"
                 style="cursor: pointer;"
                 @click="handleClickNumber(num)"
-              >{{ num }}</li>
+              >
+                {{ num }}
+              </li>
             </ul>
             <div class="text-center">
-              <div class="badge badge-danger">{{ possibleDigitList.length }}</div>
+              <div class="badge badge-danger">
+                {{ possibleDigitList.length }}
+              </div>
             </div>
           </div>
           <div class="flex-shrink-1 mx-2">
@@ -70,9 +78,10 @@
               >
                 <span
                   :style="{
-                    visibility: num > 0 ? 'visible' : 'hidden'
+                    visibility: num > 0 ? 'visible' : 'hidden',
                   }"
-                >{{ num }}</span>
+                  >{{ num }}</span
+                >
               </li>
             </ul>
             <div class="text-center">
@@ -84,31 +93,44 @@
     </div>
     <div class="mb-3"></div>
     <div style="max-width: 300px; margin: 0 auto;">
-      <input type="text" class="form-control" v-model="numberInput" @input="handleInputNumber" />
+      <input
+        type="text"
+        class="form-control"
+        v-model="numberInput"
+        @input="handleInputNumber"
+      />
     </div>
     <div class="text-center">
-      <label>To test: Enter a number or click on any multi-digit number in a list</label>
+      <label
+        >To test: Enter a number or click on any multi-digit number in a
+        list</label
+      >
     </div>
     <div class="mb-3"></div>
     <div class="text-center">
-      <button v-if="finished" class="btn btn-outline-dark" @click="handleReset">Reset</button>
+      <button v-if="finished" class="btn btn-outline-dark" @click="handleReset">
+        Reset
+      </button>
       <button
         v-else
         class="btn btn-outline-success"
         @click="handleNextPlaceValue"
-      >Press for next place value</button>
+      >
+        Press for next place value
+      </button>
     </div>
   </div>
 </template>
 
 <script>
+import bigInt from "big-integer";
 export default {
   data: function() {
     return {
       digitList: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
       combineWith: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       numberInput: "",
-      finished: false
+      finished: false,
     };
   },
   computed: {
@@ -129,9 +151,9 @@ export default {
     },
     resDigitList() {
       const list = [];
-      this.possibleDigitList.forEach(num => {
-        let bigNum = BigInt(num);
-        if (bigNum % BigInt(this.digits) === BigInt(0)) {
+      this.possibleDigitList.forEach((num) => {
+        let bigNum = bigInt(num);
+        if (bigNum.divmod(this.digits).remainder.value == 0) {
           list.push(num);
         } else {
           list.push(-1);
@@ -140,11 +162,13 @@ export default {
       return list;
     },
     resFilterDigitList() {
-      const list = this.resDigitList.filter(number => number > 0);
+      const list = this.resDigitList.filter((number) => number > 0);
       return list;
     },
     numberIndex() {
-      return this.possibleDigitList.findIndex(num => num === this.numberInput);
+      return this.possibleDigitList.findIndex(
+        (num) => num === this.numberInput
+      );
     },
     digitCombLeft() {
       if (this.numberInput.length === this.digits) {
@@ -159,10 +183,10 @@ export default {
       } else {
         return "";
       }
-    }
+    },
   },
   watch: {
-    numberInput(value) {
+    numberInput() {
       if (this.numberIndex === -1) {
         return;
       }
@@ -177,13 +201,13 @@ export default {
         (this.numberIndex / this.possibleDigitList.length) *
           elList4.scrollHeight -
         75;
-    }
+    },
   },
   methods: {
     handleClickNumber(e) {
       this.numberInput = e;
     },
-    handleInputNumber(e) {
+    handleInputNumber() {
       if (this.numberIndex === -1) {
         return;
       }
@@ -205,8 +229,8 @@ export default {
       this.numberInput = "";
       this.digitList = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
       this.finished = false;
-    }
-  }
+    },
+  },
 };
 </script>
 
