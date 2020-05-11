@@ -1,8 +1,12 @@
 <template>
   <div id="app">
-    <app-title v-if="$route.name === 'Home'">Find Your Lesson</app-title>
-    <router-view></router-view>
-    <app-bottom-nav></app-bottom-nav>
+    <div class="app--body">
+      <app-title v-if="$route.name === 'Home'">Find Your Lesson</app-title>
+      <router-view></router-view>
+    </div>
+    <div class="app--bottom-nav">
+      <app-bottom-nav></app-bottom-nav>
+    </div>
   </div>
 </template>
 
@@ -14,16 +18,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 export default {
   data: function() {
     return {
-      title: "Title"
+      title: "Title",
     };
   },
   components: {
     appTitle: Title,
-    appBottomNav: BottomNav
-  }
+    appBottomNav: BottomNav,
+  },
 };
 </script>
-
 
 <style>
 /** Global styling is put here... */
@@ -32,14 +35,20 @@ export default {
 	dark green: #43494B
   Break point: 576px - 768px - 992px - 1200px
 */
+.app--body {
+  min-height: 94vh;
+}
+.app--bottom-nav {
+  min-height: 6vh;
+}
 
 @font-face {
-    font-family: 'Primer';
-    src: url('assets/fonts/Primer.ttf');
+  font-family: "Primer";
+  src: url("assets/fonts/Primer.ttf");
 }
 @font-face {
-    font-family: 'Primer-bold';
-    src: url('assets/fonts/Primer-bold.ttf');
+  font-family: "Primer-bold";
+  src: url("assets/fonts/Primer-bold.ttf");
 }
 
 .lesson-subheading {
