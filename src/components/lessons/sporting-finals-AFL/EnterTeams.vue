@@ -1869,7 +1869,7 @@ export default {
   margin: auto;
   width: 80%;
   max-width: 280px;
-  //transform: rotateX(45deg) rotateY(-10deg) rotate(25deg) scale(2)
+  /* //transform: rotateX(45deg) rotateY(-10deg) rotate(25deg) scale(2) */
 }
 #app--lesson-action .label {
   position: absolute;
