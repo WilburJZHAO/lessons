@@ -47,7 +47,7 @@
                     type="submit"
                     class="btn btn-outline-success btn-lg mr-5"
                     @click="handleSave"
-                  >Save and Return</button>
+                  >Save and return</button>
                   <button type="submit" class="btn btn-outline-dark btn-lg" @click="reset">Reset</button>
 
                   <p class="alert-danger alert" v-if="alertIf">{{alert}}</p>
