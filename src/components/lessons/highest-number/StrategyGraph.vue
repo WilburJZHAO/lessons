@@ -1,13 +1,13 @@
 <template>
   <div>
-    <h5>{{strategyName}}</h5>
+    <h5>{{ strategyName }}</h5>
     <div class="d-flex app--graph-container">
       <div>
         <div v-for="num in 6" :key="`firstcard${num}`">
           <div class="d-flex" style="color: red;">
-            <div class="app--num-box">{{ strategy[num] === 0 ? num : ''}}</div>
-            <div class="app--num-box">{{ strategy[num] === 1 ? num : ''}}</div>
-            <div class="app--num-box">{{ strategy[num] === 2 ? num : ''}}</div>
+            <div class="app--num-box">{{ strategy[num] === 0 ? num : "" }}</div>
+            <div class="app--num-box">{{ strategy[num] === 1 ? num : "" }}</div>
+            <div class="app--num-box">{{ strategy[num] === 2 ? num : "" }}</div>
           </div>
         </div>
       </div>
@@ -19,55 +19,55 @@
                 <div
                   class="app--num-box app--second-num-box"
                   :class="
-                      strategy[firstNum] === 0
-                        ? 'app--first-num-card'
-                        : strategy[`${firstNum}${secondNum}`] === 0
-                        ? 'app--second-num-card'
-                        : ''
-                    "
+                    strategy[firstNum] === 0
+                      ? 'app--first-num-card'
+                      : strategy[`${firstNum}${secondNum}`] === 0
+                      ? 'app--second-num-card'
+                      : ''
+                  "
                 >
                   {{
-                  strategy[firstNum] === 0
-                  ? firstNum
-                  : strategy[`${firstNum}${secondNum}`] === 0
-                  ? secondNum
-                  : ""
+                    strategy[firstNum] === 0
+                      ? firstNum
+                      : strategy[`${firstNum}${secondNum}`] === 0
+                      ? secondNum
+                      : ""
                   }}
                 </div>
                 <div
                   class="app--num-box app--second-num-box"
                   :class="
-                      strategy[firstNum] === 1
-                        ? 'app--first-num-card'
-                        : strategy[`${firstNum}${secondNum}`] === 1
-                        ? 'app--second-num-card'
-                        : ''
-                    "
+                    strategy[firstNum] === 1
+                      ? 'app--first-num-card'
+                      : strategy[`${firstNum}${secondNum}`] === 1
+                      ? 'app--second-num-card'
+                      : ''
+                  "
                 >
                   {{
-                  strategy[firstNum] === 1
-                  ? firstNum
-                  : strategy[`${firstNum}${secondNum}`] === 1
-                  ? secondNum
-                  : ""
+                    strategy[firstNum] === 1
+                      ? firstNum
+                      : strategy[`${firstNum}${secondNum}`] === 1
+                      ? secondNum
+                      : ""
                   }}
                 </div>
                 <div
                   class="app--num-box app--second-num-box"
                   :class="
-                      strategy[firstNum] === 2
-                        ? 'app--first-num-card'
-                        : strategy[`${firstNum}${secondNum}`] === 2
-                        ? 'app--second-num-card'
-                        : ''
-                    "
+                    strategy[firstNum] === 2
+                      ? 'app--first-num-card'
+                      : strategy[`${firstNum}${secondNum}`] === 2
+                      ? 'app--second-num-card'
+                      : ''
+                  "
                 >
                   {{
-                  strategy[firstNum] === 2
-                  ? firstNum
-                  : strategy[`${firstNum}${secondNum}`] === 2
-                  ? secondNum
-                  : ""
+                    strategy[firstNum] === 2
+                      ? firstNum
+                      : strategy[`${firstNum}${secondNum}`] === 2
+                      ? secondNum
+                      : ""
                   }}
                 </div>
               </div>
@@ -81,7 +81,7 @@
 
 <script>
 export default {
-  props: ["strategy", "strategyName"]
+  props: ["strategy", "strategyName"],
 };
 </script>
 
@@ -97,7 +97,7 @@ export default {
   justify-content: center;
   align-items: center;
   overflow: auto;
-  font-size: 8px;
+  font-size: 15px;
   font-weight: bold;
 }
 .app--first-num-card {
