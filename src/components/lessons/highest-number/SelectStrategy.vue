@@ -14,7 +14,6 @@
           :id="`strategy${strategy.id}`"
           :value="strategy.id"
           @change="handleSelectStrategy"
-          @click="showStrategy = false"
         />
         <label :for="`strategy${strategy.id}`" class="form-check-label">
           {{
@@ -37,6 +36,7 @@ export default {
   },
   methods: {
     handleSelectStrategy() {
+      this.showStrategy = false;
       this.$emit("selectStrategy", this.selectedStrategyId);
     },
     handleToggleShow() {
