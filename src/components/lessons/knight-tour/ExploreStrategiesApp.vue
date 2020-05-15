@@ -16,20 +16,20 @@
             class="btn btn-outline-success"
             v-if="demoAutoOption==='0'"
             @click="handleNextMove"
-          >{{ status === 0 ? 'Tap here to begin' : 'Tap here for next move' }}</button>
+          >{{ status === 0 ? 'First move' : 'Next move' }}</button>
           <button
             class="btn btn-outline-success"
             v-if="demoAutoOption==='1'"
             @click="handleToggleTimer"
-          >{{ status === 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume'}}</button>
+          >{{ status === 0 ? 'Start' : timer ? 'Pause' : 'Resume'}}</button>
           <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
         </div>
         <div v-if="status===2 && !showingSolution">
           <div
             class="text-center text-danger"
-          >{{ tour.status === TOUR_STATUS.CLOSED ? 'Solution found' : `Game over. You got ${tour.step} moves` }}</div>
+          >{{ tour.status === TOUR_STATUS.CLOSED ? 'Solution found!' : `Game over. You got ${tour.step} moves.` }}</div>
           <div class="text-center">
-            <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+            <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
           </div>
         </div>
       </div>
