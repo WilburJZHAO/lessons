@@ -41,11 +41,11 @@ export default {
       options: [
         {
           id: 1,
-          title: "Draw a Spirolateral"
+          title: "Draw a spirolateral"
         },
         {
           id: 2,
-          title: "Order 3 Spirolaterals"
+          title: "Order 3 spirolaterals"
         }
       ],
       selectedOption: -1
