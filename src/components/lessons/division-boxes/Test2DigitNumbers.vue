@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="lesson-subheading">Systematically test all 2 digit numbers</h3>
+    <h3 class="lesson-subheading">Test systematically for all solutions</h3>
     <hr class="subheading-speartor" />
     <div class="row">
       <div class="col-md-4 d-flex justify-content-around">
@@ -87,7 +87,7 @@
       <input type="text" class="form-control" v-model="numberInput" @input="handleInputNumber" />
     </div>
     <div class="text-center">
-      <label>To test: Enter a number or click on any multi-digit number in a list</label>
+      <label>To test: Enter a number or click on any number in the red list.</label>
     </div>
     <div class="mb-3"></div>
     <div class="text-center">
@@ -96,7 +96,7 @@
         v-else
         class="btn btn-outline-success"
         @click="handleNextPlaceValue"
-      >Press for next place value</button>
+      >Proceed to next place value</button>
     </div>
   </div>
 </template>
