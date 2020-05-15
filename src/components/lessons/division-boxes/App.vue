@@ -46,15 +46,15 @@ export default {
       options: [
         {
           id: 1,
-          title: "Division box testing"
+          title: "Test a number"
         },
         {
           id: 2,
-          title: "Systematically test all 2 digit numbers"
+          title: "Test systematically for all solutions"
         },
         {
           id: 3,
-          title: "Systematically test all numbers"
+          title: "Test systematically (repeated digits allowed)"
         }
       ],
       selectedOption: -1

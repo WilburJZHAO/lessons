@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="lesson-subheading">Division box testing</h3>
+    <h3 class="lesson-subheading">Test a number</h3>
     <hr class="subheading-speartor" />
     <div class="app--container">
       <div class="d-flex">
@@ -13,7 +13,7 @@
           <div class="app--tile-shadow">{{ num - 1 }}</div>
         </div>
       </div>
-      <div class="text-danger text-center">Drag tiles to boxes, then test</div>
+      <div class="text-danger text-center mt-2">Drag digits to the boxes below, then test.</div>
       <div class="mb-3"></div>
       <div class="d-flex">
         <!-- Boxes -->
@@ -61,8 +61,8 @@
           correctCount === 0
           ? "No test correct"
           : correctCount === testNumberArr.length
-          ? `All ${correctCount} tests correct`
-          : `Only ${correctCount} tests correct`
+          ? `All ${correctCount} tests correct.`
+          : `Only ${correctCount} ${correctCount === 1? "test" : "tests"} correct.`
           }}
         </span>
       </div>
