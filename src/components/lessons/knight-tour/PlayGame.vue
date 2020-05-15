@@ -17,11 +17,11 @@
     </div>
     <div v-if="status === TOUR_STATUS.OPEN">
       <div class="text-center text-danger">
-        Game over. You got {{ tour.step }} moves
+        Game over. You got {{ tour.step }} moves.
       </div>
       <div class="text-center">
         <button class="btn btn-outline-dark" @click="handleReset">
-          Tap here to reset
+          Reset
         </button>
       </div>
     </div>
@@ -29,7 +29,7 @@
       <div class="text-center text-danger">Solution found</div>
       <div class="text-center">
         <button class="btn btn-outline-dark" @click="handleReset">
-          Tap here to reset
+          Reset
         </button>
       </div>
     </div>

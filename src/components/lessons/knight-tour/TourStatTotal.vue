@@ -3,14 +3,14 @@
     <table class="table table-bordered" style="table-layout: fixed;">
       <thead v-if="trialNumber">
         <tr class="table-danger text-primary">
-          <th colspan="2">{{ separateNumber(trialNumber) }} games</th>
+          <th colspan="2">{{ legify(trialNumber) }} games</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td class="text-primary">Trial</td>
           <td>
-            <span v-if="trial>0">{{ separateNumber(trial) }}</span>
+            <span v-if="trial>0">{{ legify(trial) }}</span>
           </td>
         </tr>
         <tr>
@@ -28,7 +28,7 @@
         <tr>
           <td class="text-primary">Solutions</td>
           <td>
-            <span v-if="trial>0">{{ separateNumber(currentSolutionIndex) }}</span>
+            <span v-if="trial>0">{{ legify(currentSolutionIndex) }}</span>
           </td>
         </tr>
       </tbody>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import { separateNumber } from "../../common/utils";
+import { legify } from "../../common/utils";
 export default {
   props: [
     "trialNumber",
@@ -76,7 +76,7 @@ export default {
   ],
   data: function() {
     return {
-      separateNumber,
+      legify,
       currentSolutionIndex: 0
     };
   },
