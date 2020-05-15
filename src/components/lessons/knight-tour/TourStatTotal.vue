@@ -8,7 +8,7 @@
       </thead>
       <tbody>
         <tr>
-          <td class="text-primary">Trial</td>
+          <td class="text-primary">Trials run</td>
           <td>
             <span v-if="trial>0">{{ legify(trial) }}</span>
           </td>
@@ -28,7 +28,7 @@
         <tr>
           <td class="text-primary">Solutions</td>
           <td>
-            <span v-if="trial>0">{{ legify(currentSolutionIndex) }}</span>
+            <span v-if="trial>0">{{ legify(solutions) }}</span>
           </td>
         </tr>
       </tbody>
@@ -41,19 +41,19 @@
         class="btn btn-outline-success mr-2"
         :disabled="showingSolution"
         @click="handleShowSolution"
-      >Show solution</button>
+      >Show solution {{currentSolutionIndex}}</button>
       <div class="d-flex flex-column">
         <button
           class="btn btn-outline-primary btn-sm mb-1"
           :disabled="showingSolution"
-          @click="handlePrevSolution"
+          @click="handleNextSolution"
         >
           <i class="fas fa-sort-up"></i>
         </button>
         <button
           class="btn btn-outline-primary btn-sm"
           :disabled="showingSolution"
-          @click="handleNextSolution"
+          @click="handlePrevSolution"
         >
           <i class="fas fa-sort-down"></i>
         </button>
@@ -76,7 +76,6 @@ export default {
   ],
   data: function() {
     return {
-      legify,
       currentSolutionIndex: 0
     };
   },
@@ -86,6 +85,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleShowSolution() {
       this.$emit("showSolution", this.currentSolutionIndex - 1);
     },
