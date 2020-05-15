@@ -87,11 +87,11 @@ export default {
       tourStat: true,
       trial: 0, // How many trials are played
       total: 0, // Total steps in all games
-      reEntrants: 0, // How many duplicate solutions
+      reEntrants: 0,
       solutions: [], // All solutions found
       showingSolution: false,
       showSolutionTimer: null,
-      duplicates: 0
+      duplicates: 0  // How many duplicate solutions
     };
   },
   computed: {
@@ -147,10 +147,13 @@ export default {
           // Check if it is a duplicate
           this.duplicates++;
         }
-        this.solutions.push(this.tour.solutionStr); // Record a solution
-        if (this.tour.isReEntrants) {
-          // Check if the solution is re-entrant
-          this.reEntrants++;
+        else {
+          // if solution is unique
+          this.solutions.push(this.tour.solutionStr); // Record a solution
+          if (this.tour.isReEntrants) {
+            // Check if the solution is re-entrant
+            this.reEntrants++;
+          }
         }
       }
       this.tour = new KnightTour(this.strategy, this.lookAhead);
