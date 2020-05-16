@@ -132,6 +132,7 @@ export default {
     handlePlaceCard(e) {
       if (this.status !== 1 || !this.userCanChoose) return;
       const meDigitsIndex = e;
+      if (this.meDigits[meDigitsIndex]) return;
       this.meDigits[meDigitsIndex] = this.card.number;
       this.meDigits = [...this.meDigits];
       this.status = 2;
