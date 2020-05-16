@@ -3,7 +3,7 @@
     <table class="table table-bordered" style="min-width: 800px;  table-layout: fixed; ">
       <tr class="table-danger">
         <th>Trials</th>
-        <td v-for="(data, index) in statData" :key="index">{{ data.trials }}</td>
+        <td v-for="(data, index) in statData" :key="index">{{ legify(data.trials) }}</td>
       </tr>
       <tr>
         <th class="table-danger">Solutions</th>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils";
 export default {
   props: ["solutions", "duplicates", "trialNumber", "trial"],
   data: function() {
@@ -61,6 +62,7 @@ export default {
     }
   },
   methods: {
+    legify,
     initData() {
       this.statData = [];
       // Initialize statData

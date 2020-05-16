@@ -15,17 +15,17 @@
         class="btn btn-outline-success"
         v-if="demoAutoOption==='0' && game < trialNumber "
         @click="handleOneGame"
-      >{{ game===0 ? 'Tap here to begin' : 'Tap here for next game' }}</button>
+      >{{ game===0 ? 'Run first game' : 'Run next game' }}</button>
       <button
         class="btn btn-outline-success"
         v-if="demoAutoOption==='1' && game < trialNumber"
         @click="handleToggleTimer"
-      >{{ game=== 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+      >{{ game=== 0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
       <button
         class="btn btn-outline-dark"
         v-if="game >= trialNumber"
         @click="handleReset"
-      >Tap here to Reset</button>
+      >Reset</button>
     </div>
     <div class="text-center">
       <div class="text-center mt-2">

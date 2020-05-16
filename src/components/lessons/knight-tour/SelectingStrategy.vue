@@ -24,7 +24,7 @@
       <label
         for="trial-numbers"
         class="col-form-label col-sm-6"
-      >Enter the number of trials(1 - 10000):</label>
+      >Enter the number of trials (1 to 10 000):</label>
       <div class="col-sm-6">
         <input type="number" class="form-control" v-model.number="trialNumber" required />
       </div>

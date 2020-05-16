@@ -1,11 +1,11 @@
 <template>
   <div class="container mt-3">
-    <h3 class="lesson-subheading">Systematically test all numbers</h3>
+    <h3 class="lesson-subheading">Test systematically (repeated digits allowed)</h3>
     <hr class="subheading-speartor" />
     <div class="row">
       <div class="col-lg-4 d-flex justify-content-around">
         <div class="flex-grow-1 mr-2">
-          <h5>{{ digits }} digit list</h5>
+          <h5>{{ digitList[0].length }} digit list</h5>
           <ul class="list-group" id="list1">
             <li
               class="list-group-item"
@@ -85,7 +85,7 @@
               </li>
             </ul>
             <div class="text-center">
-              <div class="badge badge-warning">{{ resDigitList.length }}</div>
+              <div class="badge badge-warning">{{ testSuccesses }}</div>
             </div>
           </div>
         </div>
@@ -101,10 +101,9 @@
       />
     </div>
     <div class="text-center">
-      <label
-        >To test: Enter a number or click on any multi-digit number in a
-        list</label
-      >
+      <label>
+        To test: Enter a number or click on any number in the red list.
+      </label>
     </div>
     <div class="mb-3"></div>
     <div class="text-center">
@@ -116,7 +115,7 @@
         class="btn btn-outline-success"
         @click="handleNextPlaceValue"
       >
-        Press for next place value
+        Proceed to next place value
       </button>
     </div>
   </div>
@@ -131,6 +130,7 @@ export default {
       combineWith: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"],
       numberInput: "",
       finished: false,
+      testSuccesses: 0
     };
   },
   computed: {
@@ -150,11 +150,13 @@ export default {
       return combArr;
     },
     resDigitList() {
+      this.testSuccesses = 0;
       const list = [];
       this.possibleDigitList.forEach((num) => {
         let bigNum = bigInt(num);
         if (bigNum.divmod(this.digits).remainder.value == 0) {
           list.push(num);
+          this.testSuccesses++;
         } else {
           list.push(-1);
         }

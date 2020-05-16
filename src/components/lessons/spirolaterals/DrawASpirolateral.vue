@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="lesson-subheading">Draw a Spirolateral</h3>
+    <h3 class="lesson-subheading">Draw a spirolateral</h3>
     <hr class="subheading-separator" />
     <div class="row">
       <div class="col-md-9">
@@ -27,7 +27,7 @@
             class="btn btn-outline-success"
             @click="handleDrawing"
             v-if="demoAutoOption === '0'"
-          >Tap here to begin drawing</button>
+          >Draw next line</button>
           <button
             class="btn btn-outline-success"
             @click="handleToggleTimer"
@@ -35,10 +35,10 @@
           >
             {{
             status === 1
-            ? "Tap here to begin"
+            ? "Start"
             : timer
-            ? "Tap here to pause"
-            : "Tap here to resume"
+            ? "Pause"
+            : "Resume"
             }}
           </button>
           <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>
@@ -47,7 +47,7 @@
           <div
             class="text-danger"
           >Order {{ order }} {{ orderEntered ? 'already entered in' : 'added to'}} the list</div>
-          <button class="btn btn-outline-success" @click="handleNext">Tap for next spirolateral</button>
+          <button class="btn btn-outline-success" @click="handleNext">Next spirolateral</button>
         </div>
         <div class="mb-3"></div>
       </div>
@@ -75,7 +75,7 @@
             v-model.number="order"
             @keypress="handleCheckInput"
           />
-          <div class="text-danger">Enter the order number(1 - 100)</div>
+          <div class="text-danger">Enter the order number (1 to 100)</div>
           <div class="mt-2 text-center">
             <button
               class="btn btn-outline-success"

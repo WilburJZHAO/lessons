@@ -22,7 +22,7 @@
           ></div>
         </div>
         <div class="app--line"></div>
-        <div style="font-size: 8px;" class="d-flex justify-content-center">{{ index+start }}</div>
+        <div style="font-size: 12px;" class="d-flex justify-content-center">{{ index+start }}</div>
       </div>
     </div>
   </div>

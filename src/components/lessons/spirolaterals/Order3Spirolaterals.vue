@@ -1,6 +1,6 @@
 <template>
   <div class="container mt-3">
-    <h3 class="lesson-subheading">Order 3 Spirolaterals</h3>
+    <h3 class="lesson-subheading">Order 3 spirolaterals</h3>
     <hr class="subheading-separator" />
     <div class="row">
       <div class="col-md-9">
@@ -59,16 +59,16 @@
           class="btn btn-outline-success"
           v-if="demoAutoOption==='0'"
           @click="handleDrawing"
-        >Tap here to begin drawing</button>
+        >Draw next line</button>
         <button
           class="btn btn-outline-success"
           v-if="demoAutoOption==='1'"
           @click="handleToggleTimer"
         >
           {{
-          status===1 ? 'Tap here to begin'
+          status===1 ? 'Start'
           : timer ?
-          'Tap here to pause' : 'Tap here to resume'
+          'Pause' : 'Resume'
           }}
         </button>
         <app-demo-auto-option @changeOption="demoAutoOption = $event" :option="demoAutoOption"></app-demo-auto-option>

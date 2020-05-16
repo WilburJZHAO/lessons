@@ -62,37 +62,37 @@
           class="btn btn-outline-success"
           v-if="status===0"
           @click="status=1"
-        >Tap here to begin testing</button>
+        >Begin testing</button>
         <button
           class="btn btn-outline-success"
           v-if="status===1"
           @click="handleDrawCard"
-        >Tap here for {{ wordUsedNumbers }} draw</button>
+        >Draw {{ wordUsedNumbers }} card</button>
         <button
           class="btn btn-outline-success"
           v-if="status===2"
           @click="handlePlaceCard"
-        >Tap here to place {{ wordUsedNumbers }} draw</button>
+        >Place {{ wordUsedNumbers }} card</button>
         <button
           class="btn btn-outline-success"
           v-if="status ===3"
           @click="handleTally"
-        >Tap here to tally</button>
+        >Tally</button>
         <button
           class="btn btn-outline-success"
           v-if="status ===4"
           @click="handleNextSet"
-        >Tap here for next set</button>
+        >Next set</button>
       </div>
       <div v-if="demoAutoOption==='1' && status !== 5">
         <button
           class="btn btn-outline-success"
           @click="handleToggleTimer"
-        >{{ timer ? 'Tap here to pause' : status === 0 ? 'Tap here to begin' : 'Tap here to resume' }}</button>
+        >{{ timer ? 'Pause' : status === 0 ? 'Start' : 'Resume' }}</button>
       </div>
       <div v-if="status === 5">
         <div class="text-center text-danger">Finished</div>
-        <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+        <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
       </div>
       <div class="mt-2">
         <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>

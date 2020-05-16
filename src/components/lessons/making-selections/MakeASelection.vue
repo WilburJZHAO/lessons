@@ -44,10 +44,10 @@
         to the green rectangle
       </div>
       <div v-if="status === 1" class="text-center mt-4">
-        <button class="btn btn-outline-success" @click="handleFlipCards">Tap here to flip cards</button>
+        <button class="btn btn-outline-success" @click="handleFlipCards">Reveal cards</button>
       </div>
       <div v-if="status === 2" class="text-center mt-4">
-        <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+        <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
       </div>
     </div>
   </div>

@@ -14,17 +14,17 @@
               <h6 class="app--digit-title">Me</h6>
               <div class="d-flex">
                 <div
-                  class="app--digit"
+                  class="app--digit me"
                   @click="handlePlaceCard(0)"
                   :style="{cursor: status===1 ? 'pointer' : ''}"
                 >{{ meDigits[0] > 0 ? meDigits[0] : ''}}</div>
                 <div
-                  class="app--digit"
+                  class="app--digit me"
                   @click="handlePlaceCard(1)"
                   :style="{cursor: status===1 ? 'pointer' : ''}"
                 >{{ meDigits[1] > 0 ? meDigits[1] : ''}}</div>
                 <div
-                  class="app--digit"
+                  class="app--digit me"
                   @click="handlePlaceCard(2)"
                   :style="{cursor: status===1 ? 'pointer' : ''}"
                 >{{ meDigits[2] > 0 ? meDigits[2] : ''}}</div>
@@ -34,9 +34,9 @@
             <div class="d-flex align-items-center">
               <h6 class="app--digit-title">Computer</h6>
               <div class="d-flex">
-                <div class="app--digit">{{ computerDigits[0] > 0 ? computerDigits[0] : ''}}</div>
-                <div class="app--digit">{{ computerDigits[1] > 0 ? computerDigits[1] : ''}}</div>
-                <div class="app--digit">{{ computerDigits[2] > 0 ? computerDigits[2] : ''}}</div>
+                <div class="app--digit comp">{{ computerDigits[0] > 0 ? computerDigits[0] : ''}}</div>
+                <div class="app--digit comp">{{ computerDigits[1] > 0 ? computerDigits[1] : ''}}</div>
+                <div class="app--digit comp">{{ computerDigits[2] > 0 ? computerDigits[2] : ''}}</div>
               </div>
             </div>
           </div>
@@ -50,24 +50,24 @@
         v-if="status===0"
         @click="handleDrawCard"
         :disabled="disableButton"
-      >Tap here to draw card</button>
-      <p class="text-danger" v-if="status===1">Place your card into your digit box</p>
+      >Draw card</button>
+      <p class="text-danger" v-if="status===1">Click/tap the empty square where you want to place the number {{ card.number }}.</p>
       <button
         class="btn btn-outline-success"
         v-if="status===2"
         @click="handleComputerTurn"
         :disabled="disableButton"
-      >Tap here for computer's turn</button>
+      >Computer's turn</button>
       <div
-        class="text-danger"
+        class="text-danger mb-2"
         :style="{visibility: status===4 ? 'visible' :'hidden'}"
       >{{winningMessage}}</div>
       <button
         class="btn btn-outline-success"
         v-if="status===3"
         @click="handleFindWinner"
-      >Tap here to find winner</button>
-      <button class="btn btn-outline-dark" v-if="status===4" @click="handleReset">Tap here to reset</button>
+      >Declare winner</button>
+      <button class="btn btn-outline-dark" v-if="status===4" @click="handleReset">Reset</button>
     </div>
   </div>
 </template>
@@ -221,5 +221,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+.me {
+  color: rgb(20, 95, 180);
+}
+.comp {
+  color: rgb(180, 20, 95);
 }
 </style>
