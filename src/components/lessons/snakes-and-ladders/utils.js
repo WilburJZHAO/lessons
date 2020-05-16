@@ -38,13 +38,13 @@ export const createBoard = (
             x: startX,
             y: startY,
             width,
-            height
+            height,
           },
           number: {
             x: startX + width / 2 - 9,
             y: startY + height / 8,
-            value: (r - 1) * columns + c
-          }
+            value: (r - 1) * columns + c,
+          },
         });
       }
     }
@@ -58,13 +58,13 @@ export const createBoard = (
             x: startX,
             y: startY,
             width,
-            height
+            height,
           },
           number: {
             x: startX + width / 2 - 9,
             y: startY + height / 8,
-            value: (r - 1) * columns + (columns - c + 1)
-          }
+            value: (r - 1) * columns + (columns - c + 1),
+          },
         });
       }
     }

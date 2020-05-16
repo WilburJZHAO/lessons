@@ -54,15 +54,15 @@ export default {
           x: this.whoIsTurn === 1 ? buttonRadius : buttonRadius * 3,
           y:
             boardHeight *
-              ((this.boardSettings.columns - 1) / this.boardSettings.columns) +
-            buttonRadius
+              (this.boardSettings.columns / this.boardSettings.columns) +
+            buttonRadius * 1.2
         };
         this.player2ButtonOriginalPosition = {
           x: this.whoIsTurn === 1 ? buttonRadius * 3 : buttonRadius,
           y:
             boardHeight *
-              ((this.boardSettings.columns - 1) / this.boardSettings.columns) +
-            buttonRadius
+              (this.boardSettings.columns / this.boardSettings.columns) +
+            buttonRadius * 1.2
         };
         this.player1Button = new Konva.Circle({
           x: this.player1ButtonOriginalPosition.x,
@@ -515,7 +515,8 @@ export default {
             this.maxWidth,
             this.boardSettings.rows,
             this.boardSettings.columns
-          ) + 20
+          ) +
+          this.maxWidth / this.boardSettings.rows
       });
     },
     drawBoard() {
