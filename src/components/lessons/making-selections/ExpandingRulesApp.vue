@@ -55,7 +55,7 @@
         <button class="btn btn-outline-success" @click="handleOk" v-if="status === 0">OK</button>
       </div>
       <div
-        class="text-center text-danger"
+        class="text-center text-danger mt-2"
         :style="{visibility: message ? 'visible' : 'hidden'}"
       >{{ message }}</div>
     </div>
@@ -71,12 +71,12 @@
         class="btn btn-outline-success"
         v-if="demoAutoOption==='0' && status === 1 "
         @click="handleOneGame"
-      >{{ game===0 ? 'Tap here to begin' : 'Tap here for next game' }}</button>
+      >{{ game===0 ? 'Run first game' : 'Run next game' }}</button>
       <button
         class="btn btn-outline-success"
         v-if="demoAutoOption==='1' && status === 1"
         @click="handleToggleTimer"
-      >{{ game=== 0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+      >{{ game=== 0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
       <button
         class="btn btn-outline-dark"
         v-if="status === 2"
@@ -241,4 +241,3 @@ export default {
   margin: 0 auto;
 }
 </style>
- 

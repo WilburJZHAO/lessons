@@ -4,7 +4,7 @@
     <hr class="subheading-speartor" />
     <div class="row">
       <div class="col-5 col-sm-4">
-        <h6 class="text-primary">Choose the number of players in the team</h6>
+        <h6 class="text-primary">Number of players in the <i><b>team</b></i></h6>
         <div class="form-check" v-for="num in MAX_TEAM_PLAYERS" :key="`team${num}`">
           <input
             type="radio"
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="col-5 col-sm-4">
-        <h6 class="text-primary">Choose the number of players in the mini clinic</h6>
+        <h6 class="text-primary">Number of players in the <i><b>mini clinic</b></i></h6>
         <div class="form-check" v-for="num in maxClinicPlayers" :key="`clinic${num}`">
           <input
             type="radio"
@@ -27,11 +27,11 @@
             :value="num"
             :id="`clinic${num}`"
           />
-          <label :for="`clinic${num}`" class="form-check-label">{{ num }} players</label>
+          <label :for="`clinic${num}`" class="form-check-label">{{ `${num} ${num === 1? 'player' : 'players'}` }}</label>
         </div>
       </div>
       <div class="col-2 col-sm-4">
-        <h6 class="text-primary">Choose the winning cards</h6>
+        <h6 class="text-primary">Winning cards</h6>
         <div class="form-check" v-for="num in maxWinningCards" :key="`card${num}`">
           <input
             type="checkbox"

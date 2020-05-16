@@ -1,11 +1,11 @@
 <template>
   <div class="row">
     <div class="col-6">
-      <div v-if="trialNumber">{{ trialNumber }} trials</div>
+      <div v-if="trialNumber">{{ legify(trialNumber) }} trials</div>
       <div class="app--box text-center" style="width: 100px;">
-        <span :style="{visibility: game ? 'visible' : 'hidden'}">{{ game }}</span>
+        <span :style="{visibility: game ? 'visible' : 'hidden'}">{{ legify(game) }}</span>
       </div>
-      game{{ game > 1 ? 's' : '' }} played
+      game{{ game === 1 ? '' : 's' }} played
     </div>
     <div class="col-6">
       <div class="d-flex">
@@ -13,12 +13,12 @@
         <div class="app--box text-primary app--fix-width text-center">
           <span :style="{visibility: game ? 'visible' : 'hidden'}">
             {{
-            win
+            legify(win)
             }}
           </span>
         </div>
         <div class="text-primary app--fix-width text-center">
-          <span :style="{visibility: game ? 'visible' : 'hidden'}">{{ winPercent }}%</span>
+          <span :style="{visibility: game ? 'visible' : 'hidden'}">{{ winPercent.toFixed(2) }}%</span>
         </div>
       </div>
       <div class="mb-2"></div>
@@ -27,12 +27,12 @@
         <div class="app--box text-danger app--fix-width text-center">
           <span :style="{visibility: game ? 'visible' : 'hidden'}">
             {{
-            lose
+            legify(lose)
             }}
           </span>
         </div>
         <div class="text-danger app--fix-width text-center">
-          <span :style="{visibility: game ? 'visible' : 'hidden'}">{{ losePercent }}%</span>
+          <span :style="{visibility: game ? 'visible' : 'hidden'}">{{ losePercent.toFixed(2) }}%</span>
         </div>
       </div>
     </div>
@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { legify } from "../../common/utils";
 export default {
   props: ["trialNumber", "win", "lose", "game"],
   computed: {
@@ -55,7 +56,8 @@ export default {
       }
       return Number(((this.lose / this.game) * 100).toFixed(2));
     }
-  }
+  },
+  methods: {legify}
 };
 </script>
 
