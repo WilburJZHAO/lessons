@@ -4,12 +4,11 @@
 The Australian Association of Mathematics Teachers (AAMT) maintain a resource for Australian schools known as Maths300, containing a collection of 194 lessons, 81 of which have accompanying software activities. With the proliferation of Chromebooks amongst students, along with BYOD (bring your own device) schools, the AAMT is developing a web application to provide convenient software support to the existing lessons. As the new software targets a range of devices (computer, laptop, tablet and mobile), it should be responsive to different sizes of screens.
 
 ## Current Progress
-* All 81 lessons have been completed, with 5 of these awaiting final testing
+* All 81 lessons have been completed
 * test env: https://test.lessons.maths300.com
 * production env: https://lessons.maths300.com
 
 ## Goal
-* Test the remaining 5 lessons
 * Fix issues posted on GitHub
 * Polish existing lessons as required (including improving responsive design)
 * Integrate all lessons into the project

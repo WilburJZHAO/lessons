@@ -55,7 +55,7 @@
             <div
               class="app--average-box"
               :style="{visibility: status===0 ? 'hidden' : 'visible'}"
-            >{{ choice1Average }}</div>
+            >{{ choice1Average.toFixed(1) }}</div>
           </div>
           <h5>or</h5>
           <div class="d-flex justify-content-center">
@@ -77,7 +77,7 @@
             <div
               class="app--average-box"
               :style="{visibility: status===0 ? 'hidden' : 'visible'}"
-            >{{ choice2Average }}</div>
+            >{{ choice2Average.toFixed(1) }}</div>
           </div>
         </div>
         <div class="text-success" v-if="status === 0">
@@ -106,7 +106,7 @@
             Number of trials:
             <input type="text" v-model.number="trialNum" />
             <span class="text-success">
-              <i class="fas fa-less-than mx-2"></i>Enter the number of trials(1 - 10000)
+              <i class="fas fa-less-than mx-2"></i>Enter the number of trials (1 to {{ legify(10000) }})
             </span>
           </div>
           <div class="text-center mt-2">
@@ -121,30 +121,30 @@
       <div v-if="status===1 || status === 2">
         <div>
           <span class="text-danger">Trial:</span>
-          {{ trial }}
+          {{ legify(trial) }}
         </div>
         <div class="mb-3">
           <span class="text-primary">Number of trials:</span>
-          {{ trialNum }}
+          {{ legify(trialNum) }}
         </div>
         <div v-if="status===1">
           <button
             class="btn btn-outline-success"
             @click="handleOneGame"
             v-if="demoAutoOption==='0'"
-          >{{ trial===0 ? 'Tap here to begin testing' : 'Tap here for next game' }}</button>
+          >{{ trial===0 ? 'Run first trial' : 'Run next trial' }}</button>
           <button
             class="btn btn-outline-success"
             @click="handleToggleTimer"
             v-else
-          >{{ trial===0 ? 'Tap here to begin' : timer ? 'Tap here to pause' : 'Tap here to resume' }}</button>
+          >{{ trial===0 ? 'Start' : timer ? 'Pause' : 'Resume' }}</button>
           <div class="text-center mt-2">
             <app-demo-auto-option @changeOption="demoAutoOption=$event" :option="demoAutoOption"></app-demo-auto-option>
           </div>
         </div>
         <div v-if="status===2" class="text-center">
-          <div class="text-center text-danger">Finished</div>
-          <button class="btn btn-outline-dark" @click="handleReset">Tap here to reset</button>
+          <div class="text-center text-danger mb-2">Finished</div>
+          <button class="btn btn-outline-dark" @click="handleReset">Reset</button>
         </div>
       </div>
     </div>
@@ -154,7 +154,7 @@
 <script>
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
 import { drawCard } from "./utils";
-import { calculateTimerInterval } from "../../common/utils";
+import { calculateTimerInterval, legify } from "../../common/utils";
 
 export default {
   components: {
@@ -282,6 +282,7 @@ export default {
     }
   },
   methods: {
+    legify,
     handleInputNum(e) {
       const { key } = e;
       if (this.availableNum.indexOf(Number(key)) === -1) {
