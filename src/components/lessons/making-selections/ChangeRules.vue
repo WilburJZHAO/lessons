@@ -53,6 +53,12 @@
               v-model.number="myRule.winningCards"
               :value="num"
               :id="`card${num}`"
+              :disabled="
+              (selectedWinningCards >= maxWinningCardsForSelection &&
+                myRule.winningCards.indexOf(num) === -1) ||
+                (selectedWinningCards === 1 &&
+                  myRule.winningCards.indexOf(num) !== -1)
+            "
             />
             <label :for="`card${num}`" class="form-check-label">{{ num }}</label>
           </div>
