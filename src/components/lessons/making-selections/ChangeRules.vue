@@ -32,21 +32,35 @@
       </div>
       <div class="col-2 col-sm-4">
         <h6 class="text-primary">Choose the winning cards</h6>
-        <div class="form-check" v-for="num in maxWinningCards" :key="`card${num}`">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            v-model.number="myRule.winningCards"
-            :value="num"
-            :id="`card${num}`"
-            :disabled="
+        <div v-if="maxWinningCardsForSelection > 1">
+          <div class="form-check" v-for="num in maxWinningCards" :key="`card${num}`">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              v-model.number="myRule.winningCards"
+              :value="num"
+              :id="`card${num}`"
+              :disabled="
               (selectedWinningCards >= maxWinningCardsForSelection &&
                 myRule.winningCards.indexOf(num) === -1) ||
                 (selectedWinningCards === 1 &&
                   myRule.winningCards.indexOf(num) !== -1)
             "
-          />
-          <label :for="`card${num}`" class="form-check-label">{{ num }}</label>
+            />
+            <label :for="`card${num}`" class="form-check-label">{{ num }}</label>
+          </div>
+        </div>
+        <div v-if="maxWinningCardsForSelection === 1">
+          <div class="form-check" v-for="num in maxWinningCards" :key="`card${num}`">
+            <input
+              type="radio"
+              class="form-check-input"
+              v-model="winningCard"
+              :value="num"
+              :id="`card${num}`"
+            />
+            <label :for="`card${num}`" class="form-check-label">{{ num }}</label>
+          </div>
         </div>
       </div>
     </div>
@@ -73,7 +87,8 @@ export default {
       maxClinicPlayers: null,
       maxWinningCards: null,
       maxWinningCardsForSelection: null,
-      myRule: null
+      myRule: null,
+      winningCard: 1
     };
   },
   computed: {
@@ -82,6 +97,9 @@ export default {
     }
   },
   watch: {
+    winningCard(value) {
+      this.myRule.winningCards = [value];
+    },
     "myRule.teamPlayers"(value, prevValue) {
       if (prevValue && value !== prevValue) {
         this.maxClinicPlayers = this.myRule.teamPlayers - 1;
