@@ -13,6 +13,10 @@
               <td>{{ legify(playedGames) }}</td>
             </tr>
             <tr>
+              <th>Turns</th>
+              <td>{{ movesCount }}</td>
+            </tr>
+            <tr>
               <th>Average</th>
               <td>{{ average }}</td>
             </tr>
@@ -55,7 +59,11 @@
 <script>
 import Board from "./Board.vue";
 import DemoAutoOption from "../../common/DemoAutoOption.vue";
-import { pickNumber, calculateTimerInterval, legify } from "../../common/utils.js";
+import {
+  pickNumber,
+  calculateTimerInterval,
+  legify
+} from "../../common/utils.js";
 export default {
   props: ["boardSettings", "trialNumber"],
   components: {
@@ -70,7 +78,8 @@ export default {
       maximum: 0,
       freqMin: 0,
       sum: 0,
-      playedGames: 0
+      playedGames: 0,
+      movesCount: 0
     };
   },
   watch: {
@@ -107,14 +116,14 @@ export default {
       return pickNumber(1, 6);
     },
     handlePlayOneGame() {
-      let movesCount = 0;
+      this.movesCount = 0;
       let playerNumber = 0;
       this.playedGames++;
       while (
         playerNumber <
         this.boardSettings.columns * this.boardSettings.rows
       ) {
-        movesCount++;
+        this.movesCount++;
         playerNumber += this.throwDice();
         this.boardSettings.snakes.forEach(snake => {
           if (playerNumber === snake.from) {
@@ -127,19 +136,19 @@ export default {
           }
         });
       }
-      this.sum += movesCount;
+      this.sum += this.movesCount;
       if (this.playedGames === 1) {
-        this.minimum = movesCount;
-        this.maximum = movesCount;
+        this.minimum = this.movesCount;
+        this.maximum = this.movesCount;
         this.freqMin = 1;
       } else {
-        if (movesCount < this.minimum) {
-          this.minimum = movesCount;
+        if (this.movesCount < this.minimum) {
+          this.minimum = this.movesCount;
           this.freqMin = 1;
-        } else if (movesCount === this.minimum) {
+        } else if (this.movesCount === this.minimum) {
           this.freqMin++;
-        } else if (movesCount > this.maximum) {
-          this.maximum = movesCount;
+        } else if (this.movesCount > this.maximum) {
+          this.maximum = this.movesCount;
         }
       }
     },
