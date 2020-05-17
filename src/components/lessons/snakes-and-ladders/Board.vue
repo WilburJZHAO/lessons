@@ -185,18 +185,18 @@ export default {
           let currentX = fromPoint.x;
           let currentY = fromNumber === 0 ? toPoint.y : fromPoint.y;
           const fromX = fromPoint.x;
-          const fromY = fromPoint.y;
+          // const fromY = fromPoint.y;
           const toX = toPoint.x;
-          const toY = toPoint.y;
+          // const toY = toPoint.y;
           const prevMiddleX = prevMiddlePoint && prevMiddlePoint.x;
-          const prevMiddleY = prevMiddlePoint && prevMiddlePoint.y;
+          // const prevMiddleY = prevMiddlePoint && prevMiddlePoint.y;
           const middleX = middlePoint && middlePoint.x;
           const middleY = middlePoint && middlePoint.y;
           const jumpToX = jumpToPoint && jumpToPoint.x;
           const jumpToY = jumpToPoint && jumpToPoint.y;
           let currentRow = this.boardSettings.rows;
 
-          const animation1 = new Konva.Animation(frame => {
+          const animation1 = new Konva.Animation(() => {
             const inc = 3;
             if (middleNumber) {
               if (
@@ -372,18 +372,18 @@ export default {
           let currentX = fromPoint.x;
           let currentY = fromNumber === 0 ? toPoint.y : fromPoint.y;
           const fromX = fromPoint.x;
-          const fromY = fromPoint.y;
+          // const fromY = fromPoint.y;
           const toX = toPoint.x;
-          const toY = toPoint.y;
+          // const toY = toPoint.y;
           const prevMiddleX = prevMiddlePoint && prevMiddlePoint.x;
-          const prevMiddleY = prevMiddlePoint && prevMiddlePoint.y;
+          // const prevMiddleY = prevMiddlePoint && prevMiddlePoint.y;
           const middleX = middlePoint && middlePoint.x;
           const middleY = middlePoint && middlePoint.y;
           const jumpToX = jumpToPoint && jumpToPoint.x;
           const jumpToY = jumpToPoint && jumpToPoint.y;
           let currentRow = this.boardSettings.rows;
 
-          const animation2 = new Konva.Animation(frame => {
+          const animation2 = new Konva.Animation(() => {
             const inc = 3;
             if (middleNumber) {
               if (
@@ -696,7 +696,7 @@ export default {
           ]);
           path.draw();
         });
-        fromPoint.on("dragend", e => {
+        fromPoint.on("dragend", () => {
           const pointerPosition = this.boardLayer.getIntersection(
             this.stage.getPointerPosition()
           );
@@ -732,7 +732,7 @@ export default {
           ]);
           path.draw();
         });
-        toPoint.on("dragend", e => {
+        toPoint.on("dragend", () => {
           const pointerPosition = this.boardLayer.getIntersection(
             this.stage.getPointerPosition()
           );
@@ -871,7 +871,7 @@ export default {
           ]);
           path.draw();
         });
-        fromPoint.on("dragend", e => {
+        fromPoint.on("dragend", () => {
           const pointerPosition = this.boardLayer.getIntersection(
             this.stage.getPointerPosition()
           );
@@ -905,7 +905,7 @@ export default {
           ]);
           path.draw();
         });
-        toPoint.on("dragend", e => {
+        toPoint.on("dragend", () => {
           const pointerPosition = this.boardLayer.getIntersection(
             this.stage.getPointerPosition()
           );

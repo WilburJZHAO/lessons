@@ -55,7 +55,7 @@
 
 <script>
 import interact from "interactjs";
-import { shuffleArray, pickNumber } from "../../common/utils";
+import { pickNumber } from "../../common/utils";
 import { checkResult } from "./utils";
 import GameRule from "./GameRule.vue";
 import GameStat from "./GameStat.vue";
