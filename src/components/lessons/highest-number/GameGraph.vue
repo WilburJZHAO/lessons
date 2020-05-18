@@ -40,11 +40,11 @@ export default {
     heightUnit() {
       let unit = 1;
       if (this.trialNumber < 100) {
-        unit = 5;
+        unit = 15;
       } else if (this.trialNumber < 1000) {
-        unit = 3;
+        unit = 4;
       } else if (this.trialNumber < 5000) {
-        unit = 0.6;
+        unit = 0.8;
       } else {
         unit = 0.3;
       }
