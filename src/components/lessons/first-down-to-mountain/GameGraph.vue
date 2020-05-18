@@ -55,17 +55,17 @@ export default {
       }
       if (this.gameType === 2) {
         if (this.trialNumber <= 50) {
-          return 10;
+          return 30;
         } else if (this.trialNumber <= 100) {
-          return 5;
+          return 20;
         } else if (this.trialNumber <= 500) {
-          return 1.5;
+          return 6;
         } else if (this.trialNumber <= 1000) {
-          return 1;
+          return 3;
         } else if (this.trialNumber <= 5000) {
-          return 0.5;
+          return 0.6;
         } else {
-          return 0.2;
+          return 0.3;
         }
       } else if (this.gameType === 1) {
         if (this.trialNumber <= 100) {
@@ -85,7 +85,7 @@ export default {
 
 <style scoped>
 .app--game-graph {
-  min-height: 50vh;
+  height: 50vh;
   overflow: auto;
   border: 1px solid #ccc;
   padding-top: 10px;

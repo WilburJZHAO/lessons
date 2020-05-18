@@ -37,7 +37,11 @@ import _ from "lodash";
 import { demoGame } from "./game";
 import GameGraph from "./GameGraph.vue";
 import DemoAutoOption from "../../common/DemoAutoOption";
-import { throwDiceOnce, calculateTimerInterval, legify } from "../../common/utils";
+import {
+  throwDiceOnce,
+  calculateTimerInterval,
+  legify
+} from "../../common/utils";
 
 export default {
   components: {
