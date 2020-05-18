@@ -133,11 +133,14 @@ export default {
         return;
       }
       for (let key in this.gameRule.rule) {
-        let index = this.gameRule.rule[key].indexOf(prevValue);
+        this.gameRule.rule[key] = this.gameRule.rule[key].filter(
+          num => num <= value
+        );
+        // let index = this.gameRule.rule[key].indexOf(prevValue);
         // console.log(index);
-        if (index !== -1) {
-          this.gameRule.rule[key].splice(index, 1);
-        }
+        // if (index !== -1) {
+        //   this.gameRule.rule[key].splice(index, 1);
+        // }
       }
     },
     numberOfBoxes(value) {
