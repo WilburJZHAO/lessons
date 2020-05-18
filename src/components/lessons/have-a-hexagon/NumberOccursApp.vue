@@ -1,9 +1,9 @@
 <template>
   <div class="container mt-3 mb-5">
-    <h3 class="lesson-subheading">
-      The number of times each product occurs - {{ legify(trialNumber) }} trials
-    </h3>
-    <hr class="subheading-separator">
+    <h3
+      class="lesson-subheading"
+    >The number of times each product occurs - {{ legify(trialNumber) }} trials</h3>
+    <hr class="subheading-separator" />
     <h5 class="text-center">Trial {{ legify(numberOfTrials) }}</h5>
     <div class="app--table">
       <div
@@ -77,15 +77,15 @@ export default {
     },
     widthUnit() {
       if (this.trialNumber <= 100) {
-        return 5;
+        return 20;
       } else if (this.trialNumber <= 500) {
-        return 2;
+        return 8;
       } else if (this.trialNumber <= 1000) {
-        return 1.5;
+        return 3;
       } else if (this.trialNumber <= 5000) {
-        return 0.3;
+        return 0.6;
       } else {
-        return 0.2;
+        return 0.4;
       }
     }
   },
@@ -166,7 +166,7 @@ export default {
 
 <style scoped>
 .app--table {
-  max-width: 500px;
+  max-width: 700px;
   margin: 0 auto;
 }
 .app--table-row {
@@ -189,6 +189,7 @@ export default {
   align-items: center;
 }
 .app--table-item-bar {
+  overflow: auto;
   flex: 1;
   border: none;
 }
