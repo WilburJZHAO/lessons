@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3 mb-5">
     <h3 class="lesson-subheading">Find the value of the shape</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <div class="row">
       <div class="col-sm-6 text-center mb-4">
         <h5>Select Shape</h5>
@@ -14,7 +14,7 @@
             :value="0"
             v-model="shape"
             :disabled="shapeSelected"
-          >
+          />
           <label for="shape-square" class="form-check-label">Square</label>
         </div>
         <div class="form-check">
@@ -26,11 +26,11 @@
             :value="1"
             v-model="shape"
             :disabled="shapeSelected"
-          >
+          />
           <label for="shape-triangle" class="form-check-label">Triangle</label>
         </div>
-        <br>
-        <br>
+        <br />
+        <br />
         <div class="form-check">
           <input
             type="radio"
@@ -40,7 +40,7 @@
             :value="1"
             v-model="numberType"
             :disabled="shapeSelected"
-          >
+          />
           <label for="type-whole-number" class="form-check-label">Whole number</label>
         </div>
         <div class="form-check">
@@ -52,7 +52,7 @@
             :value="2"
             v-model="numberType"
             :disabled="shapeSelected"
-          >
+          />
           <label for="type-decimals" class="form-check-label">Decimals</label>
         </div>
         <div class="form-check">
@@ -64,7 +64,7 @@
             :value="3"
             v-model="numberType"
             :disabled="shapeSelected"
-          >
+          />
           <label for="type-fractions" class="form-check-label">Fractions</label>
         </div>
 
@@ -118,42 +118,40 @@
       </div>
     </div>
     <div class="text-center" v-if="step===1">
-      <button
-        class="btn btn-outline-success"
-        @click="handleCoverShape"
-      >Auto-fill tiles</button>
+      <button class="btn btn-outline-success" @click="handleCoverShape">Auto-fill tiles</button>
     </div>
     <div class="text-center" v-if="step>=3">
       <p>{{ shapeData.totalTiles }} cover the shape</p>
-      <p>
+      <div class="d-flex justify-content-center align-items-center mb-3">
         Each tile is worth
-        <span
+        <div v-if="numberType==3">
+          <app-fraction-display :fractionData="questionNumber"></app-fraction-display>
+        </div>
+        <div class="ml-1 text-primary" v-else>{{ questionNumber }}</div>
+        <!-- <span
           class="text-primary font-weight-bold"
-        >{{ numberType==3 ? `${questionNumber.up} / ${questionNumber.down}` : questionNumber }}</span>
-      </p>
-      <p>
-        What is the whole shape worth?
-        <span v-if="numberType==3">
-          <input
-            class="form-control"
-            type="number"
-            name="myAnswerUp"
-            style="width: 10%; display: inline"
-            v-model.number="myAnswerUp"
-          >
-          /
-          <input
-            class="form-control"
-            type="number"
-            name="myAnswerDown"
-            style="width: 10%; display: inline"
-            v-model.number="myAnswerDown"
-          >
-        </span>
-        <span v-else>
-          <input type="number" name="myAnswer" v-model.number="myAnswer">
-        </span>
-      </p>
+        >{{ numberType==3 ? `${questionNumber.up} / ${questionNumber.down}` : questionNumber }}</span>-->
+      </div>
+      <div class="d-flex justify-content-center align-items-center mb-3">
+        <div class="mr-2">What is the whole shape worth?</div>
+        <div v-if="numberType==3" style="width: 100px;">
+          <div>
+            <input class="form-control" type="number" name="myAnswerUp" v-model.number="myAnswerUp" />
+          </div>
+          <div style="border-bottom: 1px solid #333;" class="my-2"></div>
+          <div>
+            <input
+              class="form-control"
+              type="number"
+              name="myAnswerDown"
+              v-model.number="myAnswerDown"
+            />
+          </div>
+        </div>
+        <div v-else>
+          <input type="number" class="form-control" v-model.number="myAnswer" />
+        </div>
+      </div>
       <div
         class="alert"
         :class="checkMessage ==='Correct!' ? 'alert-success' : 'alert-danger'"
@@ -179,6 +177,7 @@ import Square from "./Square.vue";
 import Triangle from "./Triangle.vue";
 import ShapeByTriangle from "./ShapeByTriangle.vue";
 import ShapeBySquare from "./ShapeBySquare.vue";
+import FractionDisplay from "./FractionDisplay.vue";
 import squareData from "./data/square";
 import triangleData from "./data/triangle";
 import { pickRandomNumber } from "./utils";
@@ -188,7 +187,8 @@ export default {
     appSquare: Square,
     appTriangle: Triangle,
     appShapeByTriangle: ShapeByTriangle,
-    appShapeBySquare: ShapeBySquare
+    appShapeBySquare: ShapeBySquare,
+    appFractionDisplay: FractionDisplay
   },
   data: function() {
     return {
