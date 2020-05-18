@@ -118,17 +118,13 @@ export default {
   computed: {
     unit() {
       if (this.trialNumber <= 100) {
-        return 15;
+        return 50;
       } else if (this.trialNumber <= 1000) {
-        return 10;
+        return 12;
       } else if (this.trialNumber <= 5000) {
         return 3;
-      } else if (this.trialNumber <= 10000) {
-        return 1;
-      } else if (this.trialNumber <= 50000) {
-        return 0.4;
       } else {
-        return 0.2;
+        return 1.5;
       }
     },
     timerInterval() {
