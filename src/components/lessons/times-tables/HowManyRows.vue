@@ -11,8 +11,13 @@
               <h4 class="text-success">Fill out a number to make the sentence true.</h4>
               <div class="form-group container">
                 <div class="row">
-                  <div class="col-4 d-flex align-items-center">
-                    <h3 class="flex-grow-1 text-center">{{ answer }}</h3>
+                  <div class="col-5 d-flex align-items-center">
+                    <div
+                      class="flex-grow-1 d-flex justify-content-center align-items-center mr-2"
+                      style="border: 1px solid #ccc; height: 100%;"
+                    >
+                      <h3>{{ answer }}</h3>
+                    </div>
                     <div class="d-flex flex-column">
                       <button type="button" class="btn btn-outline-primary" @click="handleAdd">
                         <i class="fas fa-caret-up"></i>
@@ -22,7 +27,7 @@
                       </button>
                     </div>
                   </div>
-                  <div class="col-8" style="display: flex; align-items: center;">
+                  <div class="col-7" style="display: flex; align-items: center;">
                     <label
                       style="font-size: 1.3rem; margin: 0; font-weight: 500"
                     >rows of {{ number2 }} = {{ result }}</label>
