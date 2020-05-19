@@ -50,20 +50,20 @@ export default {
 
 <style>
 .app--number-block {
-  font-size: 28px;
-  font-weight: 800;
+  font-size: 35px;
+  font-weight: 600;
   border: 1px solid #ccc;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ededed;
+  background-color: #3c2e28;
 }
 .app--number-fill {
   width: 42px;
   height: 42px;
-  background-color: #fff;
+  background-color: #eee;
   border: 1px solid #555;
   margin: 1px;
 }

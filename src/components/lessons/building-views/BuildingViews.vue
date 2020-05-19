@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-4 mb-5">
     <div class="row">
-      <div class="col-12 col-md-8 col-lg-7">
+      <div class="col-12 col-lg-7">
         <div class="app--building-option mb-3">
           <div class="app--building-option-view">
             <div class="form-check form-check-inline">
@@ -13,7 +13,7 @@
                 class="form-check-input"
                 v-model="viewDirection"
                 :disabled="disableSetBuilding"
-              >
+              />
               <label for="front-view" class="form-check-label">Front View</label>
             </div>
             <div class="form-check form-check-inline">
@@ -25,7 +25,7 @@
                 class="form-check-input"
                 v-model="viewDirection"
                 :disabled="disableSetBuilding"
-              >
+              />
               <label for="back-view" class="form-check-label">Back View</label>
             </div>
             <div class="form-check form-check-inline">
@@ -37,7 +37,7 @@
                 class="form-check-input"
                 v-model="viewDirection"
                 :disabled="disableSetBuilding"
-              >
+              />
               <label for="left-view" class="form-check-label">Left View</label>
             </div>
             <div class="form-check form-check-inline">
@@ -49,7 +49,7 @@
                 class="form-check-input"
                 v-model="viewDirection"
                 :disabled="disableSetBuilding"
-              >
+              />
               <label for="right-view" class="form-check-label">Right View</label>
             </div>
           </div>
@@ -61,7 +61,7 @@
                 id="show-compare"
                 v-model="showCompare"
                 :disabled="disableSetBuilding"
-              >
+              />
               <label for="show-compare" class="form-check-label">Compare</label>
             </div>
 
@@ -73,7 +73,7 @@
                 v-model="hasXRay"
                 name="hasXRay"
                 :disabled="disableSetBuilding"
-              >
+              />
               <label for="x-ray" class="form-check-label">X-ray</label>
             </div>
           </div>
@@ -97,7 +97,7 @@
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-4 col-lg-5">
+      <div class="col-12 col-lg-5">
         <h3 class="text-success text-center">Drag to build the top view</h3>
         <div class="app--number-blocks-container">
           <div class="app--number-blocks mt-4">
@@ -168,7 +168,7 @@
               v-model="gridSize"
               :disabled="isStart"
               @click="()=>{this.showCheck = false; this.disableSetBuilding = true;}"
-            >
+            />
             <label for="grid-size-3" class="form-check-label mr-2">3 x 3</label>
             <input
               type="radio"
@@ -179,7 +179,7 @@
               v-model="gridSize"
               :disabled="isStart"
               @click="()=>{this.showCheck = false; this.disableSetBuilding = true;}"
-            >
+            />
             <label for="grid-size-4" class="form-check-label mr-2">4 x 4</label>
             <input
               type="radio"
@@ -190,7 +190,7 @@
               v-model="gridSize"
               :disabled="isStart"
               @click="()=>{this.showCheck = false; this.disableSetBuilding = true;}"
-            >
+            />
             <label for="grid-size-5" class="form-check-label mr-2">5 x 5</label>
           </div>
           <div class="form-check">
@@ -201,7 +201,7 @@
               v-model="includeOpenSpace"
               :disabled="isStart"
               @click="()=>{this.showCheck = false; this.disableSetBuilding = true;}"
-            >
+            />
             <label for="check-input" class="form-check-label">Include open space in design</label>
           </div>
         </div>
