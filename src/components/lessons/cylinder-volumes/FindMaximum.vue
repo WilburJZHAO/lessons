@@ -1,7 +1,7 @@
 <template>
   <div class="container mt-3">
     <h3 class="lesson-subheading">Finding the maximum volume</h3>
-    <hr class="subheading-separator">
+    <hr class="subheading-separator" />
     <app-input-panel v-if="!paperSize" @setPaperSize="paperSize=$event"></app-input-panel>
     <div v-if="paperSize">
       <h5
@@ -27,7 +27,9 @@
             </tr>
             <tr>
               <th>Current height (cm)</th>
-              <td>{{ legify(Math.round(currentHeight * 100) / 100) }}</td>
+              <td>
+                <input class="text-center form-control" type="text" v-model.number="currentHeight" />
+              </td>
             </tr>
             <tr>
               <th></th>
@@ -86,7 +88,8 @@
             <tr
               v-for="(data, index) in resultArr"
               :key="index"
-              :class="{'table-primary': index===maxIndex }"
+              :class="{'table-primary': index===currentIndex }"
+              @click="currentHeight = Number(data.height.toFixed(2)); currentIndex = index"
             >
               <td>{{ legify(Math.round(data.height * 100) / 100) }}</td>
               <td>{{ legify(data.radius, 2) }}</td>
@@ -115,7 +118,8 @@ export default {
       incDec: 1,
       increment: null,
       resultArr: [],
-      maxIndex: -1
+      maxIndex: -1,
+      currentIndex: -1
     };
   },
   watch: {
@@ -132,6 +136,7 @@ export default {
         this.currentHeight = 0;
         this.resultArr = [];
         this.maxIndex = -1;
+        this.currentIndex = -1;
         this.increment = null;
         this.incDec = 1;
       }
@@ -148,13 +153,19 @@ export default {
       return this.paperSize ? this.paperSize.length * this.paperSize.width : 0;
     },
     isValidInput() {
-      if (this.incDec > 0 && this.increment > 0 && this.increment < 10) {
+      if (
+        this.incDec > 0 &&
+        this.increment > 0 &&
+        this.increment < 10 &&
+        typeof this.currentHeight === "number"
+      ) {
         return true;
       }
       if (
         this.incDec < 0 &&
         this.increment > 0 &&
-        this.increment <= this.currentHeight
+        this.increment <= this.currentHeight &&
+        typeof this.currentHeight === "number"
       ) {
         return true;
       }
@@ -181,7 +192,8 @@ export default {
         if (count >= 11) {
           break;
         }
-        let nextCurrentHeight = (this.currentHeight + this.incDec * this.increment);
+        let nextCurrentHeight =
+          this.currentHeight + this.incDec * this.increment;
         if (nextCurrentHeight <= 0) {
           break;
         }
@@ -197,6 +209,8 @@ export default {
         }
       }
       this.maxIndex = maxIndex;
+      this.currentIndex = this.maxIndex;
+      this.currentHeight = Number(this.resultArr[maxIndex].height.toFixed(2));
     },
     calculate(height) {
       let width = this.area / height;
