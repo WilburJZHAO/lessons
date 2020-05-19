@@ -1,11 +1,7 @@
 <template>
   <div>
     <div>
-      <div
-        v-for="grid in myStrategy.strategyData"
-        :key="grid.id"
-        class="form-check"
-      >
+      <div v-for="grid in myStrategy.strategyData" :key="grid.id" class="form-check">
         <input
           type="checkbox"
           :id="grid.id"
@@ -26,6 +22,7 @@
         class="form-control"
         size="8"
         @click="getSelectedStrategy"
+        @change="getSelectedStrategy"
         @blur="handleLoseFocus"
       >
         <!-- <option :value="-1">Blank</option> -->
@@ -33,18 +30,13 @@
           v-for="strategy in strategies"
           :key="strategy.id"
           :value="strategy.id"
-          >{{ strategy.name }}</option
-        >
+        >{{ strategy.name }}</option>
       </select>
       <div class="text-center my-3">
-        <button class="btn btn-outline-success" @click="handleSaveStrategy">
-          Save strategy
-        </button>
+        <button class="btn btn-outline-success" @click="handleSaveStrategy">Save strategy</button>
       </div>
       <div class="text-center">
-        <button class="btn btn-outline-dark" @click="handleDeleteStrategies">
-          Delete strategies
-        </button>
+        <button class="btn btn-outline-dark" @click="handleDeleteStrategies">Delete strategies</button>
       </div>
     </div>
   </div>

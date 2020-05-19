@@ -22,6 +22,7 @@
         class="form-control"
         size="8"
         @click="getSelectedStrategy"
+        @change="getSelectedStrategy"
         @blur="handleLoseFocus"
       >
         <option
