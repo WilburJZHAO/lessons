@@ -10,7 +10,8 @@
           min="1"
           max="100"
           step="1"
-          :disabled="gameStatus !== 0"
+          @focus="handleFocusPeopleNumber"
+          :disabled="gameStatus !==0"
         />
         <h5 class="mt-3">
           Pass to every
@@ -21,7 +22,8 @@
             min="1"
             :max="maxInputNumber"
             step="1"
-            :disabled="gameStatus !== 1"
+            @focus="handleFocusPersonNumber"
+            :disabled="gameStatus !==0"
           />
           person
         </h5>
@@ -34,12 +36,7 @@
               class="btn btn-outline-success"
               @click="handleInputNumber"
               :disabled="
-              (gameStatus === 0 &&
-                (peopleNumber < minInputNumber ||
-                  peopleNumber > maxInputNumber)) ||
-                (gameStatus === 1 &&
-                  (personNumber < minInputNumber ||
-                    personNumber > maxInputNumber))
+              !(peopleNumber >=2 && peopleNumber <= 100 && personNumber>=1 && personNumber<=peopleNumber-1)
             "
             >OK</button>
           </div>
@@ -124,6 +121,7 @@ export default {
       counter: 1
     };
   },
+  computed: {},
   watch: {
     demoAutoOption(value) {
       if (value === "0") {
@@ -136,15 +134,19 @@ export default {
   },
   methods: {
     handleInputNumber() {
-      if (this.gameStatus === 0) {
-        this.gameStatus = 1;
-        this.minInputNumber = 1;
-        this.maxInputNumber = this.peopleNumber - 1;
-      } else if (this.gameStatus === 1) {
-        this.gameStatus = 2;
+      // if (this.gameStatus === 0) {
+      //   this.gameStatus = 1;
+      //   this.minInputNumber = 1;
+      //   this.maxInputNumber = this.peopleNumber - 1;
+      // } else if (this.gameStatus === 1) {
+      //   this.gameStatus = 2;
+      //   this.degrees = 360 / this.peopleNumber;
+      //   this.showCircle = true;
+      // }
+      if (this.peopleNumber >= 2 && this.peopleNumber)
         this.degrees = 360 / this.peopleNumber;
-        this.showCircle = true;
-      }
+      this.showCircle = true;
+      this.gameStatus = 2;
       this.drawPeople();
     },
     initCanvas() {
@@ -169,10 +171,10 @@ export default {
       this.c.stroke();
     },
     drawPeople() {
-      this.c.fillStyle = 'rgba(255, 0, 100, 0.8)';
+      this.c.fillStyle = "rgba(255, 0, 100, 0.8)";
       if (this.peopleNumber) {
-        let personRadius = 3 + 0.03 * (100 - this.peopleNumber) // smaller dots the more there are
-        let circleFraction = Math.PI * 2 / this.peopleNumber;
+        let personRadius = 3 + 0.03 * (100 - this.peopleNumber); // smaller dots the more there are
+        let circleFraction = (Math.PI * 2) / this.peopleNumber;
         for (let i = 0; i < this.peopleNumber; i++) {
           let x = this.centerX + this.radius * Math.sin(i * circleFraction);
           let y = this.centerY + this.radius * Math.cos(i * circleFraction);
@@ -234,7 +236,20 @@ export default {
       this.c.clearRect(0, 0, this.c.canvas.width, this.c.canvas.height);
       this.drawCircle();
       this.q.clearRect(0, 0, this.q.canvas.width, this.q.canvas.height);
+    },
 
+    handleFocusPeopleNumber() {
+      this.minInputNumber = 2;
+      this.maxInputNumber = 100;
+    },
+    handleFocusPersonNumber(e) {
+      if (!(this.peopleNumber >= 2 && this.peopleNumber <= 100)) {
+        this.peopleNumber = "";
+        e.target.blur();
+      } else {
+        this.minInputNumber = 1;
+        this.maxInputNumber = this.peopleNumber - 1;
+      }
     }
   },
   mounted() {
