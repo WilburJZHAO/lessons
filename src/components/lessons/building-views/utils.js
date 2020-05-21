@@ -488,5 +488,22 @@ const setArrayX = (arr) => {
       }
     }
   }
+
+  for (let i = 0; i < newArr.length; i++) {
+    let frontNumber = null;
+    let currentNumber = newArr[i][0].number;
+    for (let j = 0; j < newArr[i].length; j++) {
+      if (newArr[i][j].hiddenNumber === null) {
+        newArr[i][j].hiddenNumber = frontNumber;
+        if (
+          newArr[i][j + 1] &&
+          newArr[i][j + 1].number !== frontNumber &&
+          newArr[i][j + 1].noDisplay === false
+        ) {
+          frontNumber = newArr[i][j].number;
+        }
+      }
+    }
+  }
   return newArr;
 };

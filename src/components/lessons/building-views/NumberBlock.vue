@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     handleShowHidden() {
-      console.log("show hidden");
+      // console.log("show hidden");
       const isSolid = this.$el.getAttribute("data-solid");
       // console.log(this.$el.getAttribute("data-solid"));
       if (this.hasXRay && !isSolid) {
@@ -58,7 +58,7 @@ export default {
       // console.log(this.$el.classList);
     },
     handleHide() {
-      console.log("hide");
+      // console.log("hide");
       if (this.hasXRay) {
         this.showHidden = false;
         this.$el.classList.add("hidden");
