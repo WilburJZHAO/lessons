@@ -13,7 +13,7 @@ export const pickNumber = (min, max) => {
  * @param {Array} arr
  * @return {Array}
  */
-export const fillArrayWithZero = arr => {
+export const fillArrayWithZero = (arr) => {
   const arrLength = arr.length;
   const newArr = new Array(arrLength);
 
@@ -47,7 +47,7 @@ export const fillArrayWithZero = arr => {
  * @param {Array} original array
  * @return {Array} converted array
  */
-export const convertArrayRowToCol = arr => {
+export const convertArrayRowToCol = (arr) => {
   const arrLength = arr.length;
   const newArr = new Array(arrLength);
   for (let i = 0; i < arrLength; i++) {
@@ -81,7 +81,7 @@ export const convertArrayRowToCol = arr => {
  * @param {Array} original array
  * @return {Array} converted array
  */
-export const convertArrayByRow = arr => {
+export const convertArrayByRow = (arr) => {
   const arrLength = arr.length;
   const newArr = new Array(arrLength);
 
@@ -110,7 +110,7 @@ export const convertArrayByRow = arr => {
  * @param {Array} original array
  * @return {Array} converted array
  */
-export const convertArrayByEl = arr => {
+export const convertArrayByEl = (arr) => {
   const arrLength = arr.length;
   const newArr = new Array(arrLength);
 
@@ -154,7 +154,7 @@ export const convertArrayByEl = arr => {
  * @param {Array} arr
  * @returns {Array} the array filtered
  */
-export const makeViewArray = arr => {
+export const makeViewArray = (arr) => {
   const arrLength = arr.length;
   const newArr = new Array(arrLength);
 
@@ -178,7 +178,7 @@ export const makeViewArray = arr => {
 /**
  *  Filter a N*N two-dimentional array so that it can reflect a building(when X-ray is ticked)
  */
-export const makeViewArrayX = arr => {
+export const makeViewArrayX = (arr) => {
   const returnArr = markSolid(markHidden(filterHiddenX(arr)));
   console.log("before", returnArr);
   for (let i = 0; i < returnArr.length; i++) {
@@ -187,11 +187,12 @@ export const makeViewArrayX = arr => {
     });
     returnArr[i] = fillArrayX(returnArr[i]);
   }
+  const finalReturnArr = setArrayX(returnArr);
   console.log("after", returnArr);
-  return returnArr;
+  return finalReturnArr;
 };
 
-const filterHiddenX = arr => {
+const filterHiddenX = (arr) => {
   // 将即使X-ray也不能看到的数字设为0
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -236,7 +237,7 @@ const filterHiddenX = arr => {
   return newArr;
 };
 
-const markHiddenX = arr => {
+const markHiddenX = (arr) => {
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
     newArr[i] = [];
@@ -255,7 +256,7 @@ const markHiddenX = arr => {
  *  [{number: 3, hidden: false}, { number: 5, hidden: false}, {number: 4, hidden: true}]
  * ]
  */
-const markHidden = arr => {
+const markHidden = (arr) => {
   console.log(arr);
   const arrLength = arr.length;
   const newArr = [];
@@ -271,7 +272,12 @@ const markHidden = arr => {
         // maxInRowIndex = j;
         newArr[i][j] = { number: arr[i][j], hidden: false, solid: false };
       } else {
-        newArr[i][j] = { number: arr[i][j], hidden: true, solid: false };
+        newArr[i][j] = {
+          number: arr[i][j],
+          hidden: true,
+          hiddenNumber: arr[i][j],
+          solid: false,
+        };
       }
     }
     // console.log(maxInRowIndex);
@@ -295,7 +301,7 @@ const markHidden = arr => {
   return newArr;
 };
 
-const markSolidInRow = arr => {
+const markSolidInRow = (arr) => {
   const arrLength = arr.length;
   // let indexBegin = 0;
   let indexEnd = 1;
@@ -334,7 +340,7 @@ const markSolidInRow = arr => {
   return arr;
 };
 
-const markSolid = arr => {
+const markSolid = (arr) => {
   const arrLength = arr.length;
   // const newArr = [];
   for (let i = 0; i < arrLength; i++) {
@@ -354,7 +360,7 @@ const markSolid = arr => {
 
 /** Filter Duplicate element in an array
  */
-const filterDuplicateElement = arr => {
+const filterDuplicateElement = (arr) => {
   const checkArr = [];
   const newArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -376,15 +382,23 @@ const filterDuplicateElement = arr => {
  * @param {Array} arr
  * @returns {Array} the filled array
  */
-const fillArray = arr => {
+const fillArray = (arr) => {
   const newArr = new Array(arr[0]);
   let k = arr[0];
+  let currentNum = arr[0];
 
   for (let i = 0; i < arr[0]; i++) {
     if (arr.indexOf(k) === -1) {
-      newArr[i] = null;
+      newArr[i] = {
+        number: currentNum,
+        noDisplay: true,
+      };
     } else {
-      newArr[i] = k;
+      currentNum = k;
+      newArr[i] = {
+        number: currentNum,
+        noDisplay: false,
+      };
     }
     k--;
   }
@@ -392,8 +406,8 @@ const fillArray = arr => {
 };
 
 /** Fill array, same functions as the above but it is for view array with x-ray */
-const fillArrayX = arr => {
-  console.log(arr);
+const fillArrayX = (arr) => {
+  // console.log(arr);
   // console.log(arr[0].number);
 
   const newArr = new Array(arr[0].number);
@@ -406,8 +420,9 @@ const fillArrayX = arr => {
   // }
 
   let k = arr[0].number;
+  let currentNum = arr[0].number;
   for (let i = 0; i < newArr.length; i++) {
-    let index = arr.findIndex(el => {
+    let index = arr.findIndex((el) => {
       return el.number === k;
     });
     if (index === -1) {
@@ -416,10 +431,11 @@ const fillArrayX = arr => {
       newArr[i] = {
         number: null,
         hidden: false,
-        solid: setSolid ? true : false
+        solid: setSolid ? true : false,
       };
     } else {
       newArr[i] = arr[index];
+      currentNum = arr[index].number;
       if (arr[index].solid) {
         setSolid = true;
       } else {
@@ -430,6 +446,47 @@ const fillArrayX = arr => {
       // }
     }
     k--;
+  }
+  return newArr;
+};
+
+const setArrayX = (arr) => {
+  let newArr = arr.concat();
+  for (let i = 0; i < newArr.length; i++) {
+    const oneArr = newArr[i];
+    let currentNumber = oneArr[0].number;
+    let currentHiddenNumber = null;
+    for (let j = 0; j < oneArr.length; j++) {
+      const item = oneArr[j];
+      if (j === 0) {
+        newArr[i][j].noDisplay = false;
+        newArr[i][j].hiddenNumber = null;
+        continue;
+      }
+
+      if (item.number) {
+        newArr[i][j].noDisplay = false;
+        if (item.hidden) {
+          newArr[i][j].number = currentNumber;
+          newArr[i][j].noDisplay = true;
+        }
+
+        currentNumber = item.number;
+      } else {
+        newArr[i][j].noDisplay = true;
+        newArr[i][j].number = currentNumber;
+      }
+
+      if (item.hiddenNumber && item.hiddenNumber !== currentHiddenNumber) {
+        currentHiddenNumber = item.hiddenNumber;
+        newArr[i][j].noDisplayHiddenNumber = false;
+        // newArr[i][j].hidden = true;
+      } else {
+        newArr[i][j].hiddenNumber = currentHiddenNumber;
+        newArr[i][j].noDisplayHiddenNumber = true;
+        // newArr[i][j].hidden = true;
+      }
+    }
   }
   return newArr;
 };

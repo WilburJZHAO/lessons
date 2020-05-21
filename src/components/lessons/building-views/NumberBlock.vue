@@ -4,11 +4,20 @@
     class="app--number-block app--number-draggable hidden"
     :class="'app--number-block' + number"
     :data-solid="solid"
-    @mouseover="handleShowHidden"
+    @mouseenter="handleShowHidden"
     @mouseleave="handleHide"
   >
-    <span v-if="hidden===true" class="app--hidden-number">{{ number }}</span>
-    <span v-else>{{number}}</span>
+    <div v-if="hidden && !showHidden" class="app--hidden-number">{{ number }}</div>
+    <div
+      v-if="hidden && showHidden"
+      class="app--hidden-number"
+      :class="'app--number-block' + hiddenNumber"
+    >
+      <div :style="{ visibility: noDisplayHiddenNumber ? 'hidden' :'visible' }">{{ hiddenNumber }}</div>
+    </div>
+    <div v-else>
+      <div :style="{ visibility: noDisplay ? 'hidden' :'visible' }">{{number}}</div>
+    </div>
   </div>
   <div v-else-if="hasCheck===true" class="app--number-block app--number-fill">
     <i v-if="number===-1" class="fas fa-times text-danger"></i>
@@ -19,7 +28,16 @@
 
 <script>
 export default {
-  props: ["number", "hasCheck", "hidden", "solid", "hasXRay"],
+  props: [
+    "number",
+    "hasCheck",
+    "hidden",
+    "solid",
+    "hasXRay",
+    "noDisplay",
+    "hiddenNumber",
+    "noDisplayHiddenNumber"
+  ],
   data: function() {
     return {
       showHidden: false
@@ -27,18 +45,20 @@ export default {
   },
   methods: {
     handleShowHidden() {
-      // console.log("show hidden");
+      console.log("show hidden");
       const isSolid = this.$el.getAttribute("data-solid");
       // console.log(this.$el.getAttribute("data-solid"));
       if (this.hasXRay && !isSolid) {
+        this.showHidden = true;
         this.$el.classList.remove("hidden");
         this.$el.classList.add("hover-effect");
       }
       // console.log(this.$el.classList);
     },
     handleHide() {
-      // console.log("hide");
+      console.log("hide");
       if (this.hasXRay) {
+        this.showHidden = false;
         this.$el.classList.add("hidden");
         this.$el.classList.remove("hover-effect");
       }
@@ -52,7 +72,7 @@ export default {
 .app--number-block {
   font-size: 35px;
   font-weight: 600;
-  border: 1px solid #ccc;
+  border: 1px solid black;
   width: 45px;
   height: 45px;
   display: flex;
@@ -80,52 +100,53 @@ export default {
 
 .app--number-block0 {
   color: #763898;
-  /* background-color: #F1BBCC; */
+  color: #001fce;
+  background-color: #edf55a;
 }
 .app--number-block1 {
   color: #f8ef00;
-  /* color: black;
-  background-color: white; */
+  color: black;
+  background-color: #ccc;
 }
 .app--number-block2 {
   color: #00aae9;
-  /* color: black;
-  background-color: #d33011; */
+  color: black;
+  background-color: #d33011;
 }
 .app--number-block3 {
   color: #e993ab;
-  /* color: #b5210e;
-  background-color: #88fa4b; */
+  color: #b5210e;
+  background-color: #88fa4b;
 }
 .app--number-block4 {
   color: #d4211a;
-  /* color: #60fdf8;
-  background-color: #6c1308; */
+  color: #60fdf8;
+  background-color: #6c1308;
 }
 .app--number-block5 {
   color: #007cc2;
-  /* color: #191905;
-  background-color: #f8fb36; */
+  color: #191905;
+  background-color: #f8fb36;
 }
 .app--number-block6 {
   color: #35b247;
-  /* color: #dc2511;
-  background-color: #35881d; */
+  color: #dc2511;
+  background-color: #35881d;
 }
 .app--number-block7 {
   color: #e8008b;
-  /* color: #000000;
-  background-color: #5efbfb; */
+  color: #000000;
+  background-color: #5efbfb;
 }
 .app--number-block8 {
   color: #ef9f92;
-  /* color: #f7f12f;
-  background-color: #153c4b; */
+  color: #f7f12f;
+  background-color: #153c4b;
 }
 .app--number-block9 {
   color: #70c4cb;
-  /* color: #fff735;
-  background-color: #0022eb; */
+  color: #fff735;
+  background-color: #0022eb;
 }
 .app--hidden-number {
   display: flex;

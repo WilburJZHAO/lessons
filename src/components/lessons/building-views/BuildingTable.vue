@@ -4,8 +4,8 @@
       <div class="m-1" v-for="(oneBuilding, arrKey) in viewArray" :key="arrKey">
         <!-- one building -->
         <div v-if="oneBuilding.length===0" style="width: 40px;"></div>
-        <div v-for="(number, buildingKey) in oneBuilding" :key="buildingKey">
-          <app-number-block :number="number"></app-number-block>
+        <div v-for="(block, buildingKey) in oneBuilding" :key="buildingKey">
+          <app-number-block :number="block.number" :noDisplay="block.noDisplay"></app-number-block>
         </div>
       </div>
     </div>
@@ -20,6 +20,9 @@
             :number="el ? el.number : null"
             :hidden="el ? el.hidden : null"
             :solid="el ? el.solid : null"
+            :noDisplay="el.noDisplay"
+            :hiddenNumber="el ? el.hiddenNumber : null"
+            :noDisplayHiddenNumber="el ? el.noDisplayHiddenNumber : null"
             :hasXRay="hasXRay"
           ></app-number-block>
         </div>
