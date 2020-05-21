@@ -6,16 +6,18 @@
     :data-solid="solid"
     @mouseenter="handleShowHidden"
     @mouseleave="handleHide"
+    style="position: relative"
   >
-    <div v-if="hidden && !showHidden" class="app--hidden-number">{{ number }}</div>
+    <!-- <div v-if="hiddenNumber && !showHidden" class="app--hidden-number">{{ number }}</div> -->
     <div
-      v-if="hidden && showHidden"
+      v-if="hiddenNumber"
       class="app--hidden-number"
       :class="'app--number-block' + hiddenNumber"
+      style="position: absolute"
     >
       <div :style="{ visibility: noDisplayHiddenNumber ? 'hidden' :'visible' }">{{ hiddenNumber }}</div>
     </div>
-    <div v-else>
+    <div v-if="number && !hidden" style="position: absolute">
       <div :style="{ visibility: noDisplay ? 'hidden' :'visible' }">{{number}}</div>
     </div>
   </div>
