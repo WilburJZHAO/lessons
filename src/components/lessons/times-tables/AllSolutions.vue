@@ -103,7 +103,9 @@
         </div>
 
         <!-- Right part -->
-        <div v-if="showGraph" class="col-12 col-md-6">show graph</div>
+        <div v-if="showGraph" class="col-12 col-md-6">
+          <app-graph :solutions="solutionsArr" :result="result"></app-graph>
+        </div>
         <div
           v-else
           class="col-12 col-md-6 app--lesson-right"
@@ -146,10 +148,12 @@
 
 <script>
 import Circle from "./Circle.vue";
+import Graph from "./Graph.vue";
 import { pickRandomNumber, countSolutions, numberToArr } from "./utils";
 export default {
   components: {
-    AppCircle: Circle
+    AppCircle: Circle,
+    AppGraph: Graph
   },
   data: function() {
     return {
