@@ -191,7 +191,7 @@ export default {
       this.answerResult.prompt = "";
       this.showDiagram = false;
       if (this.solutionsArr.length > 0) {
-        this.solutionsArr.length = 0;
+        this.solutionsArr = [];
       }
       if (parseInt(level) === 1) {
         this.number1 = pickRandomNumber(1, 6);
