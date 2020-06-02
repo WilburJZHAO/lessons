@@ -315,6 +315,9 @@ export default {
     },
     rollDice() {
       this.randomNum = this.generateRandom(6);
+      if (this.randomNum === 0) {
+        this.randomNum = this.generateRandom(6);
+      }
       this.rollsNum++;
       this.updateBeetle();
     },

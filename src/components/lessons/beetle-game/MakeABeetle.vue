@@ -409,7 +409,13 @@ export default {
     rollDice() {
       this.isStart = true;
       this.p = this.generateRandom(3);
+      if (this.p === 0) {
+        this.p = this.generateRandom(3);
+      }
       this.randomNum = this.generateRandom(6);
+      if (this.randomNum === 0) {
+        this.randomNum = this.generateRandom(6);
+      }
       this.rollsNum++;
       this.updateBeetle();
       this.drawBeetle();
